@@ -138,10 +138,10 @@ VBExternalFunctionNode >> type [
 ]
 
 { #category : #generated }
-VBExternalFunctionNode >> type: aVBAsTypeNode [
+VBExternalFunctionNode >> type: aVBProgramNode [
 	self type notNil
 		ifTrue: [ self type parent: nil ].
-	type := aVBAsTypeNode.
+	type := aVBProgramNode.
 	self type notNil
 		ifTrue: [ self type parent: self ]
 ]

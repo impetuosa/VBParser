@@ -107,10 +107,10 @@ VBParameterNode >> type [
 ]
 
 { #category : #generated }
-VBParameterNode >> type: aVBAsTypeNode [
+VBParameterNode >> type: aVBProgramNode [
 	self type notNil
 		ifTrue: [ self type parent: nil ].
-	type := aVBAsTypeNode.
+	type := aVBProgramNode.
 	self type notNil
 		ifTrue: [ self type parent: self ]
 ]

@@ -1,8 +1,9 @@
 Class {
-	#name : #VBAsTypeNode,
+	#name : #VBAsTypeAndNewNode,
 	#superclass : #VBProgramNode,
 	#instVars : [
 		'asToken',
+		'newToken',
 		'type',
 		'leftParenToken',
 		'sizes',
@@ -13,95 +14,105 @@ Class {
 }
 
 { #category : #generated }
-VBAsTypeNode >> acceptVisitor: aProgramVisitor [
-	^ aProgramVisitor visitAsType: self
+VBAsTypeAndNewNode >> acceptVisitor: aProgramVisitor [
+	^ aProgramVisitor visitAsTypeAndNew: self
 ]
 
 { #category : #generated }
-VBAsTypeNode >> asToken [
+VBAsTypeAndNewNode >> asToken [
 	^ asToken
 ]
 
 { #category : #generated }
-VBAsTypeNode >> asToken: aSmaCCToken [
+VBAsTypeAndNewNode >> asToken: aSmaCCToken [
 	asToken := aSmaCCToken
 ]
 
 { #category : #generated }
-VBAsTypeNode >> commaTokens [
+VBAsTypeAndNewNode >> commaTokens [
 	^ commaTokens
 ]
 
 { #category : #generated }
-VBAsTypeNode >> commaTokens: anOrderedCollection [
+VBAsTypeAndNewNode >> commaTokens: anOrderedCollection [
 	commaTokens := anOrderedCollection
 ]
 
 { #category : #generated }
-VBAsTypeNode >> compositeNodeVariables [
+VBAsTypeAndNewNode >> compositeNodeVariables [
 	^ #(#sizes)
 ]
 
 { #category : #generated }
-VBAsTypeNode >> compositeTokenVariables [
+VBAsTypeAndNewNode >> compositeTokenVariables [
 	^ #(#commaTokens)
 ]
 
 { #category : #'generated-initialize-release' }
-VBAsTypeNode >> initialize [
+VBAsTypeAndNewNode >> initialize [
 	super initialize.
 	sizes := OrderedCollection new: 2.
 	commaTokens := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
-VBAsTypeNode >> leftParenToken [
+VBAsTypeAndNewNode >> leftParenToken [
 	^ leftParenToken
 ]
 
 { #category : #generated }
-VBAsTypeNode >> leftParenToken: aSmaCCToken [
+VBAsTypeAndNewNode >> leftParenToken: aSmaCCToken [
 	leftParenToken := aSmaCCToken
 ]
 
 { #category : #generated }
-VBAsTypeNode >> otherVariables [
+VBAsTypeAndNewNode >> newToken [
+	^ newToken
+]
+
+{ #category : #generated }
+VBAsTypeAndNewNode >> newToken: aSmaCCToken [
+	newToken := aSmaCCToken
+]
+
+{ #category : #generated }
+VBAsTypeAndNewNode >> otherVariables [
 	^ #(#type)
 ]
 
 { #category : #generated }
-VBAsTypeNode >> rightParenToken [
+VBAsTypeAndNewNode >> rightParenToken [
 	^ rightParenToken
 ]
 
 { #category : #generated }
-VBAsTypeNode >> rightParenToken: aSmaCCToken [
+VBAsTypeAndNewNode >> rightParenToken: aSmaCCToken [
 	rightParenToken := aSmaCCToken
 ]
 
 { #category : #generated }
-VBAsTypeNode >> sizes [
+VBAsTypeAndNewNode >> sizes [
 	^ sizes
 ]
 
 { #category : #generated }
-VBAsTypeNode >> sizes: anOrderedCollection [
+VBAsTypeAndNewNode >> sizes: anOrderedCollection [
 	self setParents: self sizes to: nil.
 	sizes := anOrderedCollection.
 	self setParents: self sizes to: self
 ]
 
 { #category : #generated }
-VBAsTypeNode >> tokenVariables [
-	^ #(#asToken #leftParenToken #rightParenToken)
+VBAsTypeAndNewNode >> tokenVariables [
+	^ #(#asToken #newToken #leftParenToken #rightParenToken)
 ]
 
 { #category : #generated }
-VBAsTypeNode >> type [
+VBAsTypeAndNewNode >> type [
 	^ type
 ]
 
 { #category : #generated }
-VBAsTypeNode >> type: anObject [
+VBAsTypeAndNewNode >> type: anObject [
 	type := anObject
 ]

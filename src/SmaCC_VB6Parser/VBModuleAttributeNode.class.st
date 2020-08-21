@@ -34,10 +34,10 @@ VBModuleAttributeNode >> setting [
 ]
 
 { #category : #generated }
-VBModuleAttributeNode >> setting: aVBAssignationNode [
+VBModuleAttributeNode >> setting: aVBSetUpAssignationNode [
 	self setting notNil
 		ifTrue: [ self setting parent: nil ].
-	setting := aVBAssignationNode.
+	setting := aVBSetUpAssignationNode.
 	self setting notNil
 		ifTrue: [ self setting parent: self ]
 ]
