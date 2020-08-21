@@ -13,7 +13,7 @@ VBParser class >> ambiguousTransitions [
 
 { #category : #'generated-accessing' }
 VBParser class >> cacheId [
-	^'2020-08-21T11:45:47.0982+02:00'
+	^'2020-08-21T11:53:50.2332+02:00'
 ]
 
 { #category : #generated }
@@ -190,7 +190,7 @@ BodyElement:
 
 ParameterPassingStrategy :  ""byval"" | ""byref"" {{ParameterPassingStrategy}};
 ParameterList:  ""("" (Parameter 'parameter' ( "","" Parameter 'parameter')* )? "")"" {{ParameterList}};
-Parameter: ""optional"" ? (ParameterPassingStrategy 'strategy')? ""paramarray""? Identifier 'name'  (AsType 'type')? (""="" literal 'default') {{Parameter}};
+Parameter: ""optional"" ? (ParameterPassingStrategy 'strategy')? ""paramarray""? Identifier 'name'  (AsType 'type')? (""="" literal 'default')? {{Parameter}};
 
 DeclareSub: (Visibility 'visibility')? ""declare""  ""sub"" Identifier 'selector' ""lib"" StringLiteral 'library' (""alias"" StringLiteral 'alias')? ParameterList 'parameters'  {{ExternalSub}};
 DeclareFunction: (Visibility 'visibility')? ""declare""  ""function"" Identifier 'selector' ""lib"" StringLiteral 'library' (""alias"" StringLiteral 'alias')? ParameterList 'parameters'  AsType 'type' {{ExternalFunction}};
@@ -229,8 +229,8 @@ VBParser class >> reduceTable [
 	#(122 1 #liftFirstValue: 4424705 false ) 
 	#(81 3 #reduceActionFormodule2: 1687554 false ) 
 	#(114 0 #reduceActionFor__eol___ModuleStatement__element____1: 4002817 false ) 
-	#(130 1 #liftFirstValue: 5195777 false ) 
-	#(130 1 #liftFirstValue: 5195778 false ) 
+	#(132 1 #liftFirstValue: 5196801 false ) 
+	#(132 1 #liftFirstValue: 5196802 false ) 
 	#(108 1 #liftFirstValue: 3868673 false ) 
 	#(98 3 #reduceActionForQualifiedIdentifier1: 2828289 false ) 
 	#(88 1 #reduceActionForDateLiteral1: 2284545 false ) 
@@ -265,13 +265,16 @@ VBParser class >> reduceTable [
 	#(113 2 #reduceActionFor__eol___ModuleStatement__element___1: 4002817 false ) 
 	#(95 1 #reduceActionFor_HEX_INTEGER___1: 2607105 false ) 
 	#(95 2 #reduceActionFor_eol__2: 2607106 false ) 
-	#(128 6 #reduceActionForDeclareSub1: 4785153 false ) 
+	#(130 6 #reduceActionForDeclareSub1: 4786177 false ) 
 	#(124 2 #reduceActionForParameterList1: 4527105 false ) 
 	#(123 1 #reduceActionForParameterPassingStrategy2: 4449282 false ) 
 	#(123 1 #liftFirstValue: 4449281 false ) 
+	#(129 0 #reduceActionFor_____literal__default___1: 4744193 false ) 
 	#(126 0 #reduceActionFor__eol___ModuleStatement__element____1: 4571137 false ) 
-	#(129 7 #reduceActionForDeclareFunction1: 4975617 false ) 
-	#(128 7 #reduceActionForDeclareSub3: 4785155 false ) 
+	#(131 7 #reduceActionForDeclareFunction1: 4976641 false ) 
+	#(130 7 #reduceActionForDeclareSub3: 4786179 false ) 
+	#(129 1 #reduceActionFor_____literal__default___2: 4744194 false ) 
+	#(127 2 #reduceActionForParameter1: 4628481 false ) 
 	#(115 1 #liftFirstValue: 4048897 false ) 
 	#(115 1 #liftFirstValue: 4048898 false ) 
 	#(115 1 #liftFirstValue: 4048899 false ) 
@@ -287,37 +290,37 @@ VBParser class >> reduceTable [
 	#(118 1 #liftFirstValue: 4296705 false ) 
 	#(118 1 #liftFirstValue: 4296706 false ) 
 	#(119 2 #reduceActionForAsType1: 4328449 false ) 
-	#(128 8 #reduceActionForDeclareSub2: 4785154 false ) 
-	#(129 8 #reduceActionForDeclareFunction3: 4975619 false ) 
-	#(127 3 #reduceActionForParameter1: 4628481 false ) 
+	#(130 8 #reduceActionForDeclareSub2: 4786178 false ) 
+	#(131 8 #reduceActionForDeclareFunction3: 4976643 false ) 
+	#(127 3 #reduceActionForParameter9: 4628489 false ) 
+	#(127 3 #reduceActionForParameter3: 4628483 false ) 
+	#(128 2 #reduceActionFor_____literal__default__1: 4744193 false ) 
+	#(127 3 #reduceActionForParameter2: 4628482 false ) 
+	#(127 3 #reduceActionForParameter5: 4628485 false ) 
 	#(124 4 #reduceActionForParameterList2: 4527106 false ) 
 	#(126 2 #reduceActionFor______Parameter__parameter___2: 4571138 false ) 
-	#(129 9 #reduceActionForDeclareFunction2: 4975618 false ) 
+	#(131 9 #reduceActionForDeclareFunction2: 4976642 false ) 
 	#(119 3 #reduceActionForAsType3: 4328451 false ) 
-	#(128 9 #reduceActionForDeclareSub4: 4785156 false ) 
-	#(127 4 #reduceActionForParameter9: 4628489 false ) 
-	#(127 4 #reduceActionForParameter3: 4628483 false ) 
-	#(127 4 #reduceActionForParameter2: 4628482 false ) 
-	#(127 4 #reduceActionForParameter5: 4628485 false ) 
-	#(125 2 #reduceActionFor______Parameter__parameter__1: 4571137 false ) 
+	#(130 9 #reduceActionForDeclareSub4: 4786180 false ) 
+	#(127 4 #reduceActionForParameter11: 4628491 false ) 
+	#(127 4 #reduceActionForParameter10: 4628490 false ) 
+	#(127 4 #reduceActionForParameter13: 4628493 false ) 
+	#(127 4 #reduceActionForParameter4: 4628484 false ) 
+	#(127 4 #reduceActionForParameter7: 4628487 false ) 
+	#(127 4 #reduceActionForParameter6: 4628486 false ) 
+	#(125 2 #reduceActionFor_____literal__default__1: 4571137 false ) 
 	#(121 0 #reduceActionFor__eol___ModuleStatement__element____1: 4381697 false ) 
-	#(129 10 #reduceActionForDeclareFunction4: 4975620 false ) 
-	#(127 5 #reduceActionForParameter11: 4628491 false ) 
-	#(127 5 #reduceActionForParameter10: 4628490 false ) 
-	#(127 5 #reduceActionForParameter13: 4628493 false ) 
-	#(127 5 #reduceActionForParameter4: 4628484 false ) 
-	#(127 5 #reduceActionForParameter7: 4628487 false ) 
-	#(127 5 #reduceActionForParameter6: 4628486 false ) 
+	#(131 10 #reduceActionForDeclareFunction4: 4976644 false ) 
+	#(127 5 #reduceActionForParameter12: 4628492 false ) 
+	#(127 5 #reduceActionForParameter15: 4628495 false ) 
+	#(127 5 #reduceActionForParameter14: 4628494 false ) 
+	#(127 5 #reduceActionForParameter8: 4628488 false ) 
 	#(93 11 #reduceActionForGuidLiteral1: 2571265 false ) 
-	#(127 6 #reduceActionForParameter12: 4628492 false ) 
-	#(127 6 #reduceActionForParameter15: 4628495 false ) 
-	#(127 6 #reduceActionForParameter14: 4628494 false ) 
-	#(127 6 #reduceActionForParameter8: 4628488 false ) 
+	#(127 6 #reduceActionForParameter16: 4628496 false ) 
 	#(119 6 #reduceActionForAsType2: 4328450 false ) 
 	#(121 2 #reduceActionFor______Parameter__parameter___2: 4381698 false ) 
-	#(127 7 #reduceActionForParameter16: 4628496 false ) 
 	#(119 7 #reduceActionForAsType4: 4328452 false ) 
-	#(120 2 #reduceActionFor______Parameter__parameter__1: 4381697 false )
+	#(120 2 #reduceActionFor_____literal__default__1: 4381697 false )
 	).
 ]
 
@@ -333,12 +336,12 @@ VBParser class >> startingStateFormodule [
 
 { #category : #generated }
 VBParser class >> symbolNames [
-	^ #('"!"' '"!="' '"%"' '"&&"' '"("' '")"' '"*"' '"**"' '"+"' '"++"' '","' '"-"' '"--"' '"."' '"/"' '":"' '"<"' '"<="' '"<>"' '"="' '"=="' '">"' '">="' '"["' '"alias"' '"and"' '"as"' '"attribute"' '"begin"' '"binary"' '"boolean"' '"byref"' '"byte"' '"byval"' '"class"' '"collection"' '"compare"' '"database"' '"date"' '"declare"' '"delete"' '"double"' '"end"' '"explicit"' '"function"' '"integer"' '"lib"' '"long"' '"module"' '"new"' '"object"' '"option"' '"optional"' '"or"' '"paramarray"' '"private"' '"public"' '"single"' '"string"' '"sub"' '"text"' '"variant"' '"version"' '"{"' '"||"' '"}"' '"~"' '<HEX_INTEGER>' '<DATE_LITERAL>' '<COLOR_LITERAL>' '<INTEGER_LITERAL>' '<FLOATING_POINT_LITERAL>' '<BOOLEAN_LITERAL>' '<STRING_LITERAL>' '<NULL_LITERAL>' '<IDENTIFIER>' '<whitespace>' '<eol>' '<comment>' 'B e g i n' 'module' '(<eol>* ModuleStatement ''element'' )' '(<eol>* ModuleStatement ''element'' )*' '<eol>*' 'literal' 'IntegerLiteral' 'ColorLiteral' 'DateLiteral' 'FloatLiteral' 'BooleanLiteral' 'StringLiteral' 'Null' 'GuidLiteral' '<HEX_INTEGER> +' '<HEX_INTEGER>+' 'Identifier' 'SimpleIdentifier' 'QualifiedIdentifier' 'header' 'option' 'assignation' 'attribute' 'configuration' '( <eol>+ assignation ''setting'')' '( <eol>+ assignation ''setting'')*' '<eol>+' 'ModuleStatement' 'Statement' 'Block' '(<eol>* Statement ''statement''  )' '(<eol>* Statement ''statement''  )*' 'Body' '(<eol>* BodyElement ''element''  )' '(<eol>* BodyElement ''element''  )*' 'BaseType' 'Visibility' 'ComplexType' 'Type' 'AsType' '( "," literal ''size'')' '( "," literal ''size'')*' 'BodyElement' 'ParameterPassingStrategy' 'ParameterList' '( "," Parameter ''parameter'')' '( "," Parameter ''parameter'')*' 'Parameter' 'DeclareSub' 'DeclareFunction' 'DeclareExternal' 'E O F' 'error')
+	^ #('"!"' '"!="' '"%"' '"&&"' '"("' '")"' '"*"' '"**"' '"+"' '"++"' '","' '"-"' '"--"' '"."' '"/"' '":"' '"<"' '"<="' '"<>"' '"="' '"=="' '">"' '">="' '"["' '"alias"' '"and"' '"as"' '"attribute"' '"begin"' '"binary"' '"boolean"' '"byref"' '"byte"' '"byval"' '"class"' '"collection"' '"compare"' '"database"' '"date"' '"declare"' '"delete"' '"double"' '"end"' '"explicit"' '"function"' '"integer"' '"lib"' '"long"' '"module"' '"new"' '"object"' '"option"' '"optional"' '"or"' '"paramarray"' '"private"' '"public"' '"single"' '"string"' '"sub"' '"text"' '"variant"' '"version"' '"{"' '"||"' '"}"' '"~"' '<HEX_INTEGER>' '<DATE_LITERAL>' '<COLOR_LITERAL>' '<INTEGER_LITERAL>' '<FLOATING_POINT_LITERAL>' '<BOOLEAN_LITERAL>' '<STRING_LITERAL>' '<NULL_LITERAL>' '<IDENTIFIER>' '<whitespace>' '<eol>' '<comment>' 'B e g i n' 'module' '(<eol>* ModuleStatement ''element'' )' '(<eol>* ModuleStatement ''element'' )*' '<eol>*' 'literal' 'IntegerLiteral' 'ColorLiteral' 'DateLiteral' 'FloatLiteral' 'BooleanLiteral' 'StringLiteral' 'Null' 'GuidLiteral' '<HEX_INTEGER> +' '<HEX_INTEGER>+' 'Identifier' 'SimpleIdentifier' 'QualifiedIdentifier' 'header' 'option' 'assignation' 'attribute' 'configuration' '( <eol>+ assignation ''setting'')' '( <eol>+ assignation ''setting'')*' '<eol>+' 'ModuleStatement' 'Statement' 'Block' '(<eol>* Statement ''statement''  )' '(<eol>* Statement ''statement''  )*' 'Body' '(<eol>* BodyElement ''element''  )' '(<eol>* BodyElement ''element''  )*' 'BaseType' 'Visibility' 'ComplexType' 'Type' 'AsType' '( "," literal ''size'')' '( "," literal ''size'')*' 'BodyElement' 'ParameterPassingStrategy' 'ParameterList' '( "," Parameter ''parameter'')' '( "," Parameter ''parameter'')*' 'Parameter' '("=" literal ''default'')' '("=" literal ''default'')?' 'DeclareSub' 'DeclareFunction' 'DeclareExternal' 'E O F' 'error')
 ]
 
 { #category : #generated }
 VBParser class >> symbolTypes [
-	^ #(#SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #VBModuleNode #VBModuleNode #OrderedCollection #OrderedCollection #OrderedCollection #VBProgramNode #VBIntegerLiteralNode #VBColorLiteralNode #VBDateLiteralNode #VBFloatLiteralNode #VBBooleanLiteralNode #VBStringLiteralNode #VBNullNode #VBGuidLiteralNode #OrderedCollection #OrderedCollection #VBProgramNode #VBSimpleIdentifierNode #VBQualifiedIdentifierNode #VBHeaderNode #VBProgramNode #VBAssignationNode #VBModuleAttributeNode #VBConfigurationNode #OrderedCollection #OrderedCollection #OrderedCollection #VBProgramNode #VBProgramNode #VBBlockNode #OrderedCollection #OrderedCollection #VBBodyNode #OrderedCollection #OrderedCollection #Object #Object #VBComplexTypeNode #Object #VBAsTypeNode #OrderedCollection #OrderedCollection #VBBlockNode #Object #VBParameterListNode #OrderedCollection #OrderedCollection #VBParameterNode #VBExternalSubNode #VBExternalFunctionNode #VBProgramNode #SmaCCToken #SmaCCErrorNode)
+	^ #(#SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #VBModuleNode #VBModuleNode #OrderedCollection #OrderedCollection #OrderedCollection #VBProgramNode #VBIntegerLiteralNode #VBColorLiteralNode #VBDateLiteralNode #VBFloatLiteralNode #VBBooleanLiteralNode #VBStringLiteralNode #VBNullNode #VBGuidLiteralNode #OrderedCollection #OrderedCollection #VBProgramNode #VBSimpleIdentifierNode #VBQualifiedIdentifierNode #VBHeaderNode #VBProgramNode #VBAssignationNode #VBModuleAttributeNode #VBConfigurationNode #OrderedCollection #OrderedCollection #OrderedCollection #VBProgramNode #VBProgramNode #VBBlockNode #OrderedCollection #OrderedCollection #VBBodyNode #OrderedCollection #OrderedCollection #Object #Object #VBComplexTypeNode #Object #VBAsTypeNode #OrderedCollection #OrderedCollection #VBBlockNode #Object #VBParameterListNode #OrderedCollection #OrderedCollection #VBParameterNode #OrderedCollection #OrderedCollection #VBExternalSubNode #VBExternalFunctionNode #VBProgramNode #SmaCCToken #SmaCCErrorNode)
 ]
 
 { #category : #generated }
@@ -349,99 +352,99 @@ VBParser class >> transitionTable [
 #[1 0 6 0 76 0 6 0 78 0 69 0 84] 
 #[1 0 73 0 37 0 77 0 44 0 81 0 56 0 85 0 71 0 89 0 86] 
 #[1 0 93 0 72 0 97 0 89] 
-#[0 0 0 0 131] 
+#[0 0 0 0 133] 
 #[1 0 6 0 28 0 6 0 29 0 6 0 52 0 6 0 78 0 101 0 84] 
-#[0 0 10 0 28 0 29 0 40 0 52 0 56 0 57 0 78 0 131] 
-#[0 0 14 0 28 0 29 0 40 0 52 0 56 0 57 0 78 0 131] 
-#[0 0 18 0 28 0 29 0 40 0 52 0 56 0 57 0 78 0 131] 
-#[1 0 22 0 28 0 22 0 29 0 22 0 40 0 22 0 52 0 22 0 56 0 22 0 57 0 22 0 78 0 105 0 83 0 22 0 131] 
-#[0 0 26 0 5 0 14 0 20 0 27 0 40 0 47 0 56 0 57 0 78 0 131] 
+#[0 0 10 0 28 0 29 0 40 0 52 0 56 0 57 0 78 0 133] 
+#[0 0 14 0 28 0 29 0 40 0 52 0 56 0 57 0 78 0 133] 
+#[0 0 18 0 28 0 29 0 40 0 52 0 56 0 57 0 78 0 133] 
+#[1 0 22 0 28 0 22 0 29 0 22 0 40 0 22 0 52 0 22 0 56 0 22 0 57 0 22 0 78 0 105 0 83 0 22 0 133] 
+#[0 0 26 0 5 0 6 0 11 0 14 0 20 0 27 0 40 0 47 0 56 0 57 0 78 0 133] 
 #[1 0 109 0 14 0 113 0 20] 
-#[0 0 30 0 5 0 14 0 20 0 27 0 40 0 47 0 56 0 57 0 78 0 131] 
-#[0 0 34 0 5 0 14 0 20 0 27 0 40 0 47 0 56 0 57 0 78 0 131] 
-#[0 0 38 0 28 0 29 0 40 0 52 0 56 0 57 0 78 0 131] 
+#[0 0 30 0 5 0 6 0 11 0 14 0 20 0 27 0 40 0 47 0 56 0 57 0 78 0 133] 
+#[0 0 34 0 5 0 6 0 11 0 14 0 20 0 27 0 40 0 47 0 56 0 57 0 78 0 133] 
+#[0 0 38 0 28 0 29 0 40 0 52 0 56 0 57 0 78 0 133] 
 #[1 0 49 0 76 0 117 0 78 0 53 0 96 0 53 0 97 0 53 0 98 0 121 0 101] 
 #[1 0 125 0 30 0 129 0 38 0 133 0 61] 
-#[0 0 42 0 28 0 29 0 40 0 52 0 56 0 57 0 78 0 131] 
+#[0 0 42 0 28 0 29 0 40 0 52 0 56 0 57 0 78 0 133] 
 #[0 0 137 0 49] 
-#[0 0 46 0 6 0 11 0 28 0 29 0 40 0 43 0 52 0 56 0 57 0 78 0 131] 
-#[0 0 50 0 28 0 29 0 40 0 52 0 56 0 57 0 78 0 131] 
-#[0 0 54 0 6 0 11 0 28 0 29 0 35 0 40 0 43 0 52 0 56 0 57 0 78 0 131] 
+#[0 0 46 0 6 0 11 0 28 0 29 0 40 0 43 0 52 0 56 0 57 0 78 0 133] 
+#[0 0 50 0 28 0 29 0 40 0 52 0 56 0 57 0 78 0 133] 
+#[0 0 54 0 6 0 11 0 28 0 29 0 35 0 40 0 43 0 52 0 56 0 57 0 78 0 133] 
 #[1 0 58 0 28 0 58 0 29 0 141 0 35 0 58 0 52 0 58 0 78] 
 #[1 0 9 0 28 0 13 0 29 0 17 0 52 0 117 0 78 0 145 0 100 0 145 0 102 0 145 0 103 0 145 0 107] 
-#[1 0 6 0 28 0 6 0 29 0 149 0 40 0 6 0 52 0 181 0 56 0 157 0 57 0 6 0 78 0 161 0 82 0 165 0 84 0 169 0 108 0 185 0 109 0 177 0 112 0 181 0 116 0 185 0 122 0 169 0 128 0 169 0 129 0 169 0 130 0 62 0 131] 
+#[1 0 6 0 28 0 6 0 29 0 149 0 40 0 6 0 52 0 181 0 56 0 157 0 57 0 6 0 78 0 161 0 82 0 165 0 84 0 169 0 108 0 185 0 109 0 177 0 112 0 181 0 116 0 185 0 122 0 169 0 130 0 169 0 131 0 169 0 132 0 62 0 133] 
 #[0 0 201 0 76] 
 #[1 0 205 0 64 0 209 0 69 0 213 0 70 0 85 0 71 0 93 0 72 0 217 0 73 0 221 0 74 0 225 0 75 0 229 0 85 0 229 0 86 0 229 0 87 0 229 0 88 0 229 0 89 0 229 0 90 0 229 0 91 0 229 0 92 0 229 0 93] 
 #[0 0 66 0 28 0 29 0 40 0 52 0 56 0 57 0 76 0 78] 
 #[1 0 70 0 43 0 70 0 78 1 9 0 105] 
-#[0 0 74 0 28 0 29 0 40 0 52 0 56 0 57 0 78 0 131] 
-#[0 0 78 0 28 0 29 0 40 0 52 0 56 0 57 0 78 0 131] 
-#[0 0 82 0 28 0 29 0 40 0 52 0 56 0 57 0 78 0 131] 
-#[0 0 86 0 28 0 29 0 40 0 52 0 56 0 57 0 78 0 131] 
+#[0 0 74 0 28 0 29 0 40 0 52 0 56 0 57 0 78 0 133] 
+#[0 0 78 0 28 0 29 0 40 0 52 0 56 0 57 0 78 0 133] 
+#[0 0 82 0 28 0 29 0 40 0 52 0 56 0 57 0 78 0 133] 
+#[0 0 86 0 28 0 29 0 40 0 52 0 56 0 57 0 78 0 133] 
 #[0 0 90 0 28 0 29 0 52 0 78] 
-#[1 0 22 0 28 0 22 0 29 0 22 0 40 0 22 0 52 0 22 0 56 0 22 0 57 0 22 0 78 1 13 0 83 0 22 0 131] 
+#[1 0 22 0 28 0 22 0 29 0 22 0 40 0 22 0 52 0 22 0 56 0 22 0 57 0 22 0 78 1 13 0 83 0 22 0 133] 
 #[1 1 17 0 45 1 21 0 60] 
 #[0 0 94 0 40] 
 #[0 0 98 0 40] 
-#[0 0 102 0 28 0 29 0 40 0 52 0 56 0 57 0 78 0 131] 
+#[0 0 102 0 28 0 29 0 40 0 52 0 56 0 57 0 78 0 133] 
 #[1 0 9 0 28 0 13 0 29 0 17 0 52 0 117 0 78 1 25 0 100 1 25 0 102 1 25 0 103 1 25 0 107] 
-#[1 0 106 0 40 0 106 0 56 0 106 0 57 0 106 0 78 1 29 0 111 0 106 0 131] 
-#[0 0 110 0 40 0 56 0 57 0 78 0 131] 
-#[0 0 114 0 131] 
+#[1 0 106 0 40 0 106 0 56 0 106 0 57 0 106 0 78 1 29 0 111 0 106 0 133] 
+#[0 0 110 0 40 0 56 0 57 0 78 0 133] 
+#[0 0 114 0 133] 
 #[0 1 33 0 40] 
-#[1 0 118 0 40 0 118 0 56 0 118 0 57 0 118 0 78 1 37 0 114 0 118 0 131] 
-#[0 0 122 0 40 0 56 0 57 0 78 0 131] 
-#[0 0 126 0 40 0 56 0 57 0 78 0 131] 
-#[0 0 130 0 40 0 56 0 57 0 78 0 131] 
-#[0 0 134 0 5 0 14 0 20 0 27 0 40 0 47 0 56 0 57 0 78 0 131] 
+#[1 0 118 0 40 0 118 0 56 0 118 0 57 0 118 0 78 1 37 0 114 0 118 0 133] 
+#[0 0 122 0 40 0 56 0 57 0 78 0 133] 
+#[0 0 126 0 40 0 56 0 57 0 78 0 133] 
+#[0 0 130 0 40 0 56 0 57 0 78 0 133] 
+#[0 0 134 0 5 0 6 0 11 0 14 0 20 0 27 0 40 0 47 0 56 0 57 0 78 0 133] 
 #[1 1 41 0 68 1 45 0 94] 
-#[0 0 138 0 6 0 11 0 28 0 29 0 40 0 43 0 52 0 56 0 57 0 78 0 131] 
-#[0 0 142 0 6 0 11 0 28 0 29 0 40 0 43 0 52 0 56 0 57 0 78 0 131] 
-#[0 0 146 0 6 0 11 0 28 0 29 0 40 0 43 0 52 0 56 0 57 0 78 0 131] 
-#[0 0 150 0 5 0 6 0 11 0 25 0 28 0 29 0 40 0 43 0 52 0 56 0 57 0 78 0 131] 
-#[0 0 154 0 6 0 11 0 28 0 29 0 40 0 43 0 52 0 56 0 57 0 78 0 131] 
-#[0 0 158 0 28 0 29 0 40 0 43 0 52 0 56 0 57 0 78 0 131] 
-#[0 0 162 0 6 0 11 0 28 0 29 0 40 0 43 0 52 0 56 0 57 0 78 0 131] 
-#[0 0 166 0 6 0 11 0 28 0 29 0 40 0 43 0 52 0 56 0 57 0 78 0 131] 
-#[0 0 170 0 6 0 11 0 28 0 29 0 40 0 43 0 52 0 56 0 57 0 78 0 131] 
-#[0 0 174 0 6 0 11 0 28 0 29 0 40 0 43 0 52 0 56 0 57 0 78 0 131] 
-#[0 0 178 0 6 0 11 0 28 0 29 0 40 0 43 0 52 0 56 0 57 0 78 0 131] 
-#[0 0 182 0 6 0 11 0 28 0 29 0 40 0 43 0 52 0 56 0 57 0 78 0 131] 
-#[0 0 186 0 6 0 11 0 28 0 29 0 40 0 43 0 52 0 56 0 57 0 78 0 131] 
-#[0 0 190 0 6 0 11 0 28 0 29 0 40 0 43 0 52 0 56 0 57 0 78 0 131] 
+#[0 0 138 0 6 0 11 0 28 0 29 0 40 0 43 0 52 0 56 0 57 0 78 0 133] 
+#[0 0 142 0 6 0 11 0 28 0 29 0 40 0 43 0 52 0 56 0 57 0 78 0 133] 
+#[0 0 146 0 6 0 11 0 28 0 29 0 40 0 43 0 52 0 56 0 57 0 78 0 133] 
+#[0 0 150 0 5 0 6 0 11 0 25 0 28 0 29 0 40 0 43 0 52 0 56 0 57 0 78 0 133] 
+#[0 0 154 0 6 0 11 0 28 0 29 0 40 0 43 0 52 0 56 0 57 0 78 0 133] 
+#[0 0 158 0 28 0 29 0 40 0 43 0 52 0 56 0 57 0 78 0 133] 
+#[0 0 162 0 6 0 11 0 28 0 29 0 40 0 43 0 52 0 56 0 57 0 78 0 133] 
+#[0 0 166 0 6 0 11 0 28 0 29 0 40 0 43 0 52 0 56 0 57 0 78 0 133] 
+#[0 0 170 0 6 0 11 0 28 0 29 0 40 0 43 0 52 0 56 0 57 0 78 0 133] 
+#[0 0 174 0 6 0 11 0 28 0 29 0 40 0 43 0 52 0 56 0 57 0 78 0 133] 
+#[0 0 178 0 6 0 11 0 28 0 29 0 40 0 43 0 52 0 56 0 57 0 78 0 133] 
+#[0 0 182 0 6 0 11 0 28 0 29 0 40 0 43 0 52 0 56 0 57 0 78 0 133] 
+#[0 0 186 0 6 0 11 0 28 0 29 0 40 0 43 0 52 0 56 0 57 0 78 0 133] 
+#[0 0 190 0 6 0 11 0 28 0 29 0 40 0 43 0 52 0 56 0 57 0 78 0 133] 
 #[1 1 49 0 43 1 53 0 78 1 57 0 104 1 61 0 106] 
-#[1 0 6 0 28 0 6 0 29 0 149 0 40 0 6 0 52 0 181 0 56 0 157 0 57 0 6 0 78 0 161 0 82 0 165 0 84 0 169 0 108 0 185 0 109 1 65 0 112 0 181 0 116 0 185 0 122 0 169 0 128 0 169 0 129 0 169 0 130 0 194 0 131] 
+#[1 0 6 0 28 0 6 0 29 0 149 0 40 0 6 0 52 0 181 0 56 0 157 0 57 0 6 0 78 0 161 0 82 0 165 0 84 0 169 0 108 0 185 0 109 1 65 0 112 0 181 0 116 0 185 0 122 0 169 0 130 0 169 0 131 0 169 0 132 0 194 0 133] 
 #[1 0 49 0 76 1 69 0 96 1 69 0 97 1 69 0 98] 
 #[1 0 49 0 76 1 73 0 96 1 73 0 97 1 73 0 98] 
-#[0 0 198 0 28 0 29 0 40 0 52 0 56 0 57 0 78 0 131] 
-#[1 0 7 0 40 0 7 0 56 0 7 0 57 0 7 0 78 1 77 0 84 1 81 0 110 0 202 0 131] 
+#[0 0 198 0 28 0 29 0 40 0 52 0 56 0 57 0 78 0 133] 
+#[1 0 7 0 40 0 7 0 56 0 7 0 57 0 7 0 78 1 77 0 84 1 81 0 110 0 202 0 133] 
 #[1 1 85 0 45 1 89 0 60] 
-#[1 0 6 0 40 0 6 0 56 0 6 0 57 0 6 0 78 1 93 0 84 1 97 0 113 0 206 0 131] 
+#[1 0 6 0 40 0 6 0 56 0 6 0 57 0 6 0 78 1 93 0 84 1 97 0 113 0 206 0 133] 
 #[0 0 210 0 12 0 68] 
 #[1 1 101 0 12 1 105 0 68] 
-#[0 0 214 0 28 0 29 0 40 0 52 0 56 0 57 0 78 0 131] 
+#[0 0 214 0 28 0 29 0 40 0 52 0 56 0 57 0 78 0 133] 
 #[0 0 218 0 76 0 78] 
 #[0 0 222 0 43 0 78] 
 #[1 0 49 0 76 1 109 0 78 0 53 0 96 0 53 0 97 0 53 0 98 1 113 0 101] 
-#[0 0 226 0 131] 
+#[0 0 226 0 133] 
 #[1 0 109 0 14 1 117 0 47] 
 #[1 0 109 0 14 1 121 0 47] 
-#[1 0 149 0 40 0 181 0 56 0 157 0 57 0 117 0 78 1 125 0 108 0 181 0 116 1 125 0 128 1 125 0 129 1 125 0 130] 
-#[0 0 230 0 40 0 56 0 57 0 78 0 131] 
+#[1 0 149 0 40 0 181 0 56 0 157 0 57 0 117 0 78 1 125 0 108 0 181 0 116 1 125 0 130 1 125 0 131 1 125 0 132] 
+#[0 0 230 0 40 0 56 0 57 0 78 0 133] 
 #[1 0 49 0 76 1 129 0 96 1 129 0 97 1 129 0 98] 
 #[1 0 49 0 76 1 133 0 96 1 133 0 97 1 133 0 98] 
-#[1 0 149 0 40 0 181 0 56 0 157 0 57 0 117 0 78 0 169 0 108 1 137 0 109 0 181 0 116 1 137 0 122 0 169 0 128 0 169 0 129 0 169 0 130] 
-#[0 0 234 0 40 0 56 0 57 0 78 0 131] 
+#[1 0 149 0 40 0 181 0 56 0 157 0 57 0 117 0 78 0 169 0 108 1 137 0 109 0 181 0 116 1 137 0 122 0 169 0 130 0 169 0 131 0 169 0 132] 
+#[0 0 234 0 40 0 56 0 57 0 78 0 133] 
 #[1 1 141 0 68 1 145 0 95] 
 #[0 0 238 0 12 0 68] 
 #[0 0 242 0 76 0 78] 
 #[0 0 246 0 43 0 78] 
 #[1 0 221 0 74 1 149 0 91] 
 #[1 0 221 0 74 1 153 0 91] 
-#[0 0 250 0 40 0 56 0 57 0 78 0 131] 
+#[0 0 250 0 40 0 56 0 57 0 78 0 133] 
 #[1 0 109 0 14 1 157 0 47] 
 #[1 0 109 0 14 1 161 0 47] 
-#[0 0 254 0 40 0 56 0 57 0 78 0 131] 
+#[0 0 254 0 40 0 56 0 57 0 78 0 133] 
 #[0 1 2 0 12 0 66 0 68] 
 #[1 1 165 0 12 1 169 0 68] 
 #[1 1 173 0 5 1 177 0 25 1 181 0 124] 
@@ -454,124 +457,111 @@ VBParser class >> transitionTable [
 #[1 0 221 0 74 1 237 0 91] 
 #[1 1 241 0 27 1 245 0 119] 
 #[1 0 221 0 74 1 249 0 91] 
-#[0 1 10 0 40 0 56 0 57 0 78 0 131] 
+#[0 1 10 0 40 0 56 0 57 0 78 0 133] 
 #[1 1 173 0 5 1 253 0 25 2 1 0 124] 
 #[1 1 173 0 5 2 5 0 25 2 9 0 124] 
 #[1 2 13 0 12 1 169 0 68] 
-#[0 1 14 0 27 0 40 0 56 0 57 0 78 0 131] 
+#[0 1 14 0 27 0 40 0 56 0 57 0 78 0 133] 
 #[0 1 18 0 55 0 76] 
 #[0 1 22 0 55 0 76] 
 #[1 1 209 0 32 2 25 0 34 2 17 0 55 0 49 0 76 2 21 0 96 2 21 0 97 2 21 0 98 2 25 0 123] 
 #[1 0 49 0 76 2 29 0 96 2 29 0 97 2 29 0 98] 
-#[1 0 109 0 14 2 33 0 20 1 241 0 27 2 37 0 119] 
-#[1 2 41 0 55 0 49 0 76 2 45 0 96 2 45 0 97 2 45 0 98] 
-#[1 1 26 0 6 1 26 0 11 2 49 0 126] 
-#[1 1 173 0 5 2 53 0 124] 
-#[1 2 117 0 31 2 117 0 33 2 117 0 36 2 117 0 39 2 117 0 42 2 117 0 46 2 117 0 48 2 85 0 50 2 117 0 51 2 117 0 58 2 117 0 59 2 101 0 62 0 49 0 76 2 105 0 96 2 105 0 97 2 105 0 98 2 117 0 115 2 117 0 117 2 117 0 118] 
-#[0 1 30 0 40 0 56 0 57 0 78 0 131] 
-#[1 1 173 0 5 2 121 0 124] 
-#[1 0 221 0 74 2 125 0 91] 
-#[1 1 241 0 27 2 129 0 119] 
+#[1 1 26 0 6 1 26 0 11 0 109 0 14 2 33 0 20 1 241 0 27 2 37 0 119 2 41 0 128 2 45 0 129] 
+#[1 2 49 0 55 0 49 0 76 2 53 0 96 2 53 0 97 2 53 0 98] 
+#[1 1 30 0 6 1 30 0 11 2 57 0 126] 
+#[1 1 173 0 5 2 61 0 124] 
+#[1 2 125 0 31 2 125 0 33 2 125 0 36 2 125 0 39 2 125 0 42 2 125 0 46 2 125 0 48 2 93 0 50 2 125 0 51 2 125 0 58 2 125 0 59 2 109 0 62 0 49 0 76 2 113 0 96 2 113 0 97 2 113 0 98 2 125 0 115 2 125 0 117 2 125 0 118] 
+#[0 1 34 0 40 0 56 0 57 0 78 0 133] 
+#[1 1 173 0 5 2 129 0 124] 
 #[1 0 221 0 74 2 133 0 91] 
-#[0 1 34 0 40 0 56 0 57 0 78 0 131] 
-#[1 1 141 0 68 2 137 0 95] 
-#[1 0 49 0 76 2 141 0 96 2 141 0 97 2 141 0 98] 
-#[1 0 109 0 14 2 145 0 20 1 241 0 27 2 149 0 119] 
-#[1 2 153 0 55 0 49 0 76 2 157 0 96 2 157 0 97 2 157 0 98] 
-#[1 0 109 0 14 2 161 0 20 1 241 0 27 2 165 0 119] 
-#[1 0 205 0 64 0 209 0 69 0 213 0 70 0 85 0 71 0 93 0 72 0 217 0 73 0 221 0 74 0 225 0 75 2 169 0 85 2 169 0 86 2 169 0 87 2 169 0 88 2 169 0 89 2 169 0 90 2 169 0 91 2 169 0 92 2 169 0 93] 
-#[0 2 173 0 20] 
-#[1 0 49 0 76 2 177 0 96 2 177 0 97 2 177 0 98] 
-#[1 0 109 0 14 2 181 0 20 1 241 0 27 2 185 0 119] 
-#[1 2 189 0 6 2 193 0 11 2 197 0 125] 
-#[1 1 241 0 27 2 201 0 119] 
-#[0 1 38 0 5 0 20 0 40 0 56 0 57 0 78 0 131] 
-#[0 1 42 0 5 0 20 0 40 0 56 0 57 0 78 0 131] 
-#[0 1 46 0 5 0 20 0 40 0 56 0 57 0 78 0 131] 
-#[0 1 50 0 5 0 20 0 40 0 56 0 57 0 78 0 131] 
-#[0 1 54 0 5 0 20 0 40 0 56 0 57 0 78 0 131] 
-#[0 1 58 0 5 0 20 0 40 0 56 0 57 0 78 0 131] 
-#[0 1 62 0 5 0 20 0 40 0 56 0 57 0 78 0 131] 
-#[1 2 205 0 31 2 205 0 33 2 205 0 36 2 205 0 39 2 205 0 42 2 205 0 46 2 205 0 48 2 205 0 51 2 205 0 58 2 205 0 59 2 101 0 62 0 49 0 76 2 105 0 96 2 105 0 97 2 105 0 98 2 205 0 115 2 205 0 117 2 205 0 118] 
-#[0 1 66 0 5 0 20 0 40 0 56 0 57 0 78 0 131] 
-#[0 1 70 0 5 0 20 0 40 0 56 0 57 0 78 0 131] 
-#[0 1 74 0 5 0 20 0 40 0 56 0 57 0 78 0 131] 
-#[0 1 78 0 5 0 20 0 40 0 56 0 57 0 78 0 131] 
-#[1 1 82 0 5 0 109 0 14 1 82 0 20 1 82 0 40 1 82 0 56 1 82 0 57 1 82 0 78 1 82 0 131] 
-#[0 1 86 0 5 0 20 0 40 0 56 0 57 0 78 0 131] 
-#[0 1 90 0 5 0 20 0 40 0 56 0 57 0 78 0 131] 
-#[1 2 209 0 5 1 94 0 20 1 94 0 40 1 94 0 56 1 94 0 57 1 94 0 78 1 94 0 131] 
-#[0 1 98 0 40 0 56 0 57 0 78 0 131] 
-#[1 1 173 0 5 2 213 0 124] 
-#[0 1 102 0 40 0 56 0 57 0 78 0 131] 
-#[1 1 173 0 5 2 217 0 124] 
-#[1 2 221 0 12 1 169 0 68] 
-#[1 0 109 0 14 2 225 0 20 1 241 0 27 2 229 0 119] 
-#[1 0 205 0 64 0 209 0 69 0 213 0 70 0 85 0 71 0 93 0 72 0 217 0 73 0 221 0 74 0 225 0 75 2 233 0 85 2 233 0 86 2 233 0 87 2 233 0 88 2 233 0 89 2 233 0 90 2 233 0 91 2 233 0 92 2 233 0 93] 
-#[0 2 237 0 20] 
-#[1 0 49 0 76 2 241 0 96 2 241 0 97 2 241 0 98] 
-#[1 0 109 0 14 2 245 0 20 1 241 0 27 2 249 0 119] 
-#[1 0 205 0 64 0 209 0 69 0 213 0 70 0 85 0 71 0 93 0 72 0 217 0 73 0 221 0 74 0 225 0 75 2 253 0 85 2 253 0 86 2 253 0 87 2 253 0 88 2 253 0 89 2 253 0 90 2 253 0 91 2 253 0 92 2 253 0 93] 
-#[0 3 1 0 20] 
-#[0 1 106 0 6 0 11] 
-#[1 0 205 0 64 0 209 0 69 0 213 0 70 0 85 0 71 0 93 0 72 0 217 0 73 0 221 0 74 0 225 0 75 3 5 0 85 3 5 0 86 3 5 0 87 3 5 0 88 3 5 0 89 3 5 0 90 3 5 0 91 3 5 0 92 3 5 0 93] 
-#[1 0 109 0 14 3 9 0 20 1 241 0 27 3 13 0 119] 
-#[1 0 205 0 64 0 209 0 69 0 213 0 70 0 85 0 71 0 93 0 72 0 217 0 73 0 221 0 74 0 225 0 75 3 17 0 85 3 17 0 86 3 17 0 87 3 17 0 88 3 17 0 89 3 17 0 90 3 17 0 91 3 17 0 92 3 17 0 93] 
-#[0 3 21 0 20] 
-#[0 1 110 0 27 0 40 0 56 0 57 0 78 0 131] 
-#[1 1 209 0 32 1 229 0 34 1 217 0 53 1 221 0 55 0 49 0 76 1 225 0 96 1 225 0 97 1 225 0 98 1 229 0 123 3 25 0 127] 
-#[0 1 114 0 6 0 11] 
-#[0 1 118 0 40 0 56 0 57 0 78 0 131] 
-#[1 3 29 0 5 1 122 0 20 1 122 0 40 1 122 0 56 1 122 0 57 1 122 0 78 1 122 0 131] 
-#[1 0 205 0 64 0 209 0 69 0 213 0 70 0 85 0 71 0 93 0 72 0 217 0 73 0 221 0 74 0 225 0 75 3 33 0 85 3 33 0 86 3 33 0 87 3 33 0 88 3 33 0 89 3 33 0 90 3 33 0 91 3 33 0 92 3 33 0 93] 
-#[1 1 241 0 27 3 37 0 119] 
-#[0 1 126 0 40 0 56 0 57 0 78 0 131] 
-#[1 1 141 0 68 3 41 0 95] 
-#[1 0 205 0 64 0 209 0 69 0 213 0 70 0 85 0 71 0 93 0 72 0 217 0 73 0 221 0 74 0 225 0 75 3 45 0 85 3 45 0 86 3 45 0 87 3 45 0 88 3 45 0 89 3 45 0 90 3 45 0 91 3 45 0 92 3 45 0 93] 
-#[0 3 49 0 20] 
+#[1 1 241 0 27 2 137 0 119] 
+#[1 0 221 0 74 2 141 0 91] 
+#[0 1 38 0 40 0 56 0 57 0 78 0 133] 
+#[1 1 141 0 68 2 145 0 95] 
+#[1 0 49 0 76 2 149 0 96 2 149 0 97 2 149 0 98] 
+#[1 1 26 0 6 1 26 0 11 0 109 0 14 2 33 0 20 1 241 0 27 2 153 0 119 2 41 0 128 2 157 0 129] 
+#[1 2 161 0 55 0 49 0 76 2 165 0 96 2 165 0 97 2 165 0 98] 
+#[1 1 26 0 6 1 26 0 11 0 109 0 14 2 33 0 20 1 241 0 27 2 169 0 119 2 41 0 128 2 173 0 129] 
+#[1 0 205 0 64 0 209 0 69 0 213 0 70 0 85 0 71 0 93 0 72 0 217 0 73 0 221 0 74 0 225 0 75 2 177 0 85 2 177 0 86 2 177 0 87 2 177 0 88 2 177 0 89 2 177 0 90 2 177 0 91 2 177 0 92 2 177 0 93] 
+#[1 1 26 0 6 1 26 0 11 2 33 0 20 2 41 0 128 2 181 0 129] 
+#[0 1 42 0 6 0 11] 
+#[0 1 46 0 6 0 11] 
+#[1 0 49 0 76 2 185 0 96 2 185 0 97 2 185 0 98] 
+#[1 1 26 0 6 1 26 0 11 0 109 0 14 2 33 0 20 1 241 0 27 2 189 0 119 2 41 0 128 2 193 0 129] 
+#[1 2 197 0 6 2 201 0 11 2 205 0 125] 
+#[1 1 241 0 27 2 209 0 119] 
+#[0 1 50 0 5 0 6 0 11 0 20 0 40 0 56 0 57 0 78 0 133] 
+#[0 1 54 0 5 0 6 0 11 0 20 0 40 0 56 0 57 0 78 0 133] 
+#[0 1 58 0 5 0 6 0 11 0 20 0 40 0 56 0 57 0 78 0 133] 
+#[0 1 62 0 5 0 6 0 11 0 20 0 40 0 56 0 57 0 78 0 133] 
+#[0 1 66 0 5 0 6 0 11 0 20 0 40 0 56 0 57 0 78 0 133] 
+#[0 1 70 0 5 0 6 0 11 0 20 0 40 0 56 0 57 0 78 0 133] 
+#[0 1 74 0 5 0 6 0 11 0 20 0 40 0 56 0 57 0 78 0 133] 
+#[1 2 213 0 31 2 213 0 33 2 213 0 36 2 213 0 39 2 213 0 42 2 213 0 46 2 213 0 48 2 213 0 51 2 213 0 58 2 213 0 59 2 109 0 62 0 49 0 76 2 113 0 96 2 113 0 97 2 113 0 98 2 213 0 115 2 213 0 117 2 213 0 118] 
+#[0 1 78 0 5 0 6 0 11 0 20 0 40 0 56 0 57 0 78 0 133] 
+#[0 1 82 0 5 0 6 0 11 0 20 0 40 0 56 0 57 0 78 0 133] 
+#[0 1 86 0 5 0 6 0 11 0 20 0 40 0 56 0 57 0 78 0 133] 
+#[0 1 90 0 5 0 6 0 11 0 20 0 40 0 56 0 57 0 78 0 133] 
+#[1 1 94 0 5 1 94 0 6 1 94 0 11 0 109 0 14 1 94 0 20 1 94 0 40 1 94 0 56 1 94 0 57 1 94 0 78 1 94 0 133] 
+#[0 1 98 0 5 0 6 0 11 0 20 0 40 0 56 0 57 0 78 0 133] 
+#[0 1 102 0 5 0 6 0 11 0 20 0 40 0 56 0 57 0 78 0 133] 
+#[1 2 217 0 5 1 106 0 6 1 106 0 11 1 106 0 20 1 106 0 40 1 106 0 56 1 106 0 57 1 106 0 78 1 106 0 133] 
+#[0 1 110 0 40 0 56 0 57 0 78 0 133] 
+#[1 1 173 0 5 2 221 0 124] 
+#[0 1 114 0 40 0 56 0 57 0 78 0 133] 
+#[1 1 173 0 5 2 225 0 124] 
+#[1 2 229 0 12 1 169 0 68] 
+#[1 1 26 0 6 1 26 0 11 0 109 0 14 2 33 0 20 1 241 0 27 2 233 0 119 2 41 0 128 2 237 0 129] 
+#[1 1 26 0 6 1 26 0 11 2 33 0 20 2 41 0 128 2 241 0 129] 
+#[0 1 118 0 6 0 11] 
+#[1 0 49 0 76 2 245 0 96 2 245 0 97 2 245 0 98] 
+#[1 1 26 0 6 1 26 0 11 0 109 0 14 2 33 0 20 1 241 0 27 2 249 0 119 2 41 0 128 2 253 0 129] 
+#[1 1 26 0 6 1 26 0 11 2 33 0 20 2 41 0 128 3 1 0 129] 
+#[0 1 122 0 6 0 11] 
+#[0 1 126 0 6 0 11] 
 #[0 1 130 0 6 0 11] 
-#[1 0 205 0 64 0 209 0 69 0 213 0 70 0 85 0 71 0 93 0 72 0 217 0 73 0 221 0 74 0 225 0 75 3 53 0 85 3 53 0 86 3 53 0 87 3 53 0 88 3 53 0 89 3 53 0 90 3 53 0 91 3 53 0 92 3 53 0 93] 
-#[1 0 109 0 14 3 57 0 20 1 241 0 27 3 61 0 119] 
-#[1 0 205 0 64 0 209 0 69 0 213 0 70 0 85 0 71 0 93 0 72 0 217 0 73 0 221 0 74 0 225 0 75 3 65 0 85 3 65 0 86 3 65 0 87 3 65 0 88 3 65 0 89 3 65 0 90 3 65 0 91 3 65 0 92 3 65 0 93] 
-#[0 3 69 0 20] 
+#[1 1 26 0 6 1 26 0 11 0 109 0 14 2 33 0 20 1 241 0 27 3 5 0 119 2 41 0 128 3 9 0 129] 
+#[1 1 26 0 6 1 26 0 11 2 33 0 20 2 41 0 128 3 13 0 129] 
 #[0 1 134 0 6 0 11] 
-#[1 0 205 0 64 0 209 0 69 0 213 0 70 0 85 0 71 0 93 0 72 0 217 0 73 0 221 0 74 0 225 0 75 3 73 0 85 3 73 0 86 3 73 0 87 3 73 0 88 3 73 0 89 3 73 0 90 3 73 0 91 3 73 0 92 3 73 0 93] 
-#[0 1 138 0 6 0 11] 
-#[1 0 205 0 64 0 209 0 69 0 213 0 70 0 85 0 71 0 93 0 72 0 217 0 73 0 221 0 74 0 225 0 75 3 77 0 85 3 77 0 86 3 77 0 87 3 77 0 88 3 77 0 89 3 77 0 90 3 77 0 91 3 77 0 92 3 77 0 93] 
-#[0 3 81 0 20] 
+#[0 1 138 0 27 0 40 0 56 0 57 0 78 0 133] 
+#[1 1 209 0 32 1 229 0 34 1 217 0 53 1 221 0 55 0 49 0 76 1 225 0 96 1 225 0 97 1 225 0 98 1 229 0 123 3 17 0 127] 
 #[0 1 142 0 6 0 11] 
-#[1 0 205 0 64 0 209 0 69 0 213 0 70 0 85 0 71 0 93 0 72 0 217 0 73 0 221 0 74 0 225 0 75 3 85 0 85 3 85 0 86 3 85 0 87 3 85 0 88 3 85 0 89 3 85 0 90 3 85 0 91 3 85 0 92 3 85 0 93] 
-#[0 1 146 0 6 0 11] 
-#[1 0 205 0 64 0 209 0 69 0 213 0 70 0 85 0 71 0 93 0 72 0 217 0 73 0 221 0 74 0 225 0 75 3 89 0 85 3 89 0 86 3 89 0 87 3 89 0 88 3 89 0 89 3 89 0 90 3 89 0 91 3 89 0 92 3 89 0 93] 
-#[1 1 150 0 6 1 150 0 11 3 93 0 121] 
-#[0 1 154 0 40 0 56 0 57 0 78 0 131] 
-#[1 3 97 0 66 1 169 0 68] 
+#[0 1 146 0 40 0 56 0 57 0 78 0 133] 
+#[1 3 21 0 5 1 150 0 6 1 150 0 11 1 150 0 20 1 150 0 40 1 150 0 56 1 150 0 57 1 150 0 78 1 150 0 133] 
+#[1 0 205 0 64 0 209 0 69 0 213 0 70 0 85 0 71 0 93 0 72 0 217 0 73 0 221 0 74 0 225 0 75 3 25 0 85 3 25 0 86 3 25 0 87 3 25 0 88 3 25 0 89 3 25 0 90 3 25 0 91 3 25 0 92 3 25 0 93] 
+#[1 1 241 0 27 3 29 0 119] 
+#[0 1 154 0 40 0 56 0 57 0 78 0 133] 
+#[1 1 141 0 68 3 33 0 95] 
+#[1 1 26 0 6 1 26 0 11 2 33 0 20 2 41 0 128 3 37 0 129] 
 #[0 1 158 0 6 0 11] 
-#[1 0 205 0 64 0 209 0 69 0 213 0 70 0 85 0 71 0 93 0 72 0 217 0 73 0 221 0 74 0 225 0 75 3 101 0 85 3 101 0 86 3 101 0 87 3 101 0 88 3 101 0 89 3 101 0 90 3 101 0 91 3 101 0 92 3 101 0 93] 
 #[0 1 162 0 6 0 11] 
-#[1 0 205 0 64 0 209 0 69 0 213 0 70 0 85 0 71 0 93 0 72 0 217 0 73 0 221 0 74 0 225 0 75 3 105 0 85 3 105 0 86 3 105 0 87 3 105 0 88 3 105 0 89 3 105 0 90 3 105 0 91 3 105 0 92 3 105 0 93] 
-#[0 3 109 0 20] 
+#[1 1 26 0 6 1 26 0 11 0 109 0 14 2 33 0 20 1 241 0 27 3 41 0 119 2 41 0 128 3 45 0 129] 
+#[1 1 26 0 6 1 26 0 11 2 33 0 20 2 41 0 128 3 49 0 129] 
 #[0 1 166 0 6 0 11] 
-#[1 0 205 0 64 0 209 0 69 0 213 0 70 0 85 0 71 0 93 0 72 0 217 0 73 0 221 0 74 0 225 0 75 3 113 0 85 3 113 0 86 3 113 0 87 3 113 0 88 3 113 0 89 3 113 0 90 3 113 0 91 3 113 0 92 3 113 0 93] 
 #[0 1 170 0 6 0 11] 
+#[1 1 26 0 6 1 26 0 11 2 33 0 20 2 41 0 128 3 53 0 129] 
 #[0 1 174 0 6 0 11] 
-#[1 0 205 0 64 0 209 0 69 0 213 0 70 0 85 0 71 0 93 0 72 0 217 0 73 0 221 0 74 0 225 0 75 3 117 0 85 3 117 0 86 3 117 0 87 3 117 0 88 3 117 0 89 3 117 0 90 3 117 0 91 3 117 0 92 3 117 0 93] 
 #[0 1 178 0 6 0 11] 
-#[1 1 150 0 6 1 150 0 11 3 121 0 121] 
-#[1 3 125 0 6 3 129 0 11 3 133 0 120] 
-#[0 1 182 0 6 0 11 0 28 0 29 0 40 0 43 0 52 0 56 0 57 0 78 0 131] 
-#[0 1 186 0 6 0 11] 
-#[0 1 190 0 6 0 11] 
-#[1 0 205 0 64 0 209 0 69 0 213 0 70 0 85 0 71 0 93 0 72 0 217 0 73 0 221 0 74 0 225 0 75 3 137 0 85 3 137 0 86 3 137 0 87 3 137 0 88 3 137 0 89 3 137 0 90 3 137 0 91 3 137 0 92 3 137 0 93] 
+#[0 1 182 0 6 0 11] 
+#[1 0 205 0 64 0 209 0 69 0 213 0 70 0 85 0 71 0 93 0 72 0 217 0 73 0 221 0 74 0 225 0 75 3 57 0 85 3 57 0 86 3 57 0 87 3 57 0 88 3 57 0 89 3 57 0 90 3 57 0 91 3 57 0 92 3 57 0 93] 
+#[1 1 186 0 6 1 186 0 11 3 61 0 121] 
+#[0 1 190 0 40 0 56 0 57 0 78 0 133] 
+#[1 3 65 0 66 1 169 0 68] 
 #[0 1 194 0 6 0 11] 
+#[1 1 26 0 6 1 26 0 11 2 33 0 20 2 41 0 128 3 69 0 129] 
 #[0 1 198 0 6 0 11] 
-#[1 3 141 0 6 3 129 0 11 3 133 0 120] 
-#[0 1 202 0 20 0 40 0 56 0 57 0 78 0 131] 
-#[1 0 205 0 64 0 209 0 69 0 213 0 70 0 85 0 71 0 93 0 72 0 217 0 73 0 221 0 74 0 225 0 75 3 145 0 85 3 145 0 86 3 145 0 87 3 145 0 88 3 145 0 89 3 145 0 90 3 145 0 91 3 145 0 92 3 145 0 93] 
+#[0 1 202 0 6 0 11] 
 #[0 1 206 0 6 0 11] 
-#[0 1 210 0 6 0 11] 
-#[0 1 214 0 20 0 40 0 56 0 57 0 78 0 131] 
-#[0 1 218 0 6 0 11]
+#[1 1 186 0 6 1 186 0 11 3 73 0 121] 
+#[1 3 77 0 6 3 81 0 11 3 85 0 120] 
+#[0 1 210 0 6 0 11 0 28 0 29 0 40 0 43 0 52 0 56 0 57 0 78 0 133] 
+#[0 1 214 0 6 0 11] 
+#[1 3 89 0 6 3 81 0 11 3 85 0 120] 
+#[0 1 218 0 6 0 11 0 20 0 40 0 56 0 57 0 78 0 133] 
+#[1 0 205 0 64 0 209 0 69 0 213 0 70 0 85 0 71 0 93 0 72 0 217 0 73 0 221 0 74 0 225 0 75 3 93 0 85 3 93 0 86 3 93 0 87 3 93 0 88 3 93 0 89 3 93 0 90 3 93 0 91 3 93 0 92 3 93 0 93] 
+#[0 1 222 0 6 0 11] 
+#[0 1 226 0 6 0 11 0 20 0 40 0 56 0 57 0 78 0 133] 
+#[0 1 230 0 6 0 11]
 	).
 ]
 
@@ -852,8 +842,8 @@ VBParser >> reduceActionForParameter10: nodes [
 	result optionalToken: (nodes at: 1).
 	result name: (nodes at: 2).
 	result type: (nodes at: 3).
-	result equalToken: (nodes at: 4).
-	result default: (nodes at: 5).
+	result equalToken: ((nodes at: 4) at: 1).
+	result default: ((nodes at: 4) at: 2).
 	^ result
 ]
 
@@ -864,8 +854,8 @@ VBParser >> reduceActionForParameter11: nodes [
 	result optionalToken: (nodes at: 1).
 	result paramarrayToken: (nodes at: 2).
 	result name: (nodes at: 3).
-	result equalToken: (nodes at: 4).
-	result default: (nodes at: 5).
+	result equalToken: ((nodes at: 4) at: 1).
+	result default: ((nodes at: 4) at: 2).
 	^ result
 ]
 
@@ -877,8 +867,8 @@ VBParser >> reduceActionForParameter12: nodes [
 	result paramarrayToken: (nodes at: 2).
 	result name: (nodes at: 3).
 	result type: (nodes at: 4).
-	result equalToken: (nodes at: 5).
-	result default: (nodes at: 6).
+	result equalToken: ((nodes at: 5) at: 1).
+	result default: ((nodes at: 5) at: 2).
 	^ result
 ]
 
@@ -889,8 +879,8 @@ VBParser >> reduceActionForParameter13: nodes [
 	result optionalToken: (nodes at: 1).
 	result strategy: (nodes at: 2).
 	result name: (nodes at: 3).
-	result equalToken: (nodes at: 4).
-	result default: (nodes at: 5).
+	result equalToken: ((nodes at: 4) at: 1).
+	result default: ((nodes at: 4) at: 2).
 	^ result
 ]
 
@@ -902,8 +892,8 @@ VBParser >> reduceActionForParameter14: nodes [
 	result strategy: (nodes at: 2).
 	result name: (nodes at: 3).
 	result type: (nodes at: 4).
-	result equalToken: (nodes at: 5).
-	result default: (nodes at: 6).
+	result equalToken: ((nodes at: 5) at: 1).
+	result default: ((nodes at: 5) at: 2).
 	^ result
 ]
 
@@ -915,8 +905,8 @@ VBParser >> reduceActionForParameter15: nodes [
 	result strategy: (nodes at: 2).
 	result paramarrayToken: (nodes at: 3).
 	result name: (nodes at: 4).
-	result equalToken: (nodes at: 5).
-	result default: (nodes at: 6).
+	result equalToken: ((nodes at: 5) at: 1).
+	result default: ((nodes at: 5) at: 2).
 	^ result
 ]
 
@@ -929,8 +919,8 @@ VBParser >> reduceActionForParameter16: nodes [
 	result paramarrayToken: (nodes at: 3).
 	result name: (nodes at: 4).
 	result type: (nodes at: 5).
-	result equalToken: (nodes at: 6).
-	result default: (nodes at: 7).
+	result equalToken: ((nodes at: 6) at: 1).
+	result default: ((nodes at: 6) at: 2).
 	^ result
 ]
 
@@ -939,8 +929,8 @@ VBParser >> reduceActionForParameter1: nodes [
 	| result |
 	result := VBParameterNode new.
 	result name: (nodes at: 1).
-	result equalToken: (nodes at: 2).
-	result default: (nodes at: 3).
+	result equalToken: ((nodes at: 2) at: 1).
+	result default: ((nodes at: 2) at: 2).
 	^ result
 ]
 
@@ -950,8 +940,8 @@ VBParser >> reduceActionForParameter2: nodes [
 	result := VBParameterNode new.
 	result name: (nodes at: 1).
 	result type: (nodes at: 2).
-	result equalToken: (nodes at: 3).
-	result default: (nodes at: 4).
+	result equalToken: ((nodes at: 3) at: 1).
+	result default: ((nodes at: 3) at: 2).
 	^ result
 ]
 
@@ -961,8 +951,8 @@ VBParser >> reduceActionForParameter3: nodes [
 	result := VBParameterNode new.
 	result paramarrayToken: (nodes at: 1).
 	result name: (nodes at: 2).
-	result equalToken: (nodes at: 3).
-	result default: (nodes at: 4).
+	result equalToken: ((nodes at: 3) at: 1).
+	result default: ((nodes at: 3) at: 2).
 	^ result
 ]
 
@@ -973,8 +963,8 @@ VBParser >> reduceActionForParameter4: nodes [
 	result paramarrayToken: (nodes at: 1).
 	result name: (nodes at: 2).
 	result type: (nodes at: 3).
-	result equalToken: (nodes at: 4).
-	result default: (nodes at: 5).
+	result equalToken: ((nodes at: 4) at: 1).
+	result default: ((nodes at: 4) at: 2).
 	^ result
 ]
 
@@ -984,8 +974,8 @@ VBParser >> reduceActionForParameter5: nodes [
 	result := VBParameterNode new.
 	result strategy: (nodes at: 1).
 	result name: (nodes at: 2).
-	result equalToken: (nodes at: 3).
-	result default: (nodes at: 4).
+	result equalToken: ((nodes at: 3) at: 1).
+	result default: ((nodes at: 3) at: 2).
 	^ result
 ]
 
@@ -996,8 +986,8 @@ VBParser >> reduceActionForParameter6: nodes [
 	result strategy: (nodes at: 1).
 	result name: (nodes at: 2).
 	result type: (nodes at: 3).
-	result equalToken: (nodes at: 4).
-	result default: (nodes at: 5).
+	result equalToken: ((nodes at: 4) at: 1).
+	result default: ((nodes at: 4) at: 2).
 	^ result
 ]
 
@@ -1008,8 +998,8 @@ VBParser >> reduceActionForParameter7: nodes [
 	result strategy: (nodes at: 1).
 	result paramarrayToken: (nodes at: 2).
 	result name: (nodes at: 3).
-	result equalToken: (nodes at: 4).
-	result default: (nodes at: 5).
+	result equalToken: ((nodes at: 4) at: 1).
+	result default: ((nodes at: 4) at: 2).
 	^ result
 ]
 
@@ -1021,8 +1011,8 @@ VBParser >> reduceActionForParameter8: nodes [
 	result paramarrayToken: (nodes at: 2).
 	result name: (nodes at: 3).
 	result type: (nodes at: 4).
-	result equalToken: (nodes at: 5).
-	result default: (nodes at: 6).
+	result equalToken: ((nodes at: 5) at: 1).
+	result default: ((nodes at: 5) at: 2).
 	^ result
 ]
 
@@ -1032,8 +1022,8 @@ VBParser >> reduceActionForParameter9: nodes [
 	result := VBParameterNode new.
 	result optionalToken: (nodes at: 1).
 	result name: (nodes at: 2).
-	result equalToken: (nodes at: 3).
-	result default: (nodes at: 4).
+	result equalToken: ((nodes at: 3) at: 1).
+	result default: ((nodes at: 3) at: 2).
 	^ result
 ]
 
@@ -1109,7 +1099,16 @@ VBParser >> reduceActionFor_HEX_INTEGER___1: nodes [
 ]
 
 { #category : #'generated-reduction actions' }
-VBParser >> reduceActionFor______Parameter__parameter__1: nodes [
+VBParser >> reduceActionFor______Parameter__parameter___2: nodes [
+	| result |
+	result := nodes at: 1.
+	self add: ((nodes at: 2) at: 1) to: (result at: 1).
+	self add: ((nodes at: 2) at: 2) to: (result at: 2).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+VBParser >> reduceActionFor_____literal__default__1: nodes [
 	| result |
 	result := Array new: 2.
 	result at: 1 put: (nodes at: 1).
@@ -1118,11 +1117,16 @@ VBParser >> reduceActionFor______Parameter__parameter__1: nodes [
 ]
 
 { #category : #'generated-reduction actions' }
-VBParser >> reduceActionFor______Parameter__parameter___2: nodes [
+VBParser >> reduceActionFor_____literal__default___1: nodes [
+	| result |
+	result := Array new: 2.
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+VBParser >> reduceActionFor_____literal__default___2: nodes [
 	| result |
 	result := nodes at: 1.
-	self add: ((nodes at: 2) at: 1) to: (result at: 1).
-	self add: ((nodes at: 2) at: 2) to: (result at: 2).
 	^ result
 ]
 
