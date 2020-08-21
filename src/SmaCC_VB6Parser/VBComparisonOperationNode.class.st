@@ -5,7 +5,6 @@ Class {
 		'left',
 		'greaterThanToken',
 		'lessThanToken',
-		'equalToken',
 		'lessThanGreaterThanToken',
 		'lessThanEqualToken',
 		'greaterThanEqualToken',
@@ -19,16 +18,6 @@ Class {
 { #category : #generated }
 VBComparisonOperationNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitComparisonOperation: self
-]
-
-{ #category : #generated }
-VBComparisonOperationNode >> equalToken [
-	^ equalToken
-]
-
-{ #category : #generated }
-VBComparisonOperationNode >> equalToken: aSmaCCToken [
-	equalToken := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -67,8 +56,12 @@ VBComparisonOperationNode >> left [
 ]
 
 { #category : #generated }
-VBComparisonOperationNode >> left: anObject [
-	left := anObject
+VBComparisonOperationNode >> left: aVBProgramNode [
+	self left notNil
+		ifTrue: [ self left parent: nil ].
+	left := aVBProgramNode.
+	self left notNil
+		ifTrue: [ self left parent: self ]
 ]
 
 { #category : #generated }
@@ -113,12 +106,7 @@ VBComparisonOperationNode >> likeToken: aSmaCCToken [
 
 { #category : #generated }
 VBComparisonOperationNode >> nodeVariables [
-	^ #(#right)
-]
-
-{ #category : #generated }
-VBComparisonOperationNode >> otherVariables [
-	^ #(#left)
+	^ #(#left #right)
 ]
 
 { #category : #generated }
@@ -137,5 +125,5 @@ VBComparisonOperationNode >> right: aVBProgramNode [
 
 { #category : #generated }
 VBComparisonOperationNode >> tokenVariables [
-	^ #(#greaterThanToken #lessThanToken #equalToken #lessThanGreaterThanToken #lessThanEqualToken #greaterThanEqualToken #isToken #likeToken)
+	^ #(#greaterThanToken #lessThanToken #lessThanGreaterThanToken #lessThanEqualToken #greaterThanEqualToken #isToken #likeToken)
 ]

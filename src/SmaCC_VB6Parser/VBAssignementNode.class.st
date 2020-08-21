@@ -1,5 +1,5 @@
 Class {
-	#name : #VBAssignementOrEqualNode,
+	#name : #VBAssignementNode,
 	#superclass : #VBProgramNode,
 	#instVars : [
 		'left',
@@ -10,27 +10,27 @@ Class {
 }
 
 { #category : #generated }
-VBAssignementOrEqualNode >> acceptVisitor: aProgramVisitor [
-	^ aProgramVisitor visitAssignementOrEqual: self
+VBAssignementNode >> acceptVisitor: aProgramVisitor [
+	^ aProgramVisitor visitAssignement: self
 ]
 
 { #category : #generated }
-VBAssignementOrEqualNode >> equalToken [
+VBAssignementNode >> equalToken [
 	^ equalToken
 ]
 
 { #category : #generated }
-VBAssignementOrEqualNode >> equalToken: aSmaCCToken [
+VBAssignementNode >> equalToken: aSmaCCToken [
 	equalToken := aSmaCCToken
 ]
 
 { #category : #generated }
-VBAssignementOrEqualNode >> left [
+VBAssignementNode >> left [
 	^ left
 ]
 
 { #category : #generated }
-VBAssignementOrEqualNode >> left: aVBProgramNode [
+VBAssignementNode >> left: aVBProgramNode [
 	self left notNil
 		ifTrue: [ self left parent: nil ].
 	left := aVBProgramNode.
@@ -39,17 +39,17 @@ VBAssignementOrEqualNode >> left: aVBProgramNode [
 ]
 
 { #category : #generated }
-VBAssignementOrEqualNode >> nodeVariables [
+VBAssignementNode >> nodeVariables [
 	^ #(#left #right)
 ]
 
 { #category : #generated }
-VBAssignementOrEqualNode >> right [
+VBAssignementNode >> right [
 	^ right
 ]
 
 { #category : #generated }
-VBAssignementOrEqualNode >> right: aVBProgramNode [
+VBAssignementNode >> right: aVBProgramNode [
 	self right notNil
 		ifTrue: [ self right parent: nil ].
 	right := aVBProgramNode.
@@ -58,6 +58,6 @@ VBAssignementOrEqualNode >> right: aVBProgramNode [
 ]
 
 { #category : #generated }
-VBAssignementOrEqualNode >> tokenVariables [
+VBAssignementNode >> tokenVariables [
 	^ #(#equalToken)
 ]

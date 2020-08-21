@@ -3,7 +3,7 @@ Class {
 	#superclass : #VBProgramNode,
 	#instVars : [
 		'asToken',
-		'newToken',
+		'nEWToken',
 		'type',
 		'leftParenToken',
 		'sizes',
@@ -66,13 +66,13 @@ VBAsTypeAndNewNode >> leftParenToken: aSmaCCToken [
 ]
 
 { #category : #generated }
-VBAsTypeAndNewNode >> newToken [
-	^ newToken
+VBAsTypeAndNewNode >> nEWToken [
+	^ nEWToken
 ]
 
 { #category : #generated }
-VBAsTypeAndNewNode >> newToken: aSmaCCToken [
-	newToken := aSmaCCToken
+VBAsTypeAndNewNode >> nEWToken: aSmaCCToken [
+	nEWToken := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -104,7 +104,7 @@ VBAsTypeAndNewNode >> sizes: anOrderedCollection [
 
 { #category : #generated }
 VBAsTypeAndNewNode >> tokenVariables [
-	^ #(#asToken #newToken #leftParenToken #rightParenToken)
+	^ #(#asToken #nEWToken #leftParenToken #rightParenToken)
 ]
 
 { #category : #generated }
