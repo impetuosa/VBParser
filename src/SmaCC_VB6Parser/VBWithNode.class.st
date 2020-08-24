@@ -6,6 +6,7 @@ Class {
 		'with',
 		'eolTokens',
 		'endToken',
+		'endLineNumber',
 		'block'
 	],
 	#category : #'SmaCC_VB6Parser'
@@ -33,6 +34,20 @@ VBWithNode >> block: aVBBlockNode [
 { #category : #generated }
 VBWithNode >> compositeTokenVariables [
 	^ #(#withTokens #eolTokens)
+]
+
+{ #category : #generated }
+VBWithNode >> endLineNumber [
+	^ endLineNumber
+]
+
+{ #category : #generated }
+VBWithNode >> endLineNumber: aVBIntegerLiteralNode [
+	self endLineNumber notNil
+		ifTrue: [ self endLineNumber parent: nil ].
+	endLineNumber := aVBIntegerLiteralNode.
+	self endLineNumber notNil
+		ifTrue: [ self endLineNumber parent: self ]
 ]
 
 { #category : #generated }
@@ -64,7 +79,7 @@ VBWithNode >> initialize [
 
 { #category : #generated }
 VBWithNode >> nodeVariables [
-	^ #(#with #block)
+	^ #(#with #endLineNumber #block)
 ]
 
 { #category : #generated }

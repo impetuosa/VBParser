@@ -13,7 +13,7 @@ VBNormalStatementNode >> acceptVisitor: aProgramVisitor [
 ]
 
 { #category : #generated }
-VBNormalStatementNode >> nodeVariables [
+VBNormalStatementNode >> otherVariables [
 	^ #(#statement)
 ]
 
@@ -23,10 +23,6 @@ VBNormalStatementNode >> statement [
 ]
 
 { #category : #generated }
-VBNormalStatementNode >> statement: aVBProgramNode [
-	self statement notNil
-		ifTrue: [ self statement parent: nil ].
-	statement := aVBProgramNode.
-	self statement notNil
-		ifTrue: [ self statement parent: self ]
+VBNormalStatementNode >> statement: anObject [
+	statement := anObject
 ]

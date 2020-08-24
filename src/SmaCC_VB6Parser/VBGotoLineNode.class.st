@@ -1,5 +1,5 @@
 Class {
-	#name : #VBGotoLineNode,
+	#name : #VBGoToLineNode,
 	#superclass : #VBProgramNode,
 	#instVars : [
 		'gotoToken',
@@ -9,27 +9,27 @@ Class {
 }
 
 { #category : #generated }
-VBGotoLineNode >> acceptVisitor: aProgramVisitor [
-	^ aProgramVisitor visitGotoLine: self
+VBGoToLineNode >> acceptVisitor: aProgramVisitor [
+	^ aProgramVisitor visitGoToLine: self
 ]
 
 { #category : #generated }
-VBGotoLineNode >> gotoToken [
+VBGoToLineNode >> gotoToken [
 	^ gotoToken
 ]
 
 { #category : #generated }
-VBGotoLineNode >> gotoToken: aSmaCCToken [
+VBGoToLineNode >> gotoToken: aSmaCCToken [
 	gotoToken := aSmaCCToken
 ]
 
 { #category : #generated }
-VBGotoLineNode >> lineNumber [
+VBGoToLineNode >> lineNumber [
 	^ lineNumber
 ]
 
 { #category : #generated }
-VBGotoLineNode >> lineNumber: aVBIntegerLiteralNode [
+VBGoToLineNode >> lineNumber: aVBIntegerLiteralNode [
 	self lineNumber notNil
 		ifTrue: [ self lineNumber parent: nil ].
 	lineNumber := aVBIntegerLiteralNode.
@@ -38,11 +38,11 @@ VBGotoLineNode >> lineNumber: aVBIntegerLiteralNode [
 ]
 
 { #category : #generated }
-VBGotoLineNode >> nodeVariables [
+VBGoToLineNode >> nodeVariables [
 	^ #(#lineNumber)
 ]
 
 { #category : #generated }
-VBGotoLineNode >> tokenVariables [
+VBGoToLineNode >> tokenVariables [
 	^ #(#gotoToken)
 ]

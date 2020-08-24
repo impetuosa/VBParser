@@ -14,11 +14,6 @@ VBBlockNode >> acceptVisitor: aProgramVisitor [
 ]
 
 { #category : #generated }
-VBBlockNode >> compositeNodeVariables [
-	^ #(#statements)
-]
-
-{ #category : #generated }
 VBBlockNode >> compositeTokenVariables [
 	^ #(#eolTokens)
 ]
@@ -41,13 +36,16 @@ VBBlockNode >> initialize [
 ]
 
 { #category : #generated }
+VBBlockNode >> otherVariables [
+	^ #(#statements)
+]
+
+{ #category : #generated }
 VBBlockNode >> statements [
 	^ statements
 ]
 
 { #category : #generated }
 VBBlockNode >> statements: anOrderedCollection [
-	self setParents: self statements to: nil.
-	statements := anOrderedCollection.
-	self setParents: self statements to: self
+	statements := anOrderedCollection
 ]

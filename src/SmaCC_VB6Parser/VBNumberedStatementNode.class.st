@@ -29,7 +29,12 @@ VBNumberedStatementNode >> lineNumber: aVBIntegerLiteralNode [
 
 { #category : #generated }
 VBNumberedStatementNode >> nodeVariables [
-	^ #(#lineNumber #statement)
+	^ #(#lineNumber)
+]
+
+{ #category : #generated }
+VBNumberedStatementNode >> otherVariables [
+	^ #(#statement)
 ]
 
 { #category : #generated }
@@ -38,10 +43,6 @@ VBNumberedStatementNode >> statement [
 ]
 
 { #category : #generated }
-VBNumberedStatementNode >> statement: aVBProgramNode [
-	self statement notNil
-		ifTrue: [ self statement parent: nil ].
-	statement := aVBProgramNode.
-	self statement notNil
-		ifTrue: [ self statement parent: self ]
+VBNumberedStatementNode >> statement: anObject [
+	statement := anObject
 ]
