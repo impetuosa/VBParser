@@ -4,7 +4,8 @@ Class {
 	#instVars : [
 		'left',
 		'equalToken',
-		'right'
+		'right',
+		'letToken'
 	],
 	#category : #'SmaCC_VB6Parser'
 }
@@ -39,6 +40,16 @@ VBAssignementNode >> left: aVBProgramNode [
 ]
 
 { #category : #generated }
+VBAssignementNode >> letToken [
+	^ letToken
+]
+
+{ #category : #generated }
+VBAssignementNode >> letToken: aSmaCCToken [
+	letToken := aSmaCCToken
+]
+
+{ #category : #generated }
 VBAssignementNode >> nodeVariables [
 	^ #(#left #right)
 ]
@@ -59,5 +70,5 @@ VBAssignementNode >> right: aVBProgramNode [
 
 { #category : #generated }
 VBAssignementNode >> tokenVariables [
-	^ #(#equalToken)
+	^ #(#equalToken #letToken)
 ]
