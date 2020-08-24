@@ -2,8 +2,9 @@ Class {
 	#name : #VBArgumentNode,
 	#superclass : #VBProgramNode,
 	#instVars : [
-		'strategy',
-		'paramarrayToken'
+		'value',
+		'paramarrayToken',
+		'strategy'
 	],
 	#category : #'SmaCC_VB6Parser'
 }
@@ -11,6 +12,11 @@ Class {
 { #category : #generated }
 VBArgumentNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitArgument: self
+]
+
+{ #category : #generated }
+VBArgumentNode >> nodeVariables [
+	^ #(#value)
 ]
 
 { #category : #generated }
@@ -41,4 +47,18 @@ VBArgumentNode >> strategy: anObject [
 { #category : #generated }
 VBArgumentNode >> tokenVariables [
 	^ #(#paramarrayToken)
+]
+
+{ #category : #generated }
+VBArgumentNode >> value [
+	^ value
+]
+
+{ #category : #generated }
+VBArgumentNode >> value: aVBProgramNode [
+	self value notNil
+		ifTrue: [ self value parent: nil ].
+	value := aVBProgramNode.
+	self value notNil
+		ifTrue: [ self value parent: self ]
 ]

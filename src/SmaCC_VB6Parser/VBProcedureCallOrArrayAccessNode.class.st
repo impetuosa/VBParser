@@ -2,7 +2,7 @@ Class {
 	#name : #VBProcedureCallOrArrayAccessNode,
 	#superclass : #VBProgramNode,
 	#instVars : [
-		'name',
+		'receiver',
 		'leftParenToken',
 		'arguments',
 		'rightParenToken'
@@ -40,22 +40,22 @@ VBProcedureCallOrArrayAccessNode >> leftParenToken: aSmaCCToken [
 ]
 
 { #category : #generated }
-VBProcedureCallOrArrayAccessNode >> name [
-	^ name
-]
-
-{ #category : #generated }
-VBProcedureCallOrArrayAccessNode >> name: aVBProgramNode [
-	self name notNil
-		ifTrue: [ self name parent: nil ].
-	name := aVBProgramNode.
-	self name notNil
-		ifTrue: [ self name parent: self ]
-]
-
-{ #category : #generated }
 VBProcedureCallOrArrayAccessNode >> nodeVariables [
-	^ #(#name #arguments)
+	^ #(#receiver #arguments)
+]
+
+{ #category : #generated }
+VBProcedureCallOrArrayAccessNode >> receiver [
+	^ receiver
+]
+
+{ #category : #generated }
+VBProcedureCallOrArrayAccessNode >> receiver: aVBProgramNode [
+	self receiver notNil
+		ifTrue: [ self receiver parent: nil ].
+	receiver := aVBProgramNode.
+	self receiver notNil
+		ifTrue: [ self receiver parent: self ]
 ]
 
 { #category : #generated }
