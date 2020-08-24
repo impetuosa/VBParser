@@ -7,7 +7,7 @@ Class {
 { #category : #'generated-initialization' }
 VBScanner class >> initializeKeywordMap [
 	keywordMap := Dictionary new.
-	#(#(103 'ADDRESSOF' 24) #(103 'ALIAS' 31) #(103 'AND' 32) #(103 'AS' 33) #(103 'ATTRIBUTE' 34) #(103 'BEGIN' 35) #(103 'BINARY' 36) #(103 'BOOLEAN' 37) #(103 'BYREF' 38) #(103 'BYTE' 39) #(103 'BYVAL' 40) #(103 'CLASS' 41) #(103 'COLLECTION' 42) #(103 'COMPARE' 43) #(103 'DATABASE' 44) #(103 'DATE' 45) #(103 'DECLARE' 46) #(103 'DELETE' 47) #(103 'DIM' 48) #(103 'DO' 49) #(103 'DOUBLE' 50) #(103 'EACH' 51) #(103 'ELSE' 52) #(103 'ELSEIF' 53) #(103 'END' 54) #(103 'EQV' 55) #(103 'EXPLICIT' 56) #(103 'FALSE' 100) #(103 'FOR' 57) #(103 'FUNCTION' 58) #(103 'IF' 59) #(103 'IN' 60) #(103 'INTEGER' 61) #(103 'IS' 62) #(103 'LIB' 63) #(103 'LIKE' 64) #(103 'LONG' 65) #(103 'LOOP' 66) #(103 'MOD' 25) #(103 'MODULE' 67) #(103 'NEW' 26) #(103 'NEXT' 68) #(103 'NOT' 69) #(103 'NOTHING' 102) #(103 'OBJECT' 70) #(103 'OPTION' 71) #(103 'OPTIONAL' 72) #(103 'OR' 73) #(103 'PARAMARRAY' 74) #(103 'PRIVATE' 75) #(103 'PUBLIC' 76) #(103 'SINGLE' 77) #(103 'STATIC' 78) #(103 'STEP' 79) #(103 'STRING' 80) #(103 'SUB' 81) #(103 'TEXT' 82) #(103 'THEN' 83) #(103 'TO' 84) #(103 'TRUE' 100) #(103 'UNTIL' 85) #(103 'VARIANT' 86) #(103 'VERSION' 87) #(103 'WEND' 88) #(103 'WHILE' 89) #(103 'WITHEVENTS' 27) #(103 'XOR' 90))
+	#(#(109 'ADDRESSOF' 24) #(109 'ALIAS' 31) #(109 'AND' 32) #(109 'AS' 33) #(109 'ATTRIBUTE' 34) #(109 'BEGIN' 35) #(109 'BINARY' 36) #(109 'BOOLEAN' 37) #(109 'BYREF' 38) #(109 'BYTE' 39) #(109 'BYVAL' 40) #(109 'CLASS' 41) #(109 'COLLECTION' 42) #(109 'COMPARE' 43) #(109 'DATABASE' 44) #(109 'DATE' 45) #(109 'DECLARE' 46) #(109 'DELETE' 47) #(109 'DIM' 48) #(109 'DO' 49) #(109 'DOUBLE' 50) #(109 'EACH' 51) #(109 'ELSE' 52) #(109 'ELSEIF' 53) #(109 'END' 54) #(109 'EQV' 55) #(109 'ERROR' 56) #(109 'EXPLICIT' 57) #(109 'FALSE' 106) #(109 'FOR' 58) #(109 'FUNCTION' 59) #(109 'GOSUB' 60) #(109 'GOTO' 61) #(109 'IF' 62) #(109 'IN' 63) #(109 'INTEGER' 64) #(109 'IS' 65) #(109 'LIB' 66) #(109 'LIKE' 67) #(109 'LONG' 68) #(109 'LOOP' 69) #(109 'MOD' 25) #(109 'MODULE' 70) #(109 'NEW' 26) #(109 'NEXT' 71) #(109 'NOT' 72) #(109 'NOTHING' 108) #(109 'OBJECT' 73) #(109 'ON' 74) #(109 'OPTION' 75) #(109 'OPTIONAL' 76) #(109 'OR' 77) #(109 'PARAMARRAY' 78) #(109 'PRIVATE' 79) #(109 'PUBLIC' 80) #(109 'RESUME' 81) #(109 'RETURN' 82) #(109 'SINGLE' 83) #(109 'STATIC' 84) #(109 'STEP' 85) #(109 'STRING' 86) #(109 'SUB' 87) #(109 'TEXT' 88) #(109 'THEN' 89) #(109 'TO' 90) #(109 'TRUE' 106) #(109 'UNTIL' 91) #(109 'VARIANT' 92) #(109 'VERSION' 93) #(109 'WEND' 94) #(109 'WHILE' 95) #(109 'WITHEVENTS' 27) #(109 'XOR' 96))
 		do: [ :each | 
 			(keywordMap at: each first ifAbsentPut: [ Dictionary new ])
 				at: (each at: 2)
@@ -17,12 +17,12 @@ VBScanner class >> initializeKeywordMap [
 
 { #category : #generated }
 VBScanner >> emptySymbolTokenId [
-	^ 232
+	^ 252
 ]
 
 { #category : #generated }
 VBScanner >> errorTokenId [
-	^ 233
+	^ 253
 ]
 
 { #category : #generated }
@@ -32,11 +32,11 @@ VBScanner >> keywordFor: aString [
 
 { #category : #generated }
 VBScanner >> scan1 [
-	self recordMatch: #(104 105).
+	self recordMatch: #(110 111).
 	self step.
 	(currentCharacter isSeparator
 		or: [ currentCharacter == Character pageUp ])
-		ifTrue: [ [ self recordMatch: #(104).
+		ifTrue: [ [ self recordMatch: #(110).
 			self step.
 			currentCharacter isSeparator
 				or: [ currentCharacter == Character pageUp ] ] whileTrue ].
@@ -55,24 +55,24 @@ VBScanner >> scan10 [
 
 { #category : #generated }
 VBScanner >> scan11 [
-	[ self recordMatch: #(99).
+	[ self recordMatch: #(105).
 	self step.
 	currentCharacter isDigit ] whileTrue.
 	('DFdf' includes: currentCharacter)
-		ifTrue: [ ^ self recordAndReportMatch: #(99) ].
+		ifTrue: [ ^ self recordAndReportMatch: #(105) ].
 	^ self reportLastMatch
 ]
 
 { #category : #generated }
 VBScanner >> scan12 [
-	self recordMatch: #(98).
+	self recordMatch: #(104).
 	self step.
 	currentCharacter == $.
 		ifTrue: [ ^ self scan9 ].
 	(currentCharacter between: $8 and: $9)
 		ifTrue: [ ^ self scan13 ].
 	currentCharacter isDigit
-		ifTrue: [ [ self recordMatch: #(98).
+		ifTrue: [ [ self recordMatch: #(104).
 			self step.
 			currentCharacter == $.
 				ifTrue: [ ^ self scan9 ].
@@ -82,20 +82,20 @@ VBScanner >> scan12 [
 			('Ee' includes: currentCharacter)
 				ifTrue: [ ^ self scan10 ].
 			('Ll' includes: currentCharacter)
-				ifTrue: [ ^ self recordAndReportMatch: #(98) ].
+				ifTrue: [ ^ self recordAndReportMatch: #(104) ].
 			('DFdf' includes: currentCharacter)
-				ifTrue: [ ^ self recordAndReportMatch: #(99) ].
+				ifTrue: [ ^ self recordAndReportMatch: #(105) ].
 			^ self reportLastMatch ].
 	('Ee' includes: currentCharacter)
 		ifTrue: [ ^ self scan10 ].
 	('Ll' includes: currentCharacter)
-		ifTrue: [ ^ self recordAndReportMatch: #(98) ].
+		ifTrue: [ ^ self recordAndReportMatch: #(104) ].
 	('Xx' includes: currentCharacter)
 		ifTrue: [ self step.
 			(currentCharacter isDigit
 				or: [ (currentCharacter between: $A and: $F)
 						or: [ currentCharacter between: $a and: $f ] ])
-				ifTrue: [ [ self recordMatch: #(95 98).
+				ifTrue: [ [ self recordMatch: #(101 104).
 					self step.
 					currentCharacter == $.
 						ifTrue: [ self step.
@@ -110,13 +110,13 @@ VBScanner >> scan12 [
 												or: [ currentCharacter between: $a and: $f ] ] ] whileTrue ].
 							^ self reportLastMatch ].
 					('Ll' includes: currentCharacter)
-						ifTrue: [ ^ self recordAndReportMatch: #(98) ].
+						ifTrue: [ ^ self recordAndReportMatch: #(104) ].
 					currentCharacter isDigit
 						or: [ (currentCharacter between: $A and: $F)
 								or: [ currentCharacter between: $a and: $f ] ] ] whileTrue ].
 			^ self reportLastMatch ].
 	('DFdf' includes: currentCharacter)
-		ifTrue: [ ^ self recordAndReportMatch: #(99) ].
+		ifTrue: [ ^ self recordAndReportMatch: #(105) ].
 	^ self reportLastMatch
 ]
 
@@ -129,7 +129,7 @@ VBScanner >> scan13 [
 	('Ee' includes: currentCharacter)
 		ifTrue: [ ^ self scan10 ].
 	('DFdf' includes: currentCharacter)
-		ifTrue: [ ^ self recordAndReportMatch: #(99) ].
+		ifTrue: [ ^ self recordAndReportMatch: #(105) ].
 	^ self reportLastMatch
 ]
 
@@ -147,7 +147,7 @@ VBScanner >> scan2 [
 
 { #category : #generated }
 VBScanner >> scan3 [
-	self recordMatch: #(101).
+	self recordMatch: #(107).
 	self step.
 	currentCharacter == $"
 		ifTrue: [ ^ self scan2 ].
@@ -191,16 +191,16 @@ VBScanner >> scan5 [
 VBScanner >> scan6 [
 	self step.
 	currentCharacter == $&
-		ifTrue: [ self recordMatch: #(97).
+		ifTrue: [ self recordMatch: #(103).
 			self step.
 			currentCharacter == $"
-				ifTrue: [ ^ self recordAndReportMatch: #(97) ] ].
+				ifTrue: [ ^ self recordAndReportMatch: #(103) ] ].
 	^ self reportLastMatch
 ]
 
 { #category : #generated }
 VBScanner >> scan7 [
-	[ self recordMatch: #(106).
+	[ self recordMatch: #(112).
 	self step.
 	currentCharacter == Character space
 		ifTrue: [ ^ self scan8 ].
@@ -215,11 +215,11 @@ VBScanner >> scan7 [
 
 { #category : #generated }
 VBScanner >> scan8 [
-	[ self recordMatch: #(106).
+	[ self recordMatch: #(112).
 	self step.
 	currentCharacter == Character space ] whileTrue.
 	currentCharacter == $_
-		ifTrue: [ self recordMatch: #(106).
+		ifTrue: [ self recordMatch: #(112).
 			self step.
 			currentCharacter == Character cr
 				ifTrue: [ self step.
@@ -242,13 +242,13 @@ VBScanner >> scan8 [
 
 { #category : #generated }
 VBScanner >> scan9 [
-	[ self recordMatch: #(99).
+	[ self recordMatch: #(105).
 	self step.
 	currentCharacter isDigit ] whileTrue.
 	('Ee' includes: currentCharacter)
 		ifTrue: [ ^ self scan10 ].
 	('DFdf' includes: currentCharacter)
-		ifTrue: [ ^ self recordAndReportMatch: #(99) ].
+		ifTrue: [ ^ self recordAndReportMatch: #(105) ].
 	^ self reportLastMatch
 ]
 
@@ -284,17 +284,17 @@ VBScanner >> scanForToken [
 
 { #category : #generated }
 VBScanner >> scanForTokenX1 [
-	self recordMatch: #(96).
+	self recordMatch: #(102).
 	self step.
 	currentCharacter == $"
 		ifTrue: [ ^ self scan3 ].
 	currentCharacter == $:
 		ifTrue: [ self step.
 			currentCharacter == $"
-				ifTrue: [ self recordMatch: #(101).
+				ifTrue: [ self recordMatch: #(107).
 					self step.
 					currentCharacter == Character space
-						ifTrue: [ ^ self recordAndReportMatch: #(105) ].
+						ifTrue: [ ^ self recordAndReportMatch: #(111) ].
 					currentCharacter == $"
 						ifTrue: [ ^ self scan2 ].
 					^ self reportLastMatch ].
@@ -351,7 +351,7 @@ VBScanner >> scanForTokenX13 [
 
 { #category : #generated }
 VBScanner >> scanForTokenX14 [
-	[ self recordMatch: #(103).
+	[ self recordMatch: #(109).
 	self step.
 	currentCharacter isAlphaNumeric
 		or: [ '$_' includes: currentCharacter ] ] whileTrue
@@ -361,7 +361,7 @@ VBScanner >> scanForTokenX14 [
 VBScanner >> scanForTokenX15 [
 	self step.
 	currentCharacter == $|
-		ifTrue: [ ^ self recordAndReportMatch: #(92) ].
+		ifTrue: [ ^ self recordAndReportMatch: #(98) ].
 	^ self reportLastMatch
 ]
 
@@ -383,14 +383,14 @@ VBScanner >> scanForTokenX17 [
 	currentCharacter == $^
 		ifTrue: [ ^ self recordAndReportMatch: #(30) ].
 	currentCharacter == ${
-		ifTrue: [ ^ self recordAndReportMatch: #(91) ].
+		ifTrue: [ ^ self recordAndReportMatch: #(97) ].
 	currentCharacter == $|
 		ifTrue:
 			[ ^ self scanForTokenX15 ].
 	currentCharacter == $}
-		ifTrue: [ ^ self recordAndReportMatch: #(93) ].
+		ifTrue: [ ^ self recordAndReportMatch: #(99) ].
 	currentCharacter == $~
-		ifTrue: [ ^ self recordAndReportMatch: #(94) ].
+		ifTrue: [ ^ self recordAndReportMatch: #(100) ].
 	currentCharacter isDigit
 		ifTrue:
 			[ ^ self scanForTokenX2 ].
@@ -443,7 +443,7 @@ VBScanner >> scanForTokenX18 [
 
 { #category : #generated }
 VBScanner >> scanForTokenX2 [
-	[ self recordMatch: #(98).
+	[ self recordMatch: #(104).
 	self step.
 	currentCharacter == $.
 		ifTrue: [ ^ self scan9 ].
@@ -451,23 +451,23 @@ VBScanner >> scanForTokenX2 [
 	('Ee' includes: currentCharacter)
 		ifTrue: [ ^ self scan10 ].
 	('Ll' includes: currentCharacter)
-		ifTrue: [ ^ self recordAndReportMatch: #(98) ].
+		ifTrue: [ ^ self recordAndReportMatch: #(104) ].
 	('DFdf' includes: currentCharacter)
-		ifTrue: [ ^ self recordAndReportMatch: #(99) ].
+		ifTrue: [ ^ self recordAndReportMatch: #(105) ].
 	^ self reportLastMatch
 ]
 
 { #category : #generated }
 VBScanner >> scanForTokenX3 [
-	self recordMatch: #(103).
+	self recordMatch: #(109).
 	(self scanForString: 'EM')
-		ifTrue: [ self recordMatch: #(103).
+		ifTrue: [ self recordMatch: #(109).
 			self step.
 			currentCharacter == Character space
 				ifTrue: [ ^ self scan7 ] ].
 	(currentCharacter isAlphaNumeric
 		or: [ '$_' includes: currentCharacter ])
-		ifTrue: [ [ self recordMatch: #(103).
+		ifTrue: [ [ self recordMatch: #(109).
 			self step.
 			currentCharacter isAlphaNumeric
 				or: [ '$_' includes: currentCharacter ] ] whileTrue ].
@@ -490,13 +490,13 @@ VBScanner >> scanForTokenX4 [
 
 { #category : #generated }
 VBScanner >> scanForTokenX5 [
-	self recordMatch: #(104).
+	self recordMatch: #(110).
 	self step.
 	currentCharacter == Character lf
 		ifTrue: [ ^ self scan1 ].
 	(currentCharacter isSeparator
 		or: [ currentCharacter == Character pageUp ])
-		ifTrue: [ [ self recordMatch: #(104).
+		ifTrue: [ [ self recordMatch: #(110).
 			self step.
 			currentCharacter isSeparator
 				or: [ currentCharacter == Character pageUp ] ] whileTrue ].
@@ -528,7 +528,7 @@ VBScanner >> scanForTokenX7 [
 
 { #category : #generated }
 VBScanner >> scanForTokenX8 [
-	[ self recordMatch: #(104).
+	[ self recordMatch: #(110).
 	self step.
 	currentCharacter isSeparator
 		or: [ currentCharacter == Character pageUp ] ] whileTrue.
@@ -546,7 +546,7 @@ VBScanner >> scanForTokenX9 [
 
 { #category : #generated }
 VBScanner >> tokenActions [
-	^ #(nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil #whitespace nil #comment)
+	^ #(nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil #whitespace nil #comment)
 ]
 
 { #category : #generated }
