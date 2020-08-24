@@ -1,5 +1,5 @@
 Class {
-	#name : #VBForNextNode,
+	#name : #VBForStepNextNode,
 	#superclass : #VBProgramNode,
 	#instVars : [
 		'forToken',
@@ -8,6 +8,8 @@ Class {
 		'initialValue',
 		'toToken',
 		'limit',
+		'stepToken',
+		'step',
 		'eolTokens',
 		'nextToken',
 		'endLineNumber',
@@ -17,17 +19,17 @@ Class {
 }
 
 { #category : #generated }
-VBForNextNode >> acceptVisitor: aProgramVisitor [
-	^ aProgramVisitor visitForNext: self
+VBForStepNextNode >> acceptVisitor: aProgramVisitor [
+	^ aProgramVisitor visitForStepNext: self
 ]
 
 { #category : #generated }
-VBForNextNode >> body [
+VBForStepNextNode >> body [
 	^ body
 ]
 
 { #category : #generated }
-VBForNextNode >> body: aVBBlockNode [
+VBForStepNextNode >> body: aVBBlockNode [
 	self body notNil
 		ifTrue: [ self body parent: nil ].
 	body := aVBBlockNode.
@@ -36,17 +38,17 @@ VBForNextNode >> body: aVBBlockNode [
 ]
 
 { #category : #generated }
-VBForNextNode >> compositeTokenVariables [
+VBForStepNextNode >> compositeTokenVariables [
 	^ #(#eolTokens)
 ]
 
 { #category : #generated }
-VBForNextNode >> counter [
+VBForStepNextNode >> counter [
 	^ counter
 ]
 
 { #category : #generated }
-VBForNextNode >> counter: aVBProgramNode [
+VBForStepNextNode >> counter: aVBProgramNode [
 	self counter notNil
 		ifTrue: [ self counter parent: nil ].
 	counter := aVBProgramNode.
@@ -55,12 +57,12 @@ VBForNextNode >> counter: aVBProgramNode [
 ]
 
 { #category : #generated }
-VBForNextNode >> endLineNumber [
+VBForStepNextNode >> endLineNumber [
 	^ endLineNumber
 ]
 
 { #category : #generated }
-VBForNextNode >> endLineNumber: aVBIntegerLiteralNode [
+VBForStepNextNode >> endLineNumber: aVBIntegerLiteralNode [
 	self endLineNumber notNil
 		ifTrue: [ self endLineNumber parent: nil ].
 	endLineNumber := aVBIntegerLiteralNode.
@@ -69,42 +71,42 @@ VBForNextNode >> endLineNumber: aVBIntegerLiteralNode [
 ]
 
 { #category : #generated }
-VBForNextNode >> eolTokens [
+VBForStepNextNode >> eolTokens [
 	^ eolTokens
 ]
 
 { #category : #generated }
-VBForNextNode >> eolTokens: anOrderedCollection [
+VBForStepNextNode >> eolTokens: anOrderedCollection [
 	eolTokens := anOrderedCollection
 ]
 
 { #category : #generated }
-VBForNextNode >> equalToken [
+VBForStepNextNode >> equalToken [
 	^ equalToken
 ]
 
 { #category : #generated }
-VBForNextNode >> equalToken: aSmaCCToken [
+VBForStepNextNode >> equalToken: aSmaCCToken [
 	equalToken := aSmaCCToken
 ]
 
 { #category : #generated }
-VBForNextNode >> forToken [
+VBForStepNextNode >> forToken [
 	^ forToken
 ]
 
 { #category : #generated }
-VBForNextNode >> forToken: aSmaCCToken [
+VBForStepNextNode >> forToken: aSmaCCToken [
 	forToken := aSmaCCToken
 ]
 
 { #category : #generated }
-VBForNextNode >> initialValue [
+VBForStepNextNode >> initialValue [
 	^ initialValue
 ]
 
 { #category : #generated }
-VBForNextNode >> initialValue: aVBProgramNode [
+VBForStepNextNode >> initialValue: aVBProgramNode [
 	self initialValue notNil
 		ifTrue: [ self initialValue parent: nil ].
 	initialValue := aVBProgramNode.
@@ -113,18 +115,18 @@ VBForNextNode >> initialValue: aVBProgramNode [
 ]
 
 { #category : #'generated-initialize-release' }
-VBForNextNode >> initialize [
+VBForStepNextNode >> initialize [
 	super initialize.
 	eolTokens := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
-VBForNextNode >> limit [
+VBForStepNextNode >> limit [
 	^ limit
 ]
 
 { #category : #generated }
-VBForNextNode >> limit: aVBProgramNode [
+VBForStepNextNode >> limit: aVBProgramNode [
 	self limit notNil
 		ifTrue: [ self limit parent: nil ].
 	limit := aVBProgramNode.
@@ -133,31 +135,55 @@ VBForNextNode >> limit: aVBProgramNode [
 ]
 
 { #category : #generated }
-VBForNextNode >> nextToken [
+VBForStepNextNode >> nextToken [
 	^ nextToken
 ]
 
 { #category : #generated }
-VBForNextNode >> nextToken: aSmaCCToken [
+VBForStepNextNode >> nextToken: aSmaCCToken [
 	nextToken := aSmaCCToken
 ]
 
 { #category : #generated }
-VBForNextNode >> nodeVariables [
-	^ #(#counter #initialValue #limit #endLineNumber #body)
+VBForStepNextNode >> nodeVariables [
+	^ #(#counter #initialValue #limit #step #endLineNumber #body)
 ]
 
 { #category : #generated }
-VBForNextNode >> toToken [
+VBForStepNextNode >> step [
+	^ step
+]
+
+{ #category : #generated }
+VBForStepNextNode >> step: aVBProgramNode [
+	self step notNil
+		ifTrue: [ self step parent: nil ].
+	step := aVBProgramNode.
+	self step notNil
+		ifTrue: [ self step parent: self ]
+]
+
+{ #category : #generated }
+VBForStepNextNode >> stepToken [
+	^ stepToken
+]
+
+{ #category : #generated }
+VBForStepNextNode >> stepToken: aSmaCCToken [
+	stepToken := aSmaCCToken
+]
+
+{ #category : #generated }
+VBForStepNextNode >> toToken [
 	^ toToken
 ]
 
 { #category : #generated }
-VBForNextNode >> toToken: aSmaCCToken [
+VBForStepNextNode >> toToken: aSmaCCToken [
 	toToken := aSmaCCToken
 ]
 
 { #category : #generated }
-VBForNextNode >> tokenVariables [
-	^ #(#forToken #equalToken #toToken #nextToken)
+VBForStepNextNode >> tokenVariables [
+	^ #(#forToken #equalToken #toToken #stepToken #nextToken)
 ]
