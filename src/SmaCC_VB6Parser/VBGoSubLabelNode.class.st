@@ -5,6 +5,7 @@ Class {
 		'label',
 		'colonToken',
 		'returnToken',
+		'endLineNumber',
 		'block',
 		'gosubToken'
 	],
@@ -41,6 +42,20 @@ VBGoSubLabelNode >> colonToken: aSmaCCToken [
 ]
 
 { #category : #generated }
+VBGoSubLabelNode >> endLineNumber [
+	^ endLineNumber
+]
+
+{ #category : #generated }
+VBGoSubLabelNode >> endLineNumber: aVBIntegerLiteralNode [
+	self endLineNumber notNil
+		ifTrue: [ self endLineNumber parent: nil ].
+	endLineNumber := aVBIntegerLiteralNode.
+	self endLineNumber notNil
+		ifTrue: [ self endLineNumber parent: self ]
+]
+
+{ #category : #generated }
 VBGoSubLabelNode >> gosubToken [
 	^ gosubToken
 ]
@@ -66,7 +81,7 @@ VBGoSubLabelNode >> label: aVBProgramNode [
 
 { #category : #generated }
 VBGoSubLabelNode >> nodeVariables [
-	^ #(#label #block)
+	^ #(#label #endLineNumber #block)
 ]
 
 { #category : #generated }

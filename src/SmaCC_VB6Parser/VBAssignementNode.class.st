@@ -2,10 +2,7 @@ Class {
 	#name : #VBAssignementNode,
 	#superclass : #VBProgramNode,
 	#instVars : [
-		'left',
-		'equalToken',
-		'right',
-		'letToken'
+		'right'
 	],
 	#category : #'SmaCC_VB6Parser'
 }
@@ -16,42 +13,8 @@ VBAssignementNode >> acceptVisitor: aProgramVisitor [
 ]
 
 { #category : #generated }
-VBAssignementNode >> equalToken [
-	^ equalToken
-]
-
-{ #category : #generated }
-VBAssignementNode >> equalToken: aSmaCCToken [
-	equalToken := aSmaCCToken
-]
-
-{ #category : #generated }
-VBAssignementNode >> left [
-	^ left
-]
-
-{ #category : #generated }
-VBAssignementNode >> left: aVBProgramNode [
-	self left notNil
-		ifTrue: [ self left parent: nil ].
-	left := aVBProgramNode.
-	self left notNil
-		ifTrue: [ self left parent: self ]
-]
-
-{ #category : #generated }
-VBAssignementNode >> letToken [
-	^ letToken
-]
-
-{ #category : #generated }
-VBAssignementNode >> letToken: aSmaCCToken [
-	letToken := aSmaCCToken
-]
-
-{ #category : #generated }
 VBAssignementNode >> nodeVariables [
-	^ #(#left #right)
+	^ #(#right)
 ]
 
 { #category : #generated }
@@ -66,9 +29,4 @@ VBAssignementNode >> right: aVBProgramNode [
 	right := aVBProgramNode.
 	self right notNil
 		ifTrue: [ self right parent: self ]
-]
-
-{ #category : #generated }
-VBAssignementNode >> tokenVariables [
-	^ #(#equalToken #letToken)
 ]

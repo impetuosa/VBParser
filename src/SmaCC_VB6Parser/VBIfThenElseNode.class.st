@@ -8,7 +8,9 @@ Class {
 		'eolTokens',
 		'elseToken',
 		'endToken',
+		'endLineNumber',
 		'ifFalse',
+		'elseLineNumber',
 		'ifTrue'
 	],
 	#category : #'SmaCC_VB6Parser'
@@ -39,6 +41,20 @@ VBIfThenElseNode >> condition: aVBProgramNode [
 ]
 
 { #category : #generated }
+VBIfThenElseNode >> elseLineNumber [
+	^ elseLineNumber
+]
+
+{ #category : #generated }
+VBIfThenElseNode >> elseLineNumber: aVBIntegerLiteralNode [
+	self elseLineNumber notNil
+		ifTrue: [ self elseLineNumber parent: nil ].
+	elseLineNumber := aVBIntegerLiteralNode.
+	self elseLineNumber notNil
+		ifTrue: [ self elseLineNumber parent: self ]
+]
+
+{ #category : #generated }
 VBIfThenElseNode >> elseToken [
 	^ elseToken
 ]
@@ -46,6 +62,20 @@ VBIfThenElseNode >> elseToken [
 { #category : #generated }
 VBIfThenElseNode >> elseToken: aSmaCCToken [
 	elseToken := aSmaCCToken
+]
+
+{ #category : #generated }
+VBIfThenElseNode >> endLineNumber [
+	^ endLineNumber
+]
+
+{ #category : #generated }
+VBIfThenElseNode >> endLineNumber: aVBIntegerLiteralNode [
+	self endLineNumber notNil
+		ifTrue: [ self endLineNumber parent: nil ].
+	endLineNumber := aVBIntegerLiteralNode.
+	self endLineNumber notNil
+		ifTrue: [ self endLineNumber parent: self ]
 ]
 
 { #category : #generated }
@@ -115,7 +145,7 @@ VBIfThenElseNode >> initialize [
 
 { #category : #generated }
 VBIfThenElseNode >> nodeVariables [
-	^ #(#condition #ifFalse #ifTrue)
+	^ #(#condition #endLineNumber #ifFalse #elseLineNumber #ifTrue)
 ]
 
 { #category : #generated }

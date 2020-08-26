@@ -7,6 +7,7 @@ Class {
 		'thenToken',
 		'eolTokens',
 		'endToken',
+		'endLineNumber',
 		'ifTrue'
 	],
 	#category : #'SmaCC_VB6Parser'
@@ -34,6 +35,20 @@ VBIfThenNode >> condition: aVBProgramNode [
 	condition := aVBProgramNode.
 	self condition notNil
 		ifTrue: [ self condition parent: self ]
+]
+
+{ #category : #generated }
+VBIfThenNode >> endLineNumber [
+	^ endLineNumber
+]
+
+{ #category : #generated }
+VBIfThenNode >> endLineNumber: aVBIntegerLiteralNode [
+	self endLineNumber notNil
+		ifTrue: [ self endLineNumber parent: nil ].
+	endLineNumber := aVBIntegerLiteralNode.
+	self endLineNumber notNil
+		ifTrue: [ self endLineNumber parent: self ]
 ]
 
 { #category : #generated }
@@ -89,7 +104,7 @@ VBIfThenNode >> initialize [
 
 { #category : #generated }
 VBIfThenNode >> nodeVariables [
-	^ #(#condition #ifTrue)
+	^ #(#condition #endLineNumber #ifTrue)
 ]
 
 { #category : #generated }

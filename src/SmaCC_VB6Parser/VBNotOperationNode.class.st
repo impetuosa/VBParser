@@ -3,9 +3,7 @@ Class {
 	#superclass : #VBProgramNode,
 	#instVars : [
 		'notToken',
-		'value',
-		'rightParenToken',
-		'leftParenToken'
+		'value'
 	],
 	#category : #'SmaCC_VB6Parser'
 }
@@ -13,16 +11,6 @@ Class {
 { #category : #generated }
 VBNotOperationNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitNotOperation: self
-]
-
-{ #category : #generated }
-VBNotOperationNode >> leftParenToken [
-	^ leftParenToken
-]
-
-{ #category : #generated }
-VBNotOperationNode >> leftParenToken: aSmaCCToken [
-	leftParenToken := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -41,18 +29,8 @@ VBNotOperationNode >> notToken: aSmaCCToken [
 ]
 
 { #category : #generated }
-VBNotOperationNode >> rightParenToken [
-	^ rightParenToken
-]
-
-{ #category : #generated }
-VBNotOperationNode >> rightParenToken: aSmaCCToken [
-	rightParenToken := aSmaCCToken
-]
-
-{ #category : #generated }
 VBNotOperationNode >> tokenVariables [
-	^ #(#notToken #rightParenToken #leftParenToken)
+	^ #(#notToken)
 ]
 
 { #category : #generated }
