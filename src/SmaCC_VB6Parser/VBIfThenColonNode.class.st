@@ -4,8 +4,9 @@ Class {
 	#instVars : [
 		'ifToken',
 		'condition',
-		'thenColonToken',
-		'blocks'
+		'thenToken',
+		'colonToken',
+		'ifTrue'
 	],
 	#category : #'SmaCC_VB6Parser'
 }
@@ -16,20 +17,13 @@ VBIfThenColonNode >> acceptVisitor: aProgramVisitor [
 ]
 
 { #category : #generated }
-VBIfThenColonNode >> blocks [
-	^ blocks
+VBIfThenColonNode >> colonToken [
+	^ colonToken
 ]
 
 { #category : #generated }
-VBIfThenColonNode >> blocks: anOrderedCollection [
-	self setParents: self blocks to: nil.
-	blocks := anOrderedCollection.
-	self setParents: self blocks to: self
-]
-
-{ #category : #generated }
-VBIfThenColonNode >> compositeNodeVariables [
-	^ #(#blocks)
+VBIfThenColonNode >> colonToken: aSmaCCToken [
+	colonToken := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -56,28 +50,36 @@ VBIfThenColonNode >> ifToken: aSmaCCToken [
 	ifToken := aSmaCCToken
 ]
 
-{ #category : #'generated-initialize-release' }
-VBIfThenColonNode >> initialize [
-	super initialize.
-	blocks := OrderedCollection new: 2.
+{ #category : #generated }
+VBIfThenColonNode >> ifTrue [
+	^ ifTrue
+]
+
+{ #category : #generated }
+VBIfThenColonNode >> ifTrue: aVBProgramNode [
+	self ifTrue notNil
+		ifTrue: [ self ifTrue parent: nil ].
+	ifTrue := aVBProgramNode.
+	self ifTrue notNil
+		ifTrue: [ self ifTrue parent: self ]
 ]
 
 { #category : #generated }
 VBIfThenColonNode >> nodeVariables [
-	^ #(#condition)
+	^ #(#condition #ifTrue)
 ]
 
 { #category : #generated }
-VBIfThenColonNode >> thenColonToken [
-	^ thenColonToken
+VBIfThenColonNode >> thenToken [
+	^ thenToken
 ]
 
 { #category : #generated }
-VBIfThenColonNode >> thenColonToken: aSmaCCToken [
-	thenColonToken := aSmaCCToken
+VBIfThenColonNode >> thenToken: aSmaCCToken [
+	thenToken := aSmaCCToken
 ]
 
 { #category : #generated }
 VBIfThenColonNode >> tokenVariables [
-	^ #(#ifToken #thenColonToken)
+	^ #(#ifToken #thenToken #colonToken)
 ]
