@@ -19,12 +19,8 @@ VBErrorNode >> errorCode [
 ]
 
 { #category : #generated }
-VBErrorNode >> errorCode: aVBProgramNode [
-	self errorCode notNil
-		ifTrue: [ self errorCode parent: nil ].
-	errorCode := aVBProgramNode.
-	self errorCode notNil
-		ifTrue: [ self errorCode parent: self ]
+VBErrorNode >> errorCode: anObject [
+	errorCode := anObject
 ]
 
 { #category : #generated }
@@ -38,7 +34,7 @@ VBErrorNode >> errorToken: aSmaCCToken [
 ]
 
 { #category : #generated }
-VBErrorNode >> nodeVariables [
+VBErrorNode >> otherVariables [
 	^ #(#errorCode)
 ]
 

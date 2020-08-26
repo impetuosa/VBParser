@@ -71,22 +71,13 @@ VBSubDefinitionNode >> modifier [
 ]
 
 { #category : #generated }
-VBSubDefinitionNode >> modifier: aVBModifierNode [
-	self modifier notNil
-		ifTrue: [ self modifier parent: nil ].
-	modifier := aVBModifierNode.
-	self modifier notNil
-		ifTrue: [ self modifier parent: self ]
+VBSubDefinitionNode >> modifier: aSmaCCToken [
+	modifier := aSmaCCToken
 ]
 
 { #category : #generated }
 VBSubDefinitionNode >> nodeVariables [
-	^ #(#selector #parameters #block #modifier)
-]
-
-{ #category : #generated }
-VBSubDefinitionNode >> otherVariables [
-	^ #(#visibility)
+	^ #(#selector #parameters #block)
 ]
 
 { #category : #generated }
@@ -129,7 +120,7 @@ VBSubDefinitionNode >> subTokens: anOrderedCollection [
 
 { #category : #generated }
 VBSubDefinitionNode >> tokenVariables [
-	^ #(#endToken)
+	^ #(#endToken #modifier #visibility)
 ]
 
 { #category : #generated }
@@ -138,6 +129,6 @@ VBSubDefinitionNode >> visibility [
 ]
 
 { #category : #generated }
-VBSubDefinitionNode >> visibility: anObject [
-	visibility := anObject
+VBSubDefinitionNode >> visibility: aSmaCCToken [
+	visibility := aSmaCCToken
 ]

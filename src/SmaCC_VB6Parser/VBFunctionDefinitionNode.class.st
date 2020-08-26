@@ -82,22 +82,13 @@ VBFunctionDefinitionNode >> modifier [
 ]
 
 { #category : #generated }
-VBFunctionDefinitionNode >> modifier: aVBModifierNode [
-	self modifier notNil
-		ifTrue: [ self modifier parent: nil ].
-	modifier := aVBModifierNode.
-	self modifier notNil
-		ifTrue: [ self modifier parent: self ]
+VBFunctionDefinitionNode >> modifier: aSmaCCToken [
+	modifier := aSmaCCToken
 ]
 
 { #category : #generated }
 VBFunctionDefinitionNode >> nodeVariables [
-	^ #(#selector #parameters #block #type #modifier)
-]
-
-{ #category : #generated }
-VBFunctionDefinitionNode >> otherVariables [
-	^ #(#visibility)
+	^ #(#selector #parameters #block #type)
 ]
 
 { #category : #generated }
@@ -130,7 +121,7 @@ VBFunctionDefinitionNode >> selector: aVBProgramNode [
 
 { #category : #generated }
 VBFunctionDefinitionNode >> tokenVariables [
-	^ #(#endToken)
+	^ #(#endToken #modifier #visibility)
 ]
 
 { #category : #generated }
@@ -153,6 +144,6 @@ VBFunctionDefinitionNode >> visibility [
 ]
 
 { #category : #generated }
-VBFunctionDefinitionNode >> visibility: anObject [
-	visibility := anObject
+VBFunctionDefinitionNode >> visibility: aSmaCCToken [
+	visibility := aSmaCCToken
 ]

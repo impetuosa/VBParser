@@ -5,6 +5,7 @@ Class {
 		'visibility',
 		'constToken',
 		'constant',
+		'type',
 		'equalToken',
 		'value'
 	],
@@ -52,17 +53,31 @@ VBModuleConstantNode >> equalToken: aSmaCCToken [
 
 { #category : #generated }
 VBModuleConstantNode >> nodeVariables [
-	^ #(#constant #value)
+	^ #(#constant #type)
 ]
 
 { #category : #generated }
 VBModuleConstantNode >> otherVariables [
-	^ #(#visibility)
+	^ #(#value)
 ]
 
 { #category : #generated }
 VBModuleConstantNode >> tokenVariables [
-	^ #(#constToken #equalToken)
+	^ #(#visibility #constToken #equalToken)
+]
+
+{ #category : #generated }
+VBModuleConstantNode >> type [
+	^ type
+]
+
+{ #category : #generated }
+VBModuleConstantNode >> type: aVBProgramNode [
+	self type notNil
+		ifTrue: [ self type parent: nil ].
+	type := aVBProgramNode.
+	self type notNil
+		ifTrue: [ self type parent: self ]
 ]
 
 { #category : #generated }
@@ -71,12 +86,8 @@ VBModuleConstantNode >> value [
 ]
 
 { #category : #generated }
-VBModuleConstantNode >> value: aVBProgramNode [
-	self value notNil
-		ifTrue: [ self value parent: nil ].
-	value := aVBProgramNode.
-	self value notNil
-		ifTrue: [ self value parent: self ]
+VBModuleConstantNode >> value: anObject [
+	value := anObject
 ]
 
 { #category : #generated }
@@ -85,6 +96,6 @@ VBModuleConstantNode >> visibility [
 ]
 
 { #category : #generated }
-VBModuleConstantNode >> visibility: anObject [
-	visibility := anObject
+VBModuleConstantNode >> visibility: aSmaCCToken [
+	visibility := aSmaCCToken
 ]

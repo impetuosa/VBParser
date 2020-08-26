@@ -14,7 +14,7 @@ VBPositiveOperationNode >> acceptVisitor: aProgramVisitor [
 ]
 
 { #category : #generated }
-VBPositiveOperationNode >> nodeVariables [
+VBPositiveOperationNode >> otherVariables [
 	^ #(#value)
 ]
 
@@ -39,10 +39,6 @@ VBPositiveOperationNode >> value [
 ]
 
 { #category : #generated }
-VBPositiveOperationNode >> value: aVBProgramNode [
-	self value notNil
-		ifTrue: [ self value parent: nil ].
-	value := aVBProgramNode.
-	self value notNil
-		ifTrue: [ self value parent: self ]
+VBPositiveOperationNode >> value: anObject [
+	value := anObject
 ]

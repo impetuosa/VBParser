@@ -95,11 +95,6 @@ VBExternalFunctionNode >> nodeVariables [
 ]
 
 { #category : #generated }
-VBExternalFunctionNode >> otherVariables [
-	^ #(#visibility)
-]
-
-{ #category : #generated }
 VBExternalFunctionNode >> parameters [
 	^ parameters
 ]
@@ -129,7 +124,7 @@ VBExternalFunctionNode >> selector: aVBProgramNode [
 
 { #category : #generated }
 VBExternalFunctionNode >> tokenVariables [
-	^ #(#declareToken #functionToken #libToken #aliasToken)
+	^ #(#declareToken #functionToken #libToken #aliasToken #visibility)
 ]
 
 { #category : #generated }
@@ -152,6 +147,6 @@ VBExternalFunctionNode >> visibility [
 ]
 
 { #category : #generated }
-VBExternalFunctionNode >> visibility: anObject [
-	visibility := anObject
+VBExternalFunctionNode >> visibility: aSmaCCToken [
+	visibility := aSmaCCToken
 ]

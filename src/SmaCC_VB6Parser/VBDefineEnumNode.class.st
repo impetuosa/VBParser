@@ -97,13 +97,8 @@ VBDefineEnumNode >> nodeVariables [
 ]
 
 { #category : #generated }
-VBDefineEnumNode >> otherVariables [
-	^ #(#visibility)
-]
-
-{ #category : #generated }
 VBDefineEnumNode >> tokenVariables [
-	^ #(#endToken)
+	^ #(#endToken #visibility)
 ]
 
 { #category : #generated }
@@ -112,6 +107,6 @@ VBDefineEnumNode >> visibility [
 ]
 
 { #category : #generated }
-VBDefineEnumNode >> visibility: anObject [
-	visibility := anObject
+VBDefineEnumNode >> visibility: aSmaCCToken [
+	visibility := aSmaCCToken
 ]

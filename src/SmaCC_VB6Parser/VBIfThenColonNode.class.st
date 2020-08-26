@@ -32,12 +32,8 @@ VBIfThenColonNode >> condition [
 ]
 
 { #category : #generated }
-VBIfThenColonNode >> condition: aVBProgramNode [
-	self condition notNil
-		ifTrue: [ self condition parent: nil ].
-	condition := aVBProgramNode.
-	self condition notNil
-		ifTrue: [ self condition parent: self ]
+VBIfThenColonNode >> condition: anObject [
+	condition := anObject
 ]
 
 { #category : #generated }
@@ -56,16 +52,12 @@ VBIfThenColonNode >> ifTrue [
 ]
 
 { #category : #generated }
-VBIfThenColonNode >> ifTrue: aVBProgramNode [
-	self ifTrue notNil
-		ifTrue: [ self ifTrue parent: nil ].
-	ifTrue := aVBProgramNode.
-	self ifTrue notNil
-		ifTrue: [ self ifTrue parent: self ]
+VBIfThenColonNode >> ifTrue: anObject [
+	ifTrue := anObject
 ]
 
 { #category : #generated }
-VBIfThenColonNode >> nodeVariables [
+VBIfThenColonNode >> otherVariables [
 	^ #(#condition #ifTrue)
 ]
 

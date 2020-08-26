@@ -30,16 +30,12 @@ VBAssignementOrEqualsNode >> left [
 ]
 
 { #category : #generated }
-VBAssignementOrEqualsNode >> left: aVBProgramNode [
-	self left notNil
-		ifTrue: [ self left parent: nil ].
-	left := aVBProgramNode.
-	self left notNil
-		ifTrue: [ self left parent: self ]
+VBAssignementOrEqualsNode >> left: anObject [
+	left := anObject
 ]
 
 { #category : #generated }
-VBAssignementOrEqualsNode >> nodeVariables [
+VBAssignementOrEqualsNode >> otherVariables [
 	^ #(#left #right)
 ]
 
@@ -49,12 +45,8 @@ VBAssignementOrEqualsNode >> right [
 ]
 
 { #category : #generated }
-VBAssignementOrEqualsNode >> right: aVBProgramNode [
-	self right notNil
-		ifTrue: [ self right parent: nil ].
-	right := aVBProgramNode.
-	self right notNil
-		ifTrue: [ self right parent: self ]
+VBAssignementOrEqualsNode >> right: anObject [
+	right := anObject
 ]
 
 { #category : #generated }

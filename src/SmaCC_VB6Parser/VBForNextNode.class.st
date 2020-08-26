@@ -46,12 +46,8 @@ VBForNextNode >> counter [
 ]
 
 { #category : #generated }
-VBForNextNode >> counter: aVBProgramNode [
-	self counter notNil
-		ifTrue: [ self counter parent: nil ].
-	counter := aVBProgramNode.
-	self counter notNil
-		ifTrue: [ self counter parent: self ]
+VBForNextNode >> counter: anObject [
+	counter := anObject
 ]
 
 { #category : #generated }
@@ -104,12 +100,8 @@ VBForNextNode >> initialValue [
 ]
 
 { #category : #generated }
-VBForNextNode >> initialValue: aVBProgramNode [
-	self initialValue notNil
-		ifTrue: [ self initialValue parent: nil ].
-	initialValue := aVBProgramNode.
-	self initialValue notNil
-		ifTrue: [ self initialValue parent: self ]
+VBForNextNode >> initialValue: anObject [
+	initialValue := anObject
 ]
 
 { #category : #'generated-initialize-release' }
@@ -124,12 +116,8 @@ VBForNextNode >> limit [
 ]
 
 { #category : #generated }
-VBForNextNode >> limit: aVBProgramNode [
-	self limit notNil
-		ifTrue: [ self limit parent: nil ].
-	limit := aVBProgramNode.
-	self limit notNil
-		ifTrue: [ self limit parent: self ]
+VBForNextNode >> limit: anObject [
+	limit := anObject
 ]
 
 { #category : #generated }
@@ -144,7 +132,12 @@ VBForNextNode >> nextToken: aSmaCCToken [
 
 { #category : #generated }
 VBForNextNode >> nodeVariables [
-	^ #(#counter #initialValue #limit #endLineNumber #body)
+	^ #(#endLineNumber #body)
+]
+
+{ #category : #generated }
+VBForNextNode >> otherVariables [
+	^ #(#counter #initialValue #limit)
 ]
 
 { #category : #generated }

@@ -56,12 +56,8 @@ VBComparisonOperationNode >> left [
 ]
 
 { #category : #generated }
-VBComparisonOperationNode >> left: aVBProgramNode [
-	self left notNil
-		ifTrue: [ self left parent: nil ].
-	left := aVBProgramNode.
-	self left notNil
-		ifTrue: [ self left parent: self ]
+VBComparisonOperationNode >> left: anObject [
+	left := anObject
 ]
 
 { #category : #generated }
@@ -105,7 +101,7 @@ VBComparisonOperationNode >> likeToken: aSmaCCToken [
 ]
 
 { #category : #generated }
-VBComparisonOperationNode >> nodeVariables [
+VBComparisonOperationNode >> otherVariables [
 	^ #(#left #right)
 ]
 
@@ -115,12 +111,8 @@ VBComparisonOperationNode >> right [
 ]
 
 { #category : #generated }
-VBComparisonOperationNode >> right: aVBProgramNode [
-	self right notNil
-		ifTrue: [ self right parent: nil ].
-	right := aVBProgramNode.
-	self right notNil
-		ifTrue: [ self right parent: self ]
+VBComparisonOperationNode >> right: anObject [
+	right := anObject
 ]
 
 { #category : #generated }

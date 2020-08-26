@@ -19,7 +19,7 @@ VBModulePropertyNode >> nodeVariables [
 ]
 
 { #category : #generated }
-VBModulePropertyNode >> otherVariables [
+VBModulePropertyNode >> tokenVariables [
 	^ #(#visibility)
 ]
 
@@ -43,6 +43,6 @@ VBModulePropertyNode >> visibility [
 ]
 
 { #category : #generated }
-VBModulePropertyNode >> visibility: anObject [
-	visibility := anObject
+VBModulePropertyNode >> visibility: aSmaCCToken [
+	visibility := aSmaCCToken
 ]

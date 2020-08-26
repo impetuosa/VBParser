@@ -4,7 +4,6 @@ Class {
 	#instVars : [
 		'elements',
 		'eolTokens',
-		'body',
 		'header'
 	],
 	#category : #'SmaCC_VB6Parser'
@@ -13,20 +12,6 @@ Class {
 { #category : #generated }
 VBModuleNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitModule: self
-]
-
-{ #category : #generated }
-VBModuleNode >> body [
-	^ body
-]
-
-{ #category : #generated }
-VBModuleNode >> body: aVBBodyNode [
-	self body notNil
-		ifTrue: [ self body parent: nil ].
-	body := aVBBodyNode.
-	self body notNil
-		ifTrue: [ self body parent: self ]
 ]
 
 { #category : #generated }
@@ -84,5 +69,5 @@ VBModuleNode >> initialize [
 
 { #category : #generated }
 VBModuleNode >> nodeVariables [
-	^ #(#body #header)
+	^ #(#header)
 ]

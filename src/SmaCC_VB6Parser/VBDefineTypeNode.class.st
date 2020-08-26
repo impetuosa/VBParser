@@ -87,13 +87,8 @@ VBDefineTypeNode >> nodeVariables [
 ]
 
 { #category : #generated }
-VBDefineTypeNode >> otherVariables [
-	^ #(#visibility)
-]
-
-{ #category : #generated }
 VBDefineTypeNode >> tokenVariables [
-	^ #(#endToken)
+	^ #(#endToken #visibility)
 ]
 
 { #category : #generated }
@@ -112,6 +107,6 @@ VBDefineTypeNode >> visibility [
 ]
 
 { #category : #generated }
-VBDefineTypeNode >> visibility: anObject [
-	visibility := anObject
+VBDefineTypeNode >> visibility: aSmaCCToken [
+	visibility := aSmaCCToken
 ]

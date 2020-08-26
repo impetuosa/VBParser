@@ -42,12 +42,8 @@ VBWhileWendNode >> condition [
 ]
 
 { #category : #generated }
-VBWhileWendNode >> condition: aVBProgramNode [
-	self condition notNil
-		ifTrue: [ self condition parent: nil ].
-	condition := aVBProgramNode.
-	self condition notNil
-		ifTrue: [ self condition parent: self ]
+VBWhileWendNode >> condition: anObject [
+	condition := anObject
 ]
 
 { #category : #generated }
@@ -82,7 +78,12 @@ VBWhileWendNode >> initialize [
 
 { #category : #generated }
 VBWhileWendNode >> nodeVariables [
-	^ #(#condition #endLineNumber #body)
+	^ #(#endLineNumber #body)
+]
+
+{ #category : #generated }
+VBWhileWendNode >> otherVariables [
+	^ #(#condition)
 ]
 
 { #category : #generated }

@@ -40,7 +40,12 @@ VBSetUpAssignationNode >> identifier: aVBProgramNode [
 
 { #category : #generated }
 VBSetUpAssignationNode >> nodeVariables [
-	^ #(#identifier #value)
+	^ #(#identifier)
+]
+
+{ #category : #generated }
+VBSetUpAssignationNode >> otherVariables [
+	^ #(#value)
 ]
 
 { #category : #generated }
@@ -54,10 +59,6 @@ VBSetUpAssignationNode >> value [
 ]
 
 { #category : #generated }
-VBSetUpAssignationNode >> value: aVBProgramNode [
-	self value notNil
-		ifTrue: [ self value parent: nil ].
-	value := aVBProgramNode.
-	self value notNil
-		ifTrue: [ self value parent: self ]
+VBSetUpAssignationNode >> value: anObject [
+	value := anObject
 ]

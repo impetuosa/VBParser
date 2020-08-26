@@ -31,11 +31,6 @@ VBEventNode >> nodeVariables [
 ]
 
 { #category : #generated }
-VBEventNode >> otherVariables [
-	^ #(#visibility)
-]
-
-{ #category : #generated }
 VBEventNode >> parameters [
 	^ parameters
 ]
@@ -65,7 +60,7 @@ VBEventNode >> selector: aVBProgramNode [
 
 { #category : #generated }
 VBEventNode >> tokenVariables [
-	^ #(#eventToken)
+	^ #(#eventToken #visibility)
 ]
 
 { #category : #generated }
@@ -74,6 +69,6 @@ VBEventNode >> visibility [
 ]
 
 { #category : #generated }
-VBEventNode >> visibility: anObject [
-	visibility := anObject
+VBEventNode >> visibility: aSmaCCToken [
+	visibility := aSmaCCToken
 ]

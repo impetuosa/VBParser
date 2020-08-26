@@ -2,7 +2,7 @@ Class {
 	#name : #VBExplicitAssignementNode,
 	#superclass : #VBProgramNode,
 	#instVars : [
-		'letToken',
+		'setToken',
 		'left',
 		'equalToken',
 		'right'
@@ -31,26 +31,12 @@ VBExplicitAssignementNode >> left [
 ]
 
 { #category : #generated }
-VBExplicitAssignementNode >> left: aVBProgramNode [
-	self left notNil
-		ifTrue: [ self left parent: nil ].
-	left := aVBProgramNode.
-	self left notNil
-		ifTrue: [ self left parent: self ]
+VBExplicitAssignementNode >> left: anObject [
+	left := anObject
 ]
 
 { #category : #generated }
-VBExplicitAssignementNode >> letToken [
-	^ letToken
-]
-
-{ #category : #generated }
-VBExplicitAssignementNode >> letToken: aSmaCCToken [
-	letToken := aSmaCCToken
-]
-
-{ #category : #generated }
-VBExplicitAssignementNode >> nodeVariables [
+VBExplicitAssignementNode >> otherVariables [
 	^ #(#left #right)
 ]
 
@@ -60,15 +46,21 @@ VBExplicitAssignementNode >> right [
 ]
 
 { #category : #generated }
-VBExplicitAssignementNode >> right: aVBProgramNode [
-	self right notNil
-		ifTrue: [ self right parent: nil ].
-	right := aVBProgramNode.
-	self right notNil
-		ifTrue: [ self right parent: self ]
+VBExplicitAssignementNode >> right: anObject [
+	right := anObject
+]
+
+{ #category : #generated }
+VBExplicitAssignementNode >> setToken [
+	^ setToken
+]
+
+{ #category : #generated }
+VBExplicitAssignementNode >> setToken: aSmaCCToken [
+	setToken := aSmaCCToken
 ]
 
 { #category : #generated }
 VBExplicitAssignementNode >> tokenVariables [
-	^ #(#letToken #equalToken)
+	^ #(#setToken #equalToken)
 ]

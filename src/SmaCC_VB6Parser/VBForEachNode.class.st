@@ -106,12 +106,8 @@ VBForEachNode >> group [
 ]
 
 { #category : #generated }
-VBForEachNode >> group: aVBProgramNode [
-	self group notNil
-		ifTrue: [ self group parent: nil ].
-	group := aVBProgramNode.
-	self group notNil
-		ifTrue: [ self group parent: self ]
+VBForEachNode >> group: anObject [
+	group := anObject
 ]
 
 { #category : #generated }
@@ -143,7 +139,12 @@ VBForEachNode >> nextToken: aSmaCCToken [
 
 { #category : #generated }
 VBForEachNode >> nodeVariables [
-	^ #(#group #endLineNumber #body)
+	^ #(#endLineNumber #body)
+]
+
+{ #category : #generated }
+VBForEachNode >> otherVariables [
+	^ #(#group)
 ]
 
 { #category : #generated }

@@ -43,12 +43,8 @@ VBUntilTrueNode >> condition [
 ]
 
 { #category : #generated }
-VBUntilTrueNode >> condition: aVBProgramNode [
-	self condition notNil
-		ifTrue: [ self condition parent: nil ].
-	condition := aVBProgramNode.
-	self condition notNil
-		ifTrue: [ self condition parent: self ]
+VBUntilTrueNode >> condition: anObject [
+	condition := anObject
 ]
 
 { #category : #generated }
@@ -103,7 +99,12 @@ VBUntilTrueNode >> loopToken: aSmaCCToken [
 
 { #category : #generated }
 VBUntilTrueNode >> nodeVariables [
-	^ #(#condition #body #endLineNumber)
+	^ #(#body #endLineNumber)
+]
+
+{ #category : #generated }
+VBUntilTrueNode >> otherVariables [
+	^ #(#condition)
 ]
 
 { #category : #generated }

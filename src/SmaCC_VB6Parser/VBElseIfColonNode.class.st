@@ -27,11 +27,6 @@ VBElseIfColonNode >> colonTokens: anOrderedCollection [
 ]
 
 { #category : #generated }
-VBElseIfColonNode >> compositeNodeVariables [
-	^ #(#ifMatches)
-]
-
-{ #category : #generated }
 VBElseIfColonNode >> compositeTokenVariables [
 	^ #(#colonTokens)
 ]
@@ -42,12 +37,8 @@ VBElseIfColonNode >> condition [
 ]
 
 { #category : #generated }
-VBElseIfColonNode >> condition: aVBProgramNode [
-	self condition notNil
-		ifTrue: [ self condition parent: nil ].
-	condition := aVBProgramNode.
-	self condition notNil
-		ifTrue: [ self condition parent: self ]
+VBElseIfColonNode >> condition: anObject [
+	condition := anObject
 ]
 
 { #category : #generated }
@@ -67,9 +58,7 @@ VBElseIfColonNode >> ifMatches [
 
 { #category : #generated }
 VBElseIfColonNode >> ifMatches: anOrderedCollection [
-	self setParents: self ifMatches to: nil.
-	ifMatches := anOrderedCollection.
-	self setParents: self ifMatches to: self
+	ifMatches := anOrderedCollection
 ]
 
 { #category : #'generated-initialize-release' }
@@ -80,8 +69,8 @@ VBElseIfColonNode >> initialize [
 ]
 
 { #category : #generated }
-VBElseIfColonNode >> nodeVariables [
-	^ #(#condition)
+VBElseIfColonNode >> otherVariables [
+	^ #(#condition #ifMatches)
 ]
 
 { #category : #generated }

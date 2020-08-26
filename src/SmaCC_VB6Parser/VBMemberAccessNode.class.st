@@ -30,7 +30,12 @@ VBMemberAccessNode >> member: aVBProgramNode [
 
 { #category : #generated }
 VBMemberAccessNode >> nodeVariables [
-	^ #(#receiver #member)
+	^ #(#member)
+]
+
+{ #category : #generated }
+VBMemberAccessNode >> otherVariables [
+	^ #(#receiver)
 ]
 
 { #category : #generated }
@@ -49,12 +54,8 @@ VBMemberAccessNode >> receiver [
 ]
 
 { #category : #generated }
-VBMemberAccessNode >> receiver: aVBProgramNode [
-	self receiver notNil
-		ifTrue: [ self receiver parent: nil ].
-	receiver := aVBProgramNode.
-	self receiver notNil
-		ifTrue: [ self receiver parent: self ]
+VBMemberAccessNode >> receiver: anObject [
+	receiver := anObject
 ]
 
 { #category : #generated }

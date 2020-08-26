@@ -14,11 +14,6 @@ VBNotOperationNode >> acceptVisitor: aProgramVisitor [
 ]
 
 { #category : #generated }
-VBNotOperationNode >> nodeVariables [
-	^ #(#value)
-]
-
-{ #category : #generated }
 VBNotOperationNode >> notToken [
 	^ notToken
 ]
@@ -26,6 +21,11 @@ VBNotOperationNode >> notToken [
 { #category : #generated }
 VBNotOperationNode >> notToken: aSmaCCToken [
 	notToken := aSmaCCToken
+]
+
+{ #category : #generated }
+VBNotOperationNode >> otherVariables [
+	^ #(#value)
 ]
 
 { #category : #generated }
@@ -39,10 +39,6 @@ VBNotOperationNode >> value [
 ]
 
 { #category : #generated }
-VBNotOperationNode >> value: aVBProgramNode [
-	self value notNil
-		ifTrue: [ self value parent: nil ].
-	value := aVBProgramNode.
-	self value notNil
-		ifTrue: [ self value parent: self ]
+VBNotOperationNode >> value: anObject [
+	value := anObject
 ]

@@ -84,11 +84,6 @@ VBExternalSubNode >> nodeVariables [
 ]
 
 { #category : #generated }
-VBExternalSubNode >> otherVariables [
-	^ #(#visibility)
-]
-
-{ #category : #generated }
 VBExternalSubNode >> parameters [
 	^ parameters
 ]
@@ -128,7 +123,7 @@ VBExternalSubNode >> subToken: aSmaCCToken [
 
 { #category : #generated }
 VBExternalSubNode >> tokenVariables [
-	^ #(#declareToken #subToken #libToken #aliasToken)
+	^ #(#declareToken #subToken #libToken #aliasToken #visibility)
 ]
 
 { #category : #generated }
@@ -137,6 +132,6 @@ VBExternalSubNode >> visibility [
 ]
 
 { #category : #generated }
-VBExternalSubNode >> visibility: anObject [
-	visibility := anObject
+VBExternalSubNode >> visibility: aSmaCCToken [
+	visibility := aSmaCCToken
 ]

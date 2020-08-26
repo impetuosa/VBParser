@@ -1,5 +1,5 @@
 Class {
-	#name : #VBElseIfBlockNode,
+	#name : #VBElseIfBodyNode,
 	#superclass : #VBProgramNode,
 	#instVars : [
 		'elseifToken',
@@ -12,86 +12,85 @@ Class {
 }
 
 { #category : #generated }
-VBElseIfBlockNode >> acceptVisitor: aProgramVisitor [
-	^ aProgramVisitor visitElseIfBlock: self
+VBElseIfBodyNode >> acceptVisitor: aProgramVisitor [
+	^ aProgramVisitor visitElseIfBody: self
 ]
 
 { #category : #generated }
-VBElseIfBlockNode >> compositeTokenVariables [
+VBElseIfBodyNode >> compositeTokenVariables [
 	^ #(#eolTokens)
 ]
 
 { #category : #generated }
-VBElseIfBlockNode >> condition [
+VBElseIfBodyNode >> condition [
 	^ condition
 ]
 
 { #category : #generated }
-VBElseIfBlockNode >> condition: anObject [
-	condition := anObject
+VBElseIfBodyNode >> condition: aVBProgramNode [
+	self condition notNil
+		ifTrue: [ self condition parent: nil ].
+	condition := aVBProgramNode.
+	self condition notNil
+		ifTrue: [ self condition parent: self ]
 ]
 
 { #category : #generated }
-VBElseIfBlockNode >> elseifToken [
+VBElseIfBodyNode >> elseifToken [
 	^ elseifToken
 ]
 
 { #category : #generated }
-VBElseIfBlockNode >> elseifToken: aSmaCCToken [
+VBElseIfBodyNode >> elseifToken: aSmaCCToken [
 	elseifToken := aSmaCCToken
 ]
 
 { #category : #generated }
-VBElseIfBlockNode >> eolTokens [
+VBElseIfBodyNode >> eolTokens [
 	^ eolTokens
 ]
 
 { #category : #generated }
-VBElseIfBlockNode >> eolTokens: anOrderedCollection [
+VBElseIfBodyNode >> eolTokens: anOrderedCollection [
 	eolTokens := anOrderedCollection
 ]
 
 { #category : #generated }
-VBElseIfBlockNode >> ifMatch [
+VBElseIfBodyNode >> ifMatch [
 	^ ifMatch
 ]
 
 { #category : #generated }
-VBElseIfBlockNode >> ifMatch: aVBBlockNode [
+VBElseIfBodyNode >> ifMatch: aVBBodyNode [
 	self ifMatch notNil
 		ifTrue: [ self ifMatch parent: nil ].
-	ifMatch := aVBBlockNode.
+	ifMatch := aVBBodyNode.
 	self ifMatch notNil
 		ifTrue: [ self ifMatch parent: self ]
 ]
 
 { #category : #'generated-initialize-release' }
-VBElseIfBlockNode >> initialize [
+VBElseIfBodyNode >> initialize [
 	super initialize.
 	eolTokens := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
-VBElseIfBlockNode >> nodeVariables [
-	^ #(#ifMatch)
+VBElseIfBodyNode >> nodeVariables [
+	^ #(#condition #ifMatch)
 ]
 
 { #category : #generated }
-VBElseIfBlockNode >> otherVariables [
-	^ #(#condition)
-]
-
-{ #category : #generated }
-VBElseIfBlockNode >> thenToken [
+VBElseIfBodyNode >> thenToken [
 	^ thenToken
 ]
 
 { #category : #generated }
-VBElseIfBlockNode >> thenToken: aSmaCCToken [
+VBElseIfBodyNode >> thenToken: aSmaCCToken [
 	thenToken := aSmaCCToken
 ]
 
 { #category : #generated }
-VBElseIfBlockNode >> tokenVariables [
+VBElseIfBodyNode >> tokenVariables [
 	^ #(#elseifToken #thenToken)
 ]
