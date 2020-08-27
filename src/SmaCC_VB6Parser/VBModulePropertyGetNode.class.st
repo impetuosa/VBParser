@@ -101,7 +101,7 @@ VBModulePropertyGetNode >> modifier: aSmaCCToken [
 
 { #category : #generated }
 VBModulePropertyGetNode >> nodeVariables [
-	^ #(#selector #parameters #block #type)
+	^ #(#selector #block #type #parameters)
 ]
 
 { #category : #generated }

@@ -5,7 +5,6 @@ Class {
 		'ifToken',
 		'condition',
 		'thenToken',
-		'colonToken',
 		'ifTrue'
 	],
 	#category : #'SmaCC_VB6Parser'
@@ -14,16 +13,6 @@ Class {
 { #category : #generated }
 VBIfThenColonNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitIfThenColon: self
-]
-
-{ #category : #generated }
-VBIfThenColonNode >> colonToken [
-	^ colonToken
-]
-
-{ #category : #generated }
-VBIfThenColonNode >> colonToken: aSmaCCToken [
-	colonToken := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -73,5 +62,5 @@ VBIfThenColonNode >> thenToken: aSmaCCToken [
 
 { #category : #generated }
 VBIfThenColonNode >> tokenVariables [
-	^ #(#ifToken #thenToken #colonToken)
+	^ #(#ifToken #thenToken)
 ]

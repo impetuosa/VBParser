@@ -77,7 +77,7 @@ VBSubDefinitionNode >> modifier: aSmaCCToken [
 
 { #category : #generated }
 VBSubDefinitionNode >> nodeVariables [
-	^ #(#selector #parameters #block)
+	^ #(#selector #block #parameters)
 ]
 
 { #category : #generated }

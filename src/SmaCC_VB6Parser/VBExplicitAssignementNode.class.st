@@ -5,7 +5,8 @@ Class {
 		'setToken',
 		'left',
 		'equalToken',
-		'right'
+		'right',
+		'colonEqualToken'
 	],
 	#category : #'SmaCC_VB6Parser'
 }
@@ -13,6 +14,16 @@ Class {
 { #category : #generated }
 VBExplicitAssignementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitExplicitAssignement: self
+]
+
+{ #category : #generated }
+VBExplicitAssignementNode >> colonEqualToken [
+	^ colonEqualToken
+]
+
+{ #category : #generated }
+VBExplicitAssignementNode >> colonEqualToken: aSmaCCToken [
+	colonEqualToken := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -62,5 +73,5 @@ VBExplicitAssignementNode >> setToken: aSmaCCToken [
 
 { #category : #generated }
 VBExplicitAssignementNode >> tokenVariables [
-	^ #(#setToken #equalToken)
+	^ #(#setToken #equalToken #colonEqualToken)
 ]
