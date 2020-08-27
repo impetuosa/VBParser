@@ -18,6 +18,8 @@ Private Sub Command1_Click()
     Else
         CallByName Command1, Label1.Caption, vbMethod, 500, 500
     End If
+end sub
+
 '
 ]
 
