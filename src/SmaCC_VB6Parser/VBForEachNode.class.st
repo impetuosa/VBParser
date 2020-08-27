@@ -35,11 +35,6 @@ VBForEachNode >> body: aVBBlockNode [
 ]
 
 { #category : #generated }
-VBForEachNode >> compositeNodeVariables [
-	^ #(#elements)
-]
-
-{ #category : #generated }
 VBForEachNode >> compositeTokenVariables [
 	^ #(#eolTokens)
 ]
@@ -61,9 +56,7 @@ VBForEachNode >> elements [
 
 { #category : #generated }
 VBForEachNode >> elements: anOrderedCollection [
-	self setParents: self elements to: nil.
-	elements := anOrderedCollection.
-	self setParents: self elements to: self
+	elements := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -144,7 +137,7 @@ VBForEachNode >> nodeVariables [
 
 { #category : #generated }
 VBForEachNode >> otherVariables [
-	^ #(#group)
+	^ #(#elements #group)
 ]
 
 { #category : #generated }

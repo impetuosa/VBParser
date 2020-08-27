@@ -19,16 +19,12 @@ VBResumeLabelNode >> label [
 ]
 
 { #category : #generated }
-VBResumeLabelNode >> label: aVBProgramNode [
-	self label notNil
-		ifTrue: [ self label parent: nil ].
-	label := aVBProgramNode.
-	self label notNil
-		ifTrue: [ self label parent: self ]
+VBResumeLabelNode >> label: anObject [
+	label := anObject
 ]
 
 { #category : #generated }
-VBResumeLabelNode >> nodeVariables [
+VBResumeLabelNode >> otherVariables [
 	^ #(#label)
 ]
 

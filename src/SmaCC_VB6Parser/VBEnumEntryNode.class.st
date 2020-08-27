@@ -30,22 +30,13 @@ VBEnumEntryNode >> name [
 ]
 
 { #category : #generated }
-VBEnumEntryNode >> name: aVBProgramNode [
-	self name notNil
-		ifTrue: [ self name parent: nil ].
-	name := aVBProgramNode.
-	self name notNil
-		ifTrue: [ self name parent: self ]
-]
-
-{ #category : #generated }
-VBEnumEntryNode >> nodeVariables [
-	^ #(#name)
+VBEnumEntryNode >> name: anObject [
+	name := anObject
 ]
 
 { #category : #generated }
 VBEnumEntryNode >> otherVariables [
-	^ #(#value)
+	^ #(#name #value)
 ]
 
 { #category : #generated }

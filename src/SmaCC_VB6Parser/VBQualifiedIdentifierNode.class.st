@@ -25,7 +25,7 @@ VBQualifiedIdentifierNode >> member: aSmaCCToken [
 ]
 
 { #category : #generated }
-VBQualifiedIdentifierNode >> nodeVariables [
+VBQualifiedIdentifierNode >> otherVariables [
 	^ #(#token)
 ]
 
@@ -45,12 +45,8 @@ VBQualifiedIdentifierNode >> token [
 ]
 
 { #category : #generated }
-VBQualifiedIdentifierNode >> token: aVBProgramNode [
-	self token notNil
-		ifTrue: [ self token parent: nil ].
-	token := aVBProgramNode.
-	self token notNil
-		ifTrue: [ self token parent: self ]
+VBQualifiedIdentifierNode >> token: anObject [
+	token := anObject
 ]
 
 { #category : #generated }

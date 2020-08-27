@@ -14,7 +14,7 @@ VBHeadlessIdentifierNode >> acceptVisitor: aProgramVisitor [
 ]
 
 { #category : #generated }
-VBHeadlessIdentifierNode >> nodeVariables [
+VBHeadlessIdentifierNode >> otherVariables [
 	^ #(#token)
 ]
 
@@ -34,12 +34,8 @@ VBHeadlessIdentifierNode >> token [
 ]
 
 { #category : #generated }
-VBHeadlessIdentifierNode >> token: aVBProgramNode [
-	self token notNil
-		ifTrue: [ self token parent: nil ].
-	token := aVBProgramNode.
-	self token notNil
-		ifTrue: [ self token parent: self ]
+VBHeadlessIdentifierNode >> token: anObject [
+	token := anObject
 ]
 
 { #category : #generated }

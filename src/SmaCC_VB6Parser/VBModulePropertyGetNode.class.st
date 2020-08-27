@@ -101,7 +101,12 @@ VBModulePropertyGetNode >> modifier: aSmaCCToken [
 
 { #category : #generated }
 VBModulePropertyGetNode >> nodeVariables [
-	^ #(#selector #block #type #parameters)
+	^ #(#block #type #parameters)
+]
+
+{ #category : #generated }
+VBModulePropertyGetNode >> otherVariables [
+	^ #(#selector)
 ]
 
 { #category : #generated }
@@ -134,12 +139,8 @@ VBModulePropertyGetNode >> selector [
 ]
 
 { #category : #generated }
-VBModulePropertyGetNode >> selector: aVBProgramNode [
-	self selector notNil
-		ifTrue: [ self selector parent: nil ].
-	selector := aVBProgramNode.
-	self selector notNil
-		ifTrue: [ self selector parent: self ]
+VBModulePropertyGetNode >> selector: anObject [
+	selector := anObject
 ]
 
 { #category : #generated }

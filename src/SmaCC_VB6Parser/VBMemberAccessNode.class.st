@@ -20,22 +20,13 @@ VBMemberAccessNode >> member [
 ]
 
 { #category : #generated }
-VBMemberAccessNode >> member: aVBProgramNode [
-	self member notNil
-		ifTrue: [ self member parent: nil ].
-	member := aVBProgramNode.
-	self member notNil
-		ifTrue: [ self member parent: self ]
-]
-
-{ #category : #generated }
-VBMemberAccessNode >> nodeVariables [
-	^ #(#member)
+VBMemberAccessNode >> member: anObject [
+	member := anObject
 ]
 
 { #category : #generated }
 VBMemberAccessNode >> otherVariables [
-	^ #(#receiver)
+	^ #(#receiver #member)
 ]
 
 { #category : #generated }

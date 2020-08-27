@@ -77,7 +77,12 @@ VBSubDefinitionNode >> modifier: aSmaCCToken [
 
 { #category : #generated }
 VBSubDefinitionNode >> nodeVariables [
-	^ #(#selector #block #parameters)
+	^ #(#block #parameters)
+]
+
+{ #category : #generated }
+VBSubDefinitionNode >> otherVariables [
+	^ #(#selector)
 ]
 
 { #category : #generated }
@@ -100,12 +105,8 @@ VBSubDefinitionNode >> selector [
 ]
 
 { #category : #generated }
-VBSubDefinitionNode >> selector: aVBProgramNode [
-	self selector notNil
-		ifTrue: [ self selector parent: nil ].
-	selector := aVBProgramNode.
-	self selector notNil
-		ifTrue: [ self selector parent: self ]
+VBSubDefinitionNode >> selector: anObject [
+	selector := anObject
 ]
 
 { #category : #generated }

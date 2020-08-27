@@ -73,16 +73,12 @@ VBDefineTypeNode >> name [
 ]
 
 { #category : #generated }
-VBDefineTypeNode >> name: aVBProgramNode [
-	self name notNil
-		ifTrue: [ self name parent: nil ].
-	name := aVBProgramNode.
-	self name notNil
-		ifTrue: [ self name parent: self ]
+VBDefineTypeNode >> name: anObject [
+	name := anObject
 ]
 
 { #category : #generated }
-VBDefineTypeNode >> nodeVariables [
+VBDefineTypeNode >> otherVariables [
 	^ #(#name)
 ]
 

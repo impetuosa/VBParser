@@ -19,12 +19,8 @@ VBExplicitCallNode >> call [
 ]
 
 { #category : #generated }
-VBExplicitCallNode >> call: aVBProgramNode [
-	self call notNil
-		ifTrue: [ self call parent: nil ].
-	call := aVBProgramNode.
-	self call notNil
-		ifTrue: [ self call parent: self ]
+VBExplicitCallNode >> call: anObject [
+	call := anObject
 ]
 
 { #category : #generated }
@@ -38,7 +34,7 @@ VBExplicitCallNode >> callToken: aSmaCCToken [
 ]
 
 { #category : #generated }
-VBExplicitCallNode >> nodeVariables [
+VBExplicitCallNode >> otherVariables [
 	^ #(#call)
 ]
 

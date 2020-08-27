@@ -29,16 +29,12 @@ VBAddressOfClauseNode >> name [
 ]
 
 { #category : #generated }
-VBAddressOfClauseNode >> name: aVBProgramNode [
-	self name notNil
-		ifTrue: [ self name parent: nil ].
-	name := aVBProgramNode.
-	self name notNil
-		ifTrue: [ self name parent: self ]
+VBAddressOfClauseNode >> name: anObject [
+	name := anObject
 ]
 
 { #category : #generated }
-VBAddressOfClauseNode >> nodeVariables [
+VBAddressOfClauseNode >> otherVariables [
 	^ #(#name)
 ]
 

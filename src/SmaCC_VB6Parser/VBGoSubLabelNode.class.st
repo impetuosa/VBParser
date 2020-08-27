@@ -71,17 +71,18 @@ VBGoSubLabelNode >> label [
 ]
 
 { #category : #generated }
-VBGoSubLabelNode >> label: aVBProgramNode [
-	self label notNil
-		ifTrue: [ self label parent: nil ].
-	label := aVBProgramNode.
-	self label notNil
-		ifTrue: [ self label parent: self ]
+VBGoSubLabelNode >> label: anObject [
+	label := anObject
 ]
 
 { #category : #generated }
 VBGoSubLabelNode >> nodeVariables [
-	^ #(#label #endLineNumber #block)
+	^ #(#endLineNumber #block)
+]
+
+{ #category : #generated }
+VBGoSubLabelNode >> otherVariables [
+	^ #(#label)
 ]
 
 { #category : #generated }

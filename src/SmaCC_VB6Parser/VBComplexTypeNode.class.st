@@ -18,15 +18,11 @@ VBComplexTypeNode >> name [
 ]
 
 { #category : #generated }
-VBComplexTypeNode >> name: aVBProgramNode [
-	self name notNil
-		ifTrue: [ self name parent: nil ].
-	name := aVBProgramNode.
-	self name notNil
-		ifTrue: [ self name parent: self ]
+VBComplexTypeNode >> name: anObject [
+	name := anObject
 ]
 
 { #category : #generated }
-VBComplexTypeNode >> nodeVariables [
+VBComplexTypeNode >> otherVariables [
 	^ #(#name)
 ]

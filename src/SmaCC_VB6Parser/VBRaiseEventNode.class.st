@@ -19,16 +19,12 @@ VBRaiseEventNode >> call [
 ]
 
 { #category : #generated }
-VBRaiseEventNode >> call: aVBProgramNode [
-	self call notNil
-		ifTrue: [ self call parent: nil ].
-	call := aVBProgramNode.
-	self call notNil
-		ifTrue: [ self call parent: self ]
+VBRaiseEventNode >> call: anObject [
+	call := anObject
 ]
 
 { #category : #generated }
-VBRaiseEventNode >> nodeVariables [
+VBRaiseEventNode >> otherVariables [
 	^ #(#call)
 ]
 

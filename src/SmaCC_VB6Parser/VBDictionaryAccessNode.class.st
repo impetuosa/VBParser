@@ -30,22 +30,13 @@ VBDictionaryAccessNode >> member [
 ]
 
 { #category : #generated }
-VBDictionaryAccessNode >> member: aVBProgramNode [
-	self member notNil
-		ifTrue: [ self member parent: nil ].
-	member := aVBProgramNode.
-	self member notNil
-		ifTrue: [ self member parent: self ]
-]
-
-{ #category : #generated }
-VBDictionaryAccessNode >> nodeVariables [
-	^ #(#member)
+VBDictionaryAccessNode >> member: anObject [
+	member := anObject
 ]
 
 { #category : #generated }
 VBDictionaryAccessNode >> otherVariables [
-	^ #(#receiver)
+	^ #(#receiver #member)
 ]
 
 { #category : #generated }

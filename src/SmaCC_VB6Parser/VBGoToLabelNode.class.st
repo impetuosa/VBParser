@@ -40,16 +40,12 @@ VBGoToLabelNode >> label [
 ]
 
 { #category : #generated }
-VBGoToLabelNode >> label: aVBProgramNode [
-	self label notNil
-		ifTrue: [ self label parent: nil ].
-	label := aVBProgramNode.
-	self label notNil
-		ifTrue: [ self label parent: self ]
+VBGoToLabelNode >> label: anObject [
+	label := anObject
 ]
 
 { #category : #generated }
-VBGoToLabelNode >> nodeVariables [
+VBGoToLabelNode >> otherVariables [
 	^ #(#label)
 ]
 

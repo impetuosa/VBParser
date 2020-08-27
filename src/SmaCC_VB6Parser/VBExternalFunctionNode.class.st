@@ -91,7 +91,12 @@ VBExternalFunctionNode >> library: aVBStringLiteralNode [
 
 { #category : #generated }
 VBExternalFunctionNode >> nodeVariables [
-	^ #(#selector #library #parameters #type #alias)
+	^ #(#library #parameters #type #alias)
+]
+
+{ #category : #generated }
+VBExternalFunctionNode >> otherVariables [
+	^ #(#selector)
 ]
 
 { #category : #generated }
@@ -114,12 +119,8 @@ VBExternalFunctionNode >> selector [
 ]
 
 { #category : #generated }
-VBExternalFunctionNode >> selector: aVBProgramNode [
-	self selector notNil
-		ifTrue: [ self selector parent: nil ].
-	selector := aVBProgramNode.
-	self selector notNil
-		ifTrue: [ self selector parent: self ]
+VBExternalFunctionNode >> selector: anObject [
+	selector := anObject
 ]
 
 { #category : #generated }

@@ -20,17 +20,18 @@ VBVariableNode >> name [
 ]
 
 { #category : #generated }
-VBVariableNode >> name: aVBProgramNode [
-	self name notNil
-		ifTrue: [ self name parent: nil ].
-	name := aVBProgramNode.
-	self name notNil
-		ifTrue: [ self name parent: self ]
+VBVariableNode >> name: anObject [
+	name := anObject
 ]
 
 { #category : #generated }
 VBVariableNode >> nodeVariables [
-	^ #(#name #type)
+	^ #(#type)
+]
+
+{ #category : #generated }
+VBVariableNode >> otherVariables [
+	^ #(#name)
 ]
 
 { #category : #generated }

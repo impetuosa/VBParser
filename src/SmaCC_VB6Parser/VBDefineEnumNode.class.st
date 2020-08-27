@@ -83,16 +83,12 @@ VBDefineEnumNode >> name [
 ]
 
 { #category : #generated }
-VBDefineEnumNode >> name: aVBProgramNode [
-	self name notNil
-		ifTrue: [ self name parent: nil ].
-	name := aVBProgramNode.
-	self name notNil
-		ifTrue: [ self name parent: self ]
+VBDefineEnumNode >> name: anObject [
+	name := anObject
 ]
 
 { #category : #generated }
-VBDefineEnumNode >> nodeVariables [
+VBDefineEnumNode >> otherVariables [
 	^ #(#name)
 ]
 

@@ -33,12 +33,8 @@ VBModuleConstantNode >> constant [
 ]
 
 { #category : #generated }
-VBModuleConstantNode >> constant: aVBProgramNode [
-	self constant notNil
-		ifTrue: [ self constant parent: nil ].
-	constant := aVBProgramNode.
-	self constant notNil
-		ifTrue: [ self constant parent: self ]
+VBModuleConstantNode >> constant: anObject [
+	constant := anObject
 ]
 
 { #category : #generated }
@@ -53,12 +49,12 @@ VBModuleConstantNode >> equalToken: aSmaCCToken [
 
 { #category : #generated }
 VBModuleConstantNode >> nodeVariables [
-	^ #(#constant #type)
+	^ #(#type)
 ]
 
 { #category : #generated }
 VBModuleConstantNode >> otherVariables [
-	^ #(#value)
+	^ #(#constant #value)
 ]
 
 { #category : #generated }

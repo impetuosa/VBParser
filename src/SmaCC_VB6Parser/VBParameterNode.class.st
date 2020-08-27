@@ -44,17 +44,13 @@ VBParameterNode >> name [
 ]
 
 { #category : #generated }
-VBParameterNode >> name: aVBProgramNode [
-	self name notNil
-		ifTrue: [ self name parent: nil ].
-	name := aVBProgramNode.
-	self name notNil
-		ifTrue: [ self name parent: self ]
+VBParameterNode >> name: anObject [
+	name := anObject
 ]
 
 { #category : #generated }
 VBParameterNode >> nodeVariables [
-	^ #(#name #type)
+	^ #(#type)
 ]
 
 { #category : #generated }
@@ -69,7 +65,7 @@ VBParameterNode >> optionalToken: aSmaCCToken [
 
 { #category : #generated }
 VBParameterNode >> otherVariables [
-	^ #(#default #strategy)
+	^ #(#name #default #strategy)
 ]
 
 { #category : #generated }
