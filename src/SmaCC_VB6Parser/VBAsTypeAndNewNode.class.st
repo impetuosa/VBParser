@@ -2,13 +2,25 @@ Class {
 	#name : #VBAsTypeAndNewNode,
 	#superclass : #VBProgramNode,
 	#instVars : [
-		'asToken',
+		'aSToken',
 		'nEWToken',
 		'type',
+		'timesToken',
+		'fixedSize',
 		'sizes'
 	],
 	#category : #'SmaCC_VB6Parser'
 }
+
+{ #category : #generated }
+VBAsTypeAndNewNode >> aSToken [
+	^ aSToken
+]
+
+{ #category : #generated }
+VBAsTypeAndNewNode >> aSToken: aSmaCCToken [
+	aSToken := aSmaCCToken
+]
 
 { #category : #generated }
 VBAsTypeAndNewNode >> acceptVisitor: aProgramVisitor [
@@ -16,18 +28,18 @@ VBAsTypeAndNewNode >> acceptVisitor: aProgramVisitor [
 ]
 
 { #category : #generated }
-VBAsTypeAndNewNode >> asToken [
-	^ asToken
-]
-
-{ #category : #generated }
-VBAsTypeAndNewNode >> asToken: aSmaCCToken [
-	asToken := aSmaCCToken
-]
-
-{ #category : #generated }
 VBAsTypeAndNewNode >> compositeNodeVariables [
 	^ #(#sizes)
+]
+
+{ #category : #generated }
+VBAsTypeAndNewNode >> fixedSize [
+	^ fixedSize
+]
+
+{ #category : #generated }
+VBAsTypeAndNewNode >> fixedSize: anObject [
+	fixedSize := anObject
 ]
 
 { #category : #'generated-initialize-release' }
@@ -48,7 +60,7 @@ VBAsTypeAndNewNode >> nEWToken: aSmaCCToken [
 
 { #category : #generated }
 VBAsTypeAndNewNode >> otherVariables [
-	^ #(#type)
+	^ #(#type #fixedSize)
 ]
 
 { #category : #generated }
@@ -64,8 +76,18 @@ VBAsTypeAndNewNode >> sizes: anOrderedCollection [
 ]
 
 { #category : #generated }
+VBAsTypeAndNewNode >> timesToken [
+	^ timesToken
+]
+
+{ #category : #generated }
+VBAsTypeAndNewNode >> timesToken: aSmaCCToken [
+	timesToken := aSmaCCToken
+]
+
+{ #category : #generated }
 VBAsTypeAndNewNode >> tokenVariables [
-	^ #(#asToken #nEWToken)
+	^ #(#aSToken #nEWToken #timesToken)
 ]
 
 { #category : #generated }

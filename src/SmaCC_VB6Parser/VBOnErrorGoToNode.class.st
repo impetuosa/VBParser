@@ -3,7 +3,7 @@ Class {
 	#superclass : #VBProgramNode,
 	#instVars : [
 		'onToken',
-		'errorToken',
+		'eRRORToken',
 		'to'
 	],
 	#category : #'SmaCC_VB6Parser'
@@ -15,13 +15,13 @@ VBOnErrorGoToNode >> acceptVisitor: aProgramVisitor [
 ]
 
 { #category : #generated }
-VBOnErrorGoToNode >> errorToken [
-	^ errorToken
+VBOnErrorGoToNode >> eRRORToken [
+	^ eRRORToken
 ]
 
 { #category : #generated }
-VBOnErrorGoToNode >> errorToken: aSmaCCToken [
-	errorToken := aSmaCCToken
+VBOnErrorGoToNode >> eRRORToken: aSmaCCToken [
+	eRRORToken := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -55,5 +55,5 @@ VBOnErrorGoToNode >> to: aVBProgramNode [
 
 { #category : #generated }
 VBOnErrorGoToNode >> tokenVariables [
-	^ #(#onToken #errorToken)
+	^ #(#onToken #eRRORToken)
 ]

@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'optionToken',
 		'compareToken',
-		'binaryToken',
+		'bINARYToken',
 		'compare'
 	],
 	#category : #'SmaCC_VB6Parser'
@@ -16,13 +16,13 @@ VBOptionCompareNode >> acceptVisitor: aProgramVisitor [
 ]
 
 { #category : #generated }
-VBOptionCompareNode >> binaryToken [
-	^ binaryToken
+VBOptionCompareNode >> bINARYToken [
+	^ bINARYToken
 ]
 
 { #category : #generated }
-VBOptionCompareNode >> binaryToken: aSmaCCToken [
-	binaryToken := aSmaCCToken
+VBOptionCompareNode >> bINARYToken: aSmaCCToken [
+	bINARYToken := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -57,5 +57,5 @@ VBOptionCompareNode >> optionToken: aSmaCCToken [
 
 { #category : #generated }
 VBOptionCompareNode >> tokenVariables [
-	^ #(#optionToken #compareToken #binaryToken #compare)
+	^ #(#optionToken #compareToken #bINARYToken #compare)
 ]

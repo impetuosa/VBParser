@@ -1,5 +1,5 @@
 Class {
-	#name : #VBErrorNode,
+	#name : #VBRaiseErrorNode,
 	#superclass : #VBProgramNode,
 	#instVars : [
 		'eRRORToken',
@@ -9,36 +9,36 @@ Class {
 }
 
 { #category : #generated }
-VBErrorNode >> acceptVisitor: aProgramVisitor [
-	^ aProgramVisitor visitError: self
+VBRaiseErrorNode >> acceptVisitor: aProgramVisitor [
+	^ aProgramVisitor visitRaiseError: self
 ]
 
 { #category : #generated }
-VBErrorNode >> eRRORToken [
+VBRaiseErrorNode >> eRRORToken [
 	^ eRRORToken
 ]
 
 { #category : #generated }
-VBErrorNode >> eRRORToken: aSmaCCToken [
+VBRaiseErrorNode >> eRRORToken: aSmaCCToken [
 	eRRORToken := aSmaCCToken
 ]
 
 { #category : #generated }
-VBErrorNode >> errorCode [
+VBRaiseErrorNode >> errorCode [
 	^ errorCode
 ]
 
 { #category : #generated }
-VBErrorNode >> errorCode: anObject [
+VBRaiseErrorNode >> errorCode: anObject [
 	errorCode := anObject
 ]
 
 { #category : #generated }
-VBErrorNode >> otherVariables [
+VBRaiseErrorNode >> otherVariables [
 	^ #(#errorCode)
 ]
 
 { #category : #generated }
-VBErrorNode >> tokenVariables [
+VBRaiseErrorNode >> tokenVariables [
 	^ #(#eRRORToken)
 ]

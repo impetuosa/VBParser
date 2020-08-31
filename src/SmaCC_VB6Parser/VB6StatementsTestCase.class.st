@@ -117,7 +117,7 @@ End Enum '
 { #category : #'as yet unclassified' }
 VB6StatementsTestCase >> eraseCase [  	
 ^ 'public sub ex
- Declare array variables. 
+ ''Declare array variables. 
 Dim NumArray(10) As Integer '' Integer array. 
 Dim StrVarArray(10) As String '' Variable-string array. 
 Dim StrFixArray(10) As String * 10 '' Fixed-string array. 
@@ -726,7 +726,7 @@ VB6StatementsTestCase >> testSmokeConst [
 
 { #category : #'smoke tests ' }
 VB6StatementsTestCase >> testSmokeDate [
-			self parse: self dateCase
+			self parse: (self subWrap: self dateCase)
 		
 ]
 
@@ -828,8 +828,7 @@ VB6StatementsTestCase >> testSmokeIfThenElseIf [
 
 { #category : #'smoke tests ' }
 VB6StatementsTestCase >> testSmokeImplements [
-			self parse: self implementsCase
-		
+	self parse: self implementsCase
 ]
 
 { #category : #'smoke tests ' }

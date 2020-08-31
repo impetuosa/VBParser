@@ -3,7 +3,7 @@ Class {
 	#superclass : #VBProgramNode,
 	#instVars : [
 		'onToken',
-		'errorToken',
+		'eRRORToken',
 		'resumeToken',
 		'nextToken'
 	],
@@ -16,13 +16,13 @@ VBOnErrorResumeNextNode >> acceptVisitor: aProgramVisitor [
 ]
 
 { #category : #generated }
-VBOnErrorResumeNextNode >> errorToken [
-	^ errorToken
+VBOnErrorResumeNextNode >> eRRORToken [
+	^ eRRORToken
 ]
 
 { #category : #generated }
-VBOnErrorResumeNextNode >> errorToken: aSmaCCToken [
-	errorToken := aSmaCCToken
+VBOnErrorResumeNextNode >> eRRORToken: aSmaCCToken [
+	eRRORToken := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -57,5 +57,5 @@ VBOnErrorResumeNextNode >> resumeToken: aSmaCCToken [
 
 { #category : #generated }
 VBOnErrorResumeNextNode >> tokenVariables [
-	^ #(#onToken #errorToken #resumeToken #nextToken)
+	^ #(#onToken #eRRORToken #resumeToken #nextToken)
 ]

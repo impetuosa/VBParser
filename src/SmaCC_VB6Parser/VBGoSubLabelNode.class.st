@@ -4,6 +4,7 @@ Class {
 	#instVars : [
 		'label',
 		'colonToken',
+		'eolTokens',
 		'returnToken',
 		'endLineNumber',
 		'block',
@@ -42,6 +43,11 @@ VBGoSubLabelNode >> colonToken: aSmaCCToken [
 ]
 
 { #category : #generated }
+VBGoSubLabelNode >> compositeTokenVariables [
+	^ #(#eolTokens)
+]
+
+{ #category : #generated }
 VBGoSubLabelNode >> endLineNumber [
 	^ endLineNumber
 ]
@@ -56,6 +62,16 @@ VBGoSubLabelNode >> endLineNumber: aVBIntegerLiteralNode [
 ]
 
 { #category : #generated }
+VBGoSubLabelNode >> eolTokens [
+	^ eolTokens
+]
+
+{ #category : #generated }
+VBGoSubLabelNode >> eolTokens: anOrderedCollection [
+	eolTokens := anOrderedCollection
+]
+
+{ #category : #generated }
 VBGoSubLabelNode >> gosubToken [
 	^ gosubToken
 ]
@@ -63,6 +79,12 @@ VBGoSubLabelNode >> gosubToken [
 { #category : #generated }
 VBGoSubLabelNode >> gosubToken: aSmaCCToken [
 	gosubToken := aSmaCCToken
+]
+
+{ #category : #'generated-initialize-release' }
+VBGoSubLabelNode >> initialize [
+	super initialize.
+	eolTokens := OrderedCollection new: 2.
 ]
 
 { #category : #generated }

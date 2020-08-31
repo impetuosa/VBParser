@@ -2,7 +2,7 @@ Class {
 	#name : #VBForEachNode,
 	#superclass : #VBProgramNode,
 	#instVars : [
-		'forToken',
+		'fORToken',
 		'eachToken',
 		'elements',
 		'inToken',
@@ -84,13 +84,13 @@ VBForEachNode >> eolTokens: anOrderedCollection [
 ]
 
 { #category : #generated }
-VBForEachNode >> forToken [
-	^ forToken
+VBForEachNode >> fORToken [
+	^ fORToken
 ]
 
 { #category : #generated }
-VBForEachNode >> forToken: aSmaCCToken [
-	forToken := aSmaCCToken
+VBForEachNode >> fORToken: aSmaCCToken [
+	fORToken := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -142,5 +142,5 @@ VBForEachNode >> otherVariables [
 
 { #category : #generated }
 VBForEachNode >> tokenVariables [
-	^ #(#forToken #eachToken #inToken #nextToken)
+	^ #(#fORToken #eachToken #inToken #nextToken)
 ]

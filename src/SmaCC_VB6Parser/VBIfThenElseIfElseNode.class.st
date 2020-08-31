@@ -9,6 +9,7 @@ Class {
 		'cases',
 		'elseToken',
 		'endToken',
+		'endLineNumber',
 		'otherwise',
 		'ifTrue'
 	],
@@ -60,6 +61,20 @@ VBIfThenElseIfElseNode >> elseToken [
 { #category : #generated }
 VBIfThenElseIfElseNode >> elseToken: aSmaCCToken [
 	elseToken := aSmaCCToken
+]
+
+{ #category : #generated }
+VBIfThenElseIfElseNode >> endLineNumber [
+	^ endLineNumber
+]
+
+{ #category : #generated }
+VBIfThenElseIfElseNode >> endLineNumber: aVBIntegerLiteralNode [
+	self endLineNumber notNil
+		ifTrue: [ self endLineNumber parent: nil ].
+	endLineNumber := aVBIntegerLiteralNode.
+	self endLineNumber notNil
+		ifTrue: [ self endLineNumber parent: self ]
 ]
 
 { #category : #generated }
@@ -116,7 +131,7 @@ VBIfThenElseIfElseNode >> initialize [
 
 { #category : #generated }
 VBIfThenElseIfElseNode >> nodeVariables [
-	^ #(#otherwise #ifTrue)
+	^ #(#endLineNumber #otherwise #ifTrue)
 ]
 
 { #category : #generated }

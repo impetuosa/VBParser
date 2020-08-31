@@ -2,7 +2,7 @@ Class {
 	#name : #VBForNextNode,
 	#superclass : #VBProgramNode,
 	#instVars : [
-		'forToken',
+		'fORToken',
 		'counter',
 		'equalToken',
 		'initialValue',
@@ -10,6 +10,7 @@ Class {
 		'limit',
 		'eolTokens',
 		'nextToken',
+		'element',
 		'endLineNumber',
 		'body'
 	],
@@ -51,6 +52,16 @@ VBForNextNode >> counter: anObject [
 ]
 
 { #category : #generated }
+VBForNextNode >> element [
+	^ element
+]
+
+{ #category : #generated }
+VBForNextNode >> element: anObject [
+	element := anObject
+]
+
+{ #category : #generated }
 VBForNextNode >> endLineNumber [
 	^ endLineNumber
 ]
@@ -85,13 +96,13 @@ VBForNextNode >> equalToken: aSmaCCToken [
 ]
 
 { #category : #generated }
-VBForNextNode >> forToken [
-	^ forToken
+VBForNextNode >> fORToken [
+	^ fORToken
 ]
 
 { #category : #generated }
-VBForNextNode >> forToken: aSmaCCToken [
-	forToken := aSmaCCToken
+VBForNextNode >> fORToken: aSmaCCToken [
+	fORToken := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -137,7 +148,7 @@ VBForNextNode >> nodeVariables [
 
 { #category : #generated }
 VBForNextNode >> otherVariables [
-	^ #(#counter #initialValue #limit)
+	^ #(#counter #initialValue #limit #element)
 ]
 
 { #category : #generated }
@@ -152,5 +163,5 @@ VBForNextNode >> toToken: aSmaCCToken [
 
 { #category : #generated }
 VBForNextNode >> tokenVariables [
-	^ #(#forToken #equalToken #toToken #nextToken)
+	^ #(#fORToken #equalToken #toToken #nextToken)
 ]

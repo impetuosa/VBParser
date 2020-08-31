@@ -63,8 +63,8 @@ VBModuleNode >> header: aVBHeaderNode [
 { #category : #'generated-initialize-release' }
 VBModuleNode >> initialize [
 	super initialize.
-	elements := OrderedCollection new: 2.
 	eolTokens := OrderedCollection new: 2.
+	elements := OrderedCollection new: 2.
 ]
 
 { #category : #generated }

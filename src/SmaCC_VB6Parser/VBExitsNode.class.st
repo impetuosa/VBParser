@@ -6,7 +6,7 @@ Class {
 		'functionToken',
 		'subToken',
 		'doToken',
-		'forToken',
+		'fORToken',
 		'propertyToken'
 	],
 	#category : #'SmaCC_VB6Parser'
@@ -38,13 +38,13 @@ VBExitsNode >> exitToken: aSmaCCToken [
 ]
 
 { #category : #generated }
-VBExitsNode >> forToken [
-	^ forToken
+VBExitsNode >> fORToken [
+	^ fORToken
 ]
 
 { #category : #generated }
-VBExitsNode >> forToken: aSmaCCToken [
-	forToken := aSmaCCToken
+VBExitsNode >> fORToken: aSmaCCToken [
+	fORToken := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -79,5 +79,5 @@ VBExitsNode >> subToken: aSmaCCToken [
 
 { #category : #generated }
 VBExitsNode >> tokenVariables [
-	^ #(#exitToken #functionToken #subToken #doToken #forToken #propertyToken)
+	^ #(#exitToken #functionToken #subToken #doToken #fORToken #propertyToken)
 ]

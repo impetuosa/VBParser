@@ -2,7 +2,7 @@ Class {
 	#name : #VBForStepNextNode,
 	#superclass : #VBProgramNode,
 	#instVars : [
-		'forToken',
+		'fORToken',
 		'counter',
 		'equalToken',
 		'initialValue',
@@ -12,6 +12,7 @@ Class {
 		'step',
 		'eolTokens',
 		'nextToken',
+		'element',
 		'endLineNumber',
 		'body'
 	],
@@ -53,6 +54,16 @@ VBForStepNextNode >> counter: anObject [
 ]
 
 { #category : #generated }
+VBForStepNextNode >> element [
+	^ element
+]
+
+{ #category : #generated }
+VBForStepNextNode >> element: anObject [
+	element := anObject
+]
+
+{ #category : #generated }
 VBForStepNextNode >> endLineNumber [
 	^ endLineNumber
 ]
@@ -87,13 +98,13 @@ VBForStepNextNode >> equalToken: aSmaCCToken [
 ]
 
 { #category : #generated }
-VBForStepNextNode >> forToken [
-	^ forToken
+VBForStepNextNode >> fORToken [
+	^ fORToken
 ]
 
 { #category : #generated }
-VBForStepNextNode >> forToken: aSmaCCToken [
-	forToken := aSmaCCToken
+VBForStepNextNode >> fORToken: aSmaCCToken [
+	fORToken := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -139,7 +150,7 @@ VBForStepNextNode >> nodeVariables [
 
 { #category : #generated }
 VBForStepNextNode >> otherVariables [
-	^ #(#counter #initialValue #limit #step)
+	^ #(#counter #initialValue #limit #step #element)
 ]
 
 { #category : #generated }
@@ -174,5 +185,5 @@ VBForStepNextNode >> toToken: aSmaCCToken [
 
 { #category : #generated }
 VBForStepNextNode >> tokenVariables [
-	^ #(#forToken #equalToken #toToken #stepToken #nextToken)
+	^ #(#fORToken #equalToken #toToken #stepToken #nextToken)
 ]
