@@ -2,12 +2,9 @@ Class {
 	#name : #VBModuleConstantNode,
 	#superclass : #VBProgramNode,
 	#instVars : [
-		'visibility',
 		'constToken',
 		'constant',
-		'type',
-		'equalToken',
-		'value'
+		'visibility'
 	],
 	#category : #'SmaCC_VB6Parser'
 }
@@ -33,57 +30,22 @@ VBModuleConstantNode >> constant [
 ]
 
 { #category : #generated }
-VBModuleConstantNode >> constant: anObject [
-	constant := anObject
-]
-
-{ #category : #generated }
-VBModuleConstantNode >> equalToken [
-	^ equalToken
-]
-
-{ #category : #generated }
-VBModuleConstantNode >> equalToken: aSmaCCToken [
-	equalToken := aSmaCCToken
+VBModuleConstantNode >> constant: aVBConstantNode [
+	self constant notNil
+		ifTrue: [ self constant parent: nil ].
+	constant := aVBConstantNode.
+	self constant notNil
+		ifTrue: [ self constant parent: self ]
 ]
 
 { #category : #generated }
 VBModuleConstantNode >> nodeVariables [
-	^ #(#type)
-]
-
-{ #category : #generated }
-VBModuleConstantNode >> otherVariables [
-	^ #(#constant #value)
+	^ #(#constant)
 ]
 
 { #category : #generated }
 VBModuleConstantNode >> tokenVariables [
-	^ #(#constToken #equalToken #visibility)
-]
-
-{ #category : #generated }
-VBModuleConstantNode >> type [
-	^ type
-]
-
-{ #category : #generated }
-VBModuleConstantNode >> type: aVBProgramNode [
-	self type notNil
-		ifTrue: [ self type parent: nil ].
-	type := aVBProgramNode.
-	self type notNil
-		ifTrue: [ self type parent: self ]
-]
-
-{ #category : #generated }
-VBModuleConstantNode >> value [
-	^ value
-]
-
-{ #category : #generated }
-VBModuleConstantNode >> value: anObject [
-	value := anObject
+	^ #(#constToken #visibility)
 ]
 
 { #category : #generated }

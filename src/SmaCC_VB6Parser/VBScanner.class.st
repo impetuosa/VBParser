@@ -17,12 +17,12 @@ VBScanner class >> initializeKeywordMap [
 
 { #category : #generated }
 VBScanner >> emptySymbolTokenId [
-	^ 304
+	^ 311
 ]
 
 { #category : #generated }
 VBScanner >> errorTokenId [
-	^ 305
+	^ 312
 ]
 
 { #category : #generated }

@@ -5,10 +5,7 @@ Class {
 		'asToken',
 		'nEWToken',
 		'type',
-		'leftParenToken',
-		'sizes',
-		'commaTokens',
-		'rightParenToken'
+		'sizes'
 	],
 	#category : #'SmaCC_VB6Parser'
 }
@@ -29,40 +26,14 @@ VBAsTypeAndNewNode >> asToken: aSmaCCToken [
 ]
 
 { #category : #generated }
-VBAsTypeAndNewNode >> commaTokens [
-	^ commaTokens
-]
-
-{ #category : #generated }
-VBAsTypeAndNewNode >> commaTokens: anOrderedCollection [
-	commaTokens := anOrderedCollection
-]
-
-{ #category : #generated }
 VBAsTypeAndNewNode >> compositeNodeVariables [
 	^ #(#sizes)
-]
-
-{ #category : #generated }
-VBAsTypeAndNewNode >> compositeTokenVariables [
-	^ #(#commaTokens)
 ]
 
 { #category : #'generated-initialize-release' }
 VBAsTypeAndNewNode >> initialize [
 	super initialize.
 	sizes := OrderedCollection new: 2.
-	commaTokens := OrderedCollection new: 2.
-]
-
-{ #category : #generated }
-VBAsTypeAndNewNode >> leftParenToken [
-	^ leftParenToken
-]
-
-{ #category : #generated }
-VBAsTypeAndNewNode >> leftParenToken: aSmaCCToken [
-	leftParenToken := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -81,16 +52,6 @@ VBAsTypeAndNewNode >> otherVariables [
 ]
 
 { #category : #generated }
-VBAsTypeAndNewNode >> rightParenToken [
-	^ rightParenToken
-]
-
-{ #category : #generated }
-VBAsTypeAndNewNode >> rightParenToken: aSmaCCToken [
-	rightParenToken := aSmaCCToken
-]
-
-{ #category : #generated }
 VBAsTypeAndNewNode >> sizes [
 	^ sizes
 ]
@@ -104,7 +65,7 @@ VBAsTypeAndNewNode >> sizes: anOrderedCollection [
 
 { #category : #generated }
 VBAsTypeAndNewNode >> tokenVariables [
-	^ #(#asToken #nEWToken #leftParenToken #rightParenToken)
+	^ #(#asToken #nEWToken)
 ]
 
 { #category : #generated }
