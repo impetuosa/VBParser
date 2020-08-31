@@ -141,7 +141,7 @@ VBIfThenElseNode >> initialize [
 
 { #category : #generated }
 VBIfThenElseNode >> nodeVariables [
-	^ #(#endLineNumber #ifFalse #elseLineNumber #ifTrue)
+	^ #(#endLineNumber #ifTrue #ifFalse #elseLineNumber)
 ]
 
 { #category : #generated }
@@ -161,5 +161,5 @@ VBIfThenElseNode >> thenToken: aSmaCCToken [
 
 { #category : #generated }
 VBIfThenElseNode >> tokenVariables [
-	^ #(#thenToken #elseToken #endToken)
+	^ #(#thenToken #endToken #elseToken)
 ]

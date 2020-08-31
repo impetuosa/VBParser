@@ -5,7 +5,9 @@ Class {
 		'ifToken',
 		'condition',
 		'thenToken',
-		'ifTrue'
+		'ifTrue',
+		'elseToken',
+		'ifFalse'
 	],
 	#category : #'SmaCC_VB6Parser'
 }
@@ -23,6 +25,26 @@ VBIfThenColonNode >> condition [
 { #category : #generated }
 VBIfThenColonNode >> condition: anObject [
 	condition := anObject
+]
+
+{ #category : #generated }
+VBIfThenColonNode >> elseToken [
+	^ elseToken
+]
+
+{ #category : #generated }
+VBIfThenColonNode >> elseToken: aSmaCCToken [
+	elseToken := aSmaCCToken
+]
+
+{ #category : #generated }
+VBIfThenColonNode >> ifFalse [
+	^ ifFalse
+]
+
+{ #category : #generated }
+VBIfThenColonNode >> ifFalse: anObject [
+	ifFalse := anObject
 ]
 
 { #category : #generated }
@@ -47,7 +69,7 @@ VBIfThenColonNode >> ifTrue: anObject [
 
 { #category : #generated }
 VBIfThenColonNode >> otherVariables [
-	^ #(#condition #ifTrue)
+	^ #(#condition #ifTrue #ifFalse)
 ]
 
 { #category : #generated }
@@ -62,5 +84,5 @@ VBIfThenColonNode >> thenToken: aSmaCCToken [
 
 { #category : #generated }
 VBIfThenColonNode >> tokenVariables [
-	^ #(#ifToken #thenToken)
+	^ #(#ifToken #thenToken #elseToken)
 ]

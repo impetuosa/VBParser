@@ -59,7 +59,7 @@ VBModuleConstantNode >> otherVariables [
 
 { #category : #generated }
 VBModuleConstantNode >> tokenVariables [
-	^ #(#visibility #constToken #equalToken)
+	^ #(#constToken #equalToken #visibility)
 ]
 
 { #category : #generated }
