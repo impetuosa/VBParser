@@ -3,7 +3,7 @@ Class {
 	#superclass : #VBProgramNode,
 	#instVars : [
 		'left',
-		'equalToken',
+		'operator',
 		'right'
 	],
 	#category : #'SmaCC_VB6Parser'
@@ -15,16 +15,6 @@ VBAssignementOrEqualsNode >> acceptVisitor: aProgramVisitor [
 ]
 
 { #category : #generated }
-VBAssignementOrEqualsNode >> equalToken [
-	^ equalToken
-]
-
-{ #category : #generated }
-VBAssignementOrEqualsNode >> equalToken: aSmaCCToken [
-	equalToken := aSmaCCToken
-]
-
-{ #category : #generated }
 VBAssignementOrEqualsNode >> left [
 	^ left
 ]
@@ -32,6 +22,16 @@ VBAssignementOrEqualsNode >> left [
 { #category : #generated }
 VBAssignementOrEqualsNode >> left: anObject [
 	left := anObject
+]
+
+{ #category : #generated }
+VBAssignementOrEqualsNode >> operator [
+	^ operator
+]
+
+{ #category : #generated }
+VBAssignementOrEqualsNode >> operator: aSmaCCToken [
+	operator := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -51,5 +51,5 @@ VBAssignementOrEqualsNode >> right: anObject [
 
 { #category : #generated }
 VBAssignementOrEqualsNode >> tokenVariables [
-	^ #(#equalToken)
+	^ #(#operator)
 ]

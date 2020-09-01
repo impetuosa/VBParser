@@ -3,12 +3,10 @@ Class {
 	#superclass : #VBProgramNode,
 	#instVars : [
 		'label',
-		'colonToken',
 		'eolTokens',
 		'returnToken',
 		'endLineNumber',
-		'block',
-		'gosubToken'
+		'block'
 	],
 	#category : #'SmaCC_VB6Parser'
 }
@@ -30,16 +28,6 @@ VBGoSubLabelNode >> block: aVBBlockNode [
 	block := aVBBlockNode.
 	self block notNil
 		ifTrue: [ self block parent: self ]
-]
-
-{ #category : #generated }
-VBGoSubLabelNode >> colonToken [
-	^ colonToken
-]
-
-{ #category : #generated }
-VBGoSubLabelNode >> colonToken: aSmaCCToken [
-	colonToken := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -71,16 +59,6 @@ VBGoSubLabelNode >> eolTokens: anOrderedCollection [
 	eolTokens := anOrderedCollection
 ]
 
-{ #category : #generated }
-VBGoSubLabelNode >> gosubToken [
-	^ gosubToken
-]
-
-{ #category : #generated }
-VBGoSubLabelNode >> gosubToken: aSmaCCToken [
-	gosubToken := aSmaCCToken
-]
-
 { #category : #'generated-initialize-release' }
 VBGoSubLabelNode >> initialize [
 	super initialize.
@@ -93,18 +71,13 @@ VBGoSubLabelNode >> label [
 ]
 
 { #category : #generated }
-VBGoSubLabelNode >> label: anObject [
-	label := anObject
+VBGoSubLabelNode >> label: aSmaCCToken [
+	label := aSmaCCToken
 ]
 
 { #category : #generated }
 VBGoSubLabelNode >> nodeVariables [
 	^ #(#endLineNumber #block)
-]
-
-{ #category : #generated }
-VBGoSubLabelNode >> otherVariables [
-	^ #(#label)
 ]
 
 { #category : #generated }
@@ -119,5 +92,5 @@ VBGoSubLabelNode >> returnToken: aSmaCCToken [
 
 { #category : #generated }
 VBGoSubLabelNode >> tokenVariables [
-	^ #(#colonToken #returnToken #gosubToken)
+	^ #(#label #returnToken)
 ]

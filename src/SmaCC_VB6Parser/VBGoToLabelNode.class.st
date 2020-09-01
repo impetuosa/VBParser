@@ -3,8 +3,8 @@ Class {
 	#superclass : #VBProgramNode,
 	#instVars : [
 		'label',
-		'colonToken',
-		'gotoToken'
+		'eolTokens',
+		'block'
 	],
 	#category : #'SmaCC_VB6Parser'
 }
@@ -15,23 +15,38 @@ VBGoToLabelNode >> acceptVisitor: aProgramVisitor [
 ]
 
 { #category : #generated }
-VBGoToLabelNode >> colonToken [
-	^ colonToken
+VBGoToLabelNode >> block [
+	^ block
 ]
 
 { #category : #generated }
-VBGoToLabelNode >> colonToken: aSmaCCToken [
-	colonToken := aSmaCCToken
+VBGoToLabelNode >> block: aVBBlockNode [
+	self block notNil
+		ifTrue: [ self block parent: nil ].
+	block := aVBBlockNode.
+	self block notNil
+		ifTrue: [ self block parent: self ]
 ]
 
 { #category : #generated }
-VBGoToLabelNode >> gotoToken [
-	^ gotoToken
+VBGoToLabelNode >> compositeTokenVariables [
+	^ #(#eolTokens)
 ]
 
 { #category : #generated }
-VBGoToLabelNode >> gotoToken: aSmaCCToken [
-	gotoToken := aSmaCCToken
+VBGoToLabelNode >> eolTokens [
+	^ eolTokens
+]
+
+{ #category : #generated }
+VBGoToLabelNode >> eolTokens: anOrderedCollection [
+	eolTokens := anOrderedCollection
+]
+
+{ #category : #'generated-initialize-release' }
+VBGoToLabelNode >> initialize [
+	super initialize.
+	eolTokens := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -40,16 +55,16 @@ VBGoToLabelNode >> label [
 ]
 
 { #category : #generated }
-VBGoToLabelNode >> label: anObject [
-	label := anObject
+VBGoToLabelNode >> label: aSmaCCToken [
+	label := aSmaCCToken
 ]
 
 { #category : #generated }
-VBGoToLabelNode >> otherVariables [
-	^ #(#label)
+VBGoToLabelNode >> nodeVariables [
+	^ #(#block)
 ]
 
 { #category : #generated }
 VBGoToLabelNode >> tokenVariables [
-	^ #(#colonToken #gotoToken)
+	^ #(#label)
 ]

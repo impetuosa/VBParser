@@ -810,8 +810,7 @@ VB6StatementsTestCase >> testSmokeGoSub [
 
 { #category : #'smoke tests ' }
 VB6StatementsTestCase >> testSmokeGoTo [
-			self parse: self goToCase
-		
+	self parse: self goToCase
 ]
 
 { #category : #'smoke tests ' }

@@ -45,10 +45,10 @@ VBOnErrorGoToNode >> to [
 ]
 
 { #category : #generated }
-VBOnErrorGoToNode >> to: aVBProgramNode [
+VBOnErrorGoToNode >> to: aVBGoToNode [
 	self to notNil
 		ifTrue: [ self to parent: nil ].
-	to := aVBProgramNode.
+	to := aVBGoToNode.
 	self to notNil
 		ifTrue: [ self to parent: self ]
 ]
