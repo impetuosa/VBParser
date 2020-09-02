@@ -802,8 +802,7 @@ VB6StatementsTestCase >> testSmokeGetFile [
 
 { #category : #'smoke tests ' }
 VB6StatementsTestCase >> testSmokeGoSub [
-			self parse: self goSubCase
-		
+	self parse: self goSubCase
 ]
 
 { #category : #'smoke tests ' }
