@@ -61,7 +61,7 @@ Dim TaxRate As Double
 
 { #category : #'as yet unclassified' }
 VB6StatementsTestCase >> deleteSettingCase [
-	^ '
+	^ self subWrap: '
 	'' Place some settings in the registry. 
 SaveSetting appname := "MyApp", section := "Startup", _ 
  key := "Top", setting := 75 
