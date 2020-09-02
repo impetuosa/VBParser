@@ -71,13 +71,17 @@ VBGoSubLabelNode >> label [
 ]
 
 { #category : #generated }
-VBGoSubLabelNode >> label: aSmaCCToken [
-	label := aSmaCCToken
+VBGoSubLabelNode >> label: aVBLabelTagNode [
+	self label notNil
+		ifTrue: [ self label parent: nil ].
+	label := aVBLabelTagNode.
+	self label notNil
+		ifTrue: [ self label parent: self ]
 ]
 
 { #category : #generated }
 VBGoSubLabelNode >> nodeVariables [
-	^ #(#endLineNumber #block)
+	^ #(#label #endLineNumber #block)
 ]
 
 { #category : #generated }
@@ -92,5 +96,5 @@ VBGoSubLabelNode >> returnToken: aSmaCCToken [
 
 { #category : #generated }
 VBGoSubLabelNode >> tokenVariables [
-	^ #(#label #returnToken)
+	^ #(#returnToken)
 ]

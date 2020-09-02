@@ -221,7 +221,7 @@ Dim Num
  If Num > 0 Then GoSub MyRoutine 
  Debug.Print Num 
  Exit Sub '' Use Exit to prevent an error. 
-MyRoutine: 
+MyRoutine:
  Num = Num/2 '' Perform the division. 
  Return '' Return control to statement. 
 End Sub '' following the GoSub statement. 
@@ -461,7 +461,7 @@ Name OldName As NewName '' Move and rename file.
 
 { #category : #'as yet unclassified' }
 VB6StatementsTestCase >> onErrorCase [
- 	^ self subWrap: 'Sub OnErrorStatementDemo() 
+ 	^ 'Sub OnErrorStatementDemo() 
  On Error GoTo ErrorHandler '' Enable error-handling routine. 
  Open "TESTFILE" For Output As #1 '' Open file for output. 
  Kill "TESTFILE" '' Attempt to delete open 
@@ -503,13 +503,13 @@ Dim Number, MyString
  On Number GoTo Line1, Line2 '' Branch to Line2. 
  '' Execution does not resume here after On...GoTo. 
  Exit Sub 
-Sub1: 
+Sub1:
  MyString = "In Sub1" : Return 
-Sub2: 
+Sub2:
  MyString = "In Sub2" : Return 
-Line1: 
+Line1:
  MyString = "In Line1" 
-Line2: 
+Line2:
  MyString = "In Line2" 
 End Sub
 '
@@ -738,14 +738,12 @@ VB6StatementsTestCase >> testSmokeDeclare [
 
 { #category : #'smoke tests ' }
 VB6StatementsTestCase >> testSmokeDefType [
-			self parse: self defTypeCase
-		
+	self parse: self defTypeCase
 ]
 
 { #category : #'smoke tests ' }
 VB6StatementsTestCase >> testSmokeDeleteSetting [
-			self parse: self deleteSettingCase
-		
+	self parse: self deleteSettingCase
 ]
 
 { #category : #'smoke tests ' }
@@ -898,14 +896,12 @@ VB6StatementsTestCase >> testSmokeName [
 
 { #category : #'smoke tests ' }
 VB6StatementsTestCase >> testSmokeOnError [
-			self parse: self onErrorCase
-		
+	self parse: self onErrorCase
 ]
 
 { #category : #'smoke tests ' }
 VB6StatementsTestCase >> testSmokeOnGoSub [
-			self parse: self onGoSubCase
-		
+	self parse: self onGoSubCase
 ]
 
 { #category : #'smoke tests ' }
