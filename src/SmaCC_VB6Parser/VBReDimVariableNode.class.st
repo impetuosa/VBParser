@@ -15,7 +15,7 @@ VBReDimVariableNode >> acceptVisitor: aProgramVisitor [
 ]
 
 { #category : #generated }
-VBReDimVariableNode >> nodeVariables [
+VBReDimVariableNode >> otherVariables [
 	^ #(#variable)
 ]
 
@@ -50,10 +50,6 @@ VBReDimVariableNode >> variable [
 ]
 
 { #category : #generated }
-VBReDimVariableNode >> variable: aVBVariableNode [
-	self variable notNil
-		ifTrue: [ self variable parent: nil ].
-	variable := aVBVariableNode.
-	self variable notNil
-		ifTrue: [ self variable parent: self ]
+VBReDimVariableNode >> variable: anObject [
+	variable := anObject
 ]

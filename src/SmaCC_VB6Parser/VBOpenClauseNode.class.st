@@ -2,7 +2,7 @@ Class {
 	#name : #VBOpenClauseNode,
 	#superclass : #VBProgramNode,
 	#instVars : [
-		'openToken',
+		'oPENToken',
 		'filepath',
 		'fORToken',
 		'mode',
@@ -110,13 +110,13 @@ VBOpenClauseNode >> nodeVariables [
 ]
 
 { #category : #generated }
-VBOpenClauseNode >> openToken [
-	^ openToken
+VBOpenClauseNode >> oPENToken [
+	^ oPENToken
 ]
 
 { #category : #generated }
-VBOpenClauseNode >> openToken: aSmaCCToken [
-	openToken := aSmaCCToken
+VBOpenClauseNode >> oPENToken: aSmaCCToken [
+	oPENToken := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -126,5 +126,5 @@ VBOpenClauseNode >> otherVariables [
 
 { #category : #generated }
 VBOpenClauseNode >> tokenVariables [
-	^ #(#openToken #fORToken #mode #aSToken #lock #access)
+	^ #(#oPENToken #fORToken #mode #aSToken #lock #access)
 ]
