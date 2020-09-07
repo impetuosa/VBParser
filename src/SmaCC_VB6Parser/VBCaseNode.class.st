@@ -3,8 +3,9 @@ Class {
 	#superclass : #VBProgramNode,
 	#instVars : [
 		'caseToken',
-		'expressions',
 		'eolTokens',
+		'body',
+		'expression',
 		'elseToken'
 	],
 	#category : #'SmaCC_VB6Parser'
@@ -13,6 +14,20 @@ Class {
 { #category : #generated }
 VBCaseNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitCase: self
+]
+
+{ #category : #generated }
+VBCaseNode >> body [
+	^ body
+]
+
+{ #category : #generated }
+VBCaseNode >> body: aVBBlockNode [
+	self body notNil
+		ifTrue: [ self body parent: nil ].
+	body := aVBBlockNode.
+	self body notNil
+		ifTrue: [ self body parent: self ]
 ]
 
 { #category : #generated }
@@ -51,25 +66,29 @@ VBCaseNode >> eolTokens: anOrderedCollection [
 ]
 
 { #category : #generated }
-VBCaseNode >> expressions [
-	^ expressions
+VBCaseNode >> expression [
+	^ expression
 ]
 
 { #category : #generated }
-VBCaseNode >> expressions: anOrderedCollection [
-	expressions := anOrderedCollection
+VBCaseNode >> expression: anObject [
+	expression := anObject
 ]
 
 { #category : #'generated-initialize-release' }
 VBCaseNode >> initialize [
 	super initialize.
-	expressions := OrderedCollection new: 2.
 	eolTokens := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
+VBCaseNode >> nodeVariables [
+	^ #(#body)
+]
+
+{ #category : #generated }
 VBCaseNode >> otherVariables [
-	^ #(#expressions)
+	^ #(#expression)
 ]
 
 { #category : #generated }

@@ -935,8 +935,7 @@ VB6StatementsTestCase >> testSmokePropertyGet [
 
 { #category : #'smoke tests ' }
 VB6StatementsTestCase >> testSmokePropertyLet [
-			self parse: self propertyLetCase
-		
+	self parse: self propertyLetCase
 ]
 
 { #category : #'smoke tests ' }
@@ -965,8 +964,7 @@ VB6StatementsTestCase >> testSmokeRedim [
 
 { #category : #'smoke tests ' }
 VB6StatementsTestCase >> testSmokeResume [
-			self parse: self resumeCase
-		
+	self parse: self resumeCase
 ]
 
 { #category : #'smoke tests ' }

@@ -8,8 +8,7 @@ Class {
 		'eolTokens',
 		'cases',
 		'endToken',
-		'endLineNumber',
-		'otherwise'
+		'endLineNumber'
 	],
 	#category : #'SmaCC_VB6Parser'
 }
@@ -105,26 +104,12 @@ VBSelectNode >> initialize [
 
 { #category : #generated }
 VBSelectNode >> nodeVariables [
-	^ #(#endLineNumber #otherwise)
+	^ #(#endLineNumber)
 ]
 
 { #category : #generated }
 VBSelectNode >> otherVariables [
 	^ #(#expression)
-]
-
-{ #category : #generated }
-VBSelectNode >> otherwise [
-	^ otherwise
-]
-
-{ #category : #generated }
-VBSelectNode >> otherwise: aVBCaseNode [
-	self otherwise notNil
-		ifTrue: [ self otherwise parent: nil ].
-	otherwise := aVBCaseNode.
-	self otherwise notNil
-		ifTrue: [ self otherwise parent: self ]
 ]
 
 { #category : #generated }
