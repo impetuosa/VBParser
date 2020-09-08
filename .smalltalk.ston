@@ -1,0 +1,15 @@
+SmalltalkCISpec {
+  #loading : [
+    SCIMetacelloLoadSpec {
+      #baseline : 'VBParser',
+      #directory : '',
+      #platforms : [ #pharo ],
+      #onConflict: #useLoaded
+    }
+  ],
+  #testing : {
+   #include : {
+      #packages : ['SmaCC_VB6Parser-Tests.*']
+    }
+  }
+}
