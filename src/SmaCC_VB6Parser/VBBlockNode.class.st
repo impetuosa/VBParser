@@ -31,8 +31,8 @@ VBBlockNode >> eolTokens: anOrderedCollection [
 { #category : #'generated-initialize-release' }
 VBBlockNode >> initialize [
 	super initialize.
-	statements := OrderedCollection new: 2.
 	eolTokens := OrderedCollection new: 2.
+	statements := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
