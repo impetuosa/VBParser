@@ -14,5 +14,5 @@ BaselineOfVBParser >> baseline: spec [
 				with: [ spec
 						repository: 'github://j-brant/SmaCC';
 						loads: 'All' ].
-			spec package: 'SmaCC_VB6Parser' with: [ spec requires: 'SmaCC' ] ]
+			spec package: 'VBParser' with: [ spec requires: 'SmaCC' ] ]
 ]
