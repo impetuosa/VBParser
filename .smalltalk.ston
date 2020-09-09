@@ -9,7 +9,7 @@ SmalltalkCISpec {
   ],
   #testing : {
    #include : {
-      #packages : ['SmaCC_VB6Parser-Tests.*']
+      #packages : ['VBParser.*']
     }
   }
 }
