@@ -6,7 +6,7 @@ Class {
 		'equalToken',
 		'value'
 	],
-	#category : #VBParser
+	#category : #'VBParser-Nodes'
 }
 
 { #category : #generated }
@@ -31,7 +31,9 @@ VBEnumEntryNode >> name [
 
 { #category : #generated }
 VBEnumEntryNode >> name: anObject [
-	name := anObject
+	self setParent: self name to: nil.
+	name := anObject.
+	self setParent: self name to: self
 ]
 
 { #category : #generated }
@@ -51,5 +53,7 @@ VBEnumEntryNode >> value [
 
 { #category : #generated }
 VBEnumEntryNode >> value: anObject [
-	value := anObject
+	self setParent: self value to: nil.
+	value := anObject.
+	self setParent: self value to: self
 ]

@@ -5,17 +5,17 @@ Class {
 		'propertyTokens',
 		'getToken',
 		'selector',
-		'parameters',
 		'eolTokens',
 		'block',
 		'endToken',
 		'type',
+		'parameters',
 		'modifier',
 		'visibility',
 		'setToken',
 		'letToken'
 	],
-	#category : #VBParser
+	#category : #'VBParser-Nodes'
 }
 
 { #category : #generated }
@@ -140,7 +140,9 @@ VBModulePropertyGetNode >> selector [
 
 { #category : #generated }
 VBModulePropertyGetNode >> selector: anObject [
-	selector := anObject
+	self setParent: self selector to: nil.
+	selector := anObject.
+	self setParent: self selector to: self
 ]
 
 { #category : #generated }

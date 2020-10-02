@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'name'
 	],
-	#category : #VBParser
+	#category : #'VBParser-Nodes'
 }
 
 { #category : #generated }
@@ -19,7 +19,9 @@ VBComplexTypeNode >> name [
 
 { #category : #generated }
 VBComplexTypeNode >> name: anObject [
-	name := anObject
+	self setParent: self name to: nil.
+	name := anObject.
+	self setParent: self name to: self
 ]
 
 { #category : #generated }

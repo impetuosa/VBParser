@@ -9,7 +9,7 @@ Class {
 		'endToken',
 		'visibility'
 	],
-	#category : #VBParser
+	#category : #'VBParser-Nodes'
 }
 
 { #category : #generated }
@@ -74,7 +74,9 @@ VBDefineTypeNode >> name [
 
 { #category : #generated }
 VBDefineTypeNode >> name: anObject [
-	name := anObject
+	self setParent: self name to: nil.
+	name := anObject.
+	self setParent: self name to: self
 ]
 
 { #category : #generated }

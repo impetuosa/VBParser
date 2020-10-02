@@ -6,7 +6,7 @@ Class {
 		'bangToken',
 		'member'
 	],
-	#category : #VBParser
+	#category : #'VBParser-Nodes'
 }
 
 { #category : #generated }
@@ -31,7 +31,9 @@ VBDictionaryAccessNode >> member [
 
 { #category : #generated }
 VBDictionaryAccessNode >> member: anObject [
-	member := anObject
+	self setParent: self member to: nil.
+	member := anObject.
+	self setParent: self member to: self
 ]
 
 { #category : #generated }
@@ -46,7 +48,9 @@ VBDictionaryAccessNode >> receiver [
 
 { #category : #generated }
 VBDictionaryAccessNode >> receiver: anObject [
-	receiver := anObject
+	self setParent: self receiver to: nil.
+	receiver := anObject.
+	self setParent: self receiver to: self
 ]
 
 { #category : #generated }

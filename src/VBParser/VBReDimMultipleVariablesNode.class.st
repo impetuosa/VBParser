@@ -6,7 +6,7 @@ Class {
 		'variables',
 		'preserveToken'
 	],
-	#category : #VBParser
+	#category : #'VBParser-Nodes'
 }
 
 { #category : #generated }

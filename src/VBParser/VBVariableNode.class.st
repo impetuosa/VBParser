@@ -6,7 +6,7 @@ Class {
 		'type',
 		'withEventsToken'
 	],
-	#category : #VBParser
+	#category : #'VBParser-Nodes'
 }
 
 { #category : #generated }
@@ -21,7 +21,9 @@ VBVariableNode >> name [
 
 { #category : #generated }
 VBVariableNode >> name: anObject [
-	name := anObject
+	self setParent: self name to: nil.
+	name := anObject.
+	self setParent: self name to: self
 ]
 
 { #category : #generated }

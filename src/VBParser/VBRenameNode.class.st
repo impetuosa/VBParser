@@ -7,7 +7,7 @@ Class {
 		'aSToken',
 		'newName'
 	],
-	#category : #VBParser
+	#category : #'VBParser-Nodes'
 }
 
 { #category : #generated }
@@ -42,7 +42,9 @@ VBRenameNode >> newName [
 
 { #category : #generated }
 VBRenameNode >> newName: anObject [
-	newName := anObject
+	self setParent: self newName to: nil.
+	newName := anObject.
+	self setParent: self newName to: self
 ]
 
 { #category : #generated }
@@ -52,7 +54,9 @@ VBRenameNode >> oldName [
 
 { #category : #generated }
 VBRenameNode >> oldName: anObject [
-	oldName := anObject
+	self setParent: self oldName to: nil.
+	oldName := anObject.
+	self setParent: self oldName to: self
 ]
 
 { #category : #generated }

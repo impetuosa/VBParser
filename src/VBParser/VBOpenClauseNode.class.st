@@ -12,7 +12,7 @@ Class {
 		'lock',
 		'access'
 	],
-	#category : #VBParser
+	#category : #'VBParser-Nodes'
 }
 
 { #category : #generated }
@@ -57,7 +57,9 @@ VBOpenClauseNode >> fileDescriptor [
 
 { #category : #generated }
 VBOpenClauseNode >> fileDescriptor: anObject [
-	fileDescriptor := anObject
+	self setParent: self fileDescriptor to: nil.
+	fileDescriptor := anObject.
+	self setParent: self fileDescriptor to: self
 ]
 
 { #category : #generated }
@@ -67,7 +69,9 @@ VBOpenClauseNode >> filepath [
 
 { #category : #generated }
 VBOpenClauseNode >> filepath: anObject [
-	filepath := anObject
+	self setParent: self filepath to: nil.
+	filepath := anObject.
+	self setParent: self filepath to: self
 ]
 
 { #category : #generated }

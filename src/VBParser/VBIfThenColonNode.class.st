@@ -9,7 +9,7 @@ Class {
 		'elseToken',
 		'ifFalse'
 	],
-	#category : #VBParser
+	#category : #'VBParser-Nodes'
 }
 
 { #category : #generated }
@@ -24,7 +24,9 @@ VBIfThenColonNode >> condition [
 
 { #category : #generated }
 VBIfThenColonNode >> condition: anObject [
-	condition := anObject
+	self setParent: self condition to: nil.
+	condition := anObject.
+	self setParent: self condition to: self
 ]
 
 { #category : #generated }
@@ -44,7 +46,9 @@ VBIfThenColonNode >> ifFalse [
 
 { #category : #generated }
 VBIfThenColonNode >> ifFalse: anObject [
-	ifFalse := anObject
+	self setParent: self ifFalse to: nil.
+	ifFalse := anObject.
+	self setParent: self ifFalse to: self
 ]
 
 { #category : #generated }
@@ -64,7 +68,9 @@ VBIfThenColonNode >> ifTrue [
 
 { #category : #generated }
 VBIfThenColonNode >> ifTrue: anObject [
-	ifTrue := anObject
+	self setParent: self ifTrue to: nil.
+	ifTrue := anObject.
+	self setParent: self ifTrue to: self
 ]
 
 { #category : #generated }

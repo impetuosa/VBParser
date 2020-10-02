@@ -10,7 +10,7 @@ Class {
 		'strategy',
 		'optionalToken'
 	],
-	#category : #VBParser
+	#category : #'VBParser-Nodes'
 }
 
 { #category : #generated }
@@ -25,7 +25,9 @@ VBParameterNode >> default [
 
 { #category : #generated }
 VBParameterNode >> default: anObject [
-	default := anObject
+	self setParent: self default to: nil.
+	default := anObject.
+	self setParent: self default to: self
 ]
 
 { #category : #generated }
@@ -45,7 +47,9 @@ VBParameterNode >> name [
 
 { #category : #generated }
 VBParameterNode >> name: anObject [
-	name := anObject
+	self setParent: self name to: nil.
+	name := anObject.
+	self setParent: self name to: self
 ]
 
 { #category : #generated }
@@ -85,7 +89,9 @@ VBParameterNode >> strategy [
 
 { #category : #generated }
 VBParameterNode >> strategy: anObject [
-	strategy := anObject
+	self setParent: self strategy to: nil.
+	strategy := anObject.
+	self setParent: self strategy to: self
 ]
 
 { #category : #generated }

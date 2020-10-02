@@ -5,7 +5,7 @@ Class {
 		'values',
 		'commaTokens'
 	],
-	#category : #VBParser
+	#category : #'VBParser-Nodes'
 }
 
 { #category : #generated }
@@ -47,5 +47,7 @@ VBValueStatementListNode >> values [
 
 { #category : #generated }
 VBValueStatementListNode >> values: anOrderedCollection [
-	values := anOrderedCollection
+	self setParent: self values to: nil.
+	values := anOrderedCollection.
+	self setParent: self values to: self
 ]

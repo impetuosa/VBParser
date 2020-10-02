@@ -5,7 +5,7 @@ Class {
 		'labels',
 		'commaTokens'
 	],
-	#category : #VBParser
+	#category : #'VBParser-Nodes'
 }
 
 { #category : #generated }
@@ -42,7 +42,9 @@ VBDestinationListNode >> labels [
 
 { #category : #generated }
 VBDestinationListNode >> labels: anOrderedCollection [
-	labels := anOrderedCollection
+	self setParent: self labels to: nil.
+	labels := anOrderedCollection.
+	self setParent: self labels to: self
 ]
 
 { #category : #generated }

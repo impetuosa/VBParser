@@ -6,7 +6,7 @@ Class {
 		'variable',
 		'preserveToken'
 	],
-	#category : #VBParser
+	#category : #'VBParser-Nodes'
 }
 
 { #category : #generated }
@@ -51,5 +51,7 @@ VBReDimVariableNode >> variable [
 
 { #category : #generated }
 VBReDimVariableNode >> variable: anObject [
-	variable := anObject
+	self setParent: self variable to: nil.
+	variable := anObject.
+	self setParent: self variable to: self
 ]

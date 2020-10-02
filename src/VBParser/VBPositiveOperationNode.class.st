@@ -5,7 +5,7 @@ Class {
 		'plusToken',
 		'value'
 	],
-	#category : #VBParser
+	#category : #'VBParser-Nodes'
 }
 
 { #category : #generated }
@@ -40,5 +40,7 @@ VBPositiveOperationNode >> value [
 
 { #category : #generated }
 VBPositiveOperationNode >> value: anObject [
-	value := anObject
+	self setParent: self value to: nil.
+	value := anObject.
+	self setParent: self value to: self
 ]

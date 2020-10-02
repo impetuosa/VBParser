@@ -14,7 +14,7 @@ Class {
 		'endLineNumber',
 		'body'
 	],
-	#category : #VBParser
+	#category : #'VBParser-Nodes'
 }
 
 { #category : #generated }
@@ -48,7 +48,9 @@ VBForNextNode >> counter [
 
 { #category : #generated }
 VBForNextNode >> counter: anObject [
-	counter := anObject
+	self setParent: self counter to: nil.
+	counter := anObject.
+	self setParent: self counter to: self
 ]
 
 { #category : #generated }
@@ -58,7 +60,9 @@ VBForNextNode >> element [
 
 { #category : #generated }
 VBForNextNode >> element: anObject [
-	element := anObject
+	self setParent: self element to: nil.
+	element := anObject.
+	self setParent: self element to: self
 ]
 
 { #category : #generated }
@@ -112,7 +116,9 @@ VBForNextNode >> initialValue [
 
 { #category : #generated }
 VBForNextNode >> initialValue: anObject [
-	initialValue := anObject
+	self setParent: self initialValue to: nil.
+	initialValue := anObject.
+	self setParent: self initialValue to: self
 ]
 
 { #category : #'generated-initialize-release' }
@@ -128,7 +134,9 @@ VBForNextNode >> limit [
 
 { #category : #generated }
 VBForNextNode >> limit: anObject [
-	limit := anObject
+	self setParent: self limit to: nil.
+	limit := anObject.
+	self setParent: self limit to: self
 ]
 
 { #category : #generated }

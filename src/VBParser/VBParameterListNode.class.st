@@ -7,7 +7,7 @@ Class {
 		'parameters',
 		'commaTokens'
 	],
-	#category : #VBParser
+	#category : #'VBParser-Nodes'
 }
 
 { #category : #generated }

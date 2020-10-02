@@ -5,7 +5,7 @@ Class {
 		'bangToken',
 		'accessor'
 	],
-	#category : #VBParser
+	#category : #'VBParser-Nodes'
 }
 
 { #category : #generated }
@@ -20,7 +20,9 @@ VBHeadlessDictionaryAccessNode >> accessor [
 
 { #category : #generated }
 VBHeadlessDictionaryAccessNode >> accessor: anObject [
-	accessor := anObject
+	self setParent: self accessor to: nil.
+	accessor := anObject.
+	self setParent: self accessor to: self
 ]
 
 { #category : #generated }

@@ -5,7 +5,7 @@ Class {
 		'periodToken',
 		'token'
 	],
-	#category : #VBParser
+	#category : #'VBParser-Nodes'
 }
 
 { #category : #generated }
@@ -35,7 +35,9 @@ VBHeadlessIdentifierNode >> token [
 
 { #category : #generated }
 VBHeadlessIdentifierNode >> token: anObject [
-	token := anObject
+	self setParent: self token to: nil.
+	token := anObject.
+	self setParent: self token to: self
 ]
 
 { #category : #generated }

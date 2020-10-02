@@ -7,7 +7,7 @@ Class {
 		'timesToken',
 		'_size'
 	],
-	#category : #VBParser
+	#category : #'VBParser-Nodes'
 }
 
 { #category : #generated }
@@ -36,7 +36,9 @@ VBTypeEntryNode >> name [
 
 { #category : #generated }
 VBTypeEntryNode >> name: anObject [
-	name := anObject
+	self setParent: self name to: nil.
+	name := anObject.
+	self setParent: self name to: self
 ]
 
 { #category : #generated }

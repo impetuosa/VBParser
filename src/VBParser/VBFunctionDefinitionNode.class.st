@@ -12,7 +12,7 @@ Class {
 		'modifier',
 		'visibility'
 	],
-	#category : #VBParser
+	#category : #'VBParser-Nodes'
 }
 
 { #category : #generated }
@@ -117,7 +117,9 @@ VBFunctionDefinitionNode >> selector [
 
 { #category : #generated }
 VBFunctionDefinitionNode >> selector: anObject [
-	selector := anObject
+	self setParent: self selector to: nil.
+	selector := anObject.
+	self setParent: self selector to: self
 ]
 
 { #category : #generated }

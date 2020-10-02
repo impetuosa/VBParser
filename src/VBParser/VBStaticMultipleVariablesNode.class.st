@@ -5,7 +5,7 @@ Class {
 		'staticToken',
 		'variables'
 	],
-	#category : #VBParser
+	#category : #'VBParser-Nodes'
 }
 
 { #category : #generated }

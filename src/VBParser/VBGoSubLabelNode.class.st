@@ -8,7 +8,7 @@ Class {
 		'endLineNumber',
 		'block'
 	],
-	#category : #VBParser
+	#category : #'VBParser-Nodes'
 }
 
 { #category : #generated }

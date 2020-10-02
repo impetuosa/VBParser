@@ -5,7 +5,7 @@ Class {
 		'resumeToken',
 		'nextToken'
 	],
-	#category : #VBParser
+	#category : #'VBParser-Nodes'
 }
 
 { #category : #generated }

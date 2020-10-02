@@ -7,7 +7,7 @@ Class {
 		'bINARYToken',
 		'compare'
 	],
-	#category : #VBParser
+	#category : #'VBParser-Nodes'
 }
 
 { #category : #generated }

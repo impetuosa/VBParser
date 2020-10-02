@@ -1,7 +1,7 @@
 Class {
 	#name : #VBExamples,
 	#superclass : #Object,
-	#category : #VBParser
+	#category : #'VBParser-Examples'
 }
 
 { #category : #examples }

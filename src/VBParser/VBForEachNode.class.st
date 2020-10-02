@@ -12,7 +12,7 @@ Class {
 		'endLineNumber',
 		'body'
 	],
-	#category : #VBParser
+	#category : #'VBParser-Nodes'
 }
 
 { #category : #generated }
@@ -56,7 +56,9 @@ VBForEachNode >> elements [
 
 { #category : #generated }
 VBForEachNode >> elements: anOrderedCollection [
-	elements := anOrderedCollection
+	self setParent: self elements to: nil.
+	elements := anOrderedCollection.
+	self setParent: self elements to: self
 ]
 
 { #category : #generated }
@@ -100,7 +102,9 @@ VBForEachNode >> group [
 
 { #category : #generated }
 VBForEachNode >> group: anObject [
-	group := anObject
+	self setParent: self group to: nil.
+	group := anObject.
+	self setParent: self group to: self
 ]
 
 { #category : #generated }

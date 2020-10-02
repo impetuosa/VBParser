@@ -5,7 +5,7 @@ Class {
 		'implementsToken',
 		'interface'
 	],
-	#category : #VBParser
+	#category : #'VBParser-Nodes'
 }
 
 { #category : #generated }
@@ -30,7 +30,9 @@ VBImplementsNode >> interface [
 
 { #category : #generated }
 VBImplementsNode >> interface: anObject [
-	interface := anObject
+	self setParent: self interface to: nil.
+	interface := anObject.
+	self setParent: self interface to: self
 ]
 
 { #category : #generated }

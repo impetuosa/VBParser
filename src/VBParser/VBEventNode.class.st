@@ -7,7 +7,7 @@ Class {
 		'parameters',
 		'visibility'
 	],
-	#category : #VBParser
+	#category : #'VBParser-Nodes'
 }
 
 { #category : #generated }
@@ -56,7 +56,9 @@ VBEventNode >> selector [
 
 { #category : #generated }
 VBEventNode >> selector: anObject [
-	selector := anObject
+	self setParent: self selector to: nil.
+	selector := anObject.
+	self setParent: self selector to: self
 ]
 
 { #category : #generated }

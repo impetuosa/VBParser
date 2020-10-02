@@ -16,7 +16,7 @@ Class {
 		'xorToken',
 		'eqvToken'
 	],
-	#category : #VBParser
+	#category : #'VBParser-Nodes'
 }
 
 { #category : #generated }
@@ -71,7 +71,9 @@ VBArithmeticOperationNode >> left [
 
 { #category : #generated }
 VBArithmeticOperationNode >> left: anObject [
-	left := anObject
+	self setParent: self left to: nil.
+	left := anObject.
+	self setParent: self left to: self
 ]
 
 { #category : #generated }
@@ -126,7 +128,9 @@ VBArithmeticOperationNode >> right [
 
 { #category : #generated }
 VBArithmeticOperationNode >> right: anObject [
-	right := anObject
+	self setParent: self right to: nil.
+	right := anObject.
+	self setParent: self right to: self
 ]
 
 { #category : #generated }

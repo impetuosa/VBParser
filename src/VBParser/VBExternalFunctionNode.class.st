@@ -13,7 +13,7 @@ Class {
 		'alias',
 		'visibility'
 	],
-	#category : #VBParser
+	#category : #'VBParser-Nodes'
 }
 
 { #category : #generated }
@@ -120,7 +120,9 @@ VBExternalFunctionNode >> selector [
 
 { #category : #generated }
 VBExternalFunctionNode >> selector: anObject [
-	selector := anObject
+	self setParent: self selector to: nil.
+	selector := anObject.
+	self setParent: self selector to: self
 ]
 
 { #category : #generated }

@@ -9,7 +9,7 @@ Class {
 		'endLineNumber',
 		'block'
 	],
-	#category : #VBParser
+	#category : #'VBParser-Nodes'
 }
 
 { #category : #generated }
@@ -99,7 +99,9 @@ VBWithNode >> with [
 
 { #category : #generated }
 VBWithNode >> with: anObject [
-	with := anObject
+	self setParent: self with to: nil.
+	with := anObject.
+	self setParent: self with to: self
 ]
 
 { #category : #generated }

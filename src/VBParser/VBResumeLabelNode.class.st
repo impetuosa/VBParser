@@ -5,7 +5,7 @@ Class {
 		'resumeToken',
 		'label'
 	],
-	#category : #VBParser
+	#category : #'VBParser-Nodes'
 }
 
 { #category : #generated }
@@ -20,7 +20,9 @@ VBResumeLabelNode >> label [
 
 { #category : #generated }
 VBResumeLabelNode >> label: anObject [
-	label := anObject
+	self setParent: self label to: nil.
+	label := anObject.
+	self setParent: self label to: self
 ]
 
 { #category : #generated }

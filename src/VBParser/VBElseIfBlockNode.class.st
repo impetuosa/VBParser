@@ -8,7 +8,7 @@ Class {
 		'eolTokens',
 		'ifMatch'
 	],
-	#category : #VBParser
+	#category : #'VBParser-Nodes'
 }
 
 { #category : #generated }
@@ -28,7 +28,9 @@ VBElseIfBlockNode >> condition [
 
 { #category : #generated }
 VBElseIfBlockNode >> condition: anObject [
-	condition := anObject
+	self setParent: self condition to: nil.
+	condition := anObject.
+	self setParent: self condition to: self
 ]
 
 { #category : #generated }

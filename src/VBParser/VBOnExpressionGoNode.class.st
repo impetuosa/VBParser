@@ -6,7 +6,7 @@ Class {
 		'integerExpression',
 		'to'
 	],
-	#category : #VBParser
+	#category : #'VBParser-Nodes'
 }
 
 { #category : #generated }
@@ -21,7 +21,9 @@ VBOnExpressionGoNode >> integerExpression [
 
 { #category : #generated }
 VBOnExpressionGoNode >> integerExpression: anObject [
-	integerExpression := anObject
+	self setParent: self integerExpression to: nil.
+	integerExpression := anObject.
+	self setParent: self integerExpression to: self
 ]
 
 { #category : #generated }

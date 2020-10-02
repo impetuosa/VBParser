@@ -16,7 +16,7 @@ Class {
 		'endLineNumber',
 		'body'
 	],
-	#category : #VBParser
+	#category : #'VBParser-Nodes'
 }
 
 { #category : #generated }
@@ -50,7 +50,9 @@ VBForStepNextNode >> counter [
 
 { #category : #generated }
 VBForStepNextNode >> counter: anObject [
-	counter := anObject
+	self setParent: self counter to: nil.
+	counter := anObject.
+	self setParent: self counter to: self
 ]
 
 { #category : #generated }
@@ -60,7 +62,9 @@ VBForStepNextNode >> element [
 
 { #category : #generated }
 VBForStepNextNode >> element: anObject [
-	element := anObject
+	self setParent: self element to: nil.
+	element := anObject.
+	self setParent: self element to: self
 ]
 
 { #category : #generated }
@@ -114,7 +118,9 @@ VBForStepNextNode >> initialValue [
 
 { #category : #generated }
 VBForStepNextNode >> initialValue: anObject [
-	initialValue := anObject
+	self setParent: self initialValue to: nil.
+	initialValue := anObject.
+	self setParent: self initialValue to: self
 ]
 
 { #category : #'generated-initialize-release' }
@@ -130,7 +136,9 @@ VBForStepNextNode >> limit [
 
 { #category : #generated }
 VBForStepNextNode >> limit: anObject [
-	limit := anObject
+	self setParent: self limit to: nil.
+	limit := anObject.
+	self setParent: self limit to: self
 ]
 
 { #category : #generated }
@@ -160,7 +168,9 @@ VBForStepNextNode >> step [
 
 { #category : #generated }
 VBForStepNextNode >> step: anObject [
-	step := anObject
+	self setParent: self step to: nil.
+	step := anObject.
+	self setParent: self step to: self
 ]
 
 { #category : #generated }

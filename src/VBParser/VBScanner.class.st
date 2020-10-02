@@ -1,7 +1,7 @@
 Class {
 	#name : #VBScanner,
 	#superclass : #SmaCCScanner,
-	#category : #VBParser
+	#category : #'VBParser-Scanner'
 }
 
 { #category : #'generated-initialization' }

@@ -5,7 +5,7 @@ Class {
 		'nEWToken',
 		'typeName'
 	],
-	#category : #VBParser
+	#category : #'VBParser-Nodes'
 }
 
 { #category : #generated }
@@ -40,5 +40,7 @@ VBNewClauseNode >> typeName [
 
 { #category : #generated }
 VBNewClauseNode >> typeName: anObject [
-	typeName := anObject
+	self setParent: self typeName to: nil.
+	typeName := anObject.
+	self setParent: self typeName to: self
 ]

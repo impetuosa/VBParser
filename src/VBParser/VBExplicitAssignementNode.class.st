@@ -7,7 +7,7 @@ Class {
 		'operator',
 		'right'
 	],
-	#category : #VBParser
+	#category : #'VBParser-Nodes'
 }
 
 { #category : #generated }
@@ -32,7 +32,9 @@ VBExplicitAssignementNode >> left [
 
 { #category : #generated }
 VBExplicitAssignementNode >> left: anObject [
-	left := anObject
+	self setParent: self left to: nil.
+	left := anObject.
+	self setParent: self left to: self
 ]
 
 { #category : #generated }
@@ -57,7 +59,9 @@ VBExplicitAssignementNode >> right [
 
 { #category : #generated }
 VBExplicitAssignementNode >> right: anObject [
-	right := anObject
+	self setParent: self right to: nil.
+	right := anObject.
+	self setParent: self right to: self
 ]
 
 { #category : #generated }

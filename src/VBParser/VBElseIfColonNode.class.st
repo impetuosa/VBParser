@@ -8,7 +8,7 @@ Class {
 		'colonTokens',
 		'ifMatches'
 	],
-	#category : #VBParser
+	#category : #'VBParser-Nodes'
 }
 
 { #category : #generated }
@@ -38,7 +38,9 @@ VBElseIfColonNode >> condition [
 
 { #category : #generated }
 VBElseIfColonNode >> condition: anObject [
-	condition := anObject
+	self setParent: self condition to: nil.
+	condition := anObject.
+	self setParent: self condition to: self
 ]
 
 { #category : #generated }
@@ -58,7 +60,9 @@ VBElseIfColonNode >> ifMatches [
 
 { #category : #generated }
 VBElseIfColonNode >> ifMatches: anOrderedCollection [
-	ifMatches := anOrderedCollection
+	self setParent: self ifMatches to: nil.
+	ifMatches := anOrderedCollection.
+	self setParent: self ifMatches to: self
 ]
 
 { #category : #'generated-initialize-release' }

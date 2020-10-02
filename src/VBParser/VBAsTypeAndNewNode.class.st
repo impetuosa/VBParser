@@ -9,7 +9,7 @@ Class {
 		'fixedSize',
 		'sizes'
 	],
-	#category : #VBParser
+	#category : #'VBParser-Nodes'
 }
 
 { #category : #generated }
@@ -39,7 +39,9 @@ VBAsTypeAndNewNode >> fixedSize [
 
 { #category : #generated }
 VBAsTypeAndNewNode >> fixedSize: anObject [
-	fixedSize := anObject
+	self setParent: self fixedSize to: nil.
+	fixedSize := anObject.
+	self setParent: self fixedSize to: self
 ]
 
 { #category : #'generated-initialize-release' }
@@ -97,5 +99,7 @@ VBAsTypeAndNewNode >> type [
 
 { #category : #generated }
 VBAsTypeAndNewNode >> type: anObject [
-	type := anObject
+	self setParent: self type to: nil.
+	type := anObject.
+	self setParent: self type to: self
 ]

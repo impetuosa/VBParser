@@ -7,7 +7,7 @@ Class {
 		'value',
 		'type'
 	],
-	#category : #VBParser
+	#category : #'VBParser-Nodes'
 }
 
 { #category : #generated }
@@ -22,7 +22,9 @@ VBConstantNode >> constant [
 
 { #category : #generated }
 VBConstantNode >> constant: anObject [
-	constant := anObject
+	self setParent: self constant to: nil.
+	constant := anObject.
+	self setParent: self constant to: self
 ]
 
 { #category : #generated }
@@ -71,5 +73,7 @@ VBConstantNode >> value [
 
 { #category : #generated }
 VBConstantNode >> value: anObject [
-	value := anObject
+	self setParent: self value to: nil.
+	value := anObject.
+	self setParent: self value to: self
 ]

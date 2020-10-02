@@ -6,7 +6,7 @@ Class {
 		'colonToken',
 		'whitespaceToken'
 	],
-	#category : #VBParser
+	#category : #'VBParser-Nodes'
 }
 
 { #category : #generated }

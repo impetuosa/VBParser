@@ -13,7 +13,7 @@ Class {
 		'otherwise',
 		'ifTrue'
 	],
-	#category : #VBParser
+	#category : #'VBParser-Nodes'
 }
 
 { #category : #generated }
@@ -50,7 +50,9 @@ VBIfThenElseIfElseNode >> condition [
 
 { #category : #generated }
 VBIfThenElseIfElseNode >> condition: anObject [
-	condition := anObject
+	self setParent: self condition to: nil.
+	condition := anObject.
+	self setParent: self condition to: self
 ]
 
 { #category : #generated }

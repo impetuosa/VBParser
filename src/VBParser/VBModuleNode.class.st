@@ -2,11 +2,11 @@ Class {
 	#name : #VBModuleNode,
 	#superclass : #VBProgramNode,
 	#instVars : [
-		'elements',
 		'eolTokens',
+		'elements',
 		'header'
 	],
-	#category : #VBParser
+	#category : #'VBParser-Nodes'
 }
 
 { #category : #generated }

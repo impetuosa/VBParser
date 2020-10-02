@@ -6,7 +6,7 @@ Class {
 		'toToken',
 		'to'
 	],
-	#category : #VBParser
+	#category : #'VBParser-Nodes'
 }
 
 { #category : #generated }
@@ -21,7 +21,9 @@ VBIntervalExpressionNode >> from [
 
 { #category : #generated }
 VBIntervalExpressionNode >> from: anObject [
-	from := anObject
+	self setParent: self from to: nil.
+	from := anObject.
+	self setParent: self from to: self
 ]
 
 { #category : #generated }
@@ -36,7 +38,9 @@ VBIntervalExpressionNode >> to [
 
 { #category : #generated }
 VBIntervalExpressionNode >> to: anObject [
-	to := anObject
+	self setParent: self to to: nil.
+	to := anObject.
+	self setParent: self to to: self
 ]
 
 { #category : #generated }

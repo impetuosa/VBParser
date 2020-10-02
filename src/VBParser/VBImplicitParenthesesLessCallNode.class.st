@@ -5,7 +5,7 @@ Class {
 		'identifier',
 		'arguments'
 	],
-	#category : #VBParser
+	#category : #'VBParser-Nodes'
 }
 
 { #category : #generated }
@@ -34,7 +34,9 @@ VBImplicitParenthesesLessCallNode >> identifier [
 
 { #category : #generated }
 VBImplicitParenthesesLessCallNode >> identifier: anObject [
-	identifier := anObject
+	self setParent: self identifier to: nil.
+	identifier := anObject.
+	self setParent: self identifier to: self
 ]
 
 { #category : #generated }

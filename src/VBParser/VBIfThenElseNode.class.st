@@ -6,14 +6,14 @@ Class {
 		'condition',
 		'thenToken',
 		'eolTokens',
-		'elseToken',
 		'endToken',
 		'endLineNumber',
+		'ifTrue',
+		'elseToken',
 		'ifFalse',
-		'elseLineNumber',
-		'ifTrue'
+		'elseLineNumber'
 	],
-	#category : #VBParser
+	#category : #'VBParser-Nodes'
 }
 
 { #category : #generated }
@@ -33,7 +33,9 @@ VBIfThenElseNode >> condition [
 
 { #category : #generated }
 VBIfThenElseNode >> condition: anObject [
-	condition := anObject
+	self setParent: self condition to: nil.
+	condition := anObject.
+	self setParent: self condition to: self
 ]
 
 { #category : #generated }

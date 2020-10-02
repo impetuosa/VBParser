@@ -5,7 +5,7 @@ Class {
 		'addressOfToken',
 		'name'
 	],
-	#category : #VBParser
+	#category : #'VBParser-Nodes'
 }
 
 { #category : #generated }
@@ -30,7 +30,9 @@ VBAddressOfClauseNode >> name [
 
 { #category : #generated }
 VBAddressOfClauseNode >> name: anObject [
-	name := anObject
+	self setParent: self name to: nil.
+	name := anObject.
+	self setParent: self name to: self
 ]
 
 { #category : #generated }

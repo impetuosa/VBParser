@@ -2,11 +2,11 @@ Class {
 	#name : #VBArgumentListNode,
 	#superclass : #VBProgramNode,
 	#instVars : [
-		'arguments',
 		'commaTokens',
-		'semicolonTokens'
+		'semicolonTokens',
+		'arguments'
 	],
-	#category : #VBParser
+	#category : #'VBParser-Nodes'
 }
 
 { #category : #generated }

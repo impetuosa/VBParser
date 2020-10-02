@@ -10,7 +10,7 @@ Class {
 		'loopToken',
 		'endLineNumber'
 	],
-	#category : #VBParser
+	#category : #'VBParser-Nodes'
 }
 
 { #category : #generated }
@@ -44,7 +44,9 @@ VBUntilTrueNode >> condition [
 
 { #category : #generated }
 VBUntilTrueNode >> condition: anObject [
-	condition := anObject
+	self setParent: self condition to: nil.
+	condition := anObject.
+	self setParent: self condition to: self
 ]
 
 { #category : #generated }

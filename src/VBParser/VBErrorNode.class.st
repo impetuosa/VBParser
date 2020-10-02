@@ -5,7 +5,7 @@ Class {
 		'eRRORToken',
 		'errorCode'
 	],
-	#category : #VBParser
+	#category : #'VBParser-Nodes'
 }
 
 { #category : #generated }
@@ -30,7 +30,9 @@ VBErrorNode >> errorCode [
 
 { #category : #generated }
 VBErrorNode >> errorCode: anObject [
-	errorCode := anObject
+	self setParent: self errorCode to: nil.
+	errorCode := anObject.
+	self setParent: self errorCode to: self
 ]
 
 { #category : #generated }

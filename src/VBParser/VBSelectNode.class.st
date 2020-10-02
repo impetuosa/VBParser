@@ -10,7 +10,7 @@ Class {
 		'endToken',
 		'endLineNumber'
 	],
-	#category : #VBParser
+	#category : #'VBParser-Nodes'
 }
 
 { #category : #generated }
@@ -91,7 +91,9 @@ VBSelectNode >> expression [
 
 { #category : #generated }
 VBSelectNode >> expression: anObject [
-	expression := anObject
+	self setParent: self expression to: nil.
+	expression := anObject.
+	self setParent: self expression to: self
 ]
 
 { #category : #'generated-initialize-release' }

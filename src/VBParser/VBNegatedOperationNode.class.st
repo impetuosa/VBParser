@@ -5,7 +5,7 @@ Class {
 		'minusToken',
 		'value'
 	],
-	#category : #VBParser
+	#category : #'VBParser-Nodes'
 }
 
 { #category : #generated }
@@ -40,5 +40,7 @@ VBNegatedOperationNode >> value [
 
 { #category : #generated }
 VBNegatedOperationNode >> value: anObject [
-	value := anObject
+	self setParent: self value to: nil.
+	value := anObject.
+	self setParent: self value to: self
 ]

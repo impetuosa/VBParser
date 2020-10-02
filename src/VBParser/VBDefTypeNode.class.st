@@ -5,7 +5,7 @@ Class {
 		'deftype',
 		'pattern'
 	],
-	#category : #VBParser
+	#category : #'VBParser-Nodes'
 }
 
 { #category : #generated }

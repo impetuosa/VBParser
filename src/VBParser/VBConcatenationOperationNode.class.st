@@ -6,7 +6,7 @@ Class {
 		'andToken',
 		'right'
 	],
-	#category : #VBParser
+	#category : #'VBParser-Nodes'
 }
 
 { #category : #generated }
@@ -31,7 +31,9 @@ VBConcatenationOperationNode >> left [
 
 { #category : #generated }
 VBConcatenationOperationNode >> left: anObject [
-	left := anObject
+	self setParent: self left to: nil.
+	left := anObject.
+	self setParent: self left to: self
 ]
 
 { #category : #generated }
@@ -46,7 +48,9 @@ VBConcatenationOperationNode >> right [
 
 { #category : #generated }
 VBConcatenationOperationNode >> right: anObject [
-	right := anObject
+	self setParent: self right to: nil.
+	right := anObject.
+	self setParent: self right to: self
 ]
 
 { #category : #generated }

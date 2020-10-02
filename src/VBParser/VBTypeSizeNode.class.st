@@ -3,11 +3,11 @@ Class {
 	#superclass : #VBProgramNode,
 	#instVars : [
 		'leftParenToken',
-		'sizes',
 		'commaTokens',
+		'sizes',
 		'rightParenToken'
 	],
-	#category : #VBParser
+	#category : #'VBParser-Nodes'
 }
 
 { #category : #generated }
@@ -69,7 +69,9 @@ VBTypeSizeNode >> sizes [
 
 { #category : #generated }
 VBTypeSizeNode >> sizes: anOrderedCollection [
-	sizes := anOrderedCollection
+	self setParent: self sizes to: nil.
+	sizes := anOrderedCollection.
+	self setParent: self sizes to: self
 ]
 
 { #category : #generated }

@@ -6,7 +6,7 @@ Class {
 		'version',
 		'classToken'
 	],
-	#category : #VBParser
+	#category : #'VBParser-Nodes'
 }
 
 { #category : #generated }

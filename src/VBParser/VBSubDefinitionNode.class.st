@@ -4,14 +4,14 @@ Class {
 	#instVars : [
 		'subTokens',
 		'selector',
-		'parameters',
 		'eolTokens',
 		'block',
 		'endToken',
+		'parameters',
 		'modifier',
 		'visibility'
 	],
-	#category : #VBParser
+	#category : #'VBParser-Nodes'
 }
 
 { #category : #generated }
@@ -106,7 +106,9 @@ VBSubDefinitionNode >> selector [
 
 { #category : #generated }
 VBSubDefinitionNode >> selector: anObject [
-	selector := anObject
+	self setParent: self selector to: nil.
+	selector := anObject.
+	self setParent: self selector to: self
 ]
 
 { #category : #generated }

@@ -5,7 +5,7 @@ Class {
 		'attributeToken',
 		'setting'
 	],
-	#category : #VBParser
+	#category : #'VBParser-Nodes'
 }
 
 { #category : #generated }

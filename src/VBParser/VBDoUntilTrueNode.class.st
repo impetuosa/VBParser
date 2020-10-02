@@ -10,7 +10,7 @@ Class {
 		'condition',
 		'endLineNumber'
 	],
-	#category : #VBParser
+	#category : #'VBParser-Nodes'
 }
 
 { #category : #generated }
@@ -44,7 +44,9 @@ VBDoUntilTrueNode >> condition [
 
 { #category : #generated }
 VBDoUntilTrueNode >> condition: anObject [
-	condition := anObject
+	self setParent: self condition to: nil.
+	condition := anObject.
+	self setParent: self condition to: self
 ]
 
 { #category : #generated }

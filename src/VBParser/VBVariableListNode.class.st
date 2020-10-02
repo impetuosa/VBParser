@@ -5,7 +5,7 @@ Class {
 		'variables',
 		'commaTokens'
 	],
-	#category : #VBParser
+	#category : #'VBParser-Nodes'
 }
 
 { #category : #generated }

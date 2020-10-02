@@ -6,7 +6,7 @@ Class {
 		'baseToken',
 		'value'
 	],
-	#category : #VBParser
+	#category : #'VBParser-Nodes'
 }
 
 { #category : #generated }
@@ -51,5 +51,7 @@ VBOptionBaseNode >> value [
 
 { #category : #generated }
 VBOptionBaseNode >> value: anObject [
-	value := anObject
+	self setParent: self value to: nil.
+	value := anObject.
+	self setParent: self value to: self
 ]

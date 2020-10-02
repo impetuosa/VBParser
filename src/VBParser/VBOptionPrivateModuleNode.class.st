@@ -6,7 +6,7 @@ Class {
 		'privateToken',
 		'moduleToken'
 	],
-	#category : #VBParser
+	#category : #'VBParser-Nodes'
 }
 
 { #category : #generated }

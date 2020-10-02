@@ -6,7 +6,7 @@ Class {
 		'periodToken',
 		'member'
 	],
-	#category : #VBParser
+	#category : #'VBParser-Nodes'
 }
 
 { #category : #generated }
@@ -46,7 +46,9 @@ VBQualifiedIdentifierNode >> token [
 
 { #category : #generated }
 VBQualifiedIdentifierNode >> token: anObject [
-	token := anObject
+	self setParent: self token to: nil.
+	token := anObject.
+	self setParent: self token to: self
 ]
 
 { #category : #generated }

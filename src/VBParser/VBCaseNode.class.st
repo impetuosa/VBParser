@@ -8,7 +8,7 @@ Class {
 		'expression',
 		'elseToken'
 	],
-	#category : #VBParser
+	#category : #'VBParser-Nodes'
 }
 
 { #category : #generated }
@@ -72,7 +72,9 @@ VBCaseNode >> expression [
 
 { #category : #generated }
 VBCaseNode >> expression: anObject [
-	expression := anObject
+	self setParent: self expression to: nil.
+	expression := anObject.
+	self setParent: self expression to: self
 ]
 
 { #category : #'generated-initialize-release' }

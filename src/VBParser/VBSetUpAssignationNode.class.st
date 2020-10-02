@@ -6,7 +6,7 @@ Class {
 		'equalToken',
 		'value'
 	],
-	#category : #VBParser
+	#category : #'VBParser-Nodes'
 }
 
 { #category : #generated }
@@ -31,7 +31,9 @@ VBSetUpAssignationNode >> identifier [
 
 { #category : #generated }
 VBSetUpAssignationNode >> identifier: anObject [
-	identifier := anObject
+	self setParent: self identifier to: nil.
+	identifier := anObject.
+	self setParent: self identifier to: self
 ]
 
 { #category : #generated }
@@ -51,5 +53,7 @@ VBSetUpAssignationNode >> value [
 
 { #category : #generated }
 VBSetUpAssignationNode >> value: anObject [
-	value := anObject
+	self setParent: self value to: nil.
+	value := anObject.
+	self setParent: self value to: self
 ]

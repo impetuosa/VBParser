@@ -5,7 +5,7 @@ Class {
 		'dimToken',
 		'variables'
 	],
-	#category : #VBParser
+	#category : #'VBParser-Nodes'
 }
 
 { #category : #generated }

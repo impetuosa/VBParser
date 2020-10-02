@@ -6,7 +6,7 @@ Class {
 		'periodToken',
 		'member'
 	],
-	#category : #VBParser
+	#category : #'VBParser-Nodes'
 }
 
 { #category : #generated }
@@ -21,7 +21,9 @@ VBMemberAccessNode >> member [
 
 { #category : #generated }
 VBMemberAccessNode >> member: anObject [
-	member := anObject
+	self setParent: self member to: nil.
+	member := anObject.
+	self setParent: self member to: self
 ]
 
 { #category : #generated }
@@ -46,7 +48,9 @@ VBMemberAccessNode >> receiver [
 
 { #category : #generated }
 VBMemberAccessNode >> receiver: anObject [
-	receiver := anObject
+	self setParent: self receiver to: nil.
+	receiver := anObject.
+	self setParent: self receiver to: self
 ]
 
 { #category : #generated }

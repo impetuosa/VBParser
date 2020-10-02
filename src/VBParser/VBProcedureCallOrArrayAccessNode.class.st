@@ -7,7 +7,7 @@ Class {
 		'arguments',
 		'rightParenToken'
 	],
-	#category : #VBParser
+	#category : #'VBParser-Nodes'
 }
 
 { #category : #generated }
@@ -56,7 +56,9 @@ VBProcedureCallOrArrayAccessNode >> receiver [
 
 { #category : #generated }
 VBProcedureCallOrArrayAccessNode >> receiver: anObject [
-	receiver := anObject
+	self setParent: self receiver to: nil.
+	receiver := anObject.
+	self setParent: self receiver to: self
 ]
 
 { #category : #generated }

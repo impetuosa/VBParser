@@ -6,7 +6,7 @@ Class {
 		'paramarrayToken',
 		'strategy'
 	],
-	#category : #VBParser
+	#category : #'VBParser-Nodes'
 }
 
 { #category : #generated }
@@ -36,7 +36,9 @@ VBArgumentNode >> strategy [
 
 { #category : #generated }
 VBArgumentNode >> strategy: anObject [
-	strategy := anObject
+	self setParent: self strategy to: nil.
+	strategy := anObject.
+	self setParent: self strategy to: self
 ]
 
 { #category : #generated }
@@ -51,5 +53,7 @@ VBArgumentNode >> value [
 
 { #category : #generated }
 VBArgumentNode >> value: anObject [
-	value := anObject
+	self setParent: self value to: nil.
+	value := anObject.
+	self setParent: self value to: self
 ]

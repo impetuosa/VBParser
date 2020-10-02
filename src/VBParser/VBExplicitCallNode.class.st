@@ -5,7 +5,7 @@ Class {
 		'callToken',
 		'call'
 	],
-	#category : #VBParser
+	#category : #'VBParser-Nodes'
 }
 
 { #category : #generated }
@@ -20,7 +20,9 @@ VBExplicitCallNode >> call [
 
 { #category : #generated }
 VBExplicitCallNode >> call: anObject [
-	call := anObject
+	self setParent: self call to: nil.
+	call := anObject.
+	self setParent: self call to: self
 ]
 
 { #category : #generated }

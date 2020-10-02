@@ -6,7 +6,7 @@ Class {
 		'expression',
 		'rightParenToken'
 	],
-	#category : #VBParser
+	#category : #'VBParser-Nodes'
 }
 
 { #category : #generated }
@@ -21,7 +21,9 @@ VBParentheseesExpressionNode >> expression [
 
 { #category : #generated }
 VBParentheseesExpressionNode >> expression: anObject [
-	expression := anObject
+	self setParent: self expression to: nil.
+	expression := anObject.
+	self setParent: self expression to: self
 ]
 
 { #category : #generated }

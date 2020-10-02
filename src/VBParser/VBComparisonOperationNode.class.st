@@ -12,7 +12,7 @@ Class {
 		'likeToken',
 		'right'
 	],
-	#category : #VBParser
+	#category : #'VBParser-Nodes'
 }
 
 { #category : #generated }
@@ -57,7 +57,9 @@ VBComparisonOperationNode >> left [
 
 { #category : #generated }
 VBComparisonOperationNode >> left: anObject [
-	left := anObject
+	self setParent: self left to: nil.
+	left := anObject.
+	self setParent: self left to: self
 ]
 
 { #category : #generated }
@@ -112,7 +114,9 @@ VBComparisonOperationNode >> right [
 
 { #category : #generated }
 VBComparisonOperationNode >> right: anObject [
-	right := anObject
+	self setParent: self right to: nil.
+	right := anObject.
+	self setParent: self right to: self
 ]
 
 { #category : #generated }
