@@ -1,0 +1,273 @@
+Parser: VBParser
+
+VBIntegerLiteralNode
+["If the number is just in a block node, then it is a line number. We cannot really have line numbers in other languages  "
+(match parent isKindOf: VBBlockNode)]
+->
+[self delete: match. 
+self continue.]
+
+VBImplicitParenthesesLessCallNode
+->
+[self insert: '(' before: match arguments. 
+self insert: ')' after: match arguments. 
+self continue.]
+
+VBParameterNode
+->
+[self delete: match optionalToken. 
+self delete: match strategy. 
+self continue]
+
+VBNullNode
+->
+[self replace: match token with: 'null'.
+self continue]
+
+VBExplicitCallNode
+->
+[self delete: match callToken. 
+self continue]
+
+VBElseIfBlockNode
+->
+[self delete: match thenToken. 
+self delete: match elseifToken .
+self insert: 'else if (' before: match condition.
+self insert: ')' after: match condition .
+self continue]
+
+VBExplicitAssignementNode
+->
+[self delete: match kind. 
+
+(match parent parent isKindOf: VBFunctionDefinitionNode ) ifTrue: [ 
+	match parent parent selector token value = match left token value ifTrue: [ 
+		self insert:'__return' before: match left 
+	 ]
+ ].
+self continue]
+
+VBIfThenElseIfElseNode
+->
+[self insert: 'if (' before: match condition. 
+self insert: ')' after: match condition. 
+self deleteAll: match ifTokens.
+self replace: match elseToken with: 'else'.
+self delete: match thenToken .
+self delete: match endLineNumber .
+self delete: match endToken. 
+self continue]
+
+VBIfThenElseNode
+->
+[self insert: 'if (' before: match condition. 
+self insert: ')' after: match condition. 
+self deleteAll: match ifTokens.
+self replace: match elseToken with: 'else'.
+self delete: match thenToken.
+self delete: match elseLineNumber .
+self delete: match endLineNumber .
+self delete: match endToken. 
+self continue]
+
+VBIfThenColonNode
+->
+[self delete: match thenToken.
+self insert: '(' before: match condition. 
+self insert: ')' after: match condition. 
+self replace: match ifToken with: 'if'.
+self delete: match endToken. 
+self continue]
+
+VBConcatenationOperationNode
+->
+[
+self replace: match andToken with:'+'.
+self continue]
+
+VBBlockNode
+->
+[self insert:'{
+' before: match. 
+self insert:'
+}' after: match. 
+self deleteAll: match lineNumbers.
+self match statements do: [ :s | self insert:';' after:s  ].
+self continue]
+
+VBExitsNode
+->
+[	self delete: match.
+	match doToken ifNotNil: [ self insert: 'break;' after: match ].
+	match fORToken ifNotNil: [ self insert: 'break;' after: match ].
+	match propertyToken ifNotNil: [ self insert: 'return;' after: match ].
+	match functionToken
+		ifNotNil: [ | function |
+			function := match.
+			[ function isKindOf: VBFunctionDefinitionNode ]
+				whileFalse: [ function := function parent ].
+			self
+				insert: ('{1}	return  __return{2};{1}' format:{OSPlatform current lineEnding.  function selector token value} )
+				after: match ].
+	match subToken ifNotNil: [ self insert: 'return;' after: match ].
+	self continue]
+
+VBResumeEmptyNode
+->
+[self delete: match .
+self continue]
+
+VBResumeLabelNode
+->
+[self delete: match.
+self continue]
+
+VBNewClauseNode
+->
+[self replace: match nEWToken with: 'new'.
+self insert: '()' after: match typeName .
+self continue]
+
+VBGoSubNode
+->
+[self delete: match. 
+self continue]
+
+VBGoSubLabelNode
+->
+[self delete: match .
+self continue]
+
+VBLabelNode
+->
+[match managesError ifTrue: [ 
+	self delete: match. 
+	self insert:'} catch(Err) {' after: match. 
+	self insert:'}' after: match statementsAttribute last  .
+ ] ifFalse:[
+	self delete: match. 
+] .
+self continue]
+
+VBOnErrorGoToNode
+->
+[self delete: match .
+self insert: 'try{' before: match.
+self continue. 
+
+]
+
+VBModuleNode
+->
+[
+match comments do: [ : c| 	
+	self replaceFrom: c first  to: c first  with: '//' .
+].
+
+match lineContinuations do: [ : c| 	
+	self replaceFrom: c first  to: c second  with: '' .
+].
+
+
+self continue]
+
+VBOptionExplicitNode
+->
+[self delete: match. 
+self continue]
+
+VBOptionCompareNode
+->
+[self delete: match. 
+self continue]
+
+VBOptionCompareDatabaseNode
+->
+[self delete: match. 
+self continue]
+
+VBOptionBaseNode
+->
+[self delete: match. 
+self continue]
+
+VBSubDefinitionNode
+->
+[
+self replace: match selector with: match selector token value uncapitalized. 
+self insert:'function ' before: match selector. 
+self replace: match visibility with: (match modifier ifNil: [ 'public' ]  ifNotNil: [match visibility value lowercase. ]).
+self insert: ': void ' after: match parameters.
+self deleteAll: match subTokens. 
+self delete: match endToken. 
+
+self continue]
+
+VBArgumentNode
+->
+[" I dont know why, but it looks like it is required to have this rule to force the anaylsis of argument expressions"
+self continue]
+
+VBArgumentListNode
+->
+[match commaTokens size + 1 > match arguments size ifTrue: [
+| comas | 
+comas := OrderedCollection new. 
+ 1 to: match commaTokens size - 1 do: [ :cti | 
+		| ct nct |
+		ct := match commaTokens at: cti.
+		nct := match commaTokens at: cti + 1.
+		(match arguments
+			noneSatisfy: 
+				[ :a | a startPosition between: ct stopPosition and: nct startPosition ])
+			ifTrue: [ comas add: ct ] ].
+(match arguments
+	noneSatisfy: [ :a | a startPosition > match commaTokens last stopPosition ])
+			ifTrue: [ comas add: match commaTokens last ].
+
+comas do: [ : c| self insert:' null' after: c ].
+].
+self continue. ]
+
+VBAssignementOrEqualsNode
+->
+[(match parent parent isKindOf: VBFunctionDefinitionNode ) ifTrue: [ 
+	match parent parent selector token value = match left token value ifTrue: [ 
+		self insert:'__return' before: match left 
+	 ]
+ ].
+self continue]
+
+VBFunctionDefinitionNode
+->
+[self continue.
+self insert:'function ' before: match selector. 
+self replace: match selector with: match selector token value uncapitalized. 
+self replace: match visibility with: 'static' .
+"(match modifier ifNil: [ 'public' ]  ifNotNil: [match visibility value lowercase. ])."
+
+self insert: ('var __return{2};{1}'format:{OSPlatform current lineEnding.  match selector token value} )  before: match block statements first.  
+self insert: ('{1}	return  __return{2};{1}' format:{OSPlatform current lineEnding.  match selector token value} )  after: match block statements last. 
+self deleteAll: match functionTokens. 
+self delete: match endToken. 
+
+]
+
+VBTypedThingNode
+->
+>>>: `type`<<<
+
+VBDimMultipleVariablesNode
+->
+[self replace: match dimToken with: 'var'.
+self continue]
+
+VBDimVariableNode
+->
+[self replace: match dimToken with: 'var'.
+self continue]
+
+VBVariableNode
+->
+>>>`name``type`<<<
