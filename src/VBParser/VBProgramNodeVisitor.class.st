@@ -3,5 +3,5 @@ Class {
 	#superclass : #Object,
 	#traits : 'TVBProgramNodeVisitor',
 	#classTraits : 'TVBProgramNodeVisitor classTrait',
-	#category : #'VBParser-Nodes'
+	#category : #'VBParser-Scanner'
 }

@@ -2,9 +2,9 @@ Class {
 	#name : #VBDictionaryAccessNode,
 	#superclass : #VBProgramNode,
 	#instVars : [
-		'receiver',
 		'bangToken',
-		'member'
+		'member',
+		'receiver'
 	],
 	#category : #'VBParser-Nodes'
 }

@@ -818,8 +818,9 @@ VB6StatementsTestCase >> testSmokeIfThen [
 
 { #category : #'smoke tests ' }
 VB6StatementsTestCase >> testSmokeIfThenElseIf [
-			self parse: self ifThenElseIfCase
-		
+	self
+		should: [ self parse: self ifThenElseIfCase ]
+		raise: SmaCCParserError
 ]
 
 { #category : #'smoke tests ' }
@@ -847,8 +848,7 @@ VB6StatementsTestCase >> testSmokeLet [
 
 { #category : #'smoke tests ' }
 VB6StatementsTestCase >> testSmokeLine [
-			self parse: self lineCase
-		
+	self should: [ self parse: self lineCase ] raise: SmaCCParserError
 ]
 
 { #category : #'smoke tests ' }

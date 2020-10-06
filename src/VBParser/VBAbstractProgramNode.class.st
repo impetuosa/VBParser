@@ -1,7 +1,7 @@
 Class {
 	#name : #VBAbstractProgramNode,
 	#superclass : #SmaCCParseNode,
-	#category : #'VBParser-Nodes'
+	#category : #'VBParser-Scanner'
 }
 
 { #category : #'as yet unclassified' }
@@ -10,14 +10,14 @@ VBAbstractProgramNode >> addDestination: aDestination [
 		assert:
 			({VBGoSubNode.
 			VBGoToStatementNode} includes: self class).
-	(self attributeNamed: 'destinations' ifAbsentPut: [ OrderedCollection new ]) add: aDestination.
+	(self attributeNamed: #destinations ifAbsentPut: [ OrderedCollection new ]) add: aDestination.
 	aDestination addJumpSource: self. 
 ]
 
 { #category : #'as yet unclassified' }
 VBAbstractProgramNode >> addJumpSource: aGoto [
 	self assert: self species = VBLabelNode .
-	(self attributeNamed:'jumpsources' ifAbsentPut: [ OrderedCollection new ] ) add: aGoto 
+	(self attributeNamed:#jumpsources ifAbsentPut: [ OrderedCollection new ] ) add: aGoto 
 ]
 
 { #category : #'as yet unclassified' }
@@ -34,12 +34,12 @@ VBAbstractProgramNode >> addLabels: labels [
 
 { #category : #'as yet unclassified' }
 VBAbstractProgramNode >> destinationsAttribute [
-	^ self attributeNamed: 'destinations'
+	^ self attributeNamed: #destinations
 ]
 
 { #category : #'as yet unclassified' }
 VBAbstractProgramNode >> jumpsourcesAttribute [
-	^ self attributeNamed: 'jumpsources'
+	^ self attributeNamed: #jumpsources
 ]
 
 { #category : #'as yet unclassified' }
@@ -58,6 +58,13 @@ VBAbstractProgramNode >> lineContinuations: line [
 ]
 
 { #category : #'as yet unclassified' }
+VBAbstractProgramNode >> managesError [
+	^ self jumpsourcesAttribute
+		ifNil: [ false ]
+		ifNotNil: [ :js |  js anySatisfy: [ :s | s parent species = VBOnErrorGoToNode ] ]
+]
+
+{ #category : #'as yet unclassified' }
 VBAbstractProgramNode >> registerStatement: aStatement [
 	self assert: self species = VBLabelNode.
 	(self
@@ -68,5 +75,5 @@ VBAbstractProgramNode >> registerStatement: aStatement [
 { #category : #'as yet unclassified' }
 VBAbstractProgramNode >> statementsAttribute [
 	self assert: self species = VBLabelNode.
-	^ self attributeNamed: 'statements'
+	^ self attributeNamed: #statements
 ]
