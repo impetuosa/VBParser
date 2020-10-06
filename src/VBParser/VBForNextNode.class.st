@@ -47,10 +47,12 @@ VBForNextNode >> counter [
 ]
 
 { #category : #generated }
-VBForNextNode >> counter: anObject [
-	self setParent: self counter to: nil.
-	counter := anObject.
-	self setParent: self counter to: self
+VBForNextNode >> counter: aVBProgramNode [
+	self counter notNil
+		ifTrue: [ self counter parent: nil ].
+	counter := aVBProgramNode.
+	self counter notNil
+		ifTrue: [ self counter parent: self ]
 ]
 
 { #category : #generated }
@@ -59,10 +61,12 @@ VBForNextNode >> element [
 ]
 
 { #category : #generated }
-VBForNextNode >> element: anObject [
-	self setParent: self element to: nil.
-	element := anObject.
-	self setParent: self element to: self
+VBForNextNode >> element: aVBProgramNode [
+	self element notNil
+		ifTrue: [ self element parent: nil ].
+	element := aVBProgramNode.
+	self element notNil
+		ifTrue: [ self element parent: self ]
 ]
 
 { #category : #generated }
@@ -115,10 +119,12 @@ VBForNextNode >> initialValue [
 ]
 
 { #category : #generated }
-VBForNextNode >> initialValue: anObject [
-	self setParent: self initialValue to: nil.
-	initialValue := anObject.
-	self setParent: self initialValue to: self
+VBForNextNode >> initialValue: aVBProgramNode [
+	self initialValue notNil
+		ifTrue: [ self initialValue parent: nil ].
+	initialValue := aVBProgramNode.
+	self initialValue notNil
+		ifTrue: [ self initialValue parent: self ]
 ]
 
 { #category : #'generated-initialize-release' }
@@ -133,10 +139,12 @@ VBForNextNode >> limit [
 ]
 
 { #category : #generated }
-VBForNextNode >> limit: anObject [
-	self setParent: self limit to: nil.
-	limit := anObject.
-	self setParent: self limit to: self
+VBForNextNode >> limit: aVBProgramNode [
+	self limit notNil
+		ifTrue: [ self limit parent: nil ].
+	limit := aVBProgramNode.
+	self limit notNil
+		ifTrue: [ self limit parent: self ]
 ]
 
 { #category : #generated }
@@ -151,12 +159,7 @@ VBForNextNode >> nextToken: aSmaCCToken [
 
 { #category : #generated }
 VBForNextNode >> nodeVariables [
-	^ #(#endLineNumber #body)
-]
-
-{ #category : #generated }
-VBForNextNode >> otherVariables [
-	^ #(#counter #initialValue #limit #element)
+	^ #(#counter #initialValue #limit #element #endLineNumber #body)
 ]
 
 { #category : #generated }

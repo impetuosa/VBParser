@@ -20,10 +20,12 @@ VBParentheseesExpressionNode >> expression [
 ]
 
 { #category : #generated }
-VBParentheseesExpressionNode >> expression: anObject [
-	self setParent: self expression to: nil.
-	expression := anObject.
-	self setParent: self expression to: self
+VBParentheseesExpressionNode >> expression: aVBProgramNode [
+	self expression notNil
+		ifTrue: [ self expression parent: nil ].
+	expression := aVBProgramNode.
+	self expression notNil
+		ifTrue: [ self expression parent: self ]
 ]
 
 { #category : #generated }
@@ -37,7 +39,7 @@ VBParentheseesExpressionNode >> leftParenToken: aSmaCCToken [
 ]
 
 { #category : #generated }
-VBParentheseesExpressionNode >> otherVariables [
+VBParentheseesExpressionNode >> nodeVariables [
 	^ #(#expression)
 ]
 

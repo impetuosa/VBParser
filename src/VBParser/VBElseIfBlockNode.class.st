@@ -27,10 +27,12 @@ VBElseIfBlockNode >> condition [
 ]
 
 { #category : #generated }
-VBElseIfBlockNode >> condition: anObject [
-	self setParent: self condition to: nil.
-	condition := anObject.
-	self setParent: self condition to: self
+VBElseIfBlockNode >> condition: aVBProgramNode [
+	self condition notNil
+		ifTrue: [ self condition parent: nil ].
+	condition := aVBProgramNode.
+	self condition notNil
+		ifTrue: [ self condition parent: self ]
 ]
 
 { #category : #generated }
@@ -75,12 +77,7 @@ VBElseIfBlockNode >> initialize [
 
 { #category : #generated }
 VBElseIfBlockNode >> nodeVariables [
-	^ #(#ifMatch)
-]
-
-{ #category : #generated }
-VBElseIfBlockNode >> otherVariables [
-	^ #(#condition)
+	^ #(#condition #ifMatch)
 ]
 
 { #category : #generated }

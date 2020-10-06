@@ -79,12 +79,7 @@ VBWithNode >> initialize [
 
 { #category : #generated }
 VBWithNode >> nodeVariables [
-	^ #(#endLineNumber #block)
-]
-
-{ #category : #generated }
-VBWithNode >> otherVariables [
-	^ #(#with)
+	^ #(#with #endLineNumber #block)
 ]
 
 { #category : #generated }
@@ -98,10 +93,12 @@ VBWithNode >> with [
 ]
 
 { #category : #generated }
-VBWithNode >> with: anObject [
-	self setParent: self with to: nil.
-	with := anObject.
-	self setParent: self with to: self
+VBWithNode >> with: aVBProgramNode [
+	self with notNil
+		ifTrue: [ self with parent: nil ].
+	with := aVBProgramNode.
+	self with notNil
+		ifTrue: [ self with parent: self ]
 ]
 
 { #category : #generated }

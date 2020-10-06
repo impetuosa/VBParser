@@ -1,9 +1,8 @@
 Class {
-	#name : #VBAsTypeAndNewNode,
+	#name : #VBTypedThingNode,
 	#superclass : #VBProgramNode,
 	#instVars : [
 		'aSToken',
-		'nEWToken',
 		'type',
 		'timesToken',
 		'fixedSize',
@@ -13,32 +12,32 @@ Class {
 }
 
 { #category : #generated }
-VBAsTypeAndNewNode >> aSToken [
+VBTypedThingNode >> aSToken [
 	^ aSToken
 ]
 
 { #category : #generated }
-VBAsTypeAndNewNode >> aSToken: aSmaCCToken [
+VBTypedThingNode >> aSToken: aSmaCCToken [
 	aSToken := aSmaCCToken
 ]
 
 { #category : #generated }
-VBAsTypeAndNewNode >> acceptVisitor: aProgramVisitor [
-	^ aProgramVisitor visitAsTypeAndNew: self
+VBTypedThingNode >> acceptVisitor: aProgramVisitor [
+	^ aProgramVisitor visitTypedThing: self
 ]
 
 { #category : #generated }
-VBAsTypeAndNewNode >> compositeNodeVariables [
+VBTypedThingNode >> compositeNodeVariables [
 	^ #(#sizes)
 ]
 
 { #category : #generated }
-VBAsTypeAndNewNode >> fixedSize [
+VBTypedThingNode >> fixedSize [
 	^ fixedSize
 ]
 
 { #category : #generated }
-VBAsTypeAndNewNode >> fixedSize: aVBProgramNode [
+VBTypedThingNode >> fixedSize: aVBProgramNode [
 	self fixedSize notNil
 		ifTrue: [ self fixedSize parent: nil ].
 	fixedSize := aVBProgramNode.
@@ -47,65 +46,55 @@ VBAsTypeAndNewNode >> fixedSize: aVBProgramNode [
 ]
 
 { #category : #'generated-initialize-release' }
-VBAsTypeAndNewNode >> initialize [
+VBTypedThingNode >> initialize [
 	super initialize.
 	sizes := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
-VBAsTypeAndNewNode >> nEWToken [
-	^ nEWToken
-]
-
-{ #category : #generated }
-VBAsTypeAndNewNode >> nEWToken: aSmaCCToken [
-	nEWToken := aSmaCCToken
-]
-
-{ #category : #generated }
-VBAsTypeAndNewNode >> nodeVariables [
+VBTypedThingNode >> nodeVariables [
 	^ #(#fixedSize)
 ]
 
 { #category : #generated }
-VBAsTypeAndNewNode >> otherVariables [
+VBTypedThingNode >> otherVariables [
 	^ #(#type)
 ]
 
 { #category : #generated }
-VBAsTypeAndNewNode >> sizes [
+VBTypedThingNode >> sizes [
 	^ sizes
 ]
 
 { #category : #generated }
-VBAsTypeAndNewNode >> sizes: anOrderedCollection [
+VBTypedThingNode >> sizes: anOrderedCollection [
 	self setParents: self sizes to: nil.
 	sizes := anOrderedCollection.
 	self setParents: self sizes to: self
 ]
 
 { #category : #generated }
-VBAsTypeAndNewNode >> timesToken [
+VBTypedThingNode >> timesToken [
 	^ timesToken
 ]
 
 { #category : #generated }
-VBAsTypeAndNewNode >> timesToken: aSmaCCToken [
+VBTypedThingNode >> timesToken: aSmaCCToken [
 	timesToken := aSmaCCToken
 ]
 
 { #category : #generated }
-VBAsTypeAndNewNode >> tokenVariables [
-	^ #(#aSToken #nEWToken #timesToken)
+VBTypedThingNode >> tokenVariables [
+	^ #(#aSToken #timesToken)
 ]
 
 { #category : #generated }
-VBAsTypeAndNewNode >> type [
+VBTypedThingNode >> type [
 	^ type
 ]
 
 { #category : #generated }
-VBAsTypeAndNewNode >> type: anObject [
+VBTypedThingNode >> type: anObject [
 	self setParent: self type to: nil.
 	type := anObject.
 	self setParent: self type to: self

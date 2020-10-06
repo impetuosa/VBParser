@@ -29,14 +29,16 @@ VBImplementsNode >> interface [
 ]
 
 { #category : #generated }
-VBImplementsNode >> interface: anObject [
-	self setParent: self interface to: nil.
-	interface := anObject.
-	self setParent: self interface to: self
+VBImplementsNode >> interface: aVBProgramNode [
+	self interface notNil
+		ifTrue: [ self interface parent: nil ].
+	interface := aVBProgramNode.
+	self interface notNil
+		ifTrue: [ self interface parent: self ]
 ]
 
 { #category : #generated }
-VBImplementsNode >> otherVariables [
+VBImplementsNode >> nodeVariables [
 	^ #(#interface)
 ]
 

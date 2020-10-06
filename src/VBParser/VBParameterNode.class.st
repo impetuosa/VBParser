@@ -24,10 +24,12 @@ VBParameterNode >> default [
 ]
 
 { #category : #generated }
-VBParameterNode >> default: anObject [
-	self setParent: self default to: nil.
-	default := anObject.
-	self setParent: self default to: self
+VBParameterNode >> default: aVBProgramNode [
+	self default notNil
+		ifTrue: [ self default parent: nil ].
+	default := aVBProgramNode.
+	self default notNil
+		ifTrue: [ self default parent: self ]
 ]
 
 { #category : #generated }
@@ -46,15 +48,17 @@ VBParameterNode >> name [
 ]
 
 { #category : #generated }
-VBParameterNode >> name: anObject [
-	self setParent: self name to: nil.
-	name := anObject.
-	self setParent: self name to: self
+VBParameterNode >> name: aVBProgramNode [
+	self name notNil
+		ifTrue: [ self name parent: nil ].
+	name := aVBProgramNode.
+	self name notNil
+		ifTrue: [ self name parent: self ]
 ]
 
 { #category : #generated }
 VBParameterNode >> nodeVariables [
-	^ #(#type)
+	^ #(#name #default #type)
 ]
 
 { #category : #generated }
@@ -69,7 +73,7 @@ VBParameterNode >> optionalToken: aSmaCCToken [
 
 { #category : #generated }
 VBParameterNode >> otherVariables [
-	^ #(#name #default #strategy)
+	^ #(#strategy)
 ]
 
 { #category : #generated }

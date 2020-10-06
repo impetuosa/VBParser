@@ -26,6 +26,11 @@ VBTypeSizeNode >> commaTokens: anOrderedCollection [
 ]
 
 { #category : #generated }
+VBTypeSizeNode >> compositeNodeVariables [
+	^ #(#sizes)
+]
+
+{ #category : #generated }
 VBTypeSizeNode >> compositeTokenVariables [
 	^ #(#commaTokens)
 ]
@@ -48,11 +53,6 @@ VBTypeSizeNode >> leftParenToken: aSmaCCToken [
 ]
 
 { #category : #generated }
-VBTypeSizeNode >> otherVariables [
-	^ #(#sizes)
-]
-
-{ #category : #generated }
 VBTypeSizeNode >> rightParenToken [
 	^ rightParenToken
 ]
@@ -69,9 +69,9 @@ VBTypeSizeNode >> sizes [
 
 { #category : #generated }
 VBTypeSizeNode >> sizes: anOrderedCollection [
-	self setParent: self sizes to: nil.
+	self setParents: self sizes to: nil.
 	sizes := anOrderedCollection.
-	self setParent: self sizes to: self
+	self setParents: self sizes to: self
 ]
 
 { #category : #generated }

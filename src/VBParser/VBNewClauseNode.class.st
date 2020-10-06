@@ -24,7 +24,7 @@ VBNewClauseNode >> nEWToken: aSmaCCToken [
 ]
 
 { #category : #generated }
-VBNewClauseNode >> otherVariables [
+VBNewClauseNode >> nodeVariables [
 	^ #(#typeName)
 ]
 
@@ -39,8 +39,10 @@ VBNewClauseNode >> typeName [
 ]
 
 { #category : #generated }
-VBNewClauseNode >> typeName: anObject [
-	self setParent: self typeName to: nil.
-	typeName := anObject.
-	self setParent: self typeName to: self
+VBNewClauseNode >> typeName: aVBProgramNode [
+	self typeName notNil
+		ifTrue: [ self typeName parent: nil ].
+	typeName := aVBProgramNode.
+	self typeName notNil
+		ifTrue: [ self typeName parent: self ]
 ]

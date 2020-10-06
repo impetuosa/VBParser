@@ -15,8 +15,13 @@ VBArgumentNode >> acceptVisitor: aProgramVisitor [
 ]
 
 { #category : #generated }
+VBArgumentNode >> nodeVariables [
+	^ #(#value)
+]
+
+{ #category : #generated }
 VBArgumentNode >> otherVariables [
-	^ #(#value #strategy)
+	^ #(#strategy)
 ]
 
 { #category : #generated }
@@ -52,8 +57,10 @@ VBArgumentNode >> value [
 ]
 
 { #category : #generated }
-VBArgumentNode >> value: anObject [
-	self setParent: self value to: nil.
-	value := anObject.
-	self setParent: self value to: self
+VBArgumentNode >> value: aVBProgramNode [
+	self value notNil
+		ifTrue: [ self value parent: nil ].
+	value := aVBProgramNode.
+	self value notNil
+		ifTrue: [ self value parent: self ]
 ]

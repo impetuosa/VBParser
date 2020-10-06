@@ -3,7 +3,7 @@ Class {
 	#superclass : #VBProgramNode,
 	#instVars : [
 		'resumeToken',
-		'label'
+		'destination'
 	],
 	#category : #'VBParser-Nodes'
 }
@@ -14,20 +14,22 @@ VBResumeLabelNode >> acceptVisitor: aProgramVisitor [
 ]
 
 { #category : #generated }
-VBResumeLabelNode >> label [
-	^ label
+VBResumeLabelNode >> destination [
+	^ destination
 ]
 
 { #category : #generated }
-VBResumeLabelNode >> label: anObject [
-	self setParent: self label to: nil.
-	label := anObject.
-	self setParent: self label to: self
+VBResumeLabelNode >> destination: aVBDestinationListNode [
+	self destination notNil
+		ifTrue: [ self destination parent: nil ].
+	destination := aVBDestinationListNode.
+	self destination notNil
+		ifTrue: [ self destination parent: self ]
 ]
 
 { #category : #generated }
-VBResumeLabelNode >> otherVariables [
-	^ #(#label)
+VBResumeLabelNode >> nodeVariables [
+	^ #(#destination)
 ]
 
 { #category : #generated }

@@ -25,6 +25,11 @@ VBOptionBaseNode >> baseToken: aSmaCCToken [
 ]
 
 { #category : #generated }
+VBOptionBaseNode >> nodeVariables [
+	^ #(#value)
+]
+
+{ #category : #generated }
 VBOptionBaseNode >> optionToken [
 	^ optionToken
 ]
@@ -32,11 +37,6 @@ VBOptionBaseNode >> optionToken [
 { #category : #generated }
 VBOptionBaseNode >> optionToken: aSmaCCToken [
 	optionToken := aSmaCCToken
-]
-
-{ #category : #generated }
-VBOptionBaseNode >> otherVariables [
-	^ #(#value)
 ]
 
 { #category : #generated }
@@ -50,8 +50,10 @@ VBOptionBaseNode >> value [
 ]
 
 { #category : #generated }
-VBOptionBaseNode >> value: anObject [
-	self setParent: self value to: nil.
-	value := anObject.
-	self setParent: self value to: self
+VBOptionBaseNode >> value: aVBProgramNode [
+	self value notNil
+		ifTrue: [ self value parent: nil ].
+	value := aVBProgramNode.
+	self value notNil
+		ifTrue: [ self value parent: self ]
 ]

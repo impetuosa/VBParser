@@ -30,14 +30,16 @@ VBConcatenationOperationNode >> left [
 ]
 
 { #category : #generated }
-VBConcatenationOperationNode >> left: anObject [
-	self setParent: self left to: nil.
-	left := anObject.
-	self setParent: self left to: self
+VBConcatenationOperationNode >> left: aVBProgramNode [
+	self left notNil
+		ifTrue: [ self left parent: nil ].
+	left := aVBProgramNode.
+	self left notNil
+		ifTrue: [ self left parent: self ]
 ]
 
 { #category : #generated }
-VBConcatenationOperationNode >> otherVariables [
+VBConcatenationOperationNode >> nodeVariables [
 	^ #(#left #right)
 ]
 
@@ -47,10 +49,12 @@ VBConcatenationOperationNode >> right [
 ]
 
 { #category : #generated }
-VBConcatenationOperationNode >> right: anObject [
-	self setParent: self right to: nil.
-	right := anObject.
-	self setParent: self right to: self
+VBConcatenationOperationNode >> right: aVBProgramNode [
+	self right notNil
+		ifTrue: [ self right parent: nil ].
+	right := aVBProgramNode.
+	self right notNil
+		ifTrue: [ self right parent: self ]
 ]
 
 { #category : #generated }

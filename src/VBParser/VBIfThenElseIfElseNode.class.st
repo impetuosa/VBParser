@@ -49,10 +49,12 @@ VBIfThenElseIfElseNode >> condition [
 ]
 
 { #category : #generated }
-VBIfThenElseIfElseNode >> condition: anObject [
-	self setParent: self condition to: nil.
-	condition := anObject.
-	self setParent: self condition to: self
+VBIfThenElseIfElseNode >> condition: aVBProgramNode [
+	self condition notNil
+		ifTrue: [ self condition parent: nil ].
+	condition := aVBProgramNode.
+	self condition notNil
+		ifTrue: [ self condition parent: self ]
 ]
 
 { #category : #generated }
@@ -133,12 +135,7 @@ VBIfThenElseIfElseNode >> initialize [
 
 { #category : #generated }
 VBIfThenElseIfElseNode >> nodeVariables [
-	^ #(#endLineNumber #otherwise #ifTrue)
-]
-
-{ #category : #generated }
-VBIfThenElseIfElseNode >> otherVariables [
-	^ #(#condition)
+	^ #(#condition #endLineNumber #otherwise #ifTrue)
 ]
 
 { #category : #generated }

@@ -21,10 +21,12 @@ VBConstantNode >> constant [
 ]
 
 { #category : #generated }
-VBConstantNode >> constant: anObject [
-	self setParent: self constant to: nil.
-	constant := anObject.
-	self setParent: self constant to: self
+VBConstantNode >> constant: aVBProgramNode [
+	self constant notNil
+		ifTrue: [ self constant parent: nil ].
+	constant := aVBProgramNode.
+	self constant notNil
+		ifTrue: [ self constant parent: self ]
 ]
 
 { #category : #generated }
@@ -39,12 +41,7 @@ VBConstantNode >> equalToken: aSmaCCToken [
 
 { #category : #generated }
 VBConstantNode >> nodeVariables [
-	^ #(#type)
-]
-
-{ #category : #generated }
-VBConstantNode >> otherVariables [
-	^ #(#constant #value)
+	^ #(#constant #value #type)
 ]
 
 { #category : #generated }
@@ -72,8 +69,10 @@ VBConstantNode >> value [
 ]
 
 { #category : #generated }
-VBConstantNode >> value: anObject [
-	self setParent: self value to: nil.
-	value := anObject.
-	self setParent: self value to: self
+VBConstantNode >> value: aVBProgramNode [
+	self value notNil
+		ifTrue: [ self value parent: nil ].
+	value := aVBProgramNode.
+	self value notNil
+		ifTrue: [ self value parent: self ]
 ]

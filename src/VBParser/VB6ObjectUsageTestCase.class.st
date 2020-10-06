@@ -29,8 +29,7 @@ End Sub
 
 { #category : #'smoke tests ' }
 VB6ObjectUsageTestCase >> testSmokeDebug [
-			self parse: self debugCase
-		
+	self parse: self debugCase
 ]
 
 { #category : #'smoke tests ' }

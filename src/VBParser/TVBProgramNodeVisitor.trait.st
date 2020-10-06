@@ -2,7 +2,7 @@ Trait {
 	#name : #TVBProgramNodeVisitor,
 	#traits : 'TSmaCCParseNodeVisitor',
 	#classTraits : 'TSmaCCParseNodeVisitor classTrait',
-	#category : #'VBParser-Nodes'
+	#category : #'VBParser-Scanner'
 }
 
 { #category : #generated }
@@ -306,8 +306,18 @@ TVBProgramNodeVisitor >> visitIntervalExpression: anIntervalExpression [
 ]
 
 { #category : #generated }
+TVBProgramNodeVisitor >> visitLabel: aLabel [
+	^ self visitProgram: aLabel
+]
+
+{ #category : #generated }
 TVBProgramNodeVisitor >> visitLabelTag: aLabelTag [
 	^ self visitProgram: aLabelTag
+]
+
+{ #category : #generated }
+TVBProgramNodeVisitor >> visitLineInputClause: aLineInputClause [
+	^ self visitProgram: aLineInputClause
 ]
 
 { #category : #generated }
@@ -446,6 +456,11 @@ TVBProgramNodeVisitor >> visitPositiveOperation: aPositiveOperation [
 ]
 
 { #category : #generated }
+TVBProgramNodeVisitor >> visitPrintIntoFileClause: aPrintIntoFileClause [
+	^ self visitProgram: aPrintIntoFileClause
+]
+
+{ #category : #generated }
 TVBProgramNodeVisitor >> visitProcedureCallOrArrayAccess: aProcedureCallOrArrayAccess [
 	^ self visitProgram: aProcedureCallOrArrayAccess
 ]
@@ -483,6 +498,11 @@ TVBProgramNodeVisitor >> visitReDimVariable: aReDimVariable [
 { #category : #generated }
 TVBProgramNodeVisitor >> visitRename: aRename [
 	^ self visitProgram: aRename
+]
+
+{ #category : #generated }
+TVBProgramNodeVisitor >> visitResumeEmpty: aResumeEmpty [
+	^ self visitProgram: aResumeEmpty
 ]
 
 { #category : #generated }
@@ -548,6 +568,11 @@ TVBProgramNodeVisitor >> visitTypeEntry: aTypeEntry [
 { #category : #generated }
 TVBProgramNodeVisitor >> visitTypeSize: aTypeSize [
 	^ self visitProgram: aTypeSize
+]
+
+{ #category : #generated }
+TVBProgramNodeVisitor >> visitTypedThing: aTypedThing [
+	^ self visitProgram: aTypedThing
 ]
 
 { #category : #generated }

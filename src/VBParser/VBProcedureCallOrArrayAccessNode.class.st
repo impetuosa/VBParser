@@ -41,12 +41,7 @@ VBProcedureCallOrArrayAccessNode >> leftParenToken: aSmaCCToken [
 
 { #category : #generated }
 VBProcedureCallOrArrayAccessNode >> nodeVariables [
-	^ #(#arguments)
-]
-
-{ #category : #generated }
-VBProcedureCallOrArrayAccessNode >> otherVariables [
-	^ #(#receiver)
+	^ #(#receiver #arguments)
 ]
 
 { #category : #generated }
@@ -55,10 +50,12 @@ VBProcedureCallOrArrayAccessNode >> receiver [
 ]
 
 { #category : #generated }
-VBProcedureCallOrArrayAccessNode >> receiver: anObject [
-	self setParent: self receiver to: nil.
-	receiver := anObject.
-	self setParent: self receiver to: self
+VBProcedureCallOrArrayAccessNode >> receiver: aVBProgramNode [
+	self receiver notNil
+		ifTrue: [ self receiver parent: nil ].
+	receiver := aVBProgramNode.
+	self receiver notNil
+		ifTrue: [ self receiver parent: self ]
 ]
 
 { #category : #generated }

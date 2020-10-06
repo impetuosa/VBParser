@@ -20,10 +20,17 @@ VBAssignementOrEqualsNode >> left [
 ]
 
 { #category : #generated }
-VBAssignementOrEqualsNode >> left: anObject [
-	self setParent: self left to: nil.
-	left := anObject.
-	self setParent: self left to: self
+VBAssignementOrEqualsNode >> left: aVBProgramNode [
+	self left notNil
+		ifTrue: [ self left parent: nil ].
+	left := aVBProgramNode.
+	self left notNil
+		ifTrue: [ self left parent: self ]
+]
+
+{ #category : #generated }
+VBAssignementOrEqualsNode >> nodeVariables [
+	^ #(#left #right)
 ]
 
 { #category : #generated }
@@ -37,20 +44,17 @@ VBAssignementOrEqualsNode >> operator: aSmaCCToken [
 ]
 
 { #category : #generated }
-VBAssignementOrEqualsNode >> otherVariables [
-	^ #(#left #right)
-]
-
-{ #category : #generated }
 VBAssignementOrEqualsNode >> right [
 	^ right
 ]
 
 { #category : #generated }
-VBAssignementOrEqualsNode >> right: anObject [
-	self setParent: self right to: nil.
-	right := anObject.
-	self setParent: self right to: self
+VBAssignementOrEqualsNode >> right: aVBProgramNode [
+	self right notNil
+		ifTrue: [ self right parent: nil ].
+	right := aVBProgramNode.
+	self right notNil
+		ifTrue: [ self right parent: self ]
 ]
 
 { #category : #generated }

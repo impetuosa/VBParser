@@ -33,18 +33,15 @@ VBImplicitParenthesesLessCallNode >> identifier [
 ]
 
 { #category : #generated }
-VBImplicitParenthesesLessCallNode >> identifier: anObject [
-	self setParent: self identifier to: nil.
-	identifier := anObject.
-	self setParent: self identifier to: self
+VBImplicitParenthesesLessCallNode >> identifier: aVBProgramNode [
+	self identifier notNil
+		ifTrue: [ self identifier parent: nil ].
+	identifier := aVBProgramNode.
+	self identifier notNil
+		ifTrue: [ self identifier parent: self ]
 ]
 
 { #category : #generated }
 VBImplicitParenthesesLessCallNode >> nodeVariables [
-	^ #(#arguments)
-]
-
-{ #category : #generated }
-VBImplicitParenthesesLessCallNode >> otherVariables [
-	^ #(#identifier)
+	^ #(#identifier #arguments)
 ]

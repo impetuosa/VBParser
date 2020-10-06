@@ -20,15 +20,17 @@ VBOnExpressionGoNode >> integerExpression [
 ]
 
 { #category : #generated }
-VBOnExpressionGoNode >> integerExpression: anObject [
-	self setParent: self integerExpression to: nil.
-	integerExpression := anObject.
-	self setParent: self integerExpression to: self
+VBOnExpressionGoNode >> integerExpression: aVBProgramNode [
+	self integerExpression notNil
+		ifTrue: [ self integerExpression parent: nil ].
+	integerExpression := aVBProgramNode.
+	self integerExpression notNil
+		ifTrue: [ self integerExpression parent: self ]
 ]
 
 { #category : #generated }
 VBOnExpressionGoNode >> nodeVariables [
-	^ #(#to)
+	^ #(#integerExpression #to)
 ]
 
 { #category : #generated }
@@ -39,11 +41,6 @@ VBOnExpressionGoNode >> onToken [
 { #category : #generated }
 VBOnExpressionGoNode >> onToken: aSmaCCToken [
 	onToken := aSmaCCToken
-]
-
-{ #category : #generated }
-VBOnExpressionGoNode >> otherVariables [
-	^ #(#integerExpression)
 ]
 
 { #category : #generated }

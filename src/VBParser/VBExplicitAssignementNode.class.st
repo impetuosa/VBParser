@@ -31,10 +31,17 @@ VBExplicitAssignementNode >> left [
 ]
 
 { #category : #generated }
-VBExplicitAssignementNode >> left: anObject [
-	self setParent: self left to: nil.
-	left := anObject.
-	self setParent: self left to: self
+VBExplicitAssignementNode >> left: aVBProgramNode [
+	self left notNil
+		ifTrue: [ self left parent: nil ].
+	left := aVBProgramNode.
+	self left notNil
+		ifTrue: [ self left parent: self ]
+]
+
+{ #category : #generated }
+VBExplicitAssignementNode >> nodeVariables [
+	^ #(#left #right)
 ]
 
 { #category : #generated }
@@ -48,20 +55,17 @@ VBExplicitAssignementNode >> operator: aSmaCCToken [
 ]
 
 { #category : #generated }
-VBExplicitAssignementNode >> otherVariables [
-	^ #(#left #right)
-]
-
-{ #category : #generated }
 VBExplicitAssignementNode >> right [
 	^ right
 ]
 
 { #category : #generated }
-VBExplicitAssignementNode >> right: anObject [
-	self setParent: self right to: nil.
-	right := anObject.
-	self setParent: self right to: self
+VBExplicitAssignementNode >> right: aVBProgramNode [
+	self right notNil
+		ifTrue: [ self right parent: nil ].
+	right := aVBProgramNode.
+	self right notNil
+		ifTrue: [ self right parent: self ]
 ]
 
 { #category : #generated }

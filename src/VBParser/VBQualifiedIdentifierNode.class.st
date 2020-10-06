@@ -2,9 +2,9 @@ Class {
 	#name : #VBQualifiedIdentifierNode,
 	#superclass : #VBProgramNode,
 	#instVars : [
-		'token',
 		'periodToken',
-		'member'
+		'member',
+		'base'
 	],
 	#category : #'VBParser-Nodes'
 }
@@ -12,6 +12,20 @@ Class {
 { #category : #generated }
 VBQualifiedIdentifierNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitQualifiedIdentifier: self
+]
+
+{ #category : #generated }
+VBQualifiedIdentifierNode >> base [
+	^ base
+]
+
+{ #category : #generated }
+VBQualifiedIdentifierNode >> base: aVBProgramNode [
+	self base notNil
+		ifTrue: [ self base parent: nil ].
+	base := aVBProgramNode.
+	self base notNil
+		ifTrue: [ self base parent: self ]
 ]
 
 { #category : #generated }
@@ -25,8 +39,8 @@ VBQualifiedIdentifierNode >> member: aSmaCCToken [
 ]
 
 { #category : #generated }
-VBQualifiedIdentifierNode >> otherVariables [
-	^ #(#token)
+VBQualifiedIdentifierNode >> nodeVariables [
+	^ #(#base)
 ]
 
 { #category : #generated }
@@ -37,18 +51,6 @@ VBQualifiedIdentifierNode >> periodToken [
 { #category : #generated }
 VBQualifiedIdentifierNode >> periodToken: aSmaCCToken [
 	periodToken := aSmaCCToken
-]
-
-{ #category : #generated }
-VBQualifiedIdentifierNode >> token [
-	^ token
-]
-
-{ #category : #generated }
-VBQualifiedIdentifierNode >> token: anObject [
-	self setParent: self token to: nil.
-	token := anObject.
-	self setParent: self token to: self
 ]
 
 { #category : #generated }

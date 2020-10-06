@@ -35,6 +35,11 @@ VBForEachNode >> body: aVBBlockNode [
 ]
 
 { #category : #generated }
+VBForEachNode >> compositeNodeVariables [
+	^ #(#elements)
+]
+
+{ #category : #generated }
 VBForEachNode >> compositeTokenVariables [
 	^ #(#eolTokens)
 ]
@@ -56,9 +61,9 @@ VBForEachNode >> elements [
 
 { #category : #generated }
 VBForEachNode >> elements: anOrderedCollection [
-	self setParent: self elements to: nil.
+	self setParents: self elements to: nil.
 	elements := anOrderedCollection.
-	self setParent: self elements to: self
+	self setParents: self elements to: self
 ]
 
 { #category : #generated }
@@ -101,10 +106,12 @@ VBForEachNode >> group [
 ]
 
 { #category : #generated }
-VBForEachNode >> group: anObject [
-	self setParent: self group to: nil.
-	group := anObject.
-	self setParent: self group to: self
+VBForEachNode >> group: aVBProgramNode [
+	self group notNil
+		ifTrue: [ self group parent: nil ].
+	group := aVBProgramNode.
+	self group notNil
+		ifTrue: [ self group parent: self ]
 ]
 
 { #category : #generated }
@@ -136,12 +143,7 @@ VBForEachNode >> nextToken: aSmaCCToken [
 
 { #category : #generated }
 VBForEachNode >> nodeVariables [
-	^ #(#endLineNumber #body)
-]
-
-{ #category : #generated }
-VBForEachNode >> otherVariables [
-	^ #(#elements #group)
+	^ #(#group #endLineNumber #body)
 ]
 
 { #category : #generated }

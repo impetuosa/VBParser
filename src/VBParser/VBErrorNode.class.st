@@ -29,14 +29,16 @@ VBErrorNode >> errorCode [
 ]
 
 { #category : #generated }
-VBErrorNode >> errorCode: anObject [
-	self setParent: self errorCode to: nil.
-	errorCode := anObject.
-	self setParent: self errorCode to: self
+VBErrorNode >> errorCode: aVBProgramNode [
+	self errorCode notNil
+		ifTrue: [ self errorCode parent: nil ].
+	errorCode := aVBProgramNode.
+	self errorCode notNil
+		ifTrue: [ self errorCode parent: self ]
 ]
 
 { #category : #generated }
-VBErrorNode >> otherVariables [
+VBErrorNode >> nodeVariables [
 	^ #(#errorCode)
 ]
 

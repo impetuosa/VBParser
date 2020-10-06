@@ -20,14 +20,16 @@ VBIntervalExpressionNode >> from [
 ]
 
 { #category : #generated }
-VBIntervalExpressionNode >> from: anObject [
-	self setParent: self from to: nil.
-	from := anObject.
-	self setParent: self from to: self
+VBIntervalExpressionNode >> from: aVBProgramNode [
+	self from notNil
+		ifTrue: [ self from parent: nil ].
+	from := aVBProgramNode.
+	self from notNil
+		ifTrue: [ self from parent: self ]
 ]
 
 { #category : #generated }
-VBIntervalExpressionNode >> otherVariables [
+VBIntervalExpressionNode >> nodeVariables [
 	^ #(#from #to)
 ]
 
@@ -37,10 +39,12 @@ VBIntervalExpressionNode >> to [
 ]
 
 { #category : #generated }
-VBIntervalExpressionNode >> to: anObject [
-	self setParent: self to to: nil.
-	to := anObject.
-	self setParent: self to to: self
+VBIntervalExpressionNode >> to: aVBProgramNode [
+	self to notNil
+		ifTrue: [ self to parent: nil ].
+	to := aVBProgramNode.
+	self to notNil
+		ifTrue: [ self to parent: self ]
 ]
 
 { #category : #generated }

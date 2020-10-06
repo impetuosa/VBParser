@@ -24,6 +24,11 @@ VBDestinationListNode >> commaTokens: anOrderedCollection [
 ]
 
 { #category : #generated }
+VBDestinationListNode >> compositeNodeVariables [
+	^ #(#labels)
+]
+
+{ #category : #generated }
 VBDestinationListNode >> compositeTokenVariables [
 	^ #(#commaTokens)
 ]
@@ -42,12 +47,7 @@ VBDestinationListNode >> labels [
 
 { #category : #generated }
 VBDestinationListNode >> labels: anOrderedCollection [
-	self setParent: self labels to: nil.
+	self setParents: self labels to: nil.
 	labels := anOrderedCollection.
-	self setParent: self labels to: self
-]
-
-{ #category : #generated }
-VBDestinationListNode >> otherVariables [
-	^ #(#labels)
+	self setParents: self labels to: self
 ]

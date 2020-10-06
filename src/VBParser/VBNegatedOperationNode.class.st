@@ -24,7 +24,7 @@ VBNegatedOperationNode >> minusToken: aSmaCCToken [
 ]
 
 { #category : #generated }
-VBNegatedOperationNode >> otherVariables [
+VBNegatedOperationNode >> nodeVariables [
 	^ #(#value)
 ]
 
@@ -39,8 +39,10 @@ VBNegatedOperationNode >> value [
 ]
 
 { #category : #generated }
-VBNegatedOperationNode >> value: anObject [
-	self setParent: self value to: nil.
-	value := anObject.
-	self setParent: self value to: self
+VBNegatedOperationNode >> value: aVBProgramNode [
+	self value notNil
+		ifTrue: [ self value parent: nil ].
+	value := aVBProgramNode.
+	self value notNil
+		ifTrue: [ self value parent: self ]
 ]

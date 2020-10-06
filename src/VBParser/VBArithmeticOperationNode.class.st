@@ -70,10 +70,12 @@ VBArithmeticOperationNode >> left [
 ]
 
 { #category : #generated }
-VBArithmeticOperationNode >> left: anObject [
-	self setParent: self left to: nil.
-	left := anObject.
-	self setParent: self left to: self
+VBArithmeticOperationNode >> left: aVBProgramNode [
+	self left notNil
+		ifTrue: [ self left parent: nil ].
+	left := aVBProgramNode.
+	self left notNil
+		ifTrue: [ self left parent: self ]
 ]
 
 { #category : #generated }
@@ -97,6 +99,11 @@ VBArithmeticOperationNode >> modToken: aSmaCCToken [
 ]
 
 { #category : #generated }
+VBArithmeticOperationNode >> nodeVariables [
+	^ #(#left #right)
+]
+
+{ #category : #generated }
 VBArithmeticOperationNode >> orToken [
 	^ orToken
 ]
@@ -104,11 +111,6 @@ VBArithmeticOperationNode >> orToken [
 { #category : #generated }
 VBArithmeticOperationNode >> orToken: aSmaCCToken [
 	orToken := aSmaCCToken
-]
-
-{ #category : #generated }
-VBArithmeticOperationNode >> otherVariables [
-	^ #(#left #right)
 ]
 
 { #category : #generated }
@@ -127,10 +129,12 @@ VBArithmeticOperationNode >> right [
 ]
 
 { #category : #generated }
-VBArithmeticOperationNode >> right: anObject [
-	self setParent: self right to: nil.
-	right := anObject.
-	self setParent: self right to: self
+VBArithmeticOperationNode >> right: aVBProgramNode [
+	self right notNil
+		ifTrue: [ self right parent: nil ].
+	right := aVBProgramNode.
+	self right notNil
+		ifTrue: [ self right parent: self ]
 ]
 
 { #category : #generated }

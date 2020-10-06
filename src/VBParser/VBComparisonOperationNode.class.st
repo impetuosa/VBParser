@@ -8,8 +8,8 @@ Class {
 		'lessThanGreaterThanToken',
 		'lessThanEqualToken',
 		'greaterThanEqualToken',
-		'isToken',
-		'likeToken',
+		'iSToken',
+		'lIKEToken',
 		'right'
 	],
 	#category : #'VBParser-Nodes'
@@ -41,13 +41,23 @@ VBComparisonOperationNode >> greaterThanToken: aSmaCCToken [
 ]
 
 { #category : #generated }
-VBComparisonOperationNode >> isToken [
-	^ isToken
+VBComparisonOperationNode >> iSToken [
+	^ iSToken
 ]
 
 { #category : #generated }
-VBComparisonOperationNode >> isToken: aSmaCCToken [
-	isToken := aSmaCCToken
+VBComparisonOperationNode >> iSToken: aSmaCCToken [
+	iSToken := aSmaCCToken
+]
+
+{ #category : #generated }
+VBComparisonOperationNode >> lIKEToken [
+	^ lIKEToken
+]
+
+{ #category : #generated }
+VBComparisonOperationNode >> lIKEToken: aSmaCCToken [
+	lIKEToken := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -56,10 +66,12 @@ VBComparisonOperationNode >> left [
 ]
 
 { #category : #generated }
-VBComparisonOperationNode >> left: anObject [
-	self setParent: self left to: nil.
-	left := anObject.
-	self setParent: self left to: self
+VBComparisonOperationNode >> left: aVBProgramNode [
+	self left notNil
+		ifTrue: [ self left parent: nil ].
+	left := aVBProgramNode.
+	self left notNil
+		ifTrue: [ self left parent: self ]
 ]
 
 { #category : #generated }
@@ -93,17 +105,7 @@ VBComparisonOperationNode >> lessThanToken: aSmaCCToken [
 ]
 
 { #category : #generated }
-VBComparisonOperationNode >> likeToken [
-	^ likeToken
-]
-
-{ #category : #generated }
-VBComparisonOperationNode >> likeToken: aSmaCCToken [
-	likeToken := aSmaCCToken
-]
-
-{ #category : #generated }
-VBComparisonOperationNode >> otherVariables [
+VBComparisonOperationNode >> nodeVariables [
 	^ #(#left #right)
 ]
 
@@ -113,13 +115,15 @@ VBComparisonOperationNode >> right [
 ]
 
 { #category : #generated }
-VBComparisonOperationNode >> right: anObject [
-	self setParent: self right to: nil.
-	right := anObject.
-	self setParent: self right to: self
+VBComparisonOperationNode >> right: aVBProgramNode [
+	self right notNil
+		ifTrue: [ self right parent: nil ].
+	right := aVBProgramNode.
+	self right notNil
+		ifTrue: [ self right parent: self ]
 ]
 
 { #category : #generated }
 VBComparisonOperationNode >> tokenVariables [
-	^ #(#greaterThanToken #lessThanToken #lessThanGreaterThanToken #lessThanEqualToken #greaterThanEqualToken #isToken #likeToken)
+	^ #(#greaterThanToken #lessThanToken #lessThanGreaterThanToken #lessThanEqualToken #greaterThanEqualToken #iSToken #lIKEToken)
 ]

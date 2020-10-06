@@ -35,20 +35,17 @@ VBTypeEntryNode >> name [
 ]
 
 { #category : #generated }
-VBTypeEntryNode >> name: anObject [
-	self setParent: self name to: nil.
-	name := anObject.
-	self setParent: self name to: self
+VBTypeEntryNode >> name: aVBProgramNode [
+	self name notNil
+		ifTrue: [ self name parent: nil ].
+	name := aVBProgramNode.
+	self name notNil
+		ifTrue: [ self name parent: self ]
 ]
 
 { #category : #generated }
 VBTypeEntryNode >> nodeVariables [
-	^ #(#type #_size)
-]
-
-{ #category : #generated }
-VBTypeEntryNode >> otherVariables [
-	^ #(#name)
+	^ #(#name #type #_size)
 ]
 
 { #category : #generated }

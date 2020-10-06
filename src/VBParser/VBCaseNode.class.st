@@ -71,10 +71,12 @@ VBCaseNode >> expression [
 ]
 
 { #category : #generated }
-VBCaseNode >> expression: anObject [
-	self setParent: self expression to: nil.
-	expression := anObject.
-	self setParent: self expression to: self
+VBCaseNode >> expression: aVBProgramNode [
+	self expression notNil
+		ifTrue: [ self expression parent: nil ].
+	expression := aVBProgramNode.
+	self expression notNil
+		ifTrue: [ self expression parent: self ]
 ]
 
 { #category : #'generated-initialize-release' }
@@ -85,12 +87,7 @@ VBCaseNode >> initialize [
 
 { #category : #generated }
 VBCaseNode >> nodeVariables [
-	^ #(#body)
-]
-
-{ #category : #generated }
-VBCaseNode >> otherVariables [
-	^ #(#expression)
+	^ #(#body #expression)
 ]
 
 { #category : #generated }

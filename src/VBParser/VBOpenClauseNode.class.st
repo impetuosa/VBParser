@@ -56,10 +56,12 @@ VBOpenClauseNode >> fileDescriptor [
 ]
 
 { #category : #generated }
-VBOpenClauseNode >> fileDescriptor: anObject [
-	self setParent: self fileDescriptor to: nil.
-	fileDescriptor := anObject.
-	self setParent: self fileDescriptor to: self
+VBOpenClauseNode >> fileDescriptor: aVBProgramNode [
+	self fileDescriptor notNil
+		ifTrue: [ self fileDescriptor parent: nil ].
+	fileDescriptor := aVBProgramNode.
+	self fileDescriptor notNil
+		ifTrue: [ self fileDescriptor parent: self ]
 ]
 
 { #category : #generated }
@@ -68,10 +70,12 @@ VBOpenClauseNode >> filepath [
 ]
 
 { #category : #generated }
-VBOpenClauseNode >> filepath: anObject [
-	self setParent: self filepath to: nil.
-	filepath := anObject.
-	self setParent: self filepath to: self
+VBOpenClauseNode >> filepath: aVBProgramNode [
+	self filepath notNil
+		ifTrue: [ self filepath parent: nil ].
+	filepath := aVBProgramNode.
+	self filepath notNil
+		ifTrue: [ self filepath parent: self ]
 ]
 
 { #category : #generated }
@@ -110,7 +114,7 @@ VBOpenClauseNode >> mode: aSmaCCToken [
 
 { #category : #generated }
 VBOpenClauseNode >> nodeVariables [
-	^ #(#length)
+	^ #(#filepath #fileDescriptor #length)
 ]
 
 { #category : #generated }
@@ -121,11 +125,6 @@ VBOpenClauseNode >> oPENToken [
 { #category : #generated }
 VBOpenClauseNode >> oPENToken: aSmaCCToken [
 	oPENToken := aSmaCCToken
-]
-
-{ #category : #generated }
-VBOpenClauseNode >> otherVariables [
-	^ #(#filepath #fileDescriptor)
 ]
 
 { #category : #generated }

@@ -27,12 +27,7 @@ VBEventNode >> eventToken: aSmaCCToken [
 
 { #category : #generated }
 VBEventNode >> nodeVariables [
-	^ #(#parameters)
-]
-
-{ #category : #generated }
-VBEventNode >> otherVariables [
-	^ #(#selector)
+	^ #(#selector #parameters)
 ]
 
 { #category : #generated }
@@ -55,10 +50,12 @@ VBEventNode >> selector [
 ]
 
 { #category : #generated }
-VBEventNode >> selector: anObject [
-	self setParent: self selector to: nil.
-	selector := anObject.
-	self setParent: self selector to: self
+VBEventNode >> selector: aVBProgramNode [
+	self selector notNil
+		ifTrue: [ self selector parent: nil ].
+	selector := aVBProgramNode.
+	self selector notNil
+		ifTrue: [ self selector parent: self ]
 ]
 
 { #category : #generated }

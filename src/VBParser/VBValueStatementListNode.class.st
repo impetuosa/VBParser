@@ -24,6 +24,11 @@ VBValueStatementListNode >> commaTokens: anOrderedCollection [
 ]
 
 { #category : #generated }
+VBValueStatementListNode >> compositeNodeVariables [
+	^ #(#values)
+]
+
+{ #category : #generated }
 VBValueStatementListNode >> compositeTokenVariables [
 	^ #(#commaTokens)
 ]
@@ -36,18 +41,13 @@ VBValueStatementListNode >> initialize [
 ]
 
 { #category : #generated }
-VBValueStatementListNode >> otherVariables [
-	^ #(#values)
-]
-
-{ #category : #generated }
 VBValueStatementListNode >> values [
 	^ values
 ]
 
 { #category : #generated }
 VBValueStatementListNode >> values: anOrderedCollection [
-	self setParent: self values to: nil.
+	self setParents: self values to: nil.
 	values := anOrderedCollection.
-	self setParent: self values to: self
+	self setParents: self values to: self
 ]

@@ -23,10 +23,12 @@ VBIfThenColonNode >> condition [
 ]
 
 { #category : #generated }
-VBIfThenColonNode >> condition: anObject [
-	self setParent: self condition to: nil.
-	condition := anObject.
-	self setParent: self condition to: self
+VBIfThenColonNode >> condition: aVBProgramNode [
+	self condition notNil
+		ifTrue: [ self condition parent: nil ].
+	condition := aVBProgramNode.
+	self condition notNil
+		ifTrue: [ self condition parent: self ]
 ]
 
 { #category : #generated }
@@ -45,10 +47,12 @@ VBIfThenColonNode >> ifFalse [
 ]
 
 { #category : #generated }
-VBIfThenColonNode >> ifFalse: anObject [
-	self setParent: self ifFalse to: nil.
-	ifFalse := anObject.
-	self setParent: self ifFalse to: self
+VBIfThenColonNode >> ifFalse: aVBProgramNode [
+	self ifFalse notNil
+		ifTrue: [ self ifFalse parent: nil ].
+	ifFalse := aVBProgramNode.
+	self ifFalse notNil
+		ifTrue: [ self ifFalse parent: self ]
 ]
 
 { #category : #generated }
@@ -67,14 +71,16 @@ VBIfThenColonNode >> ifTrue [
 ]
 
 { #category : #generated }
-VBIfThenColonNode >> ifTrue: anObject [
-	self setParent: self ifTrue to: nil.
-	ifTrue := anObject.
-	self setParent: self ifTrue to: self
+VBIfThenColonNode >> ifTrue: aVBProgramNode [
+	self ifTrue notNil
+		ifTrue: [ self ifTrue parent: nil ].
+	ifTrue := aVBProgramNode.
+	self ifTrue notNil
+		ifTrue: [ self ifTrue parent: self ]
 ]
 
 { #category : #generated }
-VBIfThenColonNode >> otherVariables [
+VBIfThenColonNode >> nodeVariables [
 	^ #(#condition #ifTrue #ifFalse)
 ]
 

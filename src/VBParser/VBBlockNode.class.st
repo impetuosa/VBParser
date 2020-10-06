@@ -16,7 +16,7 @@ VBBlockNode >> acceptVisitor: aProgramVisitor [
 
 { #category : #generated }
 VBBlockNode >> compositeNodeVariables [
-	^ #(#lineNumbers)
+	^ #(#statements #lineNumbers)
 ]
 
 { #category : #generated }
@@ -55,18 +55,13 @@ VBBlockNode >> lineNumbers: anOrderedCollection [
 ]
 
 { #category : #generated }
-VBBlockNode >> otherVariables [
-	^ #(#statements)
-]
-
-{ #category : #generated }
 VBBlockNode >> statements [
 	^ statements
 ]
 
 { #category : #generated }
 VBBlockNode >> statements: anOrderedCollection [
-	self setParent: self statements to: nil.
+	self setParents: self statements to: nil.
 	statements := anOrderedCollection.
-	self setParent: self statements to: self
+	self setParents: self statements to: self
 ]

@@ -2,7 +2,7 @@ Class {
 	#name : #VBHeadlessIdentifierNode,
 	#superclass : #VBProgramNode,
 	#instVars : [
-		'periodToken',
+		'headlessPointToken',
 		'token'
 	],
 	#category : #'VBParser-Nodes'
@@ -14,18 +14,18 @@ VBHeadlessIdentifierNode >> acceptVisitor: aProgramVisitor [
 ]
 
 { #category : #generated }
+VBHeadlessIdentifierNode >> headlessPointToken [
+	^ headlessPointToken
+]
+
+{ #category : #generated }
+VBHeadlessIdentifierNode >> headlessPointToken: aSmaCCToken [
+	headlessPointToken := aSmaCCToken
+]
+
+{ #category : #generated }
 VBHeadlessIdentifierNode >> otherVariables [
 	^ #(#token)
-]
-
-{ #category : #generated }
-VBHeadlessIdentifierNode >> periodToken [
-	^ periodToken
-]
-
-{ #category : #generated }
-VBHeadlessIdentifierNode >> periodToken: aSmaCCToken [
-	periodToken := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -42,5 +42,5 @@ VBHeadlessIdentifierNode >> token: anObject [
 
 { #category : #generated }
 VBHeadlessIdentifierNode >> tokenVariables [
-	^ #(#periodToken)
+	^ #(#headlessPointToken)
 ]

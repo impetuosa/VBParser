@@ -41,10 +41,17 @@ VBRenameNode >> newName [
 ]
 
 { #category : #generated }
-VBRenameNode >> newName: anObject [
-	self setParent: self newName to: nil.
-	newName := anObject.
-	self setParent: self newName to: self
+VBRenameNode >> newName: aVBProgramNode [
+	self newName notNil
+		ifTrue: [ self newName parent: nil ].
+	newName := aVBProgramNode.
+	self newName notNil
+		ifTrue: [ self newName parent: self ]
+]
+
+{ #category : #generated }
+VBRenameNode >> nodeVariables [
+	^ #(#oldName #newName)
 ]
 
 { #category : #generated }
@@ -53,15 +60,12 @@ VBRenameNode >> oldName [
 ]
 
 { #category : #generated }
-VBRenameNode >> oldName: anObject [
-	self setParent: self oldName to: nil.
-	oldName := anObject.
-	self setParent: self oldName to: self
-]
-
-{ #category : #generated }
-VBRenameNode >> otherVariables [
-	^ #(#oldName #newName)
+VBRenameNode >> oldName: aVBProgramNode [
+	self oldName notNil
+		ifTrue: [ self oldName parent: nil ].
+	oldName := aVBProgramNode.
+	self oldName notNil
+		ifTrue: [ self oldName parent: self ]
 ]
 
 { #category : #generated }

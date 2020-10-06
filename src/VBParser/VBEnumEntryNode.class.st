@@ -30,14 +30,16 @@ VBEnumEntryNode >> name [
 ]
 
 { #category : #generated }
-VBEnumEntryNode >> name: anObject [
-	self setParent: self name to: nil.
-	name := anObject.
-	self setParent: self name to: self
+VBEnumEntryNode >> name: aVBProgramNode [
+	self name notNil
+		ifTrue: [ self name parent: nil ].
+	name := aVBProgramNode.
+	self name notNil
+		ifTrue: [ self name parent: self ]
 ]
 
 { #category : #generated }
-VBEnumEntryNode >> otherVariables [
+VBEnumEntryNode >> nodeVariables [
 	^ #(#name #value)
 ]
 
@@ -52,8 +54,10 @@ VBEnumEntryNode >> value [
 ]
 
 { #category : #generated }
-VBEnumEntryNode >> value: anObject [
-	self setParent: self value to: nil.
-	value := anObject.
-	self setParent: self value to: self
+VBEnumEntryNode >> value: aVBProgramNode [
+	self value notNil
+		ifTrue: [ self value parent: nil ].
+	value := aVBProgramNode.
+	self value notNil
+		ifTrue: [ self value parent: self ]
 ]

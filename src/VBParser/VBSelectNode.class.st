@@ -90,10 +90,12 @@ VBSelectNode >> expression [
 ]
 
 { #category : #generated }
-VBSelectNode >> expression: anObject [
-	self setParent: self expression to: nil.
-	expression := anObject.
-	self setParent: self expression to: self
+VBSelectNode >> expression: aVBProgramNode [
+	self expression notNil
+		ifTrue: [ self expression parent: nil ].
+	expression := aVBProgramNode.
+	self expression notNil
+		ifTrue: [ self expression parent: self ]
 ]
 
 { #category : #'generated-initialize-release' }
@@ -106,12 +108,7 @@ VBSelectNode >> initialize [
 
 { #category : #generated }
 VBSelectNode >> nodeVariables [
-	^ #(#endLineNumber)
-]
-
-{ #category : #generated }
-VBSelectNode >> otherVariables [
-	^ #(#expression)
+	^ #(#expression #endLineNumber)
 ]
 
 { #category : #generated }
