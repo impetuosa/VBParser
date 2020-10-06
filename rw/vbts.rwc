@@ -1,0 +1,10 @@
+self
+	inputParserClass: VBParser;
+	validationParserClass: TypeScriptParser;
+	loadRewriteFile: (FileReference basicNew instVarAt: 1 put: (FileSystem basicNew instVarAt: 1 put: (WindowsStore basicNew instVarAt: 1 put: 255; instVarAt: 2 put: nil; yourself); yourself); instVarAt: 2 put: ((AbsolutePath basicNew: 5)  basicAt: 1 put: 'D:'; basicAt: 2 put: 'Users'; basicAt: 3 put: 'Santiago.BRAGAGNOLO'; basicAt: 4 put: 'Transformation'; basicAt: 5 put: 'SmaCCVbTs.rw'; yourself); yourself);
+	files: ((Array new: 1) at: 1 put: (FileReference basicNew instVarAt: 1 put: (FileSystem basicNew instVarAt: 1 put: (WindowsStore basicNew instVarAt: 1 put: 255; instVarAt: 2 put: nil; yourself); yourself); instVarAt: 2 put: ((AbsolutePath basicNew: 5)  basicAt: 1 put: 'D:'; basicAt: 2 put: 'Users'; basicAt: 3 put: 'Santiago.BRAGAGNOLO'; basicAt: 4 put: 'Transformation'; basicAt: 5 put: 'CPiecesJointesControler.bas'; yourself); yourself); yourself);
+	outputDirectory: '';
+	createSubdirectories: false;
+	server: 'localhost';
+	runOnServer: false
+  
