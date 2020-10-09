@@ -1239,6 +1239,11 @@ RaiseEvent : ""RaiseEvent""  ImplicitCall 'call'  {{RaiseEvent}};"
 ]
 
 { #category : #generated }
+VBParser class >> fileExtensions [
+	^ #('.bas')
+]
+
+{ #category : #generated }
 VBParser class >> reduceTable [
 ^#(
 	#(170 0 #reduceActionFor_eol__1: 1965057 false ) 
