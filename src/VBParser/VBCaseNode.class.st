@@ -3,12 +3,13 @@ Class {
 	#superclass : #VBProgramNode,
 	#instVars : [
 		'caseToken',
+		'commaTokens',
+		'expressions',
 		'eolTokens',
 		'body',
-		'expression',
 		'elseToken'
 	],
-	#category : #'VBParser-Nodes'
+	#category : #'VBParser-Scanner'
 }
 
 { #category : #generated }
@@ -41,8 +42,23 @@ VBCaseNode >> caseToken: aSmaCCToken [
 ]
 
 { #category : #generated }
+VBCaseNode >> commaTokens [
+	^ commaTokens
+]
+
+{ #category : #generated }
+VBCaseNode >> commaTokens: anOrderedCollection [
+	commaTokens := anOrderedCollection
+]
+
+{ #category : #generated }
+VBCaseNode >> compositeNodeVariables [
+	^ #(#expressions)
+]
+
+{ #category : #generated }
 VBCaseNode >> compositeTokenVariables [
-	^ #(#eolTokens)
+	^ #(#commaTokens #eolTokens)
 ]
 
 { #category : #generated }
@@ -66,28 +82,28 @@ VBCaseNode >> eolTokens: anOrderedCollection [
 ]
 
 { #category : #generated }
-VBCaseNode >> expression [
-	^ expression
+VBCaseNode >> expressions [
+	^ expressions
 ]
 
 { #category : #generated }
-VBCaseNode >> expression: aVBProgramNode [
-	self expression notNil
-		ifTrue: [ self expression parent: nil ].
-	expression := aVBProgramNode.
-	self expression notNil
-		ifTrue: [ self expression parent: self ]
+VBCaseNode >> expressions: anOrderedCollection [
+	self setParents: self expressions to: nil.
+	expressions := anOrderedCollection.
+	self setParents: self expressions to: self
 ]
 
 { #category : #'generated-initialize-release' }
 VBCaseNode >> initialize [
 	super initialize.
+	commaTokens := OrderedCollection new: 2.
+	expressions := OrderedCollection new: 2.
 	eolTokens := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
 VBCaseNode >> nodeVariables [
-	^ #(#body #expression)
+	^ #(#body)
 ]
 
 { #category : #generated }

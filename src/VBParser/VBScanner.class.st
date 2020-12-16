@@ -20,12 +20,12 @@ VBScanner class >> initializeKeywordMap [
 
 { #category : #generated }
 VBScanner >> emptySymbolTokenId [
-	^ 376
+	^ 378
 ]
 
 { #category : #generated }
 VBScanner >> errorTokenId [
-	^ 377
+	^ 379
 ]
 
 { #category : #private }
@@ -564,7 +564,7 @@ VBScanner >> scanForTokenX17 [
 			[ ^ self scanForTokenX2 ].
 	currentCharacter == $[
 		ifTrue:
-			[ ^ self scanForTokenX5 ].
+			[ ^ self scanForTokenX4 ].
 	currentCharacter == $\
 		ifTrue: [ ^ self recordAndReportMatch: #(63) ].
 	currentCharacter == $^
@@ -580,7 +580,7 @@ VBScanner >> scanForTokenX17 [
 		ifTrue: [ ^ self recordAndReportMatch: #(150) ].
 	currentCharacter isDigit
 		ifTrue:
-			[ ^ self scanForTokenX4 ].
+			[ ^ self scanForTokenX5 ].
 	(currentCharacter == Character lf
 		or: [ currentCharacter =
 				(Character value: 8232) ])
@@ -697,6 +697,22 @@ VBScanner >> scanForTokenX3 [
 
 { #category : #generated }
 VBScanner >> scanForTokenX4 [
+	self recordMatch: #(62).
+	self step.
+	(currentCharacter isLetter or: [ '$_' includes: currentCharacter ])
+		ifTrue: [ [ self step.
+			currentCharacter == $]
+				ifTrue: [ ^ self recordAndReportMatch: #(161) ].
+			currentCharacter isAlphaNumeric
+				or: [ currentCharacter isSeparator
+						or: [ currentCharacter == Character pageUp
+								or:
+									[ '$/_' includes: currentCharacter ] ] ] ] whileTrue ].
+	^ self reportLastMatch
+]
+
+{ #category : #generated }
+VBScanner >> scanForTokenX5 [
 	[ self recordMatch: #(155).
 	self step.
 	currentCharacter == $.
@@ -708,21 +724,6 @@ VBScanner >> scanForTokenX4 [
 		ifTrue: [ ^ self recordAndReportMatch: #(155) ].
 	('DFdf' includes: currentCharacter)
 		ifTrue: [ ^ self recordAndReportMatch: #(156) ].
-	^ self reportLastMatch
-]
-
-{ #category : #generated }
-VBScanner >> scanForTokenX5 [
-	self recordMatch: #(62).
-	self step.
-	(currentCharacter isLetter or: [ '$_' includes: currentCharacter ])
-		ifTrue: [ [ self step.
-			currentCharacter == $]
-				ifTrue: [ ^ self recordAndReportMatch: #(161) ].
-			currentCharacter isAlphaNumeric
-				or: [ currentCharacter isSeparator
-						or: [ currentCharacter == Character pageUp
-								or: [ '$_' includes: currentCharacter ] ] ] ] whileTrue ].
 	^ self reportLastMatch
 ]
 
