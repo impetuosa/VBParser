@@ -6,15 +6,27 @@ Class {
 		'condition',
 		'thenToken',
 		'ifTrue',
+		'colonToken',
+		'thenColonToken',
 		'elseToken',
 		'ifFalse'
 	],
-	#category : #'VBParser-Nodes'
+	#category : #'VBParser-Scanner'
 }
 
 { #category : #generated }
 VBIfThenColonNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitIfThenColon: self
+]
+
+{ #category : #generated }
+VBIfThenColonNode >> colonToken [
+	^ colonToken
+]
+
+{ #category : #generated }
+VBIfThenColonNode >> colonToken: aSmaCCToken [
+	colonToken := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -85,6 +97,16 @@ VBIfThenColonNode >> nodeVariables [
 ]
 
 { #category : #generated }
+VBIfThenColonNode >> thenColonToken [
+	^ thenColonToken
+]
+
+{ #category : #generated }
+VBIfThenColonNode >> thenColonToken: aSmaCCToken [
+	thenColonToken := aSmaCCToken
+]
+
+{ #category : #generated }
 VBIfThenColonNode >> thenToken [
 	^ thenToken
 ]
@@ -96,5 +118,5 @@ VBIfThenColonNode >> thenToken: aSmaCCToken [
 
 { #category : #generated }
 VBIfThenColonNode >> tokenVariables [
-	^ #(#ifToken #thenToken #elseToken)
+	^ #(#ifToken #thenToken #colonToken #thenColonToken #elseToken)
 ]

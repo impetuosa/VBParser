@@ -8,10 +8,13 @@ Class {
 VBAbstractProgramNode >> addDestination: aDestination [
 	self
 		assert:
-			({VBGoSubNode.
+			({VBResumeLabelNode.
+			VBGoSubNode.
 			VBGoToStatementNode} includes: self class).
-	(self attributeNamed: #destinations ifAbsentPut: [ OrderedCollection new ]) add: aDestination.
-	aDestination addJumpSource: self. 
+	(self
+		attributeNamed: #destinations
+		ifAbsentPut: [ OrderedCollection new ]) add: aDestination.
+	aDestination addJumpSource: self
 ]
 
 { #category : #'as yet unclassified' }

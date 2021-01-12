@@ -7,7 +7,8 @@ Class {
 		'expressions',
 		'eolTokens',
 		'body',
-		'elseToken'
+		'elseToken',
+		'colonToken'
 	],
 	#category : #'VBParser-Scanner'
 }
@@ -39,6 +40,16 @@ VBCaseNode >> caseToken [
 { #category : #generated }
 VBCaseNode >> caseToken: aSmaCCToken [
 	caseToken := aSmaCCToken
+]
+
+{ #category : #generated }
+VBCaseNode >> colonToken [
+	^ colonToken
+]
+
+{ #category : #generated }
+VBCaseNode >> colonToken: aSmaCCToken [
+	colonToken := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -108,5 +119,5 @@ VBCaseNode >> nodeVariables [
 
 { #category : #generated }
 VBCaseNode >> tokenVariables [
-	^ #(#caseToken #elseToken)
+	^ #(#caseToken #colonToken #elseToken)
 ]
