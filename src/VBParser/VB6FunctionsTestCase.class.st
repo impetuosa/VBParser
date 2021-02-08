@@ -91,8 +91,7 @@ End Function
 
 { #category : #'smoke tests ' }
 VB6FunctionsTestCase >> testSmokeCallByName [
-			self parse: self callByNameCase
-		
+	self parse: self callByNameCase
 ]
 
 { #category : #'smoke tests ' }

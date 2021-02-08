@@ -2,13 +2,15 @@ Class {
 	#name : #VBElseIfBlockNode,
 	#superclass : #VBProgramNode,
 	#instVars : [
+		'elseToken',
+		'eolTokens',
+		'ifMatch',
+		'endLineNumber',
 		'elseifToken',
 		'condition',
-		'thenToken',
-		'eolTokens',
-		'ifMatch'
+		'thenToken'
 	],
-	#category : #'VBParser-Nodes'
+	#category : #'VBParser-Scanner'
 }
 
 { #category : #generated }
@@ -36,6 +38,16 @@ VBElseIfBlockNode >> condition: aVBProgramNode [
 ]
 
 { #category : #generated }
+VBElseIfBlockNode >> elseToken [
+	^ elseToken
+]
+
+{ #category : #generated }
+VBElseIfBlockNode >> elseToken: aSmaCCToken [
+	elseToken := aSmaCCToken
+]
+
+{ #category : #generated }
 VBElseIfBlockNode >> elseifToken [
 	^ elseifToken
 ]
@@ -43,6 +55,20 @@ VBElseIfBlockNode >> elseifToken [
 { #category : #generated }
 VBElseIfBlockNode >> elseifToken: aSmaCCToken [
 	elseifToken := aSmaCCToken
+]
+
+{ #category : #generated }
+VBElseIfBlockNode >> endLineNumber [
+	^ endLineNumber
+]
+
+{ #category : #generated }
+VBElseIfBlockNode >> endLineNumber: aVBIntegerLiteralNode [
+	self endLineNumber notNil
+		ifTrue: [ self endLineNumber parent: nil ].
+	endLineNumber := aVBIntegerLiteralNode.
+	self endLineNumber notNil
+		ifTrue: [ self endLineNumber parent: self ]
 ]
 
 { #category : #generated }
@@ -77,7 +103,7 @@ VBElseIfBlockNode >> initialize [
 
 { #category : #generated }
 VBElseIfBlockNode >> nodeVariables [
-	^ #(#condition #ifMatch)
+	^ #(#ifMatch #endLineNumber #condition)
 ]
 
 { #category : #generated }
@@ -92,5 +118,5 @@ VBElseIfBlockNode >> thenToken: aSmaCCToken [
 
 { #category : #generated }
 VBElseIfBlockNode >> tokenVariables [
-	^ #(#elseifToken #thenToken)
+	^ #(#elseToken #elseifToken #thenToken)
 ]

@@ -5,15 +5,19 @@ Class {
 		'ifTokens',
 		'condition',
 		'thenToken',
-		'eolTokens',
-		'endToken',
-		'endLineNumber',
 		'ifTrue',
 		'elseToken',
+		'colonTokens',
 		'ifFalse',
-		'elseLineNumber'
+		'elseColonToken',
+		'thenColonToken',
+		'eolTokens',
+		'elseifs',
+		'endToken',
+		'endLineNumber',
+		'else'
 	],
-	#category : #'VBParser-Nodes'
+	#category : #'VBParser-Scanner'
 }
 
 { #category : #generated }
@@ -22,8 +26,23 @@ VBIfThenElseNode >> acceptVisitor: aProgramVisitor [
 ]
 
 { #category : #generated }
+VBIfThenElseNode >> colonTokens [
+	^ colonTokens
+]
+
+{ #category : #generated }
+VBIfThenElseNode >> colonTokens: anOrderedCollection [
+	colonTokens := anOrderedCollection
+]
+
+{ #category : #generated }
+VBIfThenElseNode >> compositeNodeVariables [
+	^ #(#elseifs)
+]
+
+{ #category : #generated }
 VBIfThenElseNode >> compositeTokenVariables [
-	^ #(#ifTokens #eolTokens)
+	^ #(#ifTokens #colonTokens #eolTokens)
 ]
 
 { #category : #generated }
@@ -41,17 +60,27 @@ VBIfThenElseNode >> condition: aVBProgramNode [
 ]
 
 { #category : #generated }
-VBIfThenElseNode >> elseLineNumber [
-	^ elseLineNumber
+VBIfThenElseNode >> else [
+	^ else
 ]
 
 { #category : #generated }
-VBIfThenElseNode >> elseLineNumber: aVBIntegerLiteralNode [
-	self elseLineNumber notNil
-		ifTrue: [ self elseLineNumber parent: nil ].
-	elseLineNumber := aVBIntegerLiteralNode.
-	self elseLineNumber notNil
-		ifTrue: [ self elseLineNumber parent: self ]
+VBIfThenElseNode >> else: aVBElseIfBlockNode [
+	self else notNil
+		ifTrue: [ self else parent: nil ].
+	else := aVBElseIfBlockNode.
+	self else notNil
+		ifTrue: [ self else parent: self ]
+]
+
+{ #category : #generated }
+VBIfThenElseNode >> elseColonToken [
+	^ elseColonToken
+]
+
+{ #category : #generated }
+VBIfThenElseNode >> elseColonToken: aSmaCCToken [
+	elseColonToken := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -62,6 +91,18 @@ VBIfThenElseNode >> elseToken [
 { #category : #generated }
 VBIfThenElseNode >> elseToken: aSmaCCToken [
 	elseToken := aSmaCCToken
+]
+
+{ #category : #generated }
+VBIfThenElseNode >> elseifs [
+	^ elseifs
+]
+
+{ #category : #generated }
+VBIfThenElseNode >> elseifs: anOrderedCollection [
+	self setParents: self elseifs to: nil.
+	elseifs := anOrderedCollection.
+	self setParents: self elseifs to: self
 ]
 
 { #category : #generated }
@@ -104,10 +145,10 @@ VBIfThenElseNode >> ifFalse [
 ]
 
 { #category : #generated }
-VBIfThenElseNode >> ifFalse: aVBBlockNode [
+VBIfThenElseNode >> ifFalse: aVBProgramNode [
 	self ifFalse notNil
 		ifTrue: [ self ifFalse parent: nil ].
-	ifFalse := aVBBlockNode.
+	ifFalse := aVBProgramNode.
 	self ifFalse notNil
 		ifTrue: [ self ifFalse parent: self ]
 ]
@@ -128,10 +169,10 @@ VBIfThenElseNode >> ifTrue [
 ]
 
 { #category : #generated }
-VBIfThenElseNode >> ifTrue: aVBBlockNode [
+VBIfThenElseNode >> ifTrue: aVBProgramNode [
 	self ifTrue notNil
 		ifTrue: [ self ifTrue parent: nil ].
-	ifTrue := aVBBlockNode.
+	ifTrue := aVBProgramNode.
 	self ifTrue notNil
 		ifTrue: [ self ifTrue parent: self ]
 ]
@@ -140,12 +181,24 @@ VBIfThenElseNode >> ifTrue: aVBBlockNode [
 VBIfThenElseNode >> initialize [
 	super initialize.
 	ifTokens := OrderedCollection new: 2.
+	colonTokens := OrderedCollection new: 2.
 	eolTokens := OrderedCollection new: 2.
+	elseifs := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
 VBIfThenElseNode >> nodeVariables [
-	^ #(#condition #endLineNumber #ifTrue #ifFalse #elseLineNumber)
+	^ #(#condition #ifTrue #ifFalse #endLineNumber #else)
+]
+
+{ #category : #generated }
+VBIfThenElseNode >> thenColonToken [
+	^ thenColonToken
+]
+
+{ #category : #generated }
+VBIfThenElseNode >> thenColonToken: aSmaCCToken [
+	thenColonToken := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -160,5 +213,5 @@ VBIfThenElseNode >> thenToken: aSmaCCToken [
 
 { #category : #generated }
 VBIfThenElseNode >> tokenVariables [
-	^ #(#thenToken #endToken #elseToken)
+	^ #(#thenToken #elseToken #elseColonToken #thenColonToken #endToken)
 ]
