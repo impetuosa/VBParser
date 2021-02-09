@@ -456,6 +456,11 @@ TVBProgramNodeVisitor >> visitParentheseesExpression: aParentheseesExpression [
 ]
 
 { #category : #generated }
+TVBProgramNodeVisitor >> visitParentheseesValueStatement: aParentheseesValueStatement [
+	^ self visitProgram: aParentheseesValueStatement
+]
+
+{ #category : #generated }
 TVBProgramNodeVisitor >> visitPositiveOperation: aPositiveOperation [
 	^ self visitProgram: aPositiveOperation
 ]
