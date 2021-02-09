@@ -84,10 +84,10 @@ VBOpenClauseNode >> length [
 ]
 
 { #category : #generated }
-VBOpenClauseNode >> length: aVBAssignementOrEqualsNode [
+VBOpenClauseNode >> length: aVBEqualsNode [
 	self length notNil
 		ifTrue: [ self length parent: nil ].
-	length := aVBAssignementOrEqualsNode.
+	length := aVBEqualsNode.
 	self length notNil
 		ifTrue: [ self length parent: self ]
 ]

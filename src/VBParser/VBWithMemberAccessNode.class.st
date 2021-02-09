@@ -2,11 +2,22 @@ Class {
 	#name : #VBWithMemberAccessNode,
 	#superclass : #VBProgramNode,
 	#instVars : [
-		'periodToken',
-		'member'
+		'_PeriodToken',
+		'member',
+		'whitespaceToken'
 	],
 	#category : #'VBParser-Scanner'
 }
+
+{ #category : #generated }
+VBWithMemberAccessNode >> _PeriodToken [
+	^ _PeriodToken
+]
+
+{ #category : #generated }
+VBWithMemberAccessNode >> _PeriodToken: aSmaCCToken [
+	_PeriodToken := aSmaCCToken
+]
 
 { #category : #generated }
 VBWithMemberAccessNode >> acceptVisitor: aProgramVisitor [
@@ -33,16 +44,16 @@ VBWithMemberAccessNode >> nodeVariables [
 ]
 
 { #category : #generated }
-VBWithMemberAccessNode >> periodToken [
-	^ periodToken
-]
-
-{ #category : #generated }
-VBWithMemberAccessNode >> periodToken: aSmaCCToken [
-	periodToken := aSmaCCToken
-]
-
-{ #category : #generated }
 VBWithMemberAccessNode >> tokenVariables [
-	^ #(#periodToken)
+	^ #(#_PeriodToken #whitespaceToken)
+]
+
+{ #category : #generated }
+VBWithMemberAccessNode >> whitespaceToken [
+	^ whitespaceToken
+]
+
+{ #category : #generated }
+VBWithMemberAccessNode >> whitespaceToken: aSmaCCToken [
+	whitespaceToken := aSmaCCToken
 ]

@@ -5,14 +5,25 @@ Class {
 		'kind',
 		'left',
 		'operator',
-		'right'
+		'right',
+		'colonEqualToken'
 	],
-	#category : #'VBParser-Nodes'
+	#category : #'VBParser-Scanner'
 }
 
 { #category : #generated }
 VBExplicitAssignementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitExplicitAssignement: self
+]
+
+{ #category : #generated }
+VBExplicitAssignementNode >> colonEqualToken [
+	^ colonEqualToken
+]
+
+{ #category : #generated }
+VBExplicitAssignementNode >> colonEqualToken: aSmaCCToken [
+	colonEqualToken := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -70,5 +81,5 @@ VBExplicitAssignementNode >> right: aVBProgramNode [
 
 { #category : #generated }
 VBExplicitAssignementNode >> tokenVariables [
-	^ #(#kind #operator)
+	^ #(#kind #operator #colonEqualToken)
 ]

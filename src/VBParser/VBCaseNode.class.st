@@ -6,6 +6,7 @@ Class {
 		'commaTokens',
 		'expressions',
 		'body',
+		'eolTokens',
 		'colonToken',
 		'elseToken'
 	],
@@ -68,7 +69,7 @@ VBCaseNode >> compositeNodeVariables [
 
 { #category : #generated }
 VBCaseNode >> compositeTokenVariables [
-	^ #(#commaTokens)
+	^ #(#commaTokens #eolTokens)
 ]
 
 { #category : #generated }
@@ -79,6 +80,16 @@ VBCaseNode >> elseToken [
 { #category : #generated }
 VBCaseNode >> elseToken: aSmaCCToken [
 	elseToken := aSmaCCToken
+]
+
+{ #category : #generated }
+VBCaseNode >> eolTokens [
+	^ eolTokens
+]
+
+{ #category : #generated }
+VBCaseNode >> eolTokens: anOrderedCollection [
+	eolTokens := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -98,6 +109,7 @@ VBCaseNode >> initialize [
 	super initialize.
 	commaTokens := OrderedCollection new: 2.
 	expressions := OrderedCollection new: 2.
+	eolTokens := OrderedCollection new: 2.
 ]
 
 { #category : #generated }

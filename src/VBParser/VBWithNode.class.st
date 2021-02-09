@@ -4,12 +4,11 @@ Class {
 	#instVars : [
 		'withTokens',
 		'with',
-		'eolTokens',
+		'block',
 		'endToken',
-		'endLineNumber',
-		'block'
+		'endLineNumber'
 	],
-	#category : #'VBParser-Nodes'
+	#category : #'VBParser-Scanner'
 }
 
 { #category : #generated }
@@ -33,7 +32,7 @@ VBWithNode >> block: aVBBlockNode [
 
 { #category : #generated }
 VBWithNode >> compositeTokenVariables [
-	^ #(#withTokens #eolTokens)
+	^ #(#withTokens)
 ]
 
 { #category : #generated }
@@ -60,26 +59,15 @@ VBWithNode >> endToken: aSmaCCToken [
 	endToken := aSmaCCToken
 ]
 
-{ #category : #generated }
-VBWithNode >> eolTokens [
-	^ eolTokens
-]
-
-{ #category : #generated }
-VBWithNode >> eolTokens: anOrderedCollection [
-	eolTokens := anOrderedCollection
-]
-
 { #category : #'generated-initialize-release' }
 VBWithNode >> initialize [
 	super initialize.
 	withTokens := OrderedCollection new: 2.
-	eolTokens := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
 VBWithNode >> nodeVariables [
-	^ #(#with #endLineNumber #block)
+	^ #(#with #block #endLineNumber)
 ]
 
 { #category : #generated }

@@ -5,14 +5,13 @@ Class {
 		'functionTokens',
 		'selector',
 		'parameters',
-		'eolTokens',
 		'block',
 		'endToken',
 		'type',
 		'modifier',
 		'visibility'
 	],
-	#category : #'VBParser-Nodes'
+	#category : #'VBParser-Scanner'
 }
 
 { #category : #generated }
@@ -36,7 +35,7 @@ VBFunctionDefinitionNode >> block: aVBBlockNode [
 
 { #category : #generated }
 VBFunctionDefinitionNode >> compositeTokenVariables [
-	^ #(#functionTokens #eolTokens)
+	^ #(#functionTokens)
 ]
 
 { #category : #generated }
@@ -47,16 +46,6 @@ VBFunctionDefinitionNode >> endToken [
 { #category : #generated }
 VBFunctionDefinitionNode >> endToken: aSmaCCToken [
 	endToken := aSmaCCToken
-]
-
-{ #category : #generated }
-VBFunctionDefinitionNode >> eolTokens [
-	^ eolTokens
-]
-
-{ #category : #generated }
-VBFunctionDefinitionNode >> eolTokens: anOrderedCollection [
-	eolTokens := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -73,7 +62,6 @@ VBFunctionDefinitionNode >> functionTokens: anOrderedCollection [
 VBFunctionDefinitionNode >> initialize [
 	super initialize.
 	functionTokens := OrderedCollection new: 2.
-	eolTokens := OrderedCollection new: 2.
 ]
 
 { #category : #generated }

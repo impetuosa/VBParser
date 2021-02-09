@@ -5,7 +5,6 @@ Class {
 		'propertyTokens',
 		'getToken',
 		'selector',
-		'eolTokens',
 		'block',
 		'endToken',
 		'type',
@@ -15,7 +14,7 @@ Class {
 		'setToken',
 		'letToken'
 	],
-	#category : #'VBParser-Nodes'
+	#category : #'VBParser-Scanner'
 }
 
 { #category : #generated }
@@ -39,7 +38,7 @@ VBModulePropertyGetNode >> block: aVBBlockNode [
 
 { #category : #generated }
 VBModulePropertyGetNode >> compositeTokenVariables [
-	^ #(#propertyTokens #eolTokens)
+	^ #(#propertyTokens)
 ]
 
 { #category : #generated }
@@ -50,16 +49,6 @@ VBModulePropertyGetNode >> endToken [
 { #category : #generated }
 VBModulePropertyGetNode >> endToken: aSmaCCToken [
 	endToken := aSmaCCToken
-]
-
-{ #category : #generated }
-VBModulePropertyGetNode >> eolTokens [
-	^ eolTokens
-]
-
-{ #category : #generated }
-VBModulePropertyGetNode >> eolTokens: anOrderedCollection [
-	eolTokens := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -76,7 +65,6 @@ VBModulePropertyGetNode >> getToken: aSmaCCToken [
 VBModulePropertyGetNode >> initialize [
 	super initialize.
 	propertyTokens := OrderedCollection new: 2.
-	eolTokens := OrderedCollection new: 2.
 ]
 
 { #category : #generated }

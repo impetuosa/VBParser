@@ -2,11 +2,11 @@ Class {
 	#name : #VBMemberAccessNode,
 	#superclass : #VBProgramNode,
 	#instVars : [
-		'receiver',
 		'periodToken',
-		'member'
+		'member',
+		'receiver'
 	],
-	#category : #'VBParser-Nodes'
+	#category : #'VBParser-Scanner'
 }
 
 { #category : #generated }
@@ -30,7 +30,7 @@ VBMemberAccessNode >> member: aVBProgramNode [
 
 { #category : #generated }
 VBMemberAccessNode >> nodeVariables [
-	^ #(#receiver #member)
+	^ #(#member #receiver)
 ]
 
 { #category : #generated }

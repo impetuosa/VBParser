@@ -4,14 +4,13 @@ Class {
 	#instVars : [
 		'subTokens',
 		'selector',
-		'eolTokens',
 		'block',
 		'endToken',
 		'parameters',
 		'modifier',
 		'visibility'
 	],
-	#category : #'VBParser-Nodes'
+	#category : #'VBParser-Scanner'
 }
 
 { #category : #generated }
@@ -35,7 +34,7 @@ VBSubDefinitionNode >> block: aVBBlockNode [
 
 { #category : #generated }
 VBSubDefinitionNode >> compositeTokenVariables [
-	^ #(#subTokens #eolTokens)
+	^ #(#subTokens)
 ]
 
 { #category : #generated }
@@ -48,21 +47,10 @@ VBSubDefinitionNode >> endToken: aSmaCCToken [
 	endToken := aSmaCCToken
 ]
 
-{ #category : #generated }
-VBSubDefinitionNode >> eolTokens [
-	^ eolTokens
-]
-
-{ #category : #generated }
-VBSubDefinitionNode >> eolTokens: anOrderedCollection [
-	eolTokens := anOrderedCollection
-]
-
 { #category : #'generated-initialize-release' }
 VBSubDefinitionNode >> initialize [
 	super initialize.
 	subTokens := OrderedCollection new: 2.
-	eolTokens := OrderedCollection new: 2.
 ]
 
 { #category : #generated }

@@ -142,7 +142,8 @@ VB6StatementsTestCase >> errorCase [
 
 { #category : #'as yet unclassified' }
 VB6StatementsTestCase >> exitCase [ 
-	^ 'Sub ExitStatementDemo() 
+	^ 
+'Sub ExitStatementDemo() 
 Dim I, MyNum 
  Do '' Set up infinite loop. 
  For I = 1 To 1000 '' Loop 1000 times. 
@@ -151,6 +152,25 @@ Dim I, MyNum
  Case 7: Exit For '' If 7, exit For...Next. 
  Case 29: Exit Do '' If 29, exit Do...Loop. 
  Case 54: Exit Sub '' If 54, exit Sub procedure. 
+ End Select 
+ Next I 
+ Loop 
+End Sub
+'
+]
+
+{ #category : #'as yet unclassified' }
+VB6StatementsTestCase >> exitCase2 [
+	^ 
+'Sub ExitStatementDemo() 
+Dim I, MyNum 
+ Do 
+ For I = 1 To 1000
+ MyNum = Int(Rnd * 1000)
+ Select Case MyNum 
+ Case 7: Exit For 
+ Case 29: Exit Do
+ Case 54: Exit Sub 
  End Select 
  Next I 
  Loop 
@@ -772,8 +792,7 @@ VB6StatementsTestCase >> testSmokeError [
 
 { #category : #'smoke tests ' }
 VB6StatementsTestCase >> testSmokeExit [
-			self parse: self exitCase
-		
+	self parse: self exitCase
 ]
 
 { #category : #'smoke tests ' }

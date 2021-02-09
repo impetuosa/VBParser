@@ -161,6 +161,11 @@ TVBProgramNodeVisitor >> visitEnumEntry: anEnumEntry [
 ]
 
 { #category : #generated }
+TVBProgramNodeVisitor >> visitEquals: anEquals [
+	^ self visitProgram: anEquals
+]
+
+{ #category : #generated }
 TVBProgramNodeVisitor >> visitError: anError [
 	^ self visitProgram: anError
 ]
