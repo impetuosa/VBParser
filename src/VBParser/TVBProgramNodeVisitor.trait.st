@@ -1,6 +1,7 @@
 Trait {
 	#name : #TVBProgramNodeVisitor,
 	#traits : 'TSmaCCParseNodeVisitor',
+	#classTraits : 'TSmaCCParseNodeVisitor classTrait',
 	#category : #'VBParser-Scanner'
 }
 
@@ -607,4 +608,9 @@ TVBProgramNodeVisitor >> visitWhileWend: aWhileWend [
 { #category : #generated }
 TVBProgramNodeVisitor >> visitWith: aWith [
 	^ self visitProgram: aWith
+]
+
+{ #category : #generated }
+TVBProgramNodeVisitor >> visitWithMemberAccess: aWithMemberAccess [
+	^ self visitProgram: aWithMemberAccess
 ]

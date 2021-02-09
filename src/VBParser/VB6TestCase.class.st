@@ -25,7 +25,8 @@ VB6TestCase class >> implementAll [
 
 { #category : #parsing }
 VB6TestCase >> parse: aString [
-	VBParser parse: aString 
+	VBParser parse: aString.
+"	self assert: (VBParser parseAll: aString startingAt: 1) size equals: 1 "
 ]
 
 { #category : #'as yet unclassified' }

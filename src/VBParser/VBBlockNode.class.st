@@ -2,16 +2,27 @@ Class {
 	#name : #VBBlockNode,
 	#superclass : #VBProgramNode,
 	#instVars : [
-		'eolTokens',
 		'statements',
-		'lineNumbers'
+		'lineNumbers',
+		'eolTokens',
+		'colonTokens'
 	],
-	#category : #'VBParser-Nodes'
+	#category : #'VBParser-Scanner'
 }
 
 { #category : #generated }
 VBBlockNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitBlock: self
+]
+
+{ #category : #generated }
+VBBlockNode >> colonTokens [
+	^ colonTokens
+]
+
+{ #category : #generated }
+VBBlockNode >> colonTokens: anOrderedCollection [
+	colonTokens := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -21,7 +32,7 @@ VBBlockNode >> compositeNodeVariables [
 
 { #category : #generated }
 VBBlockNode >> compositeTokenVariables [
-	^ #(#eolTokens)
+	^ #(#eolTokens #colonTokens)
 ]
 
 { #category : #generated }
@@ -37,9 +48,10 @@ VBBlockNode >> eolTokens: anOrderedCollection [
 { #category : #'generated-initialize-release' }
 VBBlockNode >> initialize [
 	super initialize.
-	eolTokens := OrderedCollection new: 2.
 	statements := OrderedCollection new: 2.
 	lineNumbers := OrderedCollection new: 2.
+	eolTokens := OrderedCollection new: 2.
+	colonTokens := OrderedCollection new: 2.
 ]
 
 { #category : #generated }

@@ -5,10 +5,9 @@ Class {
 		'caseToken',
 		'commaTokens',
 		'expressions',
-		'eolTokens',
 		'body',
-		'elseToken',
-		'colonToken'
+		'colonToken',
+		'elseToken'
 	],
 	#category : #'VBParser-Scanner'
 }
@@ -24,10 +23,10 @@ VBCaseNode >> body [
 ]
 
 { #category : #generated }
-VBCaseNode >> body: aVBBlockNode [
+VBCaseNode >> body: aVBProgramNode [
 	self body notNil
 		ifTrue: [ self body parent: nil ].
-	body := aVBBlockNode.
+	body := aVBProgramNode.
 	self body notNil
 		ifTrue: [ self body parent: self ]
 ]
@@ -69,7 +68,7 @@ VBCaseNode >> compositeNodeVariables [
 
 { #category : #generated }
 VBCaseNode >> compositeTokenVariables [
-	^ #(#commaTokens #eolTokens)
+	^ #(#commaTokens)
 ]
 
 { #category : #generated }
@@ -80,16 +79,6 @@ VBCaseNode >> elseToken [
 { #category : #generated }
 VBCaseNode >> elseToken: aSmaCCToken [
 	elseToken := aSmaCCToken
-]
-
-{ #category : #generated }
-VBCaseNode >> eolTokens [
-	^ eolTokens
-]
-
-{ #category : #generated }
-VBCaseNode >> eolTokens: anOrderedCollection [
-	eolTokens := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -109,7 +98,6 @@ VBCaseNode >> initialize [
 	super initialize.
 	commaTokens := OrderedCollection new: 2.
 	expressions := OrderedCollection new: 2.
-	eolTokens := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
