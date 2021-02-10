@@ -1,11 +1,11 @@
 Class {
-	#name : #VB6ObjectUsageTestCase,
-	#superclass : #VB6TestCase,
-	#category : #'VBParser-Tests'
+	#name : #VB6ObjectUsagePerformanceCase,
+	#superclass : #VB6PerformanceCase,
+	#category : #'VBParser-TestPerformance'
 }
 
 { #category : #'as yet unclassified' }
-VB6ObjectUsageTestCase >> debugCase [ 
+VB6ObjectUsagePerformanceCase >> debugCase [ 
 	^ 'Option Explicit
 Private blnAssert As Boolean
 Private intNumber As Integer
@@ -28,59 +28,59 @@ End Sub
 ]
 
 { #category : #'smoke tests ' }
-VB6ObjectUsageTestCase >> testSmokeDebug [
+VB6ObjectUsagePerformanceCase >> testSmokeDebug [
 	self parse: self debugCase
 ]
 
 { #category : #'smoke tests ' }
-VB6ObjectUsageTestCase >> testSmokeUseAddControlEvent [
+VB6ObjectUsagePerformanceCase >> testSmokeUseAddControlEvent [
 			self parse: self useAddControlEventCase
 		
 ]
 
 { #category : #'smoke tests ' }
-VB6ObjectUsageTestCase >> testSmokeUseCollection [
+VB6ObjectUsagePerformanceCase >> testSmokeUseCollection [
 			self parse: self useCollectionCase
 		
 ]
 
 { #category : #'smoke tests ' }
-VB6ObjectUsageTestCase >> testSmokeUseColors [
+VB6ObjectUsagePerformanceCase >> testSmokeUseColors [
 			self parse: self useColorsCase
 		
 ]
 
 { #category : #'smoke tests ' }
-VB6ObjectUsageTestCase >> testSmokeUseDictionary [
+VB6ObjectUsagePerformanceCase >> testSmokeUseDictionary [
 			self parse: self useDictionaryCase
 		
 ]
 
 { #category : #'smoke tests ' }
-VB6ObjectUsageTestCase >> testSmokeUseDrive [
+VB6ObjectUsagePerformanceCase >> testSmokeUseDrive [
 	self parse: self useDriveCase
 ]
 
 { #category : #'smoke tests ' }
-VB6ObjectUsageTestCase >> testSmokeUseError [
+VB6ObjectUsagePerformanceCase >> testSmokeUseError [
 			self parse: self useErrorCase
 		
 ]
 
 { #category : #'smoke tests ' }
-VB6ObjectUsageTestCase >> testSmokeUseFont [
+VB6ObjectUsagePerformanceCase >> testSmokeUseFont [
 			self parse: self useFontCase
 		
 ]
 
 { #category : #'smoke tests ' }
-VB6ObjectUsageTestCase >> testSmokeUseFormExampleAddCut [
+VB6ObjectUsagePerformanceCase >> testSmokeUseFormExampleAddCut [
 			self parse: self useFormExampleAddCutCase
 		
 ]
 
 { #category : #'as yet unclassified' }
-VB6ObjectUsageTestCase >> useAddControlEventCase [ 
+VB6ObjectUsagePerformanceCase >> useAddControlEventCase [ 
 ^ 'Dim Mycmd as Control 
 Private Sub CommandButton1_Click() 
  
@@ -101,7 +101,7 @@ End Sub
 ]
 
 { #category : #'as yet unclassified' }
-VB6ObjectUsageTestCase >> useCollectionCase [
+VB6ObjectUsagePerformanceCase >> useCollectionCase [
 	^ self subWrap:   'Dim MyClasses As New Collection    '' Create a Collection object.
 Dim Num As Integer    '' Counter for individualizing keys.
 Dim Msg
@@ -129,7 +129,7 @@ Next
 ]
 
 { #category : #'as yet unclassified' }
-VB6ObjectUsageTestCase >> useColorsCase [
+VB6ObjectUsagePerformanceCase >> useColorsCase [
 	^ 'Private Sub UserForm_Initialize() 
 ''Initialize each TextBox with a border style or special effect, 
 ''and foreground and background colors 
@@ -218,7 +218,7 @@ End Sub
 ]
 
 { #category : #'as yet unclassified' }
-VB6ObjectUsageTestCase >> useDictionaryCase [ 
+VB6ObjectUsagePerformanceCase >> useDictionaryCase [ 
 ^ 'Public Sub Start()
 
     Dim d As Object
@@ -250,7 +250,7 @@ End Sub
 ]
 
 { #category : #'as yet unclassified' }
-VB6ObjectUsageTestCase >> useDriveCase [
+VB6ObjectUsagePerformanceCase >> useDriveCase [
 	^ 'Sub ShowDriveList
     Dim fs, d, dc, s, n
     Set fs = CreateObject("Scripting.FileSystemObject")
@@ -270,7 +270,7 @@ End Sub
 ]
 
 { #category : #'as yet unclassified' }
-VB6ObjectUsageTestCase >> useErrorCase [
+VB6ObjectUsagePerformanceCase >> useErrorCase [
 	^ 'Const MyContextID = 1010407    '' Define a constant for contextID.
 Function TestName(CurrentName, NewName)
     If Instr(NewName, "bob") Then    '' Test the validity of NewName.
@@ -284,7 +284,7 @@ End Function
 ]
 
 { #category : #'as yet unclassified' }
-VB6ObjectUsageTestCase >> useFontCase [
+VB6ObjectUsagePerformanceCase >> useFontCase [
 	^ 'Dim MyFont As StdFont 
  
 Private Sub ToggleButton1_Click() 
@@ -364,7 +364,7 @@ End Sub
 ]
 
 { #category : #'as yet unclassified' }
-VB6ObjectUsageTestCase >> useFormExampleAddCutCase [
+VB6ObjectUsagePerformanceCase >> useFormExampleAddCutCase [
 	^ 'Dim MyTextBox As Control 
  
 Private Sub CommandButton1_Click() 

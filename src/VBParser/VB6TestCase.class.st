@@ -25,9 +25,8 @@ VB6TestCase class >> implementAll [
 
 { #category : #parsing }
 VB6TestCase >> parse: aString [
-	
-	VBParser parse: (self preparse: aString).
-"	self assert: (VBParser parseAll: aString startingAt: 1) size equals: 1."
+	VBParser parse: aString
+	"	self assert: (VBParser parseAll: aString startingAt: 1) size equals: 1."
 ]
 
 { #category : #parsing }
