@@ -3,14 +3,13 @@ Class {
 	#superclass : #VBProgramNode,
 	#instVars : [
 		'doToken',
-		'eolTokens',
 		'loopToken',
 		'whileToken',
 		'condition',
 		'endLineNumber',
 		'body'
 	],
-	#category : #'VBParser-Nodes'
+	#category : #'VBParser-Scanner'
 }
 
 { #category : #generated }
@@ -30,11 +29,6 @@ VBDoWhileTrueNode >> body: aVBBlockNode [
 	body := aVBBlockNode.
 	self body notNil
 		ifTrue: [ self body parent: self ]
-]
-
-{ #category : #generated }
-VBDoWhileTrueNode >> compositeTokenVariables [
-	^ #(#eolTokens)
 ]
 
 { #category : #generated }
@@ -73,22 +67,6 @@ VBDoWhileTrueNode >> endLineNumber: aVBIntegerLiteralNode [
 	endLineNumber := aVBIntegerLiteralNode.
 	self endLineNumber notNil
 		ifTrue: [ self endLineNumber parent: self ]
-]
-
-{ #category : #generated }
-VBDoWhileTrueNode >> eolTokens [
-	^ eolTokens
-]
-
-{ #category : #generated }
-VBDoWhileTrueNode >> eolTokens: anOrderedCollection [
-	eolTokens := anOrderedCollection
-]
-
-{ #category : #'generated-initialize-release' }
-VBDoWhileTrueNode >> initialize [
-	super initialize.
-	eolTokens := OrderedCollection new: 2.
 ]
 
 { #category : #generated }

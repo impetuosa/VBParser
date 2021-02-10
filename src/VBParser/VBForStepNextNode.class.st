@@ -10,13 +10,12 @@ Class {
 		'limit',
 		'stepToken',
 		'step',
-		'eolTokens',
 		'nextToken',
 		'element',
 		'endLineNumber',
 		'body'
 	],
-	#category : #'VBParser-Nodes'
+	#category : #'VBParser-Scanner'
 }
 
 { #category : #generated }
@@ -36,11 +35,6 @@ VBForStepNextNode >> body: aVBBlockNode [
 	body := aVBBlockNode.
 	self body notNil
 		ifTrue: [ self body parent: self ]
-]
-
-{ #category : #generated }
-VBForStepNextNode >> compositeTokenVariables [
-	^ #(#eolTokens)
 ]
 
 { #category : #generated }
@@ -86,16 +80,6 @@ VBForStepNextNode >> endLineNumber: aVBIntegerLiteralNode [
 ]
 
 { #category : #generated }
-VBForStepNextNode >> eolTokens [
-	^ eolTokens
-]
-
-{ #category : #generated }
-VBForStepNextNode >> eolTokens: anOrderedCollection [
-	eolTokens := anOrderedCollection
-]
-
-{ #category : #generated }
 VBForStepNextNode >> equalToken [
 	^ equalToken
 ]
@@ -127,12 +111,6 @@ VBForStepNextNode >> initialValue: aVBProgramNode [
 	initialValue := aVBProgramNode.
 	self initialValue notNil
 		ifTrue: [ self initialValue parent: self ]
-]
-
-{ #category : #'generated-initialize-release' }
-VBForStepNextNode >> initialize [
-	super initialize.
-	eolTokens := OrderedCollection new: 2.
 ]
 
 { #category : #generated }

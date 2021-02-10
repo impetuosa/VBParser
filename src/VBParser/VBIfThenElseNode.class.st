@@ -7,11 +7,9 @@ Class {
 		'thenToken',
 		'ifTrue',
 		'elseToken',
-		'colonTokens',
 		'ifFalse',
 		'elseColonToken',
 		'thenColonToken',
-		'eolTokens',
 		'elseifs',
 		'endToken',
 		'endLineNumber',
@@ -26,23 +24,13 @@ VBIfThenElseNode >> acceptVisitor: aProgramVisitor [
 ]
 
 { #category : #generated }
-VBIfThenElseNode >> colonTokens [
-	^ colonTokens
-]
-
-{ #category : #generated }
-VBIfThenElseNode >> colonTokens: anOrderedCollection [
-	colonTokens := anOrderedCollection
-]
-
-{ #category : #generated }
 VBIfThenElseNode >> compositeNodeVariables [
 	^ #(#elseifs)
 ]
 
 { #category : #generated }
 VBIfThenElseNode >> compositeTokenVariables [
-	^ #(#ifTokens #colonTokens #eolTokens)
+	^ #(#ifTokens)
 ]
 
 { #category : #generated }
@@ -130,25 +118,15 @@ VBIfThenElseNode >> endToken: aSmaCCToken [
 ]
 
 { #category : #generated }
-VBIfThenElseNode >> eolTokens [
-	^ eolTokens
-]
-
-{ #category : #generated }
-VBIfThenElseNode >> eolTokens: anOrderedCollection [
-	eolTokens := anOrderedCollection
-]
-
-{ #category : #generated }
 VBIfThenElseNode >> ifFalse [
 	^ ifFalse
 ]
 
 { #category : #generated }
-VBIfThenElseNode >> ifFalse: aVBProgramNode [
+VBIfThenElseNode >> ifFalse: aVBBlockNode [
 	self ifFalse notNil
 		ifTrue: [ self ifFalse parent: nil ].
-	ifFalse := aVBProgramNode.
+	ifFalse := aVBBlockNode.
 	self ifFalse notNil
 		ifTrue: [ self ifFalse parent: self ]
 ]
@@ -169,10 +147,10 @@ VBIfThenElseNode >> ifTrue [
 ]
 
 { #category : #generated }
-VBIfThenElseNode >> ifTrue: aVBProgramNode [
+VBIfThenElseNode >> ifTrue: aVBBlockNode [
 	self ifTrue notNil
 		ifTrue: [ self ifTrue parent: nil ].
-	ifTrue := aVBProgramNode.
+	ifTrue := aVBBlockNode.
 	self ifTrue notNil
 		ifTrue: [ self ifTrue parent: self ]
 ]
@@ -181,8 +159,6 @@ VBIfThenElseNode >> ifTrue: aVBProgramNode [
 VBIfThenElseNode >> initialize [
 	super initialize.
 	ifTokens := OrderedCollection new: 2.
-	colonTokens := OrderedCollection new: 2.
-	eolTokens := OrderedCollection new: 2.
 	elseifs := OrderedCollection new: 2.
 ]
 

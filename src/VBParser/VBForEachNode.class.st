@@ -7,12 +7,11 @@ Class {
 		'elements',
 		'inToken',
 		'group',
-		'eolTokens',
 		'nextToken',
 		'endLineNumber',
 		'body'
 	],
-	#category : #'VBParser-Nodes'
+	#category : #'VBParser-Scanner'
 }
 
 { #category : #generated }
@@ -37,11 +36,6 @@ VBForEachNode >> body: aVBBlockNode [
 { #category : #generated }
 VBForEachNode >> compositeNodeVariables [
 	^ #(#elements)
-]
-
-{ #category : #generated }
-VBForEachNode >> compositeTokenVariables [
-	^ #(#eolTokens)
 ]
 
 { #category : #generated }
@@ -78,16 +72,6 @@ VBForEachNode >> endLineNumber: aVBIntegerLiteralNode [
 	endLineNumber := aVBIntegerLiteralNode.
 	self endLineNumber notNil
 		ifTrue: [ self endLineNumber parent: self ]
-]
-
-{ #category : #generated }
-VBForEachNode >> eolTokens [
-	^ eolTokens
-]
-
-{ #category : #generated }
-VBForEachNode >> eolTokens: anOrderedCollection [
-	eolTokens := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -128,7 +112,6 @@ VBForEachNode >> inToken: aSmaCCToken [
 VBForEachNode >> initialize [
 	super initialize.
 	elements := OrderedCollection new: 2.
-	eolTokens := OrderedCollection new: 2.
 ]
 
 { #category : #generated }

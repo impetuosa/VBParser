@@ -3,12 +3,11 @@ Class {
 	#superclass : #VBProgramNode,
 	#instVars : [
 		'doToken',
-		'eolTokens',
 		'loopToken',
 		'endLineNumber',
 		'body'
 	],
-	#category : #'VBParser-Nodes'
+	#category : #'VBParser-Scanner'
 }
 
 { #category : #generated }
@@ -28,11 +27,6 @@ VBInfinityLoopNode >> body: aVBBlockNode [
 	body := aVBBlockNode.
 	self body notNil
 		ifTrue: [ self body parent: self ]
-]
-
-{ #category : #generated }
-VBInfinityLoopNode >> compositeTokenVariables [
-	^ #(#eolTokens)
 ]
 
 { #category : #generated }
@@ -57,22 +51,6 @@ VBInfinityLoopNode >> endLineNumber: aVBIntegerLiteralNode [
 	endLineNumber := aVBIntegerLiteralNode.
 	self endLineNumber notNil
 		ifTrue: [ self endLineNumber parent: self ]
-]
-
-{ #category : #generated }
-VBInfinityLoopNode >> eolTokens [
-	^ eolTokens
-]
-
-{ #category : #generated }
-VBInfinityLoopNode >> eolTokens: anOrderedCollection [
-	eolTokens := anOrderedCollection
-]
-
-{ #category : #'generated-initialize-release' }
-VBInfinityLoopNode >> initialize [
-	super initialize.
-	eolTokens := OrderedCollection new: 2.
 ]
 
 { #category : #generated }

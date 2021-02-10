@@ -3,7 +3,6 @@ Class {
 	#superclass : #VBProgramNode,
 	#instVars : [
 		'elseToken',
-		'eolTokens',
 		'ifMatch',
 		'endLineNumber',
 		'elseifToken',
@@ -16,11 +15,6 @@ Class {
 { #category : #generated }
 VBElseIfBlockNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitElseIfBlock: self
-]
-
-{ #category : #generated }
-VBElseIfBlockNode >> compositeTokenVariables [
-	^ #(#eolTokens)
 ]
 
 { #category : #generated }
@@ -72,16 +66,6 @@ VBElseIfBlockNode >> endLineNumber: aVBIntegerLiteralNode [
 ]
 
 { #category : #generated }
-VBElseIfBlockNode >> eolTokens [
-	^ eolTokens
-]
-
-{ #category : #generated }
-VBElseIfBlockNode >> eolTokens: anOrderedCollection [
-	eolTokens := anOrderedCollection
-]
-
-{ #category : #generated }
 VBElseIfBlockNode >> ifMatch [
 	^ ifMatch
 ]
@@ -93,12 +77,6 @@ VBElseIfBlockNode >> ifMatch: aVBBlockNode [
 	ifMatch := aVBBlockNode.
 	self ifMatch notNil
 		ifTrue: [ self ifMatch parent: self ]
-]
-
-{ #category : #'generated-initialize-release' }
-VBElseIfBlockNode >> initialize [
-	super initialize.
-	eolTokens := OrderedCollection new: 2.
 ]
 
 { #category : #generated }

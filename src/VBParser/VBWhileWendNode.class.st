@@ -4,12 +4,11 @@ Class {
 	#instVars : [
 		'whileToken',
 		'condition',
-		'eolTokens',
 		'wendToken',
 		'endLineNumber',
 		'body'
 	],
-	#category : #'VBParser-Nodes'
+	#category : #'VBParser-Scanner'
 }
 
 { #category : #generated }
@@ -29,11 +28,6 @@ VBWhileWendNode >> body: aVBBlockNode [
 	body := aVBBlockNode.
 	self body notNil
 		ifTrue: [ self body parent: self ]
-]
-
-{ #category : #generated }
-VBWhileWendNode >> compositeTokenVariables [
-	^ #(#eolTokens)
 ]
 
 { #category : #generated }
@@ -62,22 +56,6 @@ VBWhileWendNode >> endLineNumber: aVBIntegerLiteralNode [
 	endLineNumber := aVBIntegerLiteralNode.
 	self endLineNumber notNil
 		ifTrue: [ self endLineNumber parent: self ]
-]
-
-{ #category : #generated }
-VBWhileWendNode >> eolTokens [
-	^ eolTokens
-]
-
-{ #category : #generated }
-VBWhileWendNode >> eolTokens: anOrderedCollection [
-	eolTokens := anOrderedCollection
-]
-
-{ #category : #'generated-initialize-release' }
-VBWhileWendNode >> initialize [
-	super initialize.
-	eolTokens := OrderedCollection new: 2.
 ]
 
 { #category : #generated }

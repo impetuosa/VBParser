@@ -8,13 +8,12 @@ Class {
 		'initialValue',
 		'toToken',
 		'limit',
-		'eolTokens',
 		'nextToken',
 		'element',
 		'endLineNumber',
 		'body'
 	],
-	#category : #'VBParser-Nodes'
+	#category : #'VBParser-Scanner'
 }
 
 { #category : #generated }
@@ -34,11 +33,6 @@ VBForNextNode >> body: aVBBlockNode [
 	body := aVBBlockNode.
 	self body notNil
 		ifTrue: [ self body parent: self ]
-]
-
-{ #category : #generated }
-VBForNextNode >> compositeTokenVariables [
-	^ #(#eolTokens)
 ]
 
 { #category : #generated }
@@ -84,16 +78,6 @@ VBForNextNode >> endLineNumber: aVBIntegerLiteralNode [
 ]
 
 { #category : #generated }
-VBForNextNode >> eolTokens [
-	^ eolTokens
-]
-
-{ #category : #generated }
-VBForNextNode >> eolTokens: anOrderedCollection [
-	eolTokens := anOrderedCollection
-]
-
-{ #category : #generated }
 VBForNextNode >> equalToken [
 	^ equalToken
 ]
@@ -125,12 +109,6 @@ VBForNextNode >> initialValue: aVBProgramNode [
 	initialValue := aVBProgramNode.
 	self initialValue notNil
 		ifTrue: [ self initialValue parent: self ]
-]
-
-{ #category : #'generated-initialize-release' }
-VBForNextNode >> initialize [
-	super initialize.
-	eolTokens := OrderedCollection new: 2.
 ]
 
 { #category : #generated }

@@ -369,7 +369,7 @@ VB6ObjectUsageTestCase >> useFormExampleAddCutCase [
 	^ 'Dim MyTextBox As Control 
  
 Private Sub CommandButton1_Click() 
- Set MyTextBox = MultiPage1.Pages(MultiPage1.Value).Controls_ 
+ Set MyTextBox = MultiPage1.Pages(MultiPage1.Value).Controls_
  .Add("MSForms.TextBox.1", "MyTextBox", Visible) 
  CommandButton2.Enabled = True 
  CommandButton1.Enabled = False 
