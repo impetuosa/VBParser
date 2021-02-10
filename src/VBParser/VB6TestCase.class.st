@@ -31,26 +31,17 @@ VB6TestCase >> parse: aString [
 
 { #category : #parsing }
 VB6TestCase >> preparse: aString [
-	| content inComment aStream isCuttingOnUnderscore |
+	| content  aStream isCuttingOnUnderscore |
 	aStream := aString readStream.
-	inComment := false.
 	content := ''.
 	[ aStream atEnd ]
 		whileFalse: [ content := content
 				,
-					(aStream
-						upToAnyBlock: [ :c | 
-							c = $'
-								ifTrue: [ inComment := true ].
-							(String crlf includes: c)
-								ifTrue: [ inComment := false ].
-							isCuttingOnUnderscore := c = $_ ]).
-			inComment
-				ifFalse: [ (String crlf includes: aStream peek)
-						ifTrue: [ aStream next ]
-						ifFalse: [ isCuttingOnUnderscore
-								ifTrue: [ content := content , '_' ] ] ]
-				ifTrue: [ content := content , '_' ] ].
+					(aStream upToAnyBlock: [ :c | isCuttingOnUnderscore := c = $_ ]).
+			(String crlf includes: aStream peek)
+				ifTrue: [ aStream next ]
+				ifFalse: [ isCuttingOnUnderscore
+						ifTrue: [ content := content , '_' ] ] ].
 	^ content
 ]
 

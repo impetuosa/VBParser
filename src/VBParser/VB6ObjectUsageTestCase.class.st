@@ -75,7 +75,7 @@ VB6ObjectUsageTestCase >> testSmokeUseFont [
 
 { #category : #'smoke tests ' }
 VB6ObjectUsageTestCase >> testSmokeUseFormExampleAddCut [
-			self parse: self useFormExampleAddCutCase
+			self parse:( self preparse: self useFormExampleAddCutCase)
 		
 ]
 
