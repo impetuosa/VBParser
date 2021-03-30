@@ -2,7 +2,7 @@ Class {
 	#name : #VBImplicitParenthesesLessCallNode,
 	#superclass : #VBProgramNode,
 	#instVars : [
-		'receiver',
+		'selector',
 		'arguments'
 	],
 	#category : #'VBParser-Scanner'
@@ -29,19 +29,19 @@ VBImplicitParenthesesLessCallNode >> arguments: aVBArgumentListNode [
 
 { #category : #generated }
 VBImplicitParenthesesLessCallNode >> nodeVariables [
-	^ #(#receiver #arguments)
+	^ #(#selector #arguments)
 ]
 
 { #category : #generated }
-VBImplicitParenthesesLessCallNode >> receiver [
-	^ receiver
+VBImplicitParenthesesLessCallNode >> selector [
+	^ selector
 ]
 
 { #category : #generated }
-VBImplicitParenthesesLessCallNode >> receiver: aVBProgramNode [
-	self receiver notNil
-		ifTrue: [ self receiver parent: nil ].
-	receiver := aVBProgramNode.
-	self receiver notNil
-		ifTrue: [ self receiver parent: self ]
+VBImplicitParenthesesLessCallNode >> selector: aVBProgramNode [
+	self selector notNil
+		ifTrue: [ self selector parent: nil ].
+	selector := aVBProgramNode.
+	self selector notNil
+		ifTrue: [ self selector parent: self ]
 ]

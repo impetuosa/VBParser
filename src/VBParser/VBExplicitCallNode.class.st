@@ -3,28 +3,14 @@ Class {
 	#superclass : #VBProgramNode,
 	#instVars : [
 		'callToken',
-		'call'
+		'selector'
 	],
-	#category : #'VBParser-Nodes'
+	#category : #'VBParser-Scanner'
 }
 
 { #category : #generated }
 VBExplicitCallNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitExplicitCall: self
-]
-
-{ #category : #generated }
-VBExplicitCallNode >> call [
-	^ call
-]
-
-{ #category : #generated }
-VBExplicitCallNode >> call: aVBProgramNode [
-	self call notNil
-		ifTrue: [ self call parent: nil ].
-	call := aVBProgramNode.
-	self call notNil
-		ifTrue: [ self call parent: self ]
 ]
 
 { #category : #generated }
@@ -39,7 +25,21 @@ VBExplicitCallNode >> callToken: aSmaCCToken [
 
 { #category : #generated }
 VBExplicitCallNode >> nodeVariables [
-	^ #(#call)
+	^ #(#selector)
+]
+
+{ #category : #generated }
+VBExplicitCallNode >> selector [
+	^ selector
+]
+
+{ #category : #generated }
+VBExplicitCallNode >> selector: aVBProgramNode [
+	self selector notNil
+		ifTrue: [ self selector parent: nil ].
+	selector := aVBProgramNode.
+	self selector notNil
+		ifTrue: [ self selector parent: self ]
 ]
 
 { #category : #generated }

@@ -2,12 +2,13 @@ Class {
 	#name : #VBProcedureCallOrArrayAccessNode,
 	#superclass : #VBProgramNode,
 	#instVars : [
-		'receiver',
+		'selector',
 		'leftParenToken',
 		'arguments',
-		'rightParenToken'
+		'rightParenToken',
+		'receiver'
 	],
-	#category : #'VBParser-Nodes'
+	#category : #'VBParser-Scanner'
 }
 
 { #category : #generated }
@@ -41,7 +42,7 @@ VBProcedureCallOrArrayAccessNode >> leftParenToken: aSmaCCToken [
 
 { #category : #generated }
 VBProcedureCallOrArrayAccessNode >> nodeVariables [
-	^ #(#receiver #arguments)
+	^ #(#selector #arguments #receiver)
 ]
 
 { #category : #generated }
@@ -50,10 +51,10 @@ VBProcedureCallOrArrayAccessNode >> receiver [
 ]
 
 { #category : #generated }
-VBProcedureCallOrArrayAccessNode >> receiver: aVBProgramNode [
+VBProcedureCallOrArrayAccessNode >> receiver: aVBProcedureCallOrArrayAccessNode [
 	self receiver notNil
 		ifTrue: [ self receiver parent: nil ].
-	receiver := aVBProgramNode.
+	receiver := aVBProcedureCallOrArrayAccessNode.
 	self receiver notNil
 		ifTrue: [ self receiver parent: self ]
 ]
@@ -66,6 +67,20 @@ VBProcedureCallOrArrayAccessNode >> rightParenToken [
 { #category : #generated }
 VBProcedureCallOrArrayAccessNode >> rightParenToken: aSmaCCToken [
 	rightParenToken := aSmaCCToken
+]
+
+{ #category : #generated }
+VBProcedureCallOrArrayAccessNode >> selector [
+	^ selector
+]
+
+{ #category : #generated }
+VBProcedureCallOrArrayAccessNode >> selector: aVBProgramNode [
+	self selector notNil
+		ifTrue: [ self selector parent: nil ].
+	selector := aVBProgramNode.
+	self selector notNil
+		ifTrue: [ self selector parent: self ]
 ]
 
 { #category : #generated }

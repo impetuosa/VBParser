@@ -1,6 +1,7 @@
 Trait {
 	#name : #TVBProgramNodeVisitor,
 	#traits : 'TSmaCCParseNodeVisitor',
+	#classTraits : 'TSmaCCParseNodeVisitor classTrait',
 	#category : #'VBParser-Scanner'
 }
 
@@ -135,6 +136,11 @@ TVBProgramNodeVisitor >> visitDimVariable: aDimVariable [
 ]
 
 { #category : #generated }
+TVBProgramNodeVisitor >> visitDoEvents: aDoEvents [
+	^ self visitProgram: aDoEvents
+]
+
+{ #category : #generated }
 TVBProgramNodeVisitor >> visitDoUntilTrue: aDoUntilTrue [
 	^ self visitProgram: aDoUntilTrue
 ]
@@ -187,6 +193,11 @@ TVBProgramNodeVisitor >> visitExplicitAssignement: anExplicitAssignement [
 { #category : #generated }
 TVBProgramNodeVisitor >> visitExplicitCall: anExplicitCall [
 	^ self visitProgram: anExplicitCall
+]
+
+{ #category : #generated }
+TVBProgramNodeVisitor >> visitExpressionList: anExpressionList [
+	^ self visitProgram: anExpressionList
 ]
 
 { #category : #generated }
@@ -302,6 +313,11 @@ TVBProgramNodeVisitor >> visitInfinityLoop: anInfinityLoop [
 { #category : #generated }
 TVBProgramNodeVisitor >> visitIntegerLiteral: anIntegerLiteral [
 	^ self visitProgram: anIntegerLiteral
+]
+
+{ #category : #generated }
+TVBProgramNodeVisitor >> visitInterval: anInterval [
+	^ self visitProgram: anInterval
 ]
 
 { #category : #generated }

@@ -24,12 +24,10 @@ VBCaseNode >> body [
 ]
 
 { #category : #generated }
-VBCaseNode >> body: aVBProgramNode [
-	self body notNil
-		ifTrue: [ self body parent: nil ].
-	body := aVBProgramNode.
-	self body notNil
-		ifTrue: [ self body parent: self ]
+VBCaseNode >> body: anObject [
+	self setParent: self body to: nil.
+	body := anObject.
+	self setParent: self body to: self
 ]
 
 { #category : #generated }
@@ -113,7 +111,7 @@ VBCaseNode >> initialize [
 ]
 
 { #category : #generated }
-VBCaseNode >> nodeVariables [
+VBCaseNode >> otherVariables [
 	^ #(#body)
 ]
 

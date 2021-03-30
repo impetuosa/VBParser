@@ -3,9 +3,9 @@ Class {
 	#superclass : #VBProgramNode,
 	#instVars : [
 		'raiseEventToken',
-		'call'
+		'selector'
 	],
-	#category : #'VBParser-Nodes'
+	#category : #'VBParser-Scanner'
 }
 
 { #category : #generated }
@@ -14,22 +14,8 @@ VBRaiseEventNode >> acceptVisitor: aProgramVisitor [
 ]
 
 { #category : #generated }
-VBRaiseEventNode >> call [
-	^ call
-]
-
-{ #category : #generated }
-VBRaiseEventNode >> call: aVBProgramNode [
-	self call notNil
-		ifTrue: [ self call parent: nil ].
-	call := aVBProgramNode.
-	self call notNil
-		ifTrue: [ self call parent: self ]
-]
-
-{ #category : #generated }
 VBRaiseEventNode >> nodeVariables [
-	^ #(#call)
+	^ #(#selector)
 ]
 
 { #category : #generated }
@@ -40,6 +26,20 @@ VBRaiseEventNode >> raiseEventToken [
 { #category : #generated }
 VBRaiseEventNode >> raiseEventToken: aSmaCCToken [
 	raiseEventToken := aSmaCCToken
+]
+
+{ #category : #generated }
+VBRaiseEventNode >> selector [
+	^ selector
+]
+
+{ #category : #generated }
+VBRaiseEventNode >> selector: aVBProgramNode [
+	self selector notNil
+		ifTrue: [ self selector parent: nil ].
+	selector := aVBProgramNode.
+	self selector notNil
+		ifTrue: [ self selector parent: self ]
 ]
 
 { #category : #generated }

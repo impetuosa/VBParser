@@ -6,7 +6,5 @@ Class {
 
 { #category : #parsing }
 VB6PerformanceCase >> parse: aString [
-	self
-		assert: (VBParser parseAll: aString startingAt: 1) size
-		equals: 1
+	self assert: (VBParser parseAll: aString startingAt: 1) size < 30
 ]

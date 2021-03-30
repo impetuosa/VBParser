@@ -27,7 +27,7 @@ VBBlockNode >> colonTokens: anOrderedCollection [
 
 { #category : #generated }
 VBBlockNode >> compositeNodeVariables [
-	^ #(#statements #lineNumbers)
+	^ #(#lineNumbers)
 ]
 
 { #category : #generated }
@@ -67,13 +67,18 @@ VBBlockNode >> lineNumbers: anOrderedCollection [
 ]
 
 { #category : #generated }
+VBBlockNode >> otherVariables [
+	^ #(#statements)
+]
+
+{ #category : #generated }
 VBBlockNode >> statements [
 	^ statements
 ]
 
 { #category : #generated }
 VBBlockNode >> statements: anOrderedCollection [
-	self setParents: self statements to: nil.
+	self setParent: self statements to: nil.
 	statements := anOrderedCollection.
-	self setParents: self statements to: self
+	self setParent: self statements to: self
 ]
