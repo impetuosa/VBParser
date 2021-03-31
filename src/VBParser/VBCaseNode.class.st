@@ -8,7 +8,8 @@ Class {
 		'body',
 		'eolTokens',
 		'colonToken',
-		'elseToken'
+		'elseToken',
+		'lineNumber'
 	],
 	#category : #'VBParser-Scanner'
 }
@@ -108,6 +109,25 @@ VBCaseNode >> initialize [
 	commaTokens := OrderedCollection new: 2.
 	expressions := OrderedCollection new: 2.
 	eolTokens := OrderedCollection new: 2.
+]
+
+{ #category : #generated }
+VBCaseNode >> lineNumber [
+	^ lineNumber
+]
+
+{ #category : #generated }
+VBCaseNode >> lineNumber: aVBIntegerLiteralNode [
+	self lineNumber notNil
+		ifTrue: [ self lineNumber parent: nil ].
+	lineNumber := aVBIntegerLiteralNode.
+	self lineNumber notNil
+		ifTrue: [ self lineNumber parent: self ]
+]
+
+{ #category : #generated }
+VBCaseNode >> nodeVariables [
+	^ #(#lineNumber)
 ]
 
 { #category : #generated }

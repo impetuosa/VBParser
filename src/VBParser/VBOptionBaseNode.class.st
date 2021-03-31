@@ -6,7 +6,7 @@ Class {
 		'baseToken',
 		'value'
 	],
-	#category : #'VBParser-Nodes'
+	#category : #'VBParser-Scanner'
 }
 
 { #category : #generated }

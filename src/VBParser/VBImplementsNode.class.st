@@ -5,7 +5,7 @@ Class {
 		'implementsToken',
 		'interface'
 	],
-	#category : #'VBParser-Nodes'
+	#category : #'VBParser-Scanner'
 }
 
 { #category : #generated }

@@ -336,6 +336,11 @@ TVBProgramNodeVisitor >> visitLabelTag: aLabelTag [
 ]
 
 { #category : #generated }
+TVBProgramNodeVisitor >> visitLen: aLen [
+	^ self visitProgram: aLen
+]
+
+{ #category : #generated }
 TVBProgramNodeVisitor >> visitLineInputClause: aLineInputClause [
 	^ self visitProgram: aLineInputClause
 ]
@@ -588,6 +593,11 @@ TVBProgramNodeVisitor >> visitSubDefinition: aSubDefinition [
 { #category : #generated }
 TVBProgramNodeVisitor >> visitTypeEntry: aTypeEntry [
 	^ self visitProgram: aTypeEntry
+]
+
+{ #category : #generated }
+TVBProgramNodeVisitor >> visitTypeOf: aTypeOf [
+	^ self visitProgram: aTypeOf
 ]
 
 { #category : #generated }

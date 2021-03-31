@@ -51,10 +51,10 @@ VBProcedureCallOrArrayAccessNode >> receiver [
 ]
 
 { #category : #generated }
-VBProcedureCallOrArrayAccessNode >> receiver: aVBProcedureCallOrArrayAccessNode [
+VBProcedureCallOrArrayAccessNode >> receiver: aVBProgramNode [
 	self receiver notNil
 		ifTrue: [ self receiver parent: nil ].
-	receiver := aVBProcedureCallOrArrayAccessNode.
+	receiver := aVBProgramNode.
 	self receiver notNil
 		ifTrue: [ self receiver parent: self ]
 ]

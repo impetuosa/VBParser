@@ -5,7 +5,7 @@ Class {
 		'gosubToken',
 		'destination'
 	],
-	#category : #'VBParser-Nodes'
+	#category : #'VBParser-Scanner'
 }
 
 { #category : #generated }

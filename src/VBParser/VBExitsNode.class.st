@@ -9,7 +9,7 @@ Class {
 		'fORToken',
 		'propertyToken'
 	],
-	#category : #'VBParser-Nodes'
+	#category : #'VBParser-Scanner'
 }
 
 { #category : #generated }

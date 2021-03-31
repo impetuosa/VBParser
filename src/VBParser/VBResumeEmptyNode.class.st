@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'resumeToken'
 	],
-	#category : #'VBParser-Nodes'
+	#category : #'VBParser-Scanner'
 }
 
 { #category : #generated }

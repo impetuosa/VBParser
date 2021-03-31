@@ -6,7 +6,7 @@ Class {
 		'compareToken',
 		'databaseToken'
 	],
-	#category : #'VBParser-Nodes'
+	#category : #'VBParser-Scanner'
 }
 
 { #category : #generated }

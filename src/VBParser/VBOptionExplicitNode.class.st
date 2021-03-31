@@ -5,7 +5,7 @@ Class {
 		'optionToken',
 		'explicitToken'
 	],
-	#category : #'VBParser-Nodes'
+	#category : #'VBParser-Scanner'
 }
 
 { #category : #generated }

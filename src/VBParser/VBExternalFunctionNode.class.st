@@ -13,7 +13,7 @@ Class {
 		'alias',
 		'visibility'
 	],
-	#category : #'VBParser-Nodes'
+	#category : #'VBParser-Scanner'
 }
 
 { #category : #generated }

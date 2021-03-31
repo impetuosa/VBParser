@@ -6,7 +6,7 @@ Class {
 		'paramarrayToken',
 		'strategy'
 	],
-	#category : #'VBParser-Nodes'
+	#category : #'VBParser-Scanner'
 }
 
 { #category : #generated }

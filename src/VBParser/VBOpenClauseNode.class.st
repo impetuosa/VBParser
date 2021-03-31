@@ -8,11 +8,13 @@ Class {
 		'mode',
 		'aSToken',
 		'fileDescriptor',
+		'lenToken',
+		'equalToken',
 		'length',
 		'lock',
 		'access'
 	],
-	#category : #'VBParser-Nodes'
+	#category : #'VBParser-Scanner'
 }
 
 { #category : #generated }
@@ -38,6 +40,16 @@ VBOpenClauseNode >> access [
 { #category : #generated }
 VBOpenClauseNode >> access: aSmaCCToken [
 	access := aSmaCCToken
+]
+
+{ #category : #generated }
+VBOpenClauseNode >> equalToken [
+	^ equalToken
+]
+
+{ #category : #generated }
+VBOpenClauseNode >> equalToken: aSmaCCToken [
+	equalToken := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -79,15 +91,25 @@ VBOpenClauseNode >> filepath: aVBProgramNode [
 ]
 
 { #category : #generated }
+VBOpenClauseNode >> lenToken [
+	^ lenToken
+]
+
+{ #category : #generated }
+VBOpenClauseNode >> lenToken: aSmaCCToken [
+	lenToken := aSmaCCToken
+]
+
+{ #category : #generated }
 VBOpenClauseNode >> length [
 	^ length
 ]
 
 { #category : #generated }
-VBOpenClauseNode >> length: aVBEqualsNode [
+VBOpenClauseNode >> length: aVBProgramNode [
 	self length notNil
 		ifTrue: [ self length parent: nil ].
-	length := aVBEqualsNode.
+	length := aVBProgramNode.
 	self length notNil
 		ifTrue: [ self length parent: self ]
 ]
@@ -129,5 +151,5 @@ VBOpenClauseNode >> oPENToken: aSmaCCToken [
 
 { #category : #generated }
 VBOpenClauseNode >> tokenVariables [
-	^ #(#oPENToken #fORToken #mode #aSToken #lock #access)
+	^ #(#oPENToken #fORToken #mode #aSToken #lenToken #equalToken #lock #access)
 ]

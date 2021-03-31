@@ -10,7 +10,7 @@ Class {
 		'strategy',
 		'optionalToken'
 	],
-	#category : #'VBParser-Nodes'
+	#category : #'VBParser-Scanner'
 }
 
 { #category : #generated }
