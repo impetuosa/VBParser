@@ -1,6 +1,6 @@
 Class {
 	#name : #VBProgramNode,
-	#superclass : #VBAbstractProgramNode,
+	#superclass : #SmaCCParseNode,
 	#category : #'VBParser-Scanner'
 }
 

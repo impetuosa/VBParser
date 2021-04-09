@@ -20,10 +20,10 @@ VBMemberAccessNode >> member [
 ]
 
 { #category : #generated }
-VBMemberAccessNode >> member: aVBSimpleIdentifierNode [
+VBMemberAccessNode >> member: aVBProgramNode [
 	self member notNil
 		ifTrue: [ self member parent: nil ].
-	member := aVBSimpleIdentifierNode.
+	member := aVBProgramNode.
 	self member notNil
 		ifTrue: [ self member parent: self ]
 ]

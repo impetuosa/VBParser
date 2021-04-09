@@ -30,10 +30,10 @@ VBDictionaryAccessNode >> member [
 ]
 
 { #category : #generated }
-VBDictionaryAccessNode >> member: aVBSimpleIdentifierNode [
+VBDictionaryAccessNode >> member: aVBProgramNode [
 	self member notNil
 		ifTrue: [ self member parent: nil ].
-	member := aVBSimpleIdentifierNode.
+	member := aVBProgramNode.
 	self member notNil
 		ifTrue: [ self member parent: self ]
 ]

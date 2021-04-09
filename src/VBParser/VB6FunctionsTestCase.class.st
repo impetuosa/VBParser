@@ -96,8 +96,7 @@ VB6FunctionsTestCase >> testSmokeCallByName [
 
 { #category : #'smoke tests ' }
 VB6FunctionsTestCase >> testSmokeCommand [
-			self parse: self commandCase
-		
+	self parse: self commandCase
 ]
 
 { #category : #'smoke tests ' }
