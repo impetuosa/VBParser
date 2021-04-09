@@ -5,7 +5,7 @@ Class {
 		'nEWToken',
 		'typeName'
 	],
-	#category : #'VBParser-Nodes'
+	#category : #'VBParser-Scanner'
 }
 
 { #category : #generated }

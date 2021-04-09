@@ -7,7 +7,7 @@ Class {
 		'value',
 		'type'
 	],
-	#category : #'VBParser-Nodes'
+	#category : #'VBParser-Scanner'
 }
 
 { #category : #generated }

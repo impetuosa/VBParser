@@ -5,7 +5,7 @@ Class {
 		'visibility',
 		'variables'
 	],
-	#category : #'VBParser-Nodes'
+	#category : #'VBParser-Scanner'
 }
 
 { #category : #generated }

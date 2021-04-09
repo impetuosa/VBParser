@@ -6,7 +6,7 @@ Class {
 		'member',
 		'receiver'
 	],
-	#category : #'VBParser-Nodes'
+	#category : #'VBParser-Scanner'
 }
 
 { #category : #generated }

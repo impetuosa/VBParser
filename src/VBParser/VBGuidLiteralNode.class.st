@@ -7,7 +7,7 @@ Class {
 		'minusTokens',
 		'rightBraceToken'
 	],
-	#category : #'VBParser-Nodes'
+	#category : #'VBParser-Scanner'
 }
 
 { #category : #generated }

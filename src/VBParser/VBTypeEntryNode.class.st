@@ -7,7 +7,7 @@ Class {
 		'timesToken',
 		'_size'
 	],
-	#category : #'VBParser-Nodes'
+	#category : #'VBParser-Scanner'
 }
 
 { #category : #generated }

@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'token'
 	],
-	#category : #'VBParser-Nodes'
+	#category : #'VBParser-Scanner'
 }
 
 { #category : #generated }

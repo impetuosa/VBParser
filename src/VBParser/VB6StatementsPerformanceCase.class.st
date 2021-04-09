@@ -837,9 +837,7 @@ VB6StatementsPerformanceCase >> testSmokeIfThen [
 
 { #category : #'smoke tests ' }
 VB6StatementsPerformanceCase >> testSmokeIfThenElseIf [
-	self
-		should: [ self parse: self ifThenElseIfCase ]
-		raise: SmaCCParserError
+	self parse: self ifThenElseIfCase
 ]
 
 { #category : #'smoke tests ' }
@@ -965,8 +963,7 @@ VB6StatementsPerformanceCase >> testSmokePropertySet [
 
 { #category : #'smoke tests ' }
 VB6StatementsPerformanceCase >> testSmokeRaiseEvent [
-			self parse: self raiseEventCase
-		
+	self parse: self raiseEventCase
 ]
 
 { #category : #'smoke tests ' }

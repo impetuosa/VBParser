@@ -531,7 +531,7 @@ VBParser class >> ambiguousTransitions [
 
 { #category : #'generated-accessing' }
 VBParser class >> cacheId [
-	^'2021-04-01T00:29:13.257249+02:00'
+	^'2021-04-09T15:55:54.25141+02:00'
 ]
 
 { #category : #generated }
@@ -1716,8 +1716,8 @@ VBParser class >> reduceTable [
 	#(327 7 #reduceActionForForEach2: 16410626 false ) 
 	#(327 7 #reduceActionForForEach3: 16410627 false ) 
 	#(327 7 #reduceActionForForEach5: 16410629 false ) 
-	#(329 7 #reduceActionForForNextOneLine1: 16801793 false ) 
-	#(328 7 #reduceActionForForNextOneLine1: 16590849 false ) 
+	#(328 7 #reduceActionForForNext1: 16590849 false ) 
+	#(329 7 #reduceActionForForNext1: 16801793 false ) 
 	#(316 7 #reduceActionForLineInputClause4: 14849028 false ) 
 	#(312 7 #reduceActionForOpenFileClause5: 14513157 false ) 
 	#(312 7 #reduceActionForOpenFileClause3: 14513155 false ) 
@@ -3034,22 +3034,6 @@ VBParser class >> transitionTable [
 #[1 4 89 0 2 4 93 0 5 4 97 0 6 4 101 0 8 4 105 0 10 10 74 0 11 4 109 0 14 4 113 0 16 4 117 0 17 4 121 0 18 4 125 0 19 4 129 0 20 4 133 0 45 4 137 0 47 4 141 0 52 4 145 0 66 4 149 0 67 4 153 0 69 10 74 0 93 10 74 0 94 4 157 0 98 10 74 0 121 4 161 0 126 4 165 0 145 4 169 0 153 10 74 0 172 4 173 1 41 4 177 1 43 4 181 1 45] 
 #[0 10 78 0 11 0 93 0 94 0 121 0 172]
 	).
-]
-
-{ #category : #continuations }
-VBParser >> parse [
-	| result |
-	result := super parse.
-	(result respondsTo: #lineContinuations:)
-		ifTrue: [ result lineContinuations: scanner lineContinuations ].
-	^ result
-]
-
-{ #category : #continuations }
-VBParser >> popNodeStack [
-	nodeStack last species = VBBlockNode
-		ifTrue: [ self tagLabeledStatements: nodeStack last ].
-	^ super popNodeStack
 ]
 
 { #category : #'generated-reduction actions' }
@@ -4464,6 +4448,20 @@ VBParser >> reduceActionForForEach8: nodes [
 ]
 
 { #category : #'generated-reduction actions' }
+VBParser >> reduceActionForForNext1: nodes [
+	| result |
+	result := VBForNextNode new.
+	result fORToken: (nodes at: 1).
+	result counter: (nodes at: 2).
+	result equalToken: (nodes at: 3).
+	result initialValue: (nodes at: 4).
+	result toToken: (nodes at: 5).
+	result limit: (nodes at: 6).
+	result nextToken: (nodes at: 7).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
 VBParser >> reduceActionForForNext2: nodes [
 	| result |
 	result := VBForNextNode new.
@@ -4570,20 +4568,6 @@ VBParser >> reduceActionForForNext8: nodes [
 	result endLineNumber: (nodes at: 8).
 	result nextToken: (nodes at: 9).
 	result element: (nodes at: 10).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-VBParser >> reduceActionForForNextOneLine1: nodes [
-	| result |
-	result := VBForNextNode new.
-	result fORToken: (nodes at: 1).
-	result counter: (nodes at: 2).
-	result equalToken: (nodes at: 3).
-	result initialValue: (nodes at: 4).
-	result toToken: (nodes at: 5).
-	result limit: (nodes at: 6).
-	result nextToken: (nodes at: 7).
 	^ result
 ]
 
@@ -7313,33 +7297,4 @@ VBParser >> reduceActionFormodule4: nodes [
 	result addNodes: ((nodes at: 5) at: 2) to: result elements.
 	result addTokens: (nodes at: 6) to: result eolTokens.
 	^ result
-]
-
-{ #category : #continuations }
-VBParser >> tagLabeledStatements: aBlock [
-	| labels goto |
-	labels := OrderedCollection new.
-	goto := OrderedCollection new.
-	aBlock statements
-		do: [ :s | 
-			s species = VBLabelNode
-				ifTrue: [ labels add: s.
-					goto
-						select: [ :g | 
-							g destination labels
-								anySatisfy: [ :l | l token value = s label name value ] ]
-						thenDo: [ :g | g addDestination: s ] ]
-				ifFalse: [ ({VBGoSubNode.
-					VBGoToStatementNode.
-					VBResumeLabelNode} includes: s species)
-						ifTrue: [ goto add: s ].
-					VBOnErrorGoToNode = s species
-						ifTrue: [ goto add: s to ].
-					labels
-						ifNotEmpty: [ s addLabels: labels.
-							({VBReturnNode.
-							VBExitsNode.
-							VBGoSubNode.
-							VBGoToStatementNode} includes: s species)
-								ifTrue: [ labels removeLast ] ] ] ]
 ]
