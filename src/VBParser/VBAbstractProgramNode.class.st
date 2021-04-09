@@ -47,7 +47,7 @@ VBAbstractProgramNode >> isAssignment [
 	self class = VBExplicitAssignementNode
 		ifTrue: [ ^ true ].
 	" If it is not explicit nor asssignment / equals , is surely not an assignment  "
-	self class = VBAssignementOrEqualsNode
+	self class = VBEqualsNode
 		ifFalse: [ ^ false ].
 
 	" This part only executes for VBAssignementOrEqualsNode class: 
@@ -57,14 +57,15 @@ VBAbstractProgramNode >> isAssignment [
 	"
 	({VBSimpleIdentifierNode.
 	VBMemberAccessNode.
-	VBQualifiedIdentifierNode} includes: self left class)
+	VBDictionaryAccessNode.
+	VBSquareBracketIdentifierNode} includes: self left class)
 		ifFalse: [ ^ false ].
 
 	"
 	 regardless if it is an identifier, if our parent is a control flow structure, this should be an equals.  
 	 
 	"
-	({VBIfThenElseIfElseNode.
+	({VBElseIfBlockNode.
 	VBIfThenElseNode.
 	VBForEachNode.
 	VBForNextNode.
@@ -73,19 +74,7 @@ VBAbstractProgramNode >> isAssignment [
 	VBWhileWendNode.
 	VBUntilTrueNode} includes: self parent class)
 		ifTrue: [ ^ false ].
-		
-	
-	" The one line if is different, since it has no block to split the usage of this structure in condition or in a block of code. Then we treat it individually "	
-		
-		
-	(self parent class = VBIfThenColonNode and: [ self parent condition = self ] ) ifTrue: [ ^ false ].
-	
-	
 	^ true
-		
-
-
-
 ]
 
 { #category : #'as yet unclassified' }
