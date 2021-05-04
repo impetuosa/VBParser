@@ -41,6 +41,33 @@ VBAbstractProgramNode >> destinationsAttribute [
 ]
 
 { #category : #'as yet unclassified' }
+VBAbstractProgramNode >> enclosing: aClass [
+	| current |
+	current := parent.
+	[ current isNil ]
+		whileFalse: [ current class = aClass
+				ifTrue: [ ^ current ].
+			current := current parent ].
+	self error: 'No enclosing this node '
+]
+
+{ #category : #'as yet unclassified' }
+VBAbstractProgramNode >> enclosingAny: aClassArray [
+	| current |
+	current := parent.
+	[ current isNil ]
+		whileFalse: [ (aClassArray includes: current class)
+				ifTrue: [ ^ current ].
+			current := current parent ].
+	self error: 'No enclosing this node '
+]
+
+{ #category : #'as yet unclassified' }
+VBAbstractProgramNode >> enclosingWith [
+	^ self enclosing: VBWithNode
+]
+
+{ #category : #'as yet unclassified' }
 VBAbstractProgramNode >> isAssignment [
 	" If it is explicit, is an assignment for sure "
 
@@ -60,21 +87,34 @@ VBAbstractProgramNode >> isAssignment [
 	VBDictionaryAccessNode.
 	VBSquareBracketIdentifierNode} includes: self left class)
 		ifFalse: [ ^ false ].
-
+	
 	"
 	 regardless if it is an identifier, if our parent is a control flow structure, this should be an equals.  
 	 
 	"
-	({VBElseIfBlockNode.
+	({
+	VBArgumentNode .
+	VBElseIfBlockNode.
 	VBIfThenElseNode.
 	VBForEachNode.
 	VBForNextNode.
 	VBForStepNextNode.
 	VBWhileTrueNode.
 	VBWhileWendNode.
-	VBUntilTrueNode} includes: self parent class)
+	VBUntilTrueNode} includes: self parentNonParentheses class)
 		ifTrue: [ ^ false ].
 	^ true
+]
+
+{ #category : #'as yet unclassified' }
+VBAbstractProgramNode >> isReturn [
+	self isAssignment
+		ifFalse: [ ^ false ].
+	[ | context |
+	context := self enclosing: VBFunctionDefinitionNode.
+	^ context selector = self left ]
+		on: Error
+		do: [ ^ false ]
 ]
 
 { #category : #'as yet unclassified' }
@@ -102,6 +142,16 @@ VBAbstractProgramNode >> managesError [
 	^ self jumpsourcesAttribute
 		ifNil: [ false ]
 		ifNotNil: [ :js |  js anySatisfy: [ :s | s parent species = VBOnErrorGoToNode ] ]
+]
+
+{ #category : #'as yet unclassified' }
+VBAbstractProgramNode >> parentNonParentheses [
+	| current |
+	current := self parent.
+	[ current class = VBParentheseesExpressionNode ]
+		whileTrue: [ current := current parent.
+			current ifNil: [ ^ nil ] ].
+	^ current
 ]
 
 { #category : #'.as yet unclassified' }
