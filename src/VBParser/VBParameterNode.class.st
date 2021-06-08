@@ -42,6 +42,12 @@ VBParameterNode >> equalToken: aSmaCCToken [
 	equalToken := aSmaCCToken
 ]
 
+{ #category : #testing }
+VBParameterNode >> isOptional [
+
+	^ optionalToken isNotNil
+]
+
 { #category : #generated }
 VBParameterNode >> name [
 	^ name

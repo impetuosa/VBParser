@@ -1,6 +1,7 @@
 Trait {
 	#name : #TVBProgramNodeVisitor,
 	#traits : 'TSmaCCParseNodeVisitor',
+	#classTraits : 'TSmaCCParseNodeVisitor classTrait',
 	#category : #'VBParser-Scanner'
 }
 
