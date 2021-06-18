@@ -93,6 +93,8 @@ VBAbstractProgramNode >> isAssignment [
 	 
 	"
 	({
+	VBExplicitAssignementNode .
+	VBEqualsNode .
 	VBArgumentNode .
 	VBElseIfBlockNode.
 	VBIfThenElseNode.
