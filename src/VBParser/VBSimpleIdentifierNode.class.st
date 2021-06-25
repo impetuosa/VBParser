@@ -12,6 +12,11 @@ VBSimpleIdentifierNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitSimpleIdentifier: self
 ]
 
+{ #category : #accessing }
+VBSimpleIdentifierNode >> isIdentifier [
+	^ true 
+]
+
 { #category : #generated }
 VBSimpleIdentifierNode >> token [
 	^ token

@@ -30,6 +30,11 @@ VBProcedureCallOrArrayAccessNode >> arguments: aVBArgumentListNode [
 		ifTrue: [ self arguments parent: self ]
 ]
 
+{ #category : #testing }
+VBProcedureCallOrArrayAccessNode >> isIdentifier [
+	^ false 
+]
+
 { #category : #generated }
 VBProcedureCallOrArrayAccessNode >> leftParenToken [
 	^ leftParenToken

@@ -14,6 +14,11 @@ VBMemberAccessNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitMemberAccess: self
 ]
 
+{ #category : #testing }
+VBMemberAccessNode >> isIdentifier [
+	^ true 
+]
+
 { #category : #generated }
 VBMemberAccessNode >> member [
 	^ member
