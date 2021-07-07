@@ -42,8 +42,14 @@ VBAbstractProgramNode >> destinationsAttribute [
 
 { #category : #'as yet unclassified' }
 VBAbstractProgramNode >> enclosing: aClass [
+
+	^ self enclosing: aClass starting: parent
+]
+
+{ #category : #'as yet unclassified' }
+VBAbstractProgramNode >> enclosing: aClass starting: start [
 	| current |
-	current := parent.
+	current := start.
 	[ current isNil ]
 		whileFalse: [ current class = aClass
 				ifTrue: [ ^ current ].
@@ -64,7 +70,10 @@ VBAbstractProgramNode >> enclosingAny: aClassArray [
 
 { #category : #'as yet unclassified' }
 VBAbstractProgramNode >> enclosingWith [
-	^ self enclosing: VBWithNode
+
+	| inbetween |
+	inbetween := self enclosing: VBBlockNode.
+	^ inbetween enclosing: VBWithNode
 ]
 
 { #category : #'as yet unclassified' }
