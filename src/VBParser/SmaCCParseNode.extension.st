@@ -1,6 +1,16 @@
 Extension { #name : #SmaCCParseNode }
 
 { #category : #'*VBParser' }
+SmaCCParseNode >> allNodesSelect: aBlock [
+
+	| collection |
+	collection := OrderedCollection new.
+	self allNodesDo: [ :n | 
+		(aBlock value: n) ifTrue: [ collection add: n ] ].
+	^ collection
+]
+
+{ #category : #'*VBParser' }
 SmaCCParseNode >> diffWith: anObject [
 	| allEntries |
 	self == anObject
