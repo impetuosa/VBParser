@@ -10,36 +10,43 @@ Class {
 
 { #category : #generated }
 VBConstantListNode >> acceptVisitor: aProgramVisitor [
+
 	^ aProgramVisitor visitConstantList: self
 ]
 
 { #category : #generated }
 VBConstantListNode >> commaTokens [
+
 	^ commaTokens
 ]
 
 { #category : #generated }
 VBConstantListNode >> commaTokens: anOrderedCollection [
+
 	commaTokens := anOrderedCollection
 ]
 
 { #category : #generated }
 VBConstantListNode >> compositeNodeVariables [
-	^ #(#constants)
+
+	^ #( #constants )
 ]
 
 { #category : #generated }
 VBConstantListNode >> compositeTokenVariables [
-	^ #(#commaTokens)
+
+	^ #( #commaTokens )
 ]
 
 { #category : #generated }
 VBConstantListNode >> constants [
+
 	^ constants
 ]
 
 { #category : #generated }
 VBConstantListNode >> constants: anOrderedCollection [
+
 	self setParents: self constants to: nil.
 	constants := anOrderedCollection.
 	self setParents: self constants to: self

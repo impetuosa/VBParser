@@ -9,6 +9,7 @@ Class {
 
 { #category : #generated }
 VBSimpleIdentifierNode >> acceptVisitor: aProgramVisitor [
+
 	^ aProgramVisitor visitSimpleIdentifier: self
 ]
 
@@ -19,15 +20,18 @@ VBSimpleIdentifierNode >> isIdentifier [
 
 { #category : #generated }
 VBSimpleIdentifierNode >> token [
+
 	^ token
 ]
 
 { #category : #generated }
 VBSimpleIdentifierNode >> token: aSmaCCToken [
+
 	token := aSmaCCToken
 ]
 
 { #category : #generated }
 VBSimpleIdentifierNode >> tokenVariables [
-	^ #(#token)
+
+	^ #( #token )
 ]

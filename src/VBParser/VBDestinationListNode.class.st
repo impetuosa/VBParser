@@ -10,27 +10,32 @@ Class {
 
 { #category : #generated }
 VBDestinationListNode >> acceptVisitor: aProgramVisitor [
+
 	^ aProgramVisitor visitDestinationList: self
 ]
 
 { #category : #generated }
 VBDestinationListNode >> commaTokens [
+
 	^ commaTokens
 ]
 
 { #category : #generated }
 VBDestinationListNode >> commaTokens: anOrderedCollection [
+
 	commaTokens := anOrderedCollection
 ]
 
 { #category : #generated }
 VBDestinationListNode >> compositeNodeVariables [
-	^ #(#labels)
+
+	^ #( #labels )
 ]
 
 { #category : #generated }
 VBDestinationListNode >> compositeTokenVariables [
-	^ #(#commaTokens)
+
+	^ #( #commaTokens )
 ]
 
 { #category : #'generated-initialize-release' }
@@ -42,11 +47,13 @@ VBDestinationListNode >> initialize [
 
 { #category : #generated }
 VBDestinationListNode >> labels [
+
 	^ labels
 ]
 
 { #category : #generated }
 VBDestinationListNode >> labels: anOrderedCollection [
+
 	self setParents: self labels to: nil.
 	labels := anOrderedCollection.
 	self setParents: self labels to: self

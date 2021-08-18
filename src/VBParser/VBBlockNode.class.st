@@ -12,36 +12,43 @@ Class {
 
 { #category : #generated }
 VBBlockNode >> acceptVisitor: aProgramVisitor [
+
 	^ aProgramVisitor visitBlock: self
 ]
 
 { #category : #generated }
 VBBlockNode >> colonTokens [
+
 	^ colonTokens
 ]
 
 { #category : #generated }
 VBBlockNode >> colonTokens: anOrderedCollection [
+
 	colonTokens := anOrderedCollection
 ]
 
 { #category : #generated }
 VBBlockNode >> compositeNodeVariables [
-	^ #(#lineNumbers)
+
+	^ #( #lineNumbers )
 ]
 
 { #category : #generated }
 VBBlockNode >> compositeTokenVariables [
-	^ #(#eolTokens #colonTokens)
+
+	^ #( #eolTokens #colonTokens )
 ]
 
 { #category : #generated }
 VBBlockNode >> eolTokens [
+
 	^ eolTokens
 ]
 
 { #category : #generated }
 VBBlockNode >> eolTokens: anOrderedCollection [
+
 	eolTokens := anOrderedCollection
 ]
 
@@ -56,11 +63,13 @@ VBBlockNode >> initialize [
 
 { #category : #generated }
 VBBlockNode >> lineNumbers [
+
 	^ lineNumbers
 ]
 
 { #category : #generated }
 VBBlockNode >> lineNumbers: anOrderedCollection [
+
 	self setParents: self lineNumbers to: nil.
 	lineNumbers := anOrderedCollection.
 	self setParents: self lineNumbers to: self
@@ -68,16 +77,19 @@ VBBlockNode >> lineNumbers: anOrderedCollection [
 
 { #category : #generated }
 VBBlockNode >> otherVariables [
-	^ #(#statements)
+
+	^ #( #statements )
 ]
 
 { #category : #generated }
 VBBlockNode >> statements [
+
 	^ statements
 ]
 
 { #category : #generated }
 VBBlockNode >> statements: anOrderedCollection [
+
 	self setParent: self statements to: nil.
 	statements := anOrderedCollection.
 	self setParent: self statements to: self

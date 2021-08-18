@@ -11,26 +11,31 @@ Class {
 
 { #category : #generated }
 VBModuleNode >> acceptVisitor: aProgramVisitor [
+
 	^ aProgramVisitor visitModule: self
 ]
 
 { #category : #generated }
 VBModuleNode >> compositeNodeVariables [
-	^ #(#elements)
+
+	^ #( #elements )
 ]
 
 { #category : #generated }
 VBModuleNode >> compositeTokenVariables [
-	^ #(#eolTokens)
+
+	^ #( #eolTokens )
 ]
 
 { #category : #generated }
 VBModuleNode >> elements [
+
 	^ elements
 ]
 
 { #category : #generated }
 VBModuleNode >> elements: anOrderedCollection [
+
 	self setParents: self elements to: nil.
 	elements := anOrderedCollection.
 	self setParents: self elements to: self
@@ -38,26 +43,28 @@ VBModuleNode >> elements: anOrderedCollection [
 
 { #category : #generated }
 VBModuleNode >> eolTokens [
+
 	^ eolTokens
 ]
 
 { #category : #generated }
 VBModuleNode >> eolTokens: anOrderedCollection [
+
 	eolTokens := anOrderedCollection
 ]
 
 { #category : #generated }
 VBModuleNode >> header [
+
 	^ header
 ]
 
 { #category : #generated }
 VBModuleNode >> header: aVBHeaderNode [
-	self header notNil
-		ifTrue: [ self header parent: nil ].
+
+	self header notNil ifTrue: [ self header parent: nil ].
 	header := aVBHeaderNode.
-	self header notNil
-		ifTrue: [ self header parent: self ]
+	self header notNil ifTrue: [ self header parent: self ]
 ]
 
 { #category : #'generated-initialize-release' }
@@ -69,5 +76,6 @@ VBModuleNode >> initialize [
 
 { #category : #generated }
 VBModuleNode >> nodeVariables [
-	^ #(#header)
+
+	^ #( #header )
 ]

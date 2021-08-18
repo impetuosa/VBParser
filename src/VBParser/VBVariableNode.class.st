@@ -11,53 +11,58 @@ Class {
 
 { #category : #generated }
 VBVariableNode >> acceptVisitor: aProgramVisitor [
+
 	^ aProgramVisitor visitVariable: self
 ]
 
 { #category : #generated }
 VBVariableNode >> name [
+
 	^ name
 ]
 
 { #category : #generated }
 VBVariableNode >> name: aVBProgramNode [
-	self name notNil
-		ifTrue: [ self name parent: nil ].
+
+	self name notNil ifTrue: [ self name parent: nil ].
 	name := aVBProgramNode.
-	self name notNil
-		ifTrue: [ self name parent: self ]
+	self name notNil ifTrue: [ self name parent: self ]
 ]
 
 { #category : #generated }
 VBVariableNode >> nodeVariables [
-	^ #(#name #type)
+
+	^ #( #name #type )
 ]
 
 { #category : #generated }
 VBVariableNode >> tokenVariables [
-	^ #(#withEventsToken)
+
+	^ #( #withEventsToken )
 ]
 
 { #category : #generated }
 VBVariableNode >> type [
+
 	^ type
 ]
 
 { #category : #generated }
 VBVariableNode >> type: aVBProgramNode [
-	self type notNil
-		ifTrue: [ self type parent: nil ].
+
+	self type notNil ifTrue: [ self type parent: nil ].
 	type := aVBProgramNode.
-	self type notNil
-		ifTrue: [ self type parent: self ]
+	self type notNil ifTrue: [ self type parent: self ]
 ]
 
 { #category : #generated }
 VBVariableNode >> withEventsToken [
+
 	^ withEventsToken
 ]
 
 { #category : #generated }
 VBVariableNode >> withEventsToken: aSmaCCToken [
+
 	withEventsToken := aSmaCCToken
 ]

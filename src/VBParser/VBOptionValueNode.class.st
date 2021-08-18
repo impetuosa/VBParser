@@ -10,39 +10,44 @@ Class {
 
 { #category : #generated }
 VBOptionValueNode >> acceptVisitor: aProgramVisitor [
+
 	^ aProgramVisitor visitOptionValue: self
 ]
 
 { #category : #generated }
 VBOptionValueNode >> nodeVariables [
-	^ #(#value)
+
+	^ #( #value )
 ]
 
 { #category : #generated }
 VBOptionValueNode >> optionToken [
+
 	^ optionToken
 ]
 
 { #category : #generated }
 VBOptionValueNode >> optionToken: aSmaCCToken [
+
 	optionToken := aSmaCCToken
 ]
 
 { #category : #generated }
 VBOptionValueNode >> tokenVariables [
-	^ #(#optionToken)
+
+	^ #( #optionToken )
 ]
 
 { #category : #generated }
 VBOptionValueNode >> value [
+
 	^ value
 ]
 
 { #category : #generated }
 VBOptionValueNode >> value: aVBIntegerLiteralNode [
-	self value notNil
-		ifTrue: [ self value parent: nil ].
+
+	self value notNil ifTrue: [ self value parent: nil ].
 	value := aVBIntegerLiteralNode.
-	self value notNil
-		ifTrue: [ self value parent: self ]
+	self value notNil ifTrue: [ self value parent: self ]
 ]

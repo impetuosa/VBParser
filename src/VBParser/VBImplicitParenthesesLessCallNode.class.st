@@ -10,38 +10,40 @@ Class {
 
 { #category : #generated }
 VBImplicitParenthesesLessCallNode >> acceptVisitor: aProgramVisitor [
+
 	^ aProgramVisitor visitImplicitParenthesesLessCall: self
 ]
 
 { #category : #generated }
 VBImplicitParenthesesLessCallNode >> arguments [
+
 	^ arguments
 ]
 
 { #category : #generated }
 VBImplicitParenthesesLessCallNode >> arguments: aVBArgumentListNode [
-	self arguments notNil
-		ifTrue: [ self arguments parent: nil ].
+
+	self arguments notNil ifTrue: [ self arguments parent: nil ].
 	arguments := aVBArgumentListNode.
-	self arguments notNil
-		ifTrue: [ self arguments parent: self ]
+	self arguments notNil ifTrue: [ self arguments parent: self ]
 ]
 
 { #category : #generated }
 VBImplicitParenthesesLessCallNode >> nodeVariables [
-	^ #(#selector #arguments)
+
+	^ #( #selector #arguments )
 ]
 
 { #category : #generated }
 VBImplicitParenthesesLessCallNode >> selector [
+
 	^ selector
 ]
 
 { #category : #generated }
 VBImplicitParenthesesLessCallNode >> selector: aVBProgramNode [
-	self selector notNil
-		ifTrue: [ self selector parent: nil ].
+
+	self selector notNil ifTrue: [ self selector parent: nil ].
 	selector := aVBProgramNode.
-	self selector notNil
-		ifTrue: [ self selector parent: self ]
+	self selector notNil ifTrue: [ self selector parent: self ]
 ]

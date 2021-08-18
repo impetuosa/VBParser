@@ -6,5 +6,6 @@ Class {
 
 { #category : #generated }
 VBProgramNode >> acceptVisitor: aProgramVisitor [
+
 	^ aProgramVisitor visitProgram: self
 ]

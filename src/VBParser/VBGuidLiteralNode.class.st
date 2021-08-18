@@ -12,21 +12,25 @@ Class {
 
 { #category : #generated }
 VBGuidLiteralNode >> acceptVisitor: aProgramVisitor [
+
 	^ aProgramVisitor visitGuidLiteral: self
 ]
 
 { #category : #generated }
 VBGuidLiteralNode >> compositeTokenVariables [
-	^ #(#hEX_INTEGERTokens #minusTokens)
+
+	^ #( #hEX_INTEGERTokens #minusTokens )
 ]
 
 { #category : #generated }
 VBGuidLiteralNode >> hEX_INTEGERTokens [
+
 	^ hEX_INTEGERTokens
 ]
 
 { #category : #generated }
 VBGuidLiteralNode >> hEX_INTEGERTokens: anOrderedCollection [
+
 	hEX_INTEGERTokens := anOrderedCollection
 ]
 
@@ -39,35 +43,42 @@ VBGuidLiteralNode >> initialize [
 
 { #category : #generated }
 VBGuidLiteralNode >> leftBraceToken [
+
 	^ leftBraceToken
 ]
 
 { #category : #generated }
 VBGuidLiteralNode >> leftBraceToken: aSmaCCToken [
+
 	leftBraceToken := aSmaCCToken
 ]
 
 { #category : #generated }
 VBGuidLiteralNode >> minusTokens [
+
 	^ minusTokens
 ]
 
 { #category : #generated }
 VBGuidLiteralNode >> minusTokens: anOrderedCollection [
+
 	minusTokens := anOrderedCollection
 ]
 
 { #category : #generated }
 VBGuidLiteralNode >> rightBraceToken [
+
 	^ rightBraceToken
 ]
 
 { #category : #generated }
 VBGuidLiteralNode >> rightBraceToken: aSmaCCToken [
+
 	rightBraceToken := aSmaCCToken
 ]
 
 { #category : #generated }
 VBGuidLiteralNode >> tokenVariables [
-	^ #(#leftBraceToken #rightBraceToken)
+
+	^ #( #leftBraceToken #rightBraceToken )
 ]
