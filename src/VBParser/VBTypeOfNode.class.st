@@ -3,9 +3,10 @@ Class {
 	#superclass : #VBProgramNode,
 	#instVars : [
 		'typeOfToken',
-		'arguments',
-		'rightParenToken',
-		'leftParenToken'
+		'argument',
+		'iSToken',
+		'type',
+		'isNotToken'
 	],
 	#category : #'VBParser-Scanner'
 }
@@ -17,53 +18,67 @@ VBTypeOfNode >> acceptVisitor: aProgramVisitor [
 ]
 
 { #category : #generated }
-VBTypeOfNode >> arguments [
+VBTypeOfNode >> argument [
 
-	^ arguments
+	^ argument
 ]
 
 { #category : #generated }
-VBTypeOfNode >> arguments: aVBArgumentListNode [
+VBTypeOfNode >> argument: aVBArgumentNode [
 
-	self arguments notNil ifTrue: [ self arguments parent: nil ].
-	arguments := aVBArgumentListNode.
-	self arguments notNil ifTrue: [ self arguments parent: self ]
+	self argument notNil ifTrue: [ self argument parent: nil ].
+	argument := aVBArgumentNode.
+	self argument notNil ifTrue: [ self argument parent: self ]
 ]
 
 { #category : #generated }
-VBTypeOfNode >> leftParenToken [
+VBTypeOfNode >> iSToken [
 
-	^ leftParenToken
+	^ iSToken
 ]
 
 { #category : #generated }
-VBTypeOfNode >> leftParenToken: aSmaCCToken [
+VBTypeOfNode >> iSToken: aSmaCCToken [
 
-	leftParenToken := aSmaCCToken
+	iSToken := aSmaCCToken
+]
+
+{ #category : #generated }
+VBTypeOfNode >> isNotToken [
+
+	^ isNotToken
+]
+
+{ #category : #generated }
+VBTypeOfNode >> isNotToken: aSmaCCToken [
+
+	isNotToken := aSmaCCToken
 ]
 
 { #category : #generated }
 VBTypeOfNode >> nodeVariables [
 
-	^ #( #arguments )
-]
-
-{ #category : #generated }
-VBTypeOfNode >> rightParenToken [
-
-	^ rightParenToken
-]
-
-{ #category : #generated }
-VBTypeOfNode >> rightParenToken: aSmaCCToken [
-
-	rightParenToken := aSmaCCToken
+	^ #( #argument #type )
 ]
 
 { #category : #generated }
 VBTypeOfNode >> tokenVariables [
 
-	^ #( #typeOfToken #rightParenToken #leftParenToken )
+	^ #( #typeOfToken #iSToken #isNotToken )
+]
+
+{ #category : #generated }
+VBTypeOfNode >> type [
+
+	^ type
+]
+
+{ #category : #generated }
+VBTypeOfNode >> type: aVBArgumentNode [
+
+	self type notNil ifTrue: [ self type parent: nil ].
+	type := aVBArgumentNode.
+	self type notNil ifTrue: [ self type parent: self ]
 ]
 
 { #category : #generated }
