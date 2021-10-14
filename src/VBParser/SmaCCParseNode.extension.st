@@ -1,6 +1,15 @@
 Extension { #name : #SmaCCParseNode }
 
 { #category : #'*VBParser' }
+SmaCCParseNode >> allNodes [
+
+	| nodes |
+	nodes := IdentitySet new.
+	self allNodesDo: [ :n | nodes add: n ].
+	^ nodes
+]
+
+{ #category : #'*VBParser' }
 SmaCCParseNode >> allNodesSelect: aBlock [
 
 	| collection |
