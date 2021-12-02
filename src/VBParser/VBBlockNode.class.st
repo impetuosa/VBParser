@@ -83,6 +83,7 @@ VBBlockNode >> otherVariables [
 
 { #category : #generated }
 VBBlockNode >> statements [
+
 	^ statements
 ]
 
