@@ -6,9 +6,10 @@ Class {
 
 { #category : #'as yet unclassified' }
 VBAbstractProgramNode >> addDestination: aDestination [
+
 	self
-		assert:
-			({VBResumeLabelNode.
+		assert: (
+		 { VBResumeLabelNode.
 			VBGoSubNode.
 			VBGoToStatementNode} includes: self class).
 	(self
@@ -19,8 +20,11 @@ VBAbstractProgramNode >> addDestination: aDestination [
 
 { #category : #'as yet unclassified' }
 VBAbstractProgramNode >> addJumpSource: aGoto [
-	self assert: self species = VBLabelNode .
-	(self attributeNamed:#jumpsources ifAbsentPut: [ OrderedCollection new ] ) add: aGoto 
+
+	self assert: self species = VBLabelNode.
+	(self
+		 attributeNamed: #jumpsources
+		 ifAbsentPut: [ OrderedCollection new ]) add: aGoto
 ]
 
 { #category : #'as yet unclassified' }
@@ -33,6 +37,39 @@ VBAbstractProgramNode >> addLabels: labels [
 		do: [ :l | 
 			myLabels add: l.
 			l registerStatement: self ]
+]
+
+{ #category : #'as yet unclassified' }
+VBAbstractProgramNode >> calculateJumps [
+
+	| labels goto |
+	self assert: self species = VBBlockNode.
+
+	labels := OrderedCollection new.
+	goto := OrderedCollection new.
+	self statements do: [ :s | 
+		s species = VBLabelNode
+			ifTrue: [ 
+				labels add: s.
+				goto
+					select: [ :g | 
+						g destination labels anySatisfy: [ :l | 
+							l token value = s label name value ] ]
+					thenDo: [ :g | g addDestination: s ] ]
+			ifFalse: [ 
+				({ 
+					 VBGoSubNode.
+					 VBGoToStatementNode.
+					 VBResumeLabelNode } includes: s species) ifTrue: [ goto add: s ].
+				VBOnErrorGoToNode = s species ifTrue: [ goto add: s to ].
+				labels ifNotEmpty: [ 
+					s addLabels: labels.
+					({ 
+						 VBReturnNode.
+						 VBExitsNode.
+						 VBGoSubNode.
+						 VBGoToStatementNode } includes: s species) ifTrue: [ 
+						labels removeLast ] ] ] ]
 ]
 
 { #category : #'as yet unclassified' }
@@ -150,9 +187,11 @@ VBAbstractProgramNode >> lineContinuations: line [
 
 { #category : #'as yet unclassified' }
 VBAbstractProgramNode >> managesError [
+
 	^ self jumpsourcesAttribute
-		ifNil: [ false ]
-		ifNotNil: [ :js |  js anySatisfy: [ :s | s parent species = VBOnErrorGoToNode ] ]
+		  ifNil: [ false ]
+		  ifNotNil: [ :js | 
+		  js anySatisfy: [ :s | s parent species = VBOnErrorGoToNode ] ]
 ]
 
 { #category : #'as yet unclassified' }
@@ -167,12 +206,14 @@ VBAbstractProgramNode >> parentNonParentheses [
 
 { #category : #'.as yet unclassified' }
 VBAbstractProgramNode >> parents [
-	parent ifNil: [ ^ {} ].
-	^ {parent} , parent parents
+
+	parent ifNil: [ ^ {  } ].
+	^ { parent } , parent parents
 ]
 
 { #category : #'as yet unclassified' }
 VBAbstractProgramNode >> registerStatement: aStatement [
+
 	self assert: self species = VBLabelNode.
 	(self
 		attributeNamed: #statements
