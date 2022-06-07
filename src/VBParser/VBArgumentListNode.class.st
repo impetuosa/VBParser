@@ -11,19 +11,16 @@ Class {
 
 { #category : #generated }
 VBArgumentListNode >> acceptVisitor: aProgramVisitor [
-
 	^ aProgramVisitor visitArgumentList: self
 ]
 
 { #category : #generated }
 VBArgumentListNode >> arguments [
-
 	^ arguments
 ]
 
 { #category : #generated }
 VBArgumentListNode >> arguments: anOrderedCollection [
-
 	self setParents: self arguments to: nil.
 	arguments := anOrderedCollection.
 	self setParents: self arguments to: self
@@ -31,26 +28,22 @@ VBArgumentListNode >> arguments: anOrderedCollection [
 
 { #category : #generated }
 VBArgumentListNode >> commaTokens [
-
 	^ commaTokens
 ]
 
 { #category : #generated }
 VBArgumentListNode >> commaTokens: anOrderedCollection [
-
 	commaTokens := anOrderedCollection
 ]
 
 { #category : #generated }
 VBArgumentListNode >> compositeNodeVariables [
-
-	^ #( #arguments )
+	^ #(#arguments)
 ]
 
 { #category : #generated }
 VBArgumentListNode >> compositeTokenVariables [
-
-	^ #( #commaTokens #semicolonTokens )
+	^ #(#commaTokens #semicolonTokens)
 ]
 
 { #category : #'generated-initialize-release' }
@@ -63,12 +56,10 @@ VBArgumentListNode >> initialize [
 
 { #category : #generated }
 VBArgumentListNode >> semicolonTokens [
-
 	^ semicolonTokens
 ]
 
 { #category : #generated }
 VBArgumentListNode >> semicolonTokens: anOrderedCollection [
-
 	semicolonTokens := anOrderedCollection
 ]

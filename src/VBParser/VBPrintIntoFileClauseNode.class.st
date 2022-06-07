@@ -15,46 +15,41 @@ Class {
 
 { #category : #generated }
 VBPrintIntoFileClauseNode >> acceptVisitor: aProgramVisitor [
-
 	^ aProgramVisitor visitPrintIntoFileClause: self
 ]
 
 { #category : #generated }
 VBPrintIntoFileClauseNode >> commaToken [
-
 	^ commaToken
 ]
 
 { #category : #generated }
 VBPrintIntoFileClauseNode >> commaToken: aSmaCCToken [
-
 	commaToken := aSmaCCToken
 ]
 
 { #category : #generated }
 VBPrintIntoFileClauseNode >> compositeNodeVariables [
-
-	^ #( #values )
+	^ #(#values)
 ]
 
 { #category : #generated }
 VBPrintIntoFileClauseNode >> compositeTokenVariables [
-
-	^ #( #semicolonTokens )
+	^ #(#semicolonTokens)
 ]
 
 { #category : #generated }
 VBPrintIntoFileClauseNode >> fileNumber [
-
 	^ fileNumber
 ]
 
 { #category : #generated }
 VBPrintIntoFileClauseNode >> fileNumber: aVBProgramNode [
-
-	self fileNumber notNil ifTrue: [ self fileNumber parent: nil ].
+	self fileNumber notNil
+		ifTrue: [ self fileNumber parent: nil ].
 	fileNumber := aVBProgramNode.
-	self fileNumber notNil ifTrue: [ self fileNumber parent: self ]
+	self fileNumber notNil
+		ifTrue: [ self fileNumber parent: self ]
 ]
 
 { #category : #'generated-initialize-release' }
@@ -66,73 +61,61 @@ VBPrintIntoFileClauseNode >> initialize [
 
 { #category : #generated }
 VBPrintIntoFileClauseNode >> leftParenToken [
-
 	^ leftParenToken
 ]
 
 { #category : #generated }
 VBPrintIntoFileClauseNode >> leftParenToken: aSmaCCToken [
-
 	leftParenToken := aSmaCCToken
 ]
 
 { #category : #generated }
 VBPrintIntoFileClauseNode >> nodeVariables [
-
-	^ #( #fileNumber )
+	^ #(#fileNumber)
 ]
 
 { #category : #generated }
 VBPrintIntoFileClauseNode >> pRINTToken [
-
 	^ pRINTToken
 ]
 
 { #category : #generated }
 VBPrintIntoFileClauseNode >> pRINTToken: aSmaCCToken [
-
 	pRINTToken := aSmaCCToken
 ]
 
 { #category : #generated }
 VBPrintIntoFileClauseNode >> rightParenToken [
-
 	^ rightParenToken
 ]
 
 { #category : #generated }
 VBPrintIntoFileClauseNode >> rightParenToken: aSmaCCToken [
-
 	rightParenToken := aSmaCCToken
 ]
 
 { #category : #generated }
 VBPrintIntoFileClauseNode >> semicolonTokens [
-
 	^ semicolonTokens
 ]
 
 { #category : #generated }
 VBPrintIntoFileClauseNode >> semicolonTokens: anOrderedCollection [
-
 	semicolonTokens := anOrderedCollection
 ]
 
 { #category : #generated }
 VBPrintIntoFileClauseNode >> tokenVariables [
-
-	^ #( #pRINTToken #commaToken #rightParenToken #leftParenToken )
+	^ #(#pRINTToken #commaToken #rightParenToken #leftParenToken)
 ]
 
 { #category : #generated }
 VBPrintIntoFileClauseNode >> values [
-
 	^ values
 ]
 
 { #category : #generated }
 VBPrintIntoFileClauseNode >> values: anOrderedCollection [
-
 	self setParents: self values to: nil.
 	values := anOrderedCollection.
 	self setParents: self values to: self

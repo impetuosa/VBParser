@@ -10,44 +10,39 @@ Class {
 
 { #category : #generated }
 VBModuleAttributeNode >> acceptVisitor: aProgramVisitor [
-
 	^ aProgramVisitor visitModuleAttribute: self
 ]
 
 { #category : #generated }
 VBModuleAttributeNode >> attributeToken [
-
 	^ attributeToken
 ]
 
 { #category : #generated }
 VBModuleAttributeNode >> attributeToken: aSmaCCToken [
-
 	attributeToken := aSmaCCToken
 ]
 
 { #category : #generated }
 VBModuleAttributeNode >> nodeVariables [
-
-	^ #( #setting )
+	^ #(#setting)
 ]
 
 { #category : #generated }
 VBModuleAttributeNode >> setting [
-
 	^ setting
 ]
 
 { #category : #generated }
 VBModuleAttributeNode >> setting: aVBSetUpAssignationNode [
-
-	self setting notNil ifTrue: [ self setting parent: nil ].
+	self setting notNil
+		ifTrue: [ self setting parent: nil ].
 	setting := aVBSetUpAssignationNode.
-	self setting notNil ifTrue: [ self setting parent: self ]
+	self setting notNil
+		ifTrue: [ self setting parent: self ]
 ]
 
 { #category : #generated }
 VBModuleAttributeNode >> tokenVariables [
-
-	^ #( #attributeToken )
+	^ #(#attributeToken)
 ]

@@ -1,11 +1,10 @@
 Class {
 	#name : #VBProgramNode,
-	#superclass : #VBAbstractProgramNode,
+	#superclass : #SmaCCParseNode,
 	#category : #'VBParser-Scanner'
 }
 
 { #category : #generated }
 VBProgramNode >> acceptVisitor: aProgramVisitor [
-
 	^ aProgramVisitor visitProgram: self
 ]

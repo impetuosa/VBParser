@@ -10,44 +10,39 @@ Class {
 
 { #category : #generated }
 VBStaticMultipleVariablesNode >> acceptVisitor: aProgramVisitor [
-
 	^ aProgramVisitor visitStaticMultipleVariables: self
 ]
 
 { #category : #generated }
 VBStaticMultipleVariablesNode >> nodeVariables [
-
-	^ #( #variables )
+	^ #(#variables)
 ]
 
 { #category : #generated }
 VBStaticMultipleVariablesNode >> staticToken [
-
 	^ staticToken
 ]
 
 { #category : #generated }
 VBStaticMultipleVariablesNode >> staticToken: aSmaCCToken [
-
 	staticToken := aSmaCCToken
 ]
 
 { #category : #generated }
 VBStaticMultipleVariablesNode >> tokenVariables [
-
-	^ #( #staticToken )
+	^ #(#staticToken)
 ]
 
 { #category : #generated }
 VBStaticMultipleVariablesNode >> variables [
-
 	^ variables
 ]
 
 { #category : #generated }
 VBStaticMultipleVariablesNode >> variables: aVBVariableListNode [
-
-	self variables notNil ifTrue: [ self variables parent: nil ].
+	self variables notNil
+		ifTrue: [ self variables parent: nil ].
 	variables := aVBVariableListNode.
-	self variables notNil ifTrue: [ self variables parent: self ]
+	self variables notNil
+		ifTrue: [ self variables parent: self ]
 ]

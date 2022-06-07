@@ -14,55 +14,46 @@ Class {
 
 { #category : #generated }
 VBDefineTypeNode >> acceptVisitor: aProgramVisitor [
-
 	^ aProgramVisitor visitDefineType: self
 ]
 
 { #category : #generated }
 VBDefineTypeNode >> compositeNodeVariables [
-
-	^ #( #fields )
+	^ #(#fields)
 ]
 
 { #category : #generated }
 VBDefineTypeNode >> compositeTokenVariables [
-
-	^ #( #typeTokens #eolTokens )
+	^ #(#typeTokens #eolTokens)
 ]
 
 { #category : #generated }
 VBDefineTypeNode >> endToken [
-
 	^ endToken
 ]
 
 { #category : #generated }
 VBDefineTypeNode >> endToken: aSmaCCToken [
-
 	endToken := aSmaCCToken
 ]
 
 { #category : #generated }
 VBDefineTypeNode >> eolTokens [
-
 	^ eolTokens
 ]
 
 { #category : #generated }
 VBDefineTypeNode >> eolTokens: anOrderedCollection [
-
 	eolTokens := anOrderedCollection
 ]
 
 { #category : #generated }
 VBDefineTypeNode >> fields [
-
 	^ fields
 ]
 
 { #category : #generated }
 VBDefineTypeNode >> fields: anOrderedCollection [
-
 	self setParents: self fields to: nil.
 	fields := anOrderedCollection.
 	self setParents: self fields to: self
@@ -78,50 +69,44 @@ VBDefineTypeNode >> initialize [
 
 { #category : #generated }
 VBDefineTypeNode >> name [
-
 	^ name
 ]
 
 { #category : #generated }
 VBDefineTypeNode >> name: aVBProgramNode [
-
-	self name notNil ifTrue: [ self name parent: nil ].
+	self name notNil
+		ifTrue: [ self name parent: nil ].
 	name := aVBProgramNode.
-	self name notNil ifTrue: [ self name parent: self ]
+	self name notNil
+		ifTrue: [ self name parent: self ]
 ]
 
 { #category : #generated }
 VBDefineTypeNode >> nodeVariables [
-
-	^ #( #name )
+	^ #(#name)
 ]
 
 { #category : #generated }
 VBDefineTypeNode >> tokenVariables [
-
-	^ #( #endToken #visibility )
+	^ #(#endToken #visibility)
 ]
 
 { #category : #generated }
 VBDefineTypeNode >> typeTokens [
-
 	^ typeTokens
 ]
 
 { #category : #generated }
 VBDefineTypeNode >> typeTokens: anOrderedCollection [
-
 	typeTokens := anOrderedCollection
 ]
 
 { #category : #generated }
 VBDefineTypeNode >> visibility [
-
 	^ visibility
 ]
 
 { #category : #generated }
 VBDefineTypeNode >> visibility: aSmaCCToken [
-
 	visibility := aSmaCCToken
 ]

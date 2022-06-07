@@ -354,10 +354,10 @@ VBParser class >> ambiguousTransitions [
 #[ 5 106 5 233] 
 #[ 5 106 5 241] 
 #[ 5 106 6 5] 
-#[ 5 146 5 229] 
-#[ 5 146 5 233] 
-#[ 5 146 5 241] 
-#[ 5 146 6 5] 
+#[ 5 142 5 229] 
+#[ 5 142 5 233] 
+#[ 5 142 5 241] 
+#[ 5 142 6 5] 
 #[ 4 238 4 242] 
 #[ 4 238 4 242 5 181] 
 #[ 4 238 4 242 5 185] 
@@ -415,7 +415,7 @@ VBParser class >> ambiguousTransitions [
 
 { #category : #'generated-accessing' }
 VBParser class >> cacheId [
-	^'2021-12-02T22:29:49.144983+01:00'
+	^'2022-06-07T12:06:34.985383+02:00'
 ]
 
 { #category : #generated }
@@ -427,7 +427,7 @@ VBParser class >> definitionComment [
 #expression operators -- lowest precedence are first.
 
 %left "")""  ;
-%left  ""="" "":="";
+%nonassoc  ""="" "":="";
 %left "","";
 %right "":"";
 %left ""eqv"" ;
@@ -612,7 +612,7 @@ ModuleStatement :
 ########## Body statements
 ###################################################### 
 
-Statement :   VariableDefinition | Attribute | OptionBase | StatementCalls  | ControlFlowStatement | Types | Label |  Exits | Go |  FileClauses | RaiseEvent | OtherStatements | StatementAssignment;
+Statement :  StatementAssignment | VariableDefinition | Attribute | OptionBase | StatementCalls  | ControlFlowStatement | Types | Label |  Exits | Go |  FileClauses | RaiseEvent | OtherStatements ;
 Block: (IntegerLiteral 'lineNumber')? (Statement 'statement')? ((<eol>| "":"")+ (IntegerLiteral 'lineNumber')? Statement 'statement'  )* <eol>+ {{Block}};
 OneLineBlock :  (Statement 'statement')? ("":"" Statement 'statement'  )* "":""? {{Block}};
 
@@ -737,7 +737,7 @@ VariableDefinition : ModuleProperties | ModuleProperty | ModuleConstant | Module
 ###################################################### 
 
 
-Expression :  Operation | ValueClause  | StateAccess | ExpressionCalls | Identifier | literal | ParentheseesExpression  | Interval  ; 
+Expression :   ValueClause  | StateAccess | ExpressionCalls | Identifier | literal | ParentheseesExpression  | Interval | Operation ; 
 
 ParentheseesExpression : ""("" Expression 'expression' "")"" {{ParentheseesExpression}};
 Interval : Expression 'from' ""to"" Expression 'to'  {{Interval}} ; 
@@ -1021,676 +1021,676 @@ ExpressionCalls : ProcedureCallOrArrayAccess | TypeOf ;"
 { #category : #generated }
 VBParser class >> reduceTable [
 ^#(
-	#(176 0 #reduceActionFor_eol__1: 1991681 false) 
-	#(178 0 #reduceActionFor__eol___ModuleStatement__element____1: 2056193 false) 
-	#(194 1 #liftFirstValue: 3299336 false) 
-	#(240 1 #reduceActionForDoEvents1: 7432193 false) 
-	#(194 1 #liftFirstValue: 3299343 false) 
-	#(194 1 #liftFirstValue: 3299337 false) 
-	#(194 1 #liftFirstValue: 3299344 false) 
-	#(239 1 #liftFirstValue: 7415809 false) 
-	#(194 1 #liftFirstValue: 3299335 false) 
-	#(194 1 #liftFirstValue: 3299334 false) 
-	#(194 1 #liftFirstValue: 3299333 false) 
-	#(194 1 #liftFirstValue: 3299342 false) 
-	#(215 0 #reduceActionFor___eol__________IntegerLiteral__lineNumber____Statement__statement_____1: 5622785 false) 
-	#(222 1 #liftFirstValue: 6004739 false) 
-	#(194 1 #liftFirstValue: 3299339 false) 
-	#(222 1 #liftFirstValue: 6004740 false) 
-	#(194 1 #liftFirstValue: 3299338 false) 
-	#(194 1 #liftFirstValue: 3299341 false) 
-	#(234 1 #liftFirstValue: 6800385 false) 
-	#(194 1 #liftFirstValue: 3299331 false) 
-	#(222 1 #liftFirstValue: 6004737 false) 
-	#(222 1 #liftFirstValue: 6004738 false) 
-	#(351 1 #reduceActionForResumeEmpty1: 18896897 false) 
-	#(371 1 #reduceActionForReturn1: 20302849 false) 
-	#(194 1 #liftFirstValue: 3299340 false) 
-	#(234 1 #liftFirstValue: 6800386 false) 
-	#(194 1 #liftFirstValue: 3299330 false) 
-	#(194 1 #liftFirstValue: 3299332 false) 
-	#(183 1 #reduceActionForDateLiteral1: 2619393 false) 
-	#(182 1 #reduceActionForColorLiteral1: 2560001 false) 
-	#(181 1 #reduceActionForIntegerLiteral1: 2494465 false) 
-	#(184 1 #reduceActionForFloatLiteral1: 2674689 false) 
-	#(185 1 #reduceActionForBooleanLiteral1: 2741249 false) 
-	#(186 1 #reduceActionForStringLiteral1: 2804737 false) 
-	#(187 1 #reduceActionForNull1: 2866177 false) 
-	#(194 1 #liftFirstValue: 3299329 false) 
-	#(196 1 #reduceActionForSquareBracketIdentifier1: 3559425 false) 
-	#(180 1 #reduceActionForFileDescriptorLiteral1: 2419713 false) 
-	#(195 1 #reduceActionForHashIdentifier1: 3491841 false) 
-	#(288 1 #liftFirstValue: 12448774 false) 
-	#(179 1 #liftFirstValue: 2251777 false) 
-	#(179 1 #liftFirstValue: 2251778 false) 
-	#(179 1 #liftFirstValue: 2251779 false) 
-	#(179 1 #liftFirstValue: 2251780 false) 
-	#(179 1 #liftFirstValue: 2251781 false) 
-	#(179 1 #liftFirstValue: 2251782 false) 
-	#(179 1 #liftFirstValue: 2251783 false) 
-	#(179 1 #liftFirstValue: 2251784 false) 
-	#(179 1 #liftFirstValue: 2251785 false) 
-	#(288 1 #liftFirstValue: 12448773 false) 
-	#(379 0 #reduceActionFor_Argument__argument__________________1: 21556225 false) 
-	#(197 1 #reduceActionForSimpleIdentifier1: 3639297 false) 
-	#(191 1 #liftFirstValue: 3035138 false) 
-	#(191 1 #liftFirstValue: 3035139 false) 
-	#(191 1 #liftFirstValue: 3035137 false) 
-	#(340 1 #reduceActionForLabel1: 18151425 false) 
-	#(212 1 #liftFirstValue: 5355523 false) 
-	#(212 1 #liftFirstValue: 5355522 false) 
-	#(212 1 #liftFirstValue: 5355533 false) 
-	#(233 1 #liftFirstValue: 6740993 false) 
-	#(233 1 #liftFirstValue: 6740994 false) 
-	#(212 1 #liftFirstValue: 5355532 false) 
-	#(237 1 #liftFirstValue: 7290881 false) 
-	#(237 1 #liftFirstValue: 7290882 false) 
-	#(237 1 #liftFirstValue: 7290883 false) 
-	#(212 1 #liftFirstValue: 5355526 false) 
-	#(241 1 #liftFirstValue: 7607298 false) 
-	#(241 1 #liftFirstValue: 7607299 false) 
-	#(241 1 #liftFirstValue: 7607297 false) 
-	#(287 1 #liftFirstValue: 12057602 false) 
-	#(287 1 #liftFirstValue: 12057603 false) 
-	#(287 1 #liftFirstValue: 12057606 false) 
-	#(287 1 #liftFirstValue: 12057607 false) 
-	#(287 1 #liftFirstValue: 12057608 false) 
-	#(287 1 #liftFirstValue: 12057611 false) 
-	#(287 1 #liftFirstValue: 12057601 false) 
-	#(287 1 #liftFirstValue: 12057604 false) 
-	#(287 1 #liftFirstValue: 12057609 false) 
-	#(287 1 #liftFirstValue: 12057610 false) 
-	#(287 1 #liftFirstValue: 12057612 false) 
-	#(287 1 #liftFirstValue: 12057605 false) 
-	#(212 1 #liftFirstValue: 5355521 false) 
-	#(288 1 #liftFirstValue: 12448775 false) 
-	#(288 1 #liftFirstValue: 12448776 false) 
-	#(288 1 #liftFirstValue: 12448769 false) 
-	#(291 1 #liftFirstValue: 12777473 false) 
-	#(292 1 #liftFirstValue: 12886017 false) 
-	#(292 1 #liftFirstValue: 12886018 false) 
-	#(292 1 #liftFirstValue: 12886019 false) 
-	#(291 1 #liftFirstValue: 12777474 false) 
-	#(296 1 #liftFirstValue: 13220865 false) 
-	#(296 1 #liftFirstValue: 13220866 false) 
-	#(296 1 #liftFirstValue: 13220867 false) 
-	#(296 1 #liftFirstValue: 13220869 false) 
-	#(296 1 #liftFirstValue: 13220868 false) 
-	#(288 1 #liftFirstValue: 12448770 false) 
-	#(305 1 #liftFirstValue: 14150657 false) 
-	#(305 1 #liftFirstValue: 14150658 false) 
-	#(212 1 #liftFirstValue: 5355530 false) 
-	#(311 1 #liftFirstValue: 14518273 false) 
-	#(311 1 #liftFirstValue: 14518274 false) 
-	#(311 1 #liftFirstValue: 14518275 false) 
-	#(212 1 #liftFirstValue: 5355525 false) 
-	#(317 1 #liftFirstValue: 15195138 false) 
-	#(318 1 #liftFirstValue: 15347713 false) 
-	#(319 1 #liftFirstValue: 15447041 false) 
-	#(319 1 #liftFirstValue: 15447042 false) 
-	#(319 1 #liftFirstValue: 15447043 false) 
-	#(319 1 #liftFirstValue: 15447044 false) 
-	#(319 1 #liftFirstValue: 15447045 false) 
-	#(318 1 #liftFirstValue: 15347714 false) 
-	#(318 1 #liftFirstValue: 15347715 false) 
-	#(326 1 #liftFirstValue: 16421889 false) 
-	#(326 1 #liftFirstValue: 16421890 false) 
-	#(326 1 #liftFirstValue: 16421891 false) 
-	#(326 1 #liftFirstValue: 16421892 false) 
-	#(317 1 #liftFirstValue: 15195139 false) 
-	#(331 1 #liftFirstValue: 17339393 false) 
-	#(331 1 #liftFirstValue: 17339394 false) 
-	#(317 1 #liftFirstValue: 15195144 false) 
-	#(317 1 #liftFirstValue: 15195142 false) 
-	#(212 1 #liftFirstValue: 5355527 false) 
-	#(339 1 #liftFirstValue: 18137089 false) 
-	#(317 1 #liftFirstValue: 15195145 false) 
-	#(317 1 #liftFirstValue: 15195141 false) 
-	#(348 1 #liftFirstValue: 18718721 false) 
-	#(348 1 #liftFirstValue: 18718722 false) 
-	#(348 1 #liftFirstValue: 18718723 false) 
-	#(212 1 #liftFirstValue: 5355529 false) 
-	#(352 1 #liftFirstValue: 19005441 false) 
-	#(352 1 #liftFirstValue: 19005442 false) 
-	#(317 1 #liftFirstValue: 15195140 false) 
-	#(359 1 #liftFirstValue: 19393537 false) 
-	#(359 1 #liftFirstValue: 19393538 false) 
-	#(359 1 #liftFirstValue: 19393539 false) 
-	#(317 1 #liftFirstValue: 15195143 false) 
-	#(317 1 #liftFirstValue: 15195137 false) 
-	#(212 1 #liftFirstValue: 5355528 false) 
-	#(365 1 #liftFirstValue: 20024321 false) 
-	#(365 1 #liftFirstValue: 20024322 false) 
-	#(365 1 #liftFirstValue: 20024324 false) 
-	#(365 1 #liftFirstValue: 20024325 false) 
-	#(365 1 #liftFirstValue: 20024323 false) 
-	#(365 1 #liftFirstValue: 20024326 false) 
-	#(382 1 #liftFirstValue: 21779457 false) 
-	#(382 1 #liftFirstValue: 21779458 false) 
-	#(386 1 #liftFirstValue: 22172674 false) 
-	#(387 1 #liftFirstValue: 22265857 false) 
-	#(386 1 #liftFirstValue: 22172673 false) 
-	#(288 1 #liftFirstValue: 12448771 false) 
-	#(386 1 #liftFirstValue: 22172675 false) 
-	#(212 1 #liftFirstValue: 5355531 false) 
-	#(387 1 #liftFirstValue: 22265858 false) 
-	#(212 1 #liftFirstValue: 5355524 false) 
-	#(288 1 #liftFirstValue: 12448772 false) 
-	#(209 1 #liftFirstValue: 4803585 false) 
-	#(209 1 #liftFirstValue: 4803586 false) 
-	#(209 1 #liftFirstValue: 4803587 false) 
-	#(209 1 #liftFirstValue: 4803588 false) 
-	#(209 1 #liftFirstValue: 4803590 false) 
-	#(209 1 #liftFirstValue: 4803589 false) 
-	#(209 1 #liftFirstValue: 4803591 false) 
-	#(209 1 #liftFirstValue: 4803592 false) 
-	#(209 1 #liftFirstValue: 4803594 false) 
-	#(209 1 #liftFirstValue: 4803593 false) 
-	#(209 1 #liftFirstValue: 4803595 false) 
-	#(209 1 #liftFirstValue: 4803596 false) 
-	#(209 1 #liftFirstValue: 4803597 false) 
-	#(209 1 #liftFirstValue: 4803598 false) 
-	#(261 1 #liftFirstValue: 9468929 false) 
-	#(211 1 #liftFirstValue: 5055489 false) 
-	#(200 1 #liftFirstValue: 3999751 false) 
-	#(211 1 #liftFirstValue: 5055491 false) 
-	#(211 1 #liftFirstValue: 5055490 false) 
-	#(211 1 #liftFirstValue: 5055496 false) 
-	#(211 1 #liftFirstValue: 5055497 false) 
-	#(211 1 #liftFirstValue: 5055495 false) 
-	#(260 1 #liftFirstValue: 9265153 false) 
-	#(260 1 #liftFirstValue: 9265154 false) 
-	#(211 1 #liftFirstValue: 5055492 false) 
-	#(267 1 #liftFirstValue: 10505217 false) 
-	#(267 1 #liftFirstValue: 10505218 false) 
-	#(267 1 #liftFirstValue: 10505219 false) 
-	#(267 1 #liftFirstValue: 10505220 false) 
-	#(267 1 #liftFirstValue: 10505221 false) 
-	#(211 1 #liftFirstValue: 5055494 false) 
-	#(211 1 #liftFirstValue: 5055493 false) 
-	#(176 2 #reduceActionFor_eol__2: 1991682 false) 
-	#(193 1 #liftFirstValue: 3213314 false) 
-	#(193 1 #liftFirstValue: 3213317 false) 
-	#(193 1 #liftFirstValue: 3213318 false) 
-	#(193 1 #liftFirstValue: 3213316 false) 
-	#(193 1 #liftFirstValue: 3213315 false) 
-	#(372 2 #reduceActionForDictionaryAccess1: 20404225 false) 
-	#(192 1 #reduceActionForSimpleIdentifier1: 3117057 false) 
-	#(193 1 #liftFirstValue: 3213313 false) 
-	#(192 1 #liftFirstValue: 3117058 false) 
-	#(294 2 #reduceActionForPositiveOperation1: 13029377 false) 
-	#(293 2 #reduceActionForNegatedOperation1: 12961793 false) 
-	#(373 2 #reduceActionForMemberAccess1: 20586497 false) 
-	#(306 2 #reduceActionForAddressOfClause1: 14194689 false) 
-	#(383 2 #reduceActionForExplicitCall1: 21828609 false) 
-	#(383 2 #reduceActionForExplicitCall1: 21828610 false) 
-	#(383 2 #reduceActionForExplicitCall1: 21828611 false) 
-	#(338 2 #reduceActionForRaiseError1: 17989633 false) 
-	#(307 2 #reduceActionForNewClause1: 14267393 false) 
-	#(384 2 #reduceActionForRaiseEvent1: 21965825 false) 
-	#(384 2 #reduceActionForRaiseEvent1: 21965826 false) 
-	#(251 1 #reduceActionForParameterPassingStrategy2: 8366082 false) 
-	#(251 1 #liftFirstValue: 8366081 false) 
-	#(376 1 #reduceActionForArgument2: 21415938 false) 
-	#(376 1 #reduceActionForArgument2: 21415937 false) 
-	#(203 2 #reduceActionForAttribute1: 4525057 false) 
-	#(269 2 #reduceActionForModuleConstant1: 10864641 false) 
-	#(277 2 #reduceActionForModuleConstants1: 11524097 false) 
-	#(274 1 #reduceActionForVariable1: 11252737 false) 
-	#(270 2 #reduceActionForDefineVariable1: 10958849 false) 
-	#(278 2 #reduceActionForDefineVariables1: 11631617 false) 
-	#(320 2 #reduceActionForInfinityLoop1: 15524865 false) 
-	#(249 0 #reduceActionFor__eol___ModuleStatement__element____1: 8072193 false) 
-	#(369 2 #reduceActionForExitFor1: 20219905 false) 
-	#(368 2 #reduceActionForExitDo1: 20185089 false) 
-	#(366 2 #reduceActionForExitFunction1: 20101121 false) 
-	#(370 2 #reduceActionForExitProperty1: 20256769 false) 
-	#(367 2 #reduceActionForExitSub1: 20148225 false) 
-	#(353 1 #liftFirstValue: 19036162 false) 
-	#(353 1 #liftFirstValue: 19036161 false) 
-	#(353 1 #liftFirstValue: 19036163 false) 
-	#(356 0 #reduceActionFor__eol___ModuleStatement__element____1: 19140609 false) 
-	#(358 2 #reduceActionForGoSub1: 19269633 false) 
-	#(357 2 #reduceActionForGoToStatement1: 19190785 false) 
-	#(295 2 #reduceActionForNotOperation1: 13097985 false) 
-	#(271 2 #reduceActionForReDefineVariable1: 11020289 false) 
-	#(279 2 #reduceActionForReDefineVariables1: 11708417 false) 
-	#(272 2 #reduceActionForReDefineVariable1: 11100161 false) 
-	#(350 2 #reduceActionForResumeNext1: 18847745 false) 
-	#(349 2 #reduceActionForResumeLabel1: 18772993 false) 
-	#(273 2 #reduceActionForStaticVariable1: 11185153 false) 
-	#(280 2 #reduceActionForStaticVariables1: 11805697 false) 
-	#(244 0 #reduceActionFor__eol___ModuleStatement__element____1: 7719937 false) 
-	#(189 1 #reduceActionFor_HEX_INTEGER___1: 2922497 false) 
-	#(198 2 #reduceActionForLabelTag1: 3707905 false) 
-	#(231 0 #reduceActionFor__eol___ModuleStatement__element____1: 6483969 false) 
-	#(225 0 #reduceActionFor__eol___ModuleStatement__element____1: 6100993 false) 
-	#(232 1 #liftFirstValue: 6532097 false) 
-	#(232 1 #liftFirstValue: 6532098 false) 
-	#(232 1 #liftFirstValue: 6532099 false) 
-	#(374 2 #reduceActionForImplicitParenthesesLessCall2: 20759554 false) 
-	#(381 0 #reduceActionFor_Argument__argument__________________1: 21616641 false) 
-	#(268 2 #reduceActionForModuleProperty1: 10781697 false) 
-	#(276 2 #reduceActionForModuleProperties1: 11423745 false) 
-	#(286 1 #reduceActionFor______Constant__constant____1: 12008449 false) 
-	#(284 2 #reduceActionForConstantList1: 11972609 false) 
-	#(299 1 #reduceActionForArithmeticOperator1: 13539329 false) 
-	#(299 1 #reduceActionForArithmeticOperator2: 13539330 false) 
-	#(299 1 #reduceActionForArithmeticOperator3: 13539331 false) 
-	#(299 1 #reduceActionForArithmeticOperator4: 13539332 false) 
-	#(297 1 #reduceActionForArithmeticOperator2: 13359106 false) 
-	#(297 1 #reduceActionForArithmeticOperator4: 13359108 false) 
-	#(297 1 #reduceActionForArithmeticOperator3: 13359107 false) 
-	#(297 1 #reduceActionForArithmeticOperator1: 13359105 false) 
-	#(297 1 #reduceActionForComparisonOperator5: 13359109 false) 
-	#(297 1 #reduceActionForComparisonOperator6: 13359110 false) 
-	#(297 1 #reduceActionForComparisonOperator7: 13359111 false) 
-	#(299 1 #reduceActionForComparisonOperator7: 13539335 false) 
-	#(299 1 #reduceActionForComparisonOperator6: 13539334 false) 
-	#(299 1 #reduceActionForComparisonOperator5: 13539333 false) 
-	#(301 1 #reduceActionForBooleanOperator1: 13710337 false) 
-	#(301 1 #reduceActionForBooleanOperator4: 13710340 false) 
-	#(301 1 #reduceActionForBooleanOperator2: 13710338 false) 
-	#(301 1 #reduceActionForBooleanOperator3: 13710339 false) 
-	#(374 2 #reduceActionForImplicitParenthesesLessCall2: 20759553 false) 
-	#(208 2 #reduceActionForImplements1: 4734977 false) 
-	#(200 2 #reduceActionForOption5: 3999749 false) 
-	#(200 2 #reduceActionForOption1: 3999745 false) 
-	#(210 2 #reduceActionForDefType1: 4984833 false) 
-	#(199 2 #reduceActionForheader1: 3935233 false) 
-	#(175 3 #reduceActionFormodule1: 1983489 false) 
-	#(178 2 #reduceActionFor__eol___ModuleStatement__element____2: 2056194 false) 
-	#(289 3 #reduceActionForParentheseesExpression1: 12588033 false) 
-	#(315 0 #reduceActionFor__eol___ModuleStatement__element____1: 14863361 false) 
-	#(376 2 #reduceActionForArgument4: 21415940 false) 
-	#(376 2 #reduceActionForArgument4: 21415939 false) 
-	#(376 2 #reduceActionForArgument6: 21415942 false) 
-	#(376 2 #reduceActionForArgument6: 21415941 false) 
-	#(274 2 #reduceActionForVariable3: 11252739 false) 
-	#(274 2 #reduceActionForVariable2: 11252738 false) 
-	#(283 1 #reduceActionFor______Constant__constant____1: 11924481 false) 
-	#(281 2 #reduceActionForVariableList1: 11888641 false) 
-	#(320 3 #reduceActionForInfinityLoop2: 15524866 false) 
-	#(320 3 #reduceActionForInfinityLoop3: 15524867 false) 
-	#(216 1 #reduceActionFor__eol_______2: 5623810 false) 
-	#(216 1 #reduceActionFor__eol_______1: 5623809 false) 
-	#(207 1 #reduceActionFor_HEX_INTEGER___1: 4665345 false) 
-	#(213 2 #reduceActionForBlock1: 5558273 false) 
-	#(215 2 #reduceActionFor___eol__________IntegerLiteral__lineNumber____Statement__statement_____2: 5622786 false) 
-	#(217 1 #reduceActionFor______Constant__constant____1: 5623809 false) 
-	#(246 3 #reduceActionForEvent1: 7890945 false) 
-	#(354 2 #reduceActionForDestinationList1: 19100673 false) 
-	#(220 0 #reduceActionFor__eol___ModuleStatement__element____1: 5756929 false) 
-	#(335 0 #reduceActionFor_eol__1: 17612801 false) 
-	#(360 3 #reduceActionForOnErrorGoTo1: 19454977 false) 
-	#(362 3 #reduceActionForOnExpressionGo1: 19598337 false) 
-	#(201 3 #reduceActionForOptionBase1: 4331521 false) 
-	#(271 3 #reduceActionForReDefineVariable2: 11020290 false) 
-	#(279 3 #reduceActionForReDefineVariables2: 11708418 false) 
-	#(272 3 #reduceActionForReDefineVariable2: 11100162 false) 
-	#(325 3 #reduceActionForWhileWend1: 16232449 false) 
-	#(189 2 #reduceActionFor_eol__2: 2922498 false) 
-	#(198 3 #reduceActionForLabelTag2: 3707906 false) 
-	#(372 3 #reduceActionForDictionaryAccess4: 20404228 false) 
-	#(373 3 #reduceActionForMemberAccess4: 20586500 false) 
-	#(235 3 #reduceActionForAssignment2: 6833154 false) 
-	#(275 3 #reduceActionForConstant1: 11330561 false) 
-	#(235 3 #reduceActionForAssignment2: 6833153 false) 
-	#(304 3 #reduceActionForEquals1: 13963265 false) 
-	#(221 1 #liftFirstValue: 5806092 false) 
-	#(221 1 #liftFirstValue: 5806081 false) 
-	#(221 1 #liftFirstValue: 5806082 false) 
-	#(221 1 #liftFirstValue: 5806084 false) 
-	#(221 1 #liftFirstValue: 5806083 false) 
-	#(221 1 #liftFirstValue: 5806085 false) 
-	#(221 1 #liftFirstValue: 5806086 false) 
-	#(221 1 #liftFirstValue: 5806087 false) 
-	#(221 1 #liftFirstValue: 5806088 false) 
-	#(221 1 #liftFirstValue: 5806089 false) 
-	#(221 1 #liftFirstValue: 5806090 false) 
-	#(221 1 #liftFirstValue: 5806091 false) 
-	#(221 1 #liftFirstValue: 5806093 false) 
-	#(221 1 #liftFirstValue: 5806094 false) 
-	#(221 1 #reduceActionForBaseType15: 5806095 false) 
-	#(226 1 #liftFirstValue: 6152193 false) 
-	#(226 1 #liftFirstValue: 6152194 false) 
-	#(223 1 #reduceActionForComplexType1: 6065153 false) 
-	#(227 2 #reduceActionForTypedThing1: 6184961 false) 
-	#(378 1 #reduceActionFor_Argument__argument_________________1: 21556225 false) 
-	#(378 1 #reduceActionFor_Argument__argument_________________2: 21556226 false) 
-	#(379 2 #reduceActionFor_Argument__argument__________________2: 21556226 false) 
-	#(377 2 #reduceActionForArgumentList1: 21540865 false) 
-	#(269 3 #reduceActionForModuleConstant2: 10864642 false) 
-	#(277 3 #reduceActionForModuleConstants2: 11524098 false) 
-	#(285 2 #reduceActionFor______Constant__constant___1: 12008449 false) 
-	#(286 2 #reduceActionFor______Constant__constant____2: 12008450 false) 
-	#(303 3 #reduceActionForConcatenationOperation1: 13864961 false) 
-	#(235 3 #reduceActionForAssignment2: 6833158 false) 
-	#(304 3 #reduceActionForEquals1: 13963267 false) 
-	#(235 3 #reduceActionForAssignment2: 6833157 false) 
-	#(290 3 #reduceActionForInterval1: 12675073 false) 
-	#(298 3 #reduceActionForComparisonOperation1: 13433857 false) 
-	#(300 3 #reduceActionForArithmeticOperation1: 13604865 false) 
-	#(302 3 #reduceActionForBooleanBinaryOperation1: 13759489 false) 
-	#(372 3 #reduceActionForDictionaryAccess4: 20404227 false) 
-	#(373 3 #reduceActionForMemberAccess4: 20586499 false) 
-	#(235 3 #reduceActionForAssignment2: 6833156 false) 
-	#(235 3 #reduceActionForAssignment2: 6833155 false) 
-	#(304 3 #reduceActionForEquals1: 13963266 false) 
-	#(372 3 #reduceActionForDictionaryAccess4: 20404226 false) 
-	#(373 3 #reduceActionForMemberAccess4: 20586498 false) 
-	#(372 3 #reduceActionForDictionaryAccess4: 20404229 false) 
-	#(373 3 #reduceActionForMemberAccess4: 20586501 false) 
-	#(206 0 #reduceActionFor__eol___ModuleStatement__element____1: 4663297 false) 
-	#(200 3 #reduceActionForOption3: 3999747 false) 
-	#(200 3 #reduceActionForOption2: 3999746 false) 
-	#(200 3 #reduceActionForOption4: 3999748 false) 
-	#(200 3 #reduceActionForOption6: 3999750 false) 
-	#(199 3 #reduceActionForheader2: 3935234 false) 
-	#(177 2 #reduceActionFor__eol___ModuleStatement__element___1: 2056193 false) 
-	#(175 4 #reduceActionFormodule2: 1983490 false) 
-	#(308 1 #liftFirstValue: 14325761 false) 
-	#(308 1 #liftFirstValue: 14325762 false) 
-	#(308 1 #liftFirstValue: 14325763 false) 
-	#(308 1 #liftFirstValue: 14325764 false) 
-	#(308 1 #liftFirstValue: 14325765 false) 
-	#(313 4 #reduceActionForPrintFileClause1: 14779393 false) 
-	#(376 3 #reduceActionForArgument8: 21415944 false) 
-	#(376 3 #reduceActionForArgument8: 21415943 false) 
-	#(385 4 #reduceActionForTypeOf1: 22082561 false) 
-	#(385 4 #reduceActionForTypeOf2: 22082562 false) 
-	#(202 3 #reduceActionForSetUpAssignation1: 4398081 false) 
-	#(202 3 #reduceActionForSetUpAssignation1: 4398082 false) 
-	#(274 3 #reduceActionForVariable4: 11252740 false) 
-	#(282 2 #reduceActionFor______Constant__constant___1: 11924481 false) 
-	#(283 2 #reduceActionFor______Constant__constant____2: 11924482 false) 
-	#(323 4 #reduceActionForDoWhileTrue1: 15897601 false) 
-	#(321 4 #reduceActionForWhileTrue1: 15634433 false) 
-	#(213 3 #reduceActionForBlock3: 5558275 false) 
-	#(213 3 #reduceActionForBlock2: 5558274 false) 
-	#(320 4 #reduceActionForInfinityLoop4: 15524868 false) 
-	#(207 2 #reduceActionFor_eol__2: 4665346 false) 
-	#(214 2 #reduceActionFor___eol__________IntegerLiteral__lineNumber____Statement__statement____1: 5622785 false) 
-	#(217 2 #reduceActionFor______Constant__constant____2: 5623810 false) 
-	#(249 2 #reduceActionFor__eol___ModuleStatement__element____2: 8072194 false) 
-	#(252 2 #reduceActionForParameterList1: 8443905 false) 
-	#(257 0 #reduceActionFor_____Expression__default___1: 8660993 false) 
-	#(254 0 #reduceActionFor__eol___ModuleStatement__element____1: 8487937 false) 
-	#(356 2 #reduceActionFor______Constant__constant____2: 19140610 false) 
-	#(332 4 #reduceActionForIfThenElseOneLine1: 17383425 false) 
-	#(218 1 #reduceActionForOneLineBlock1: 5714945 false) 
-	#(332 4 #reduceActionForIfThenElseOneLine4: 17383428 false) 
-	#(238 4 #reduceActionForRename1: 7335937 false) 
-	#(361 4 #reduceActionForOnErrorResumeNext1: 19521537 false) 
-	#(244 2 #reduceActionFor__eol___ModuleStatement__element____2: 7719938 false) 
-	#(325 4 #reduceActionForWhileWend2: 16232450 false) 
-	#(325 4 #reduceActionForWhileWend3: 16232451 false) 
-	#(190 1 #reduceActionFor_HEX_INTEGER___1: 2941953 false) 
-	#(229 3 #reduceActionForTypeSize1: 6448129 false) 
-	#(231 2 #reduceActionFor______Constant__constant____2: 6483970 false) 
-	#(375 4 #reduceActionForProcedureCallOrArrayAccess3: 20985859 false) 
-	#(228 3 #reduceActionForTypedAndInstantiatedThing1: 6304769 false) 
-	#(223 2 #reduceActionForComplexType2: 6065154 false) 
-	#(225 2 #reduceActionFor______Constant__constant____2: 6100994 false) 
-	#(227 3 #reduceActionForTypedThing3: 6184963 false) 
-	#(227 3 #reduceActionForTypedThing5: 6184965 false) 
-	#(275 4 #reduceActionForConstant2: 11330562 false) 
-	#(378 2 #reduceActionFor_Argument__argument_________________3: 21556227 false) 
-	#(378 2 #reduceActionFor_Argument__argument_________________4: 21556228 false) 
-	#(377 3 #reduceActionForArgumentList2: 21540866 false) 
-	#(380 1 #reduceActionFor_Argument__argument_________________1: 21616641 false) 
-	#(380 1 #reduceActionFor______________Argument__argument____3: 21616643 false) 
-	#(381 2 #reduceActionFor_Argument__argument__________________2: 21616642 false) 
-	#(246 4 #reduceActionForEvent2: 7890946 false) 
-	#(236 4 #reduceActionForExplicitAssignement2: 6992898 false) 
-	#(236 4 #reduceActionForExplicitAssignement2: 6992897 false) 
-	#(375 4 #reduceActionForProcedureCallOrArrayAccess3: 20985858 false) 
-	#(375 4 #reduceActionForProcedureCallOrArrayAccess3: 20985857 false) 
-	#(375 4 #reduceActionForProcedureCallOrArrayAccess4: 20985860 false) 
-	#(175 5 #reduceActionFormodule3: 1983491 false) 
-	#(316 5 #reduceActionForLineInputClause1: 14922753 false) 
-	#(310 1 #liftFirstValue: 14447620 false) 
-	#(310 1 #liftFirstValue: 14447618 false) 
-	#(310 1 #liftFirstValue: 14447619 false) 
-	#(309 1 #liftFirstValue: 14397441 false) 
-	#(310 1 #liftFirstValue: 14447617 false) 
-	#(309 1 #liftFirstValue: 14397442 false) 
-	#(313 5 #reduceActionForPrintFileClause5: 14779397 false) 
-	#(313 5 #reduceActionForPrintFileClause3: 14779395 false) 
-	#(313 5 #reduceActionForPrintFileClause2: 14779394 false) 
-	#(315 2 #reduceActionFor______Constant__constant____2: 14863362 false) 
-	#(322 5 #reduceActionForUntilTrue1: 15769601 false) 
-	#(321 5 #reduceActionForWhileTrue2: 15634434 false) 
-	#(321 5 #reduceActionForWhileTrue3: 15634435 false) 
-	#(323 5 #reduceActionForDoWhileTrue2: 15897602 false) 
-	#(213 4 #reduceActionForBlock4: 5558276 false) 
-	#(324 5 #reduceActionForDoUntilTrue1: 16034817 false) 
-	#(323 5 #reduceActionForDoWhileTrue3: 15897603 false) 
-	#(214 3 #reduceActionFor___eol__________IntegerLiteral__lineNumber____Statement__statement____2: 5622786 false) 
-	#(250 1 #reduceActionForEnumEntry1: 8143873 false) 
-	#(248 2 #reduceActionFor__eol___ModuleStatement__element___1: 8072193 false) 
-	#(257 1 #reduceActionFor_____Expression__default___2: 8660994 false) 
-	#(255 2 #reduceActionForParameter1: 8545281 false) 
-	#(355 2 #reduceActionFor______Constant__constant___1: 19140609 false) 
-	#(218 2 #reduceActionForOneLineBlock3: 5714947 false) 
-	#(218 2 #reduceActionForOneLineBlock2: 5714946 false) 
-	#(220 2 #reduceActionFor______Constant__constant____2: 5756930 false) 
-	#(336 1 #reduceActionForElse1: 17715201 false) 
-	#(335 2 #reduceActionFor_eol__2: 17612802 false) 
-	#(334 1 #liftFirstValue: 17612801 false) 
-	#(346 1 #liftFirstValue: 18576385 false) 
-	#(347 1 #reduceActionFor_HEX_INTEGER___1: 18576385 false) 
-	#(243 2 #reduceActionFor__eol___ModuleStatement__element___1: 7719937 false) 
-	#(325 5 #reduceActionForWhileWend4: 16232452 false) 
-	#(364 5 #reduceActionForWith1: 19856385 false) 
-	#(190 2 #reduceActionFor_eol__2: 2941954 false) 
-	#(230 2 #reduceActionFor______Constant__constant___1: 6483969 false) 
-	#(229 4 #reduceActionForTypeSize2: 6448130 false) 
-	#(228 4 #reduceActionForTypedAndInstantiatedThing3: 6304771 false) 
-	#(224 2 #reduceActionFor______Constant__constant___1: 6100993 false) 
-	#(227 4 #reduceActionForTypedThing2: 6184962 false) 
-	#(228 4 #reduceActionForTypedAndInstantiatedThing5: 6304773 false) 
-	#(227 4 #reduceActionForTypedThing7: 6184967 false) 
-	#(380 2 #reduceActionFor______________Argument__argument____2: 21616642 false) 
-	#(380 2 #reduceActionFor_Argument__argument_________________4: 21616644 false) 
-	#(206 2 #reduceActionFor___eol___SetUpAssignation__setting___2: 4663298 false) 
-	#(263 5 #reduceActionForDefineSub1: 9696257 false) 
-	#(175 6 #reduceActionFormodule4: 1983492 false) 
-	#(327 6 #reduceActionForForEach1: 16484353 false) 
-	#(316 6 #reduceActionForLineInputClause3: 14922755 false) 
-	#(316 6 #reduceActionForLineInputClause2: 14922754 false) 
-	#(312 6 #reduceActionForOpenFileClause1: 14586881 false) 
-	#(309 2 #liftFirstValue: 14397443 false) 
-	#(313 6 #reduceActionForPrintFileClause7: 14779399 false) 
-	#(313 6 #reduceActionForPrintFileClause6: 14779398 false) 
-	#(313 6 #reduceActionForPrintFileClause4: 14779396 false) 
-	#(314 2 #reduceActionFor______Constant__constant___1: 14863361 false) 
-	#(322 6 #reduceActionForUntilTrue2: 15769602 false) 
-	#(321 6 #reduceActionForWhileTrue4: 15634436 false) 
-	#(324 6 #reduceActionForDoUntilTrue2: 16034818 false) 
-	#(323 6 #reduceActionForDoWhileTrue4: 15897604 false) 
-	#(247 6 #reduceActionForDefineEnum1: 7999489 false) 
-	#(255 3 #reduceActionForParameter9: 8545289 false) 
-	#(255 3 #reduceActionForParameter3: 8545283 false) 
-	#(256 2 #reduceActionFor______Constant__constant___1: 8660993 false) 
-	#(255 3 #reduceActionForParameter2: 8545282 false) 
-	#(255 3 #reduceActionForParameter5: 8545285 false) 
-	#(252 4 #reduceActionForParameterList2: 8443906 false) 
-	#(254 2 #reduceActionFor______Constant__constant____2: 8487938 false) 
-	#(218 3 #reduceActionForOneLineBlock4: 5714948 false) 
-	#(332 6 #reduceActionForIfThenElseOneLine2: 17383426 false) 
-	#(332 6 #reduceActionForIfThenElseOneLine3: 17383427 false) 
-	#(219 2 #reduceActionFor______Constant__constant___1: 5756929 false) 
-	#(336 2 #reduceActionForElse2: 17715202 false) 
-	#(333 6 #reduceActionForIfThenElse1: 17540097 false) 
-	#(336 2 #reduceActionForElse3: 17715203 false) 
-	#(332 6 #reduceActionForIfThenElseOneLine5: 17383429 false) 
-	#(332 6 #reduceActionForIfThenElseOneLine6: 17383430 false) 
-	#(344 0 #reduceActionFor__eol___ModuleStatement__element____1: 18420737 false) 
-	#(341 1 #liftFirstValue: 18258948 false) 
-	#(341 1 #liftFirstValue: 18258946 false) 
-	#(341 1 #liftFirstValue: 18258947 false) 
-	#(341 1 #liftFirstValue: 18258945 false) 
-	#(347 2 #reduceActionFor_eol__2: 18576386 false) 
-	#(242 6 #reduceActionForDefineType1: 7651329 false) 
-	#(245 2 #reduceActionForTypeEntry1: 7791617 false) 
-	#(364 6 #reduceActionForWith2: 19856386 false) 
-	#(228 5 #reduceActionForTypedAndInstantiatedThing2: 6304770 false) 
-	#(227 5 #reduceActionForTypedThing4: 6184964 false) 
-	#(228 5 #reduceActionForTypedAndInstantiatedThing7: 6304775 false) 
-	#(227 5 #reduceActionForTypedThing6: 6184966 false) 
-	#(204 6 #reduceActionForConfiguration1: 4601857 false) 
-	#(205 2 #reduceActionFor__eol___ModuleStatement__element___1: 4663297 false) 
-	#(258 6 #reduceActionForDeclareSub1: 8854529 false) 
-	#(262 6 #reduceActionForDefineFunction1: 9490433 false) 
-	#(264 6 #reduceActionForModulePropertyGet1: 9870337 false) 
-	#(266 6 #reduceActionForModulePropertyLet1: 10297345 false) 
-	#(265 6 #reduceActionForModulePropertySet1: 10090497 false) 
-	#(263 6 #reduceActionForDefineSub2: 9696258 false) 
-	#(263 6 #reduceActionForDefineSub5: 9696261 false) 
-	#(263 6 #reduceActionForDefineSub3: 9696259 false) 
-	#(327 7 #reduceActionForForEach2: 16484354 false) 
-	#(327 7 #reduceActionForForEach3: 16484355 false) 
-	#(327 7 #reduceActionForForEach5: 16484357 false) 
-	#(328 7 #reduceActionForForNext1: 16664577 false) 
-	#(329 7 #reduceActionForForNext1: 16875521 false) 
-	#(316 7 #reduceActionForLineInputClause4: 14922756 false) 
-	#(312 7 #reduceActionForOpenFileClause5: 14586885 false) 
-	#(312 7 #reduceActionForOpenFileClause3: 14586883 false) 
-	#(313 7 #reduceActionForPrintFileClause8: 14779400 false) 
-	#(250 3 #reduceActionForEnumEntry2: 8143874 false) 
-	#(255 4 #reduceActionForParameter11: 8545291 false) 
-	#(255 4 #reduceActionForParameter10: 8545290 false) 
-	#(255 4 #reduceActionForParameter13: 8545293 false) 
-	#(255 4 #reduceActionForParameter4: 8545284 false) 
-	#(255 4 #reduceActionForParameter7: 8545287 false) 
-	#(255 4 #reduceActionForParameter6: 8545286 false) 
-	#(253 2 #reduceActionFor______Constant__constant___1: 8487937 false) 
-	#(333 7 #reduceActionForIfThenElse5: 17540101 false) 
-	#(337 3 #reduceActionForElseIf1: 17803265 false) 
-	#(336 3 #reduceActionForElse4: 17715204 false) 
-	#(333 7 #reduceActionForIfThenElse2: 17540098 false) 
-	#(333 7 #reduceActionForIfThenElse3: 17540099 false) 
-	#(342 3 #reduceActionForCase7: 18332679 false) 
-	#(342 3 #reduceActionForCase1: 18332673 false) 
-	#(345 7 #reduceActionForSelect1: 18519041 false) 
-	#(228 6 #reduceActionForTypedAndInstantiatedThing4: 6304772 false) 
-	#(228 6 #reduceActionForTypedAndInstantiatedThing6: 6304774 false) 
-	#(227 6 #reduceActionForTypedThing8: 6184968 false) 
-	#(247 7 #reduceActionForDefineEnum2: 7999490 false) 
-	#(242 7 #reduceActionForDefineType2: 7651330 false) 
-	#(259 7 #reduceActionForDeclareFunction1: 9044993 false) 
-	#(262 7 #reduceActionForDefineFunction2: 9490434 false) 
-	#(264 7 #reduceActionForModulePropertyGet2: 9870338 false) 
-	#(264 7 #reduceActionForModulePropertyGet3: 9870339 false) 
-	#(266 7 #reduceActionForModulePropertyLet2: 10297346 false) 
-	#(265 7 #reduceActionForModulePropertySet2: 10090498 false) 
-	#(258 7 #reduceActionForDeclareSub3: 8854531 false) 
-	#(262 7 #reduceActionForDefineFunction5: 9490437 false) 
-	#(264 7 #reduceActionForModulePropertyGet9: 9870345 false) 
-	#(266 7 #reduceActionForModulePropertyLet5: 10297349 false) 
-	#(265 7 #reduceActionForModulePropertySet5: 10090501 false) 
-	#(263 7 #reduceActionForDefineSub6: 9696262 false) 
-	#(263 7 #reduceActionForDefineSub7: 9696263 false) 
-	#(262 7 #reduceActionForDefineFunction3: 9490435 false) 
-	#(264 7 #reduceActionForModulePropertyGet5: 9870341 false) 
-	#(266 7 #reduceActionForModulePropertyLet3: 10297347 false) 
-	#(265 7 #reduceActionForModulePropertySet3: 10090499 false) 
-	#(263 7 #reduceActionForDefineSub4: 9696260 false) 
-	#(327 8 #reduceActionForForEach4: 16484356 false) 
-	#(327 8 #reduceActionForForEach6: 16484358 false) 
-	#(327 8 #reduceActionForForEach7: 16484359 false) 
-	#(328 8 #reduceActionForForNext2: 16664578 false) 
-	#(328 8 #reduceActionForForNext3: 16664579 false) 
-	#(328 8 #reduceActionForForNext5: 16664581 false) 
-	#(329 8 #reduceActionForForNext5: 16875522 false) 
-	#(312 8 #reduceActionForOpenFileClause7: 14586887 false) 
-	#(255 5 #reduceActionForParameter12: 8545292 false) 
-	#(255 5 #reduceActionForParameter15: 8545295 false) 
-	#(255 5 #reduceActionForParameter14: 8545294 false) 
-	#(255 5 #reduceActionForParameter8: 8545288 false) 
-	#(333 8 #reduceActionForIfThenElse6: 17540102 false) 
-	#(333 8 #reduceActionForIfThenElse7: 17540103 false) 
-	#(337 4 #reduceActionForElseIf2: 17803266 false) 
-	#(337 4 #reduceActionForElseIf3: 17803267 false) 
-	#(333 8 #reduceActionForIfThenElse4: 17540100 false) 
-	#(342 4 #reduceActionForCase10: 18332682 false) 
-	#(342 4 #reduceActionForCase8: 18332680 false) 
-	#(344 2 #reduceActionFor______Constant__constant____2: 18420738 false) 
-	#(342 4 #reduceActionForCase4: 18332676 false) 
-	#(342 4 #reduceActionForCase2: 18332674 false) 
-	#(342 4 #reduceActionForCase19: 18332691 false) 
-	#(342 4 #reduceActionForCase13: 18332685 false) 
-	#(345 8 #reduceActionForSelect2: 18519042 false) 
-	#(245 4 #reduceActionForTypeEntry2: 7791618 false) 
-	#(228 7 #reduceActionForTypedAndInstantiatedThing8: 6304776 false) 
-	#(258 8 #reduceActionForDeclareSub2: 8854530 false) 
-	#(264 8 #reduceActionForModulePropertyGet4: 9870340 false) 
-	#(259 8 #reduceActionForDeclareFunction3: 9044995 false) 
-	#(262 8 #reduceActionForDefineFunction6: 9490438 false) 
-	#(264 8 #reduceActionForModulePropertyGet10: 9870346 false) 
-	#(264 8 #reduceActionForModulePropertyGet11: 9870347 false) 
-	#(266 8 #reduceActionForModulePropertyLet6: 10297350 false) 
-	#(265 8 #reduceActionForModulePropertySet6: 10090502 false) 
-	#(262 8 #reduceActionForDefineFunction7: 9490439 false) 
-	#(264 8 #reduceActionForModulePropertyGet13: 9870349 false) 
-	#(266 8 #reduceActionForModulePropertyLet7: 10297351 false) 
-	#(265 8 #reduceActionForModulePropertySet7: 10090503 false) 
-	#(263 8 #reduceActionForDefineSub8: 9696264 false) 
-	#(262 8 #reduceActionForDefineFunction4: 9490436 false) 
-	#(264 8 #reduceActionForModulePropertyGet6: 9870342 false) 
-	#(264 8 #reduceActionForModulePropertyGet7: 9870343 false) 
-	#(266 8 #reduceActionForModulePropertyLet4: 10297348 false) 
-	#(265 8 #reduceActionForModulePropertySet4: 10090500 false) 
-	#(327 9 #reduceActionForForEach8: 16484360 false) 
-	#(330 9 #reduceActionForForStepNext1: 17038337 false) 
-	#(328 9 #reduceActionForForNext4: 16664580 false) 
-	#(328 9 #reduceActionForForNext6: 16664582 false) 
-	#(328 9 #reduceActionForForNext7: 16664583 false) 
-	#(312 9 #reduceActionForOpenFileClause2: 14586882 false) 
-	#(255 6 #reduceActionForParameter16: 8545296 false) 
-	#(333 9 #reduceActionForIfThenElse8: 17540104 false) 
-	#(337 5 #reduceActionForElseIf4: 17803268 false) 
-	#(343 2 #reduceActionFor______Constant__constant___1: 18420737 false) 
-	#(342 5 #reduceActionForCase11: 18332683 false) 
-	#(342 5 #reduceActionForCase9: 18332681 false) 
-	#(342 5 #reduceActionForCase5: 18332677 false) 
-	#(342 5 #reduceActionForCase3: 18332675 false) 
-	#(342 5 #reduceActionForCase22: 18332694 false) 
-	#(342 5 #reduceActionForCase20: 18332692 false) 
-	#(342 5 #reduceActionForCase16: 18332688 false) 
-	#(342 5 #reduceActionForCase14: 18332686 false) 
-	#(259 9 #reduceActionForDeclareFunction2: 9044994 false) 
-	#(258 9 #reduceActionForDeclareSub4: 8854532 false) 
-	#(264 9 #reduceActionForModulePropertyGet12: 9870348 false) 
-	#(262 9 #reduceActionForDefineFunction8: 9490440 false) 
-	#(264 9 #reduceActionForModulePropertyGet14: 9870350 false) 
-	#(264 9 #reduceActionForModulePropertyGet15: 9870351 false) 
-	#(266 9 #reduceActionForModulePropertyLet8: 10297352 false) 
-	#(265 9 #reduceActionForModulePropertySet8: 10090504 false) 
-	#(264 9 #reduceActionForModulePropertyGet8: 9870344 false) 
-	#(330 10 #reduceActionForForStepNext2: 17038338 false) 
-	#(330 10 #reduceActionForForStepNext3: 17038339 false) 
-	#(330 10 #reduceActionForForStepNext5: 17038341 false) 
-	#(328 10 #reduceActionForForNext8: 16664584 false) 
-	#(312 10 #reduceActionForOpenFileClause6: 14586886 false) 
-	#(312 10 #reduceActionForOpenFileClause4: 14586884 false) 
-	#(342 6 #reduceActionForCase12: 18332684 false) 
-	#(342 6 #reduceActionForCase6: 18332678 false) 
-	#(342 6 #reduceActionForCase23: 18332695 false) 
-	#(342 6 #reduceActionForCase21: 18332693 false) 
-	#(342 6 #reduceActionForCase17: 18332689 false) 
-	#(342 6 #reduceActionForCase15: 18332687 false) 
-	#(259 10 #reduceActionForDeclareFunction4: 9044996 false) 
-	#(264 10 #reduceActionForModulePropertyGet16: 9870352 false) 
-	#(330 11 #reduceActionForForStepNext4: 17038340 false) 
-	#(330 11 #reduceActionForForStepNext6: 17038342 false) 
-	#(330 11 #reduceActionForForStepNext7: 17038343 false) 
-	#(312 11 #reduceActionForOpenFileClause8: 14586888 false) 
-	#(342 7 #reduceActionForCase24: 18332696 false) 
-	#(342 7 #reduceActionForCase18: 18332690 false) 
-	#(188 11 #reduceActionForGuidLiteral1: 2906113 false) 
-	#(330 12 #reduceActionForForStepNext8: 17038344 false)
+	#(176 0 #reduceActionFor_eol__1: 1995777 false ) 
+	#(178 0 #reduceActionFor__eol___ModuleStatement__element____1: 2060289 false ) 
+	#(194 1 #liftFirstValue: 3303432 false ) 
+	#(240 1 #reduceActionForDoEvents1: 7436289 false ) 
+	#(194 1 #liftFirstValue: 3303439 false ) 
+	#(194 1 #liftFirstValue: 3303433 false ) 
+	#(194 1 #liftFirstValue: 3303440 false ) 
+	#(239 1 #liftFirstValue: 7419905 false ) 
+	#(194 1 #liftFirstValue: 3303431 false ) 
+	#(194 1 #liftFirstValue: 3303430 false ) 
+	#(194 1 #liftFirstValue: 3303429 false ) 
+	#(194 1 #liftFirstValue: 3303438 false ) 
+	#(215 0 #reduceActionFor___eol__________IntegerLiteral__lineNumber____Statement__statement_____1: 5626881 false ) 
+	#(222 1 #liftFirstValue: 6008835 false ) 
+	#(194 1 #liftFirstValue: 3303435 false ) 
+	#(222 1 #liftFirstValue: 6008836 false ) 
+	#(194 1 #liftFirstValue: 3303434 false ) 
+	#(194 1 #liftFirstValue: 3303437 false ) 
+	#(234 1 #liftFirstValue: 6804481 false ) 
+	#(194 1 #liftFirstValue: 3303427 false ) 
+	#(222 1 #liftFirstValue: 6008833 false ) 
+	#(222 1 #liftFirstValue: 6008834 false ) 
+	#(351 1 #reduceActionForResumeEmpty1: 18900993 false ) 
+	#(371 1 #reduceActionForReturn1: 20306945 false ) 
+	#(194 1 #liftFirstValue: 3303436 false ) 
+	#(234 1 #liftFirstValue: 6804482 false ) 
+	#(194 1 #liftFirstValue: 3303426 false ) 
+	#(194 1 #liftFirstValue: 3303428 false ) 
+	#(183 1 #reduceActionForDateLiteral1: 2623489 false ) 
+	#(182 1 #reduceActionForColorLiteral1: 2564097 false ) 
+	#(181 1 #reduceActionForIntegerLiteral1: 2498561 false ) 
+	#(184 1 #reduceActionForFloatLiteral1: 2678785 false ) 
+	#(185 1 #reduceActionForBooleanLiteral1: 2745345 false ) 
+	#(186 1 #reduceActionForStringLiteral1: 2808833 false ) 
+	#(187 1 #reduceActionForNull1: 2870273 false ) 
+	#(194 1 #liftFirstValue: 3303425 false ) 
+	#(196 1 #reduceActionForSquareBracketIdentifier1: 3563521 false ) 
+	#(180 1 #reduceActionForFileDescriptorLiteral1: 2423809 false ) 
+	#(195 1 #reduceActionForHashIdentifier1: 3495937 false ) 
+	#(288 1 #liftFirstValue: 12452869 false ) 
+	#(179 1 #liftFirstValue: 2255873 false ) 
+	#(179 1 #liftFirstValue: 2255874 false ) 
+	#(179 1 #liftFirstValue: 2255875 false ) 
+	#(179 1 #liftFirstValue: 2255876 false ) 
+	#(179 1 #liftFirstValue: 2255877 false ) 
+	#(179 1 #liftFirstValue: 2255878 false ) 
+	#(179 1 #liftFirstValue: 2255879 false ) 
+	#(179 1 #liftFirstValue: 2255880 false ) 
+	#(179 1 #liftFirstValue: 2255881 false ) 
+	#(288 1 #liftFirstValue: 12452868 false ) 
+	#(379 0 #reduceActionFor_Argument__argument__________________1: 21560321 false ) 
+	#(197 1 #reduceActionForSimpleIdentifier1: 3643393 false ) 
+	#(191 1 #liftFirstValue: 3039234 false ) 
+	#(191 1 #liftFirstValue: 3039235 false ) 
+	#(191 1 #liftFirstValue: 3039233 false ) 
+	#(340 1 #reduceActionForLabel1: 18155521 false ) 
+	#(212 1 #liftFirstValue: 5359620 false ) 
+	#(212 1 #liftFirstValue: 5359619 false ) 
+	#(212 1 #liftFirstValue: 5359617 false ) 
+	#(233 1 #liftFirstValue: 6745089 false ) 
+	#(233 1 #liftFirstValue: 6745090 false ) 
+	#(212 1 #liftFirstValue: 5359629 false ) 
+	#(237 1 #liftFirstValue: 7294977 false ) 
+	#(237 1 #liftFirstValue: 7294978 false ) 
+	#(237 1 #liftFirstValue: 7294979 false ) 
+	#(212 1 #liftFirstValue: 5359623 false ) 
+	#(241 1 #liftFirstValue: 7611394 false ) 
+	#(241 1 #liftFirstValue: 7611395 false ) 
+	#(241 1 #liftFirstValue: 7611393 false ) 
+	#(287 1 #liftFirstValue: 12061698 false ) 
+	#(287 1 #liftFirstValue: 12061699 false ) 
+	#(287 1 #liftFirstValue: 12061702 false ) 
+	#(287 1 #liftFirstValue: 12061703 false ) 
+	#(287 1 #liftFirstValue: 12061704 false ) 
+	#(287 1 #liftFirstValue: 12061707 false ) 
+	#(287 1 #liftFirstValue: 12061697 false ) 
+	#(287 1 #liftFirstValue: 12061700 false ) 
+	#(287 1 #liftFirstValue: 12061705 false ) 
+	#(287 1 #liftFirstValue: 12061706 false ) 
+	#(287 1 #liftFirstValue: 12061708 false ) 
+	#(287 1 #liftFirstValue: 12061701 false ) 
+	#(212 1 #liftFirstValue: 5359618 false ) 
+	#(288 1 #liftFirstValue: 12452870 false ) 
+	#(288 1 #liftFirstValue: 12452871 false ) 
+	#(288 1 #liftFirstValue: 12452872 false ) 
+	#(291 1 #liftFirstValue: 12781569 false ) 
+	#(292 1 #liftFirstValue: 12890113 false ) 
+	#(292 1 #liftFirstValue: 12890114 false ) 
+	#(292 1 #liftFirstValue: 12890115 false ) 
+	#(291 1 #liftFirstValue: 12781570 false ) 
+	#(296 1 #liftFirstValue: 13224961 false ) 
+	#(296 1 #liftFirstValue: 13224962 false ) 
+	#(296 1 #liftFirstValue: 13224963 false ) 
+	#(296 1 #liftFirstValue: 13224965 false ) 
+	#(296 1 #liftFirstValue: 13224964 false ) 
+	#(288 1 #liftFirstValue: 12452865 false ) 
+	#(305 1 #liftFirstValue: 14154753 false ) 
+	#(305 1 #liftFirstValue: 14154754 false ) 
+	#(212 1 #liftFirstValue: 5359627 false ) 
+	#(311 1 #liftFirstValue: 14522369 false ) 
+	#(311 1 #liftFirstValue: 14522370 false ) 
+	#(311 1 #liftFirstValue: 14522371 false ) 
+	#(212 1 #liftFirstValue: 5359622 false ) 
+	#(317 1 #liftFirstValue: 15199234 false ) 
+	#(318 1 #liftFirstValue: 15351809 false ) 
+	#(319 1 #liftFirstValue: 15451137 false ) 
+	#(319 1 #liftFirstValue: 15451138 false ) 
+	#(319 1 #liftFirstValue: 15451139 false ) 
+	#(319 1 #liftFirstValue: 15451140 false ) 
+	#(319 1 #liftFirstValue: 15451141 false ) 
+	#(318 1 #liftFirstValue: 15351810 false ) 
+	#(318 1 #liftFirstValue: 15351811 false ) 
+	#(326 1 #liftFirstValue: 16425985 false ) 
+	#(326 1 #liftFirstValue: 16425986 false ) 
+	#(326 1 #liftFirstValue: 16425987 false ) 
+	#(326 1 #liftFirstValue: 16425988 false ) 
+	#(317 1 #liftFirstValue: 15199235 false ) 
+	#(331 1 #liftFirstValue: 17343489 false ) 
+	#(331 1 #liftFirstValue: 17343490 false ) 
+	#(317 1 #liftFirstValue: 15199240 false ) 
+	#(317 1 #liftFirstValue: 15199238 false ) 
+	#(212 1 #liftFirstValue: 5359624 false ) 
+	#(339 1 #liftFirstValue: 18141185 false ) 
+	#(317 1 #liftFirstValue: 15199241 false ) 
+	#(317 1 #liftFirstValue: 15199237 false ) 
+	#(348 1 #liftFirstValue: 18722817 false ) 
+	#(348 1 #liftFirstValue: 18722818 false ) 
+	#(348 1 #liftFirstValue: 18722819 false ) 
+	#(212 1 #liftFirstValue: 5359626 false ) 
+	#(352 1 #liftFirstValue: 19009537 false ) 
+	#(352 1 #liftFirstValue: 19009538 false ) 
+	#(317 1 #liftFirstValue: 15199236 false ) 
+	#(359 1 #liftFirstValue: 19397633 false ) 
+	#(359 1 #liftFirstValue: 19397634 false ) 
+	#(359 1 #liftFirstValue: 19397635 false ) 
+	#(317 1 #liftFirstValue: 15199239 false ) 
+	#(317 1 #liftFirstValue: 15199233 false ) 
+	#(212 1 #liftFirstValue: 5359625 false ) 
+	#(365 1 #liftFirstValue: 20028417 false ) 
+	#(365 1 #liftFirstValue: 20028418 false ) 
+	#(365 1 #liftFirstValue: 20028420 false ) 
+	#(365 1 #liftFirstValue: 20028421 false ) 
+	#(365 1 #liftFirstValue: 20028419 false ) 
+	#(365 1 #liftFirstValue: 20028422 false ) 
+	#(382 1 #liftFirstValue: 21783553 false ) 
+	#(382 1 #liftFirstValue: 21783554 false ) 
+	#(386 1 #liftFirstValue: 22176770 false ) 
+	#(387 1 #liftFirstValue: 22269953 false ) 
+	#(386 1 #liftFirstValue: 22176769 false ) 
+	#(288 1 #liftFirstValue: 12452866 false ) 
+	#(386 1 #liftFirstValue: 22176771 false ) 
+	#(212 1 #liftFirstValue: 5359628 false ) 
+	#(387 1 #liftFirstValue: 22269954 false ) 
+	#(212 1 #liftFirstValue: 5359621 false ) 
+	#(288 1 #liftFirstValue: 12452867 false ) 
+	#(209 1 #liftFirstValue: 4807681 false ) 
+	#(209 1 #liftFirstValue: 4807682 false ) 
+	#(209 1 #liftFirstValue: 4807683 false ) 
+	#(209 1 #liftFirstValue: 4807684 false ) 
+	#(209 1 #liftFirstValue: 4807686 false ) 
+	#(209 1 #liftFirstValue: 4807685 false ) 
+	#(209 1 #liftFirstValue: 4807687 false ) 
+	#(209 1 #liftFirstValue: 4807688 false ) 
+	#(209 1 #liftFirstValue: 4807690 false ) 
+	#(209 1 #liftFirstValue: 4807689 false ) 
+	#(209 1 #liftFirstValue: 4807691 false ) 
+	#(209 1 #liftFirstValue: 4807692 false ) 
+	#(209 1 #liftFirstValue: 4807693 false ) 
+	#(209 1 #liftFirstValue: 4807694 false ) 
+	#(261 1 #liftFirstValue: 9473025 false ) 
+	#(211 1 #liftFirstValue: 5059585 false ) 
+	#(200 1 #liftFirstValue: 4003847 false ) 
+	#(211 1 #liftFirstValue: 5059587 false ) 
+	#(211 1 #liftFirstValue: 5059586 false ) 
+	#(211 1 #liftFirstValue: 5059592 false ) 
+	#(211 1 #liftFirstValue: 5059593 false ) 
+	#(211 1 #liftFirstValue: 5059591 false ) 
+	#(260 1 #liftFirstValue: 9269249 false ) 
+	#(260 1 #liftFirstValue: 9269250 false ) 
+	#(211 1 #liftFirstValue: 5059588 false ) 
+	#(267 1 #liftFirstValue: 10509313 false ) 
+	#(267 1 #liftFirstValue: 10509314 false ) 
+	#(267 1 #liftFirstValue: 10509315 false ) 
+	#(267 1 #liftFirstValue: 10509316 false ) 
+	#(267 1 #liftFirstValue: 10509317 false ) 
+	#(211 1 #liftFirstValue: 5059590 false ) 
+	#(211 1 #liftFirstValue: 5059589 false ) 
+	#(176 2 #reduceActionFor_eol__2: 1995778 false ) 
+	#(193 1 #liftFirstValue: 3217410 false ) 
+	#(193 1 #liftFirstValue: 3217413 false ) 
+	#(193 1 #liftFirstValue: 3217414 false ) 
+	#(193 1 #liftFirstValue: 3217412 false ) 
+	#(193 1 #liftFirstValue: 3217411 false ) 
+	#(372 2 #reduceActionForDictionaryAccess1: 20408321 false ) 
+	#(192 1 #reduceActionForSimpleIdentifier1: 3121153 false ) 
+	#(193 1 #liftFirstValue: 3217409 false ) 
+	#(192 1 #liftFirstValue: 3121154 false ) 
+	#(294 2 #reduceActionForPositiveOperation1: 13033473 false ) 
+	#(293 2 #reduceActionForNegatedOperation1: 12965889 false ) 
+	#(373 2 #reduceActionForMemberAccess1: 20590593 false ) 
+	#(306 2 #reduceActionForAddressOfClause1: 14198785 false ) 
+	#(383 2 #reduceActionForExplicitCall1: 21832705 false ) 
+	#(383 2 #reduceActionForExplicitCall1: 21832706 false ) 
+	#(383 2 #reduceActionForExplicitCall1: 21832707 false ) 
+	#(338 2 #reduceActionForRaiseError1: 17993729 false ) 
+	#(307 2 #reduceActionForNewClause1: 14271489 false ) 
+	#(384 2 #reduceActionForRaiseEvent1: 21969921 false ) 
+	#(384 2 #reduceActionForRaiseEvent1: 21969922 false ) 
+	#(251 1 #reduceActionForParameterPassingStrategy2: 8370178 false ) 
+	#(251 1 #liftFirstValue: 8370177 false ) 
+	#(376 1 #reduceActionForArgument2: 21420034 false ) 
+	#(376 1 #reduceActionForArgument2: 21420033 false ) 
+	#(203 2 #reduceActionForAttribute1: 4529153 false ) 
+	#(269 2 #reduceActionForModuleConstant1: 10868737 false ) 
+	#(277 2 #reduceActionForModuleConstants1: 11528193 false ) 
+	#(274 1 #reduceActionForVariable1: 11256833 false ) 
+	#(270 2 #reduceActionForDefineVariable1: 10962945 false ) 
+	#(278 2 #reduceActionForDefineVariables1: 11635713 false ) 
+	#(320 2 #reduceActionForInfinityLoop1: 15528961 false ) 
+	#(249 0 #reduceActionFor__eol___ModuleStatement__element____1: 8076289 false ) 
+	#(369 2 #reduceActionForExitFor1: 20224001 false ) 
+	#(368 2 #reduceActionForExitDo1: 20189185 false ) 
+	#(366 2 #reduceActionForExitFunction1: 20105217 false ) 
+	#(370 2 #reduceActionForExitProperty1: 20260865 false ) 
+	#(367 2 #reduceActionForExitSub1: 20152321 false ) 
+	#(353 1 #liftFirstValue: 19040258 false ) 
+	#(353 1 #liftFirstValue: 19040257 false ) 
+	#(353 1 #liftFirstValue: 19040259 false ) 
+	#(356 0 #reduceActionFor__eol___ModuleStatement__element____1: 19144705 false ) 
+	#(358 2 #reduceActionForGoSub1: 19273729 false ) 
+	#(357 2 #reduceActionForGoToStatement1: 19194881 false ) 
+	#(295 2 #reduceActionForNotOperation1: 13102081 false ) 
+	#(271 2 #reduceActionForReDefineVariable1: 11024385 false ) 
+	#(279 2 #reduceActionForReDefineVariables1: 11712513 false ) 
+	#(272 2 #reduceActionForReDefineVariable1: 11104257 false ) 
+	#(350 2 #reduceActionForResumeNext1: 18851841 false ) 
+	#(349 2 #reduceActionForResumeLabel1: 18777089 false ) 
+	#(273 2 #reduceActionForStaticVariable1: 11189249 false ) 
+	#(280 2 #reduceActionForStaticVariables1: 11809793 false ) 
+	#(244 0 #reduceActionFor__eol___ModuleStatement__element____1: 7724033 false ) 
+	#(189 1 #reduceActionFor_HEX_INTEGER___1: 2926593 false ) 
+	#(198 2 #reduceActionForLabelTag1: 3712001 false ) 
+	#(231 0 #reduceActionFor__eol___ModuleStatement__element____1: 6488065 false ) 
+	#(225 0 #reduceActionFor__eol___ModuleStatement__element____1: 6105089 false ) 
+	#(232 1 #liftFirstValue: 6536193 false ) 
+	#(232 1 #liftFirstValue: 6536194 false ) 
+	#(232 1 #liftFirstValue: 6536195 false ) 
+	#(374 2 #reduceActionForImplicitParenthesesLessCall2: 20763650 false ) 
+	#(381 0 #reduceActionFor_Argument__argument__________________1: 21620737 false ) 
+	#(268 2 #reduceActionForModuleProperty1: 10785793 false ) 
+	#(276 2 #reduceActionForModuleProperties1: 11427841 false ) 
+	#(286 1 #reduceActionFor______Constant__constant____1: 12012545 false ) 
+	#(284 2 #reduceActionForConstantList1: 11976705 false ) 
+	#(299 1 #reduceActionForArithmeticOperator1: 13543425 false ) 
+	#(299 1 #reduceActionForArithmeticOperator2: 13543426 false ) 
+	#(299 1 #reduceActionForArithmeticOperator3: 13543427 false ) 
+	#(299 1 #reduceActionForArithmeticOperator4: 13543428 false ) 
+	#(297 1 #reduceActionForArithmeticOperator2: 13363202 false ) 
+	#(297 1 #reduceActionForArithmeticOperator4: 13363204 false ) 
+	#(297 1 #reduceActionForArithmeticOperator3: 13363203 false ) 
+	#(297 1 #reduceActionForArithmeticOperator1: 13363201 false ) 
+	#(297 1 #reduceActionForComparisonOperator5: 13363205 false ) 
+	#(297 1 #reduceActionForComparisonOperator6: 13363206 false ) 
+	#(297 1 #reduceActionForComparisonOperator7: 13363207 false ) 
+	#(299 1 #reduceActionForComparisonOperator7: 13543431 false ) 
+	#(299 1 #reduceActionForComparisonOperator6: 13543430 false ) 
+	#(299 1 #reduceActionForComparisonOperator5: 13543429 false ) 
+	#(301 1 #reduceActionForBooleanOperator1: 13714433 false ) 
+	#(301 1 #reduceActionForBooleanOperator4: 13714436 false ) 
+	#(301 1 #reduceActionForBooleanOperator2: 13714434 false ) 
+	#(301 1 #reduceActionForBooleanOperator3: 13714435 false ) 
+	#(374 2 #reduceActionForImplicitParenthesesLessCall2: 20763649 false ) 
+	#(208 2 #reduceActionForImplements1: 4739073 false ) 
+	#(200 2 #reduceActionForOption5: 4003845 false ) 
+	#(200 2 #reduceActionForOption1: 4003841 false ) 
+	#(210 2 #reduceActionForDefType1: 4988929 false ) 
+	#(199 2 #reduceActionForheader1: 3939329 false ) 
+	#(175 3 #reduceActionFormodule1: 1987585 false ) 
+	#(178 2 #reduceActionFor__eol___ModuleStatement__element____2: 2060290 false ) 
+	#(289 3 #reduceActionForParentheseesExpression1: 12592129 false ) 
+	#(315 0 #reduceActionFor__eol___ModuleStatement__element____1: 14867457 false ) 
+	#(376 2 #reduceActionForArgument4: 21420036 false ) 
+	#(376 2 #reduceActionForArgument4: 21420035 false ) 
+	#(376 2 #reduceActionForArgument6: 21420038 false ) 
+	#(376 2 #reduceActionForArgument6: 21420037 false ) 
+	#(274 2 #reduceActionForVariable3: 11256835 false ) 
+	#(274 2 #reduceActionForVariable2: 11256834 false ) 
+	#(283 1 #reduceActionFor______Constant__constant____1: 11928577 false ) 
+	#(281 2 #reduceActionForVariableList1: 11892737 false ) 
+	#(320 3 #reduceActionForInfinityLoop2: 15528962 false ) 
+	#(320 3 #reduceActionForInfinityLoop3: 15528963 false ) 
+	#(216 1 #reduceActionFor__eol_______2: 5627906 false ) 
+	#(216 1 #reduceActionFor__eol_______1: 5627905 false ) 
+	#(207 1 #reduceActionFor_HEX_INTEGER___1: 4669441 false ) 
+	#(213 2 #reduceActionForBlock1: 5562369 false ) 
+	#(215 2 #reduceActionFor___eol__________IntegerLiteral__lineNumber____Statement__statement_____2: 5626882 false ) 
+	#(217 1 #reduceActionFor______Constant__constant____1: 5627905 false ) 
+	#(246 3 #reduceActionForEvent1: 7895041 false ) 
+	#(354 2 #reduceActionForDestinationList1: 19104769 false ) 
+	#(220 0 #reduceActionFor__eol___ModuleStatement__element____1: 5761025 false ) 
+	#(335 0 #reduceActionFor_eol__1: 17616897 false ) 
+	#(360 3 #reduceActionForOnErrorGoTo1: 19459073 false ) 
+	#(362 3 #reduceActionForOnExpressionGo1: 19602433 false ) 
+	#(201 3 #reduceActionForOptionBase1: 4335617 false ) 
+	#(271 3 #reduceActionForReDefineVariable2: 11024386 false ) 
+	#(279 3 #reduceActionForReDefineVariables2: 11712514 false ) 
+	#(272 3 #reduceActionForReDefineVariable2: 11104258 false ) 
+	#(325 3 #reduceActionForWhileWend1: 16236545 false ) 
+	#(189 2 #reduceActionFor_eol__2: 2926594 false ) 
+	#(198 3 #reduceActionForLabelTag2: 3712002 false ) 
+	#(372 3 #reduceActionForDictionaryAccess4: 20408324 false ) 
+	#(373 3 #reduceActionForMemberAccess4: 20590596 false ) 
+	#(235 3 #reduceActionForAssignment2: 6837250 false ) 
+	#(275 3 #reduceActionForConstant1: 11334657 false ) 
+	#(235 3 #reduceActionForAssignment2: 6837249 false ) 
+	#(304 3 #reduceActionForEquals1: 13967361 false ) 
+	#(221 1 #liftFirstValue: 5810188 false ) 
+	#(221 1 #liftFirstValue: 5810177 false ) 
+	#(221 1 #liftFirstValue: 5810178 false ) 
+	#(221 1 #liftFirstValue: 5810180 false ) 
+	#(221 1 #liftFirstValue: 5810179 false ) 
+	#(221 1 #liftFirstValue: 5810181 false ) 
+	#(221 1 #liftFirstValue: 5810182 false ) 
+	#(221 1 #liftFirstValue: 5810183 false ) 
+	#(221 1 #liftFirstValue: 5810184 false ) 
+	#(221 1 #liftFirstValue: 5810185 false ) 
+	#(221 1 #liftFirstValue: 5810186 false ) 
+	#(221 1 #liftFirstValue: 5810187 false ) 
+	#(221 1 #liftFirstValue: 5810189 false ) 
+	#(221 1 #liftFirstValue: 5810190 false ) 
+	#(221 1 #reduceActionForBaseType15: 5810191 false ) 
+	#(226 1 #liftFirstValue: 6156289 false ) 
+	#(226 1 #liftFirstValue: 6156290 false ) 
+	#(223 1 #reduceActionForComplexType1: 6069249 false ) 
+	#(227 2 #reduceActionForTypedThing1: 6189057 false ) 
+	#(378 1 #reduceActionFor_Argument__argument_________________1: 21560321 false ) 
+	#(378 1 #reduceActionFor_Argument__argument_________________2: 21560322 false ) 
+	#(379 2 #reduceActionFor_Argument__argument__________________2: 21560322 false ) 
+	#(377 2 #reduceActionForArgumentList1: 21544961 false ) 
+	#(269 3 #reduceActionForModuleConstant2: 10868738 false ) 
+	#(277 3 #reduceActionForModuleConstants2: 11528194 false ) 
+	#(285 2 #reduceActionFor______Constant__constant___1: 12012545 false ) 
+	#(286 2 #reduceActionFor______Constant__constant____2: 12012546 false ) 
+	#(303 3 #reduceActionForConcatenationOperation1: 13869057 false ) 
+	#(235 3 #reduceActionForAssignment2: 6837254 false ) 
+	#(304 3 #reduceActionForEquals1: 13967363 false ) 
+	#(235 3 #reduceActionForAssignment2: 6837253 false ) 
+	#(290 3 #reduceActionForInterval1: 12679169 false ) 
+	#(298 3 #reduceActionForComparisonOperation1: 13437953 false ) 
+	#(300 3 #reduceActionForArithmeticOperation1: 13608961 false ) 
+	#(302 3 #reduceActionForBooleanBinaryOperation1: 13763585 false ) 
+	#(372 3 #reduceActionForDictionaryAccess4: 20408323 false ) 
+	#(373 3 #reduceActionForMemberAccess4: 20590595 false ) 
+	#(235 3 #reduceActionForAssignment2: 6837252 false ) 
+	#(304 3 #reduceActionForEquals1: 13967362 false ) 
+	#(235 3 #reduceActionForAssignment2: 6837251 false ) 
+	#(372 3 #reduceActionForDictionaryAccess4: 20408322 false ) 
+	#(373 3 #reduceActionForMemberAccess4: 20590594 false ) 
+	#(372 3 #reduceActionForDictionaryAccess4: 20408325 false ) 
+	#(373 3 #reduceActionForMemberAccess4: 20590597 false ) 
+	#(206 0 #reduceActionFor__eol___ModuleStatement__element____1: 4667393 false ) 
+	#(200 3 #reduceActionForOption3: 4003843 false ) 
+	#(200 3 #reduceActionForOption2: 4003842 false ) 
+	#(200 3 #reduceActionForOption4: 4003844 false ) 
+	#(200 3 #reduceActionForOption6: 4003846 false ) 
+	#(199 3 #reduceActionForheader2: 3939330 false ) 
+	#(177 2 #reduceActionFor__eol___ModuleStatement__element___1: 2060289 false ) 
+	#(175 4 #reduceActionFormodule2: 1987586 false ) 
+	#(308 1 #liftFirstValue: 14329857 false ) 
+	#(308 1 #liftFirstValue: 14329858 false ) 
+	#(308 1 #liftFirstValue: 14329859 false ) 
+	#(308 1 #liftFirstValue: 14329860 false ) 
+	#(308 1 #liftFirstValue: 14329861 false ) 
+	#(313 4 #reduceActionForPrintFileClause1: 14783489 false ) 
+	#(376 3 #reduceActionForArgument8: 21420040 false ) 
+	#(376 3 #reduceActionForArgument8: 21420039 false ) 
+	#(385 4 #reduceActionForTypeOf1: 22086657 false ) 
+	#(385 4 #reduceActionForTypeOf2: 22086658 false ) 
+	#(202 3 #reduceActionForSetUpAssignation1: 4402177 false ) 
+	#(202 3 #reduceActionForSetUpAssignation1: 4402178 false ) 
+	#(274 3 #reduceActionForVariable4: 11256836 false ) 
+	#(282 2 #reduceActionFor______Constant__constant___1: 11928577 false ) 
+	#(283 2 #reduceActionFor______Constant__constant____2: 11928578 false ) 
+	#(323 4 #reduceActionForDoWhileTrue1: 15901697 false ) 
+	#(321 4 #reduceActionForWhileTrue1: 15638529 false ) 
+	#(213 3 #reduceActionForBlock3: 5562371 false ) 
+	#(213 3 #reduceActionForBlock2: 5562370 false ) 
+	#(320 4 #reduceActionForInfinityLoop4: 15528964 false ) 
+	#(207 2 #reduceActionFor_eol__2: 4669442 false ) 
+	#(214 2 #reduceActionFor___eol__________IntegerLiteral__lineNumber____Statement__statement____1: 5626881 false ) 
+	#(217 2 #reduceActionFor______Constant__constant____2: 5627906 false ) 
+	#(249 2 #reduceActionFor__eol___ModuleStatement__element____2: 8076290 false ) 
+	#(252 2 #reduceActionForParameterList1: 8448001 false ) 
+	#(257 0 #reduceActionFor_____Expression__default___1: 8665089 false ) 
+	#(254 0 #reduceActionFor__eol___ModuleStatement__element____1: 8492033 false ) 
+	#(356 2 #reduceActionFor______Constant__constant____2: 19144706 false ) 
+	#(332 4 #reduceActionForIfThenElseOneLine1: 17387521 false ) 
+	#(218 1 #reduceActionForOneLineBlock1: 5719041 false ) 
+	#(332 4 #reduceActionForIfThenElseOneLine4: 17387524 false ) 
+	#(238 4 #reduceActionForRename1: 7340033 false ) 
+	#(361 4 #reduceActionForOnErrorResumeNext1: 19525633 false ) 
+	#(244 2 #reduceActionFor__eol___ModuleStatement__element____2: 7724034 false ) 
+	#(325 4 #reduceActionForWhileWend2: 16236546 false ) 
+	#(325 4 #reduceActionForWhileWend3: 16236547 false ) 
+	#(190 1 #reduceActionFor_HEX_INTEGER___1: 2946049 false ) 
+	#(229 3 #reduceActionForTypeSize1: 6452225 false ) 
+	#(231 2 #reduceActionFor______Constant__constant____2: 6488066 false ) 
+	#(375 4 #reduceActionForProcedureCallOrArrayAccess3: 20989955 false ) 
+	#(228 3 #reduceActionForTypedAndInstantiatedThing1: 6308865 false ) 
+	#(223 2 #reduceActionForComplexType2: 6069250 false ) 
+	#(225 2 #reduceActionFor______Constant__constant____2: 6105090 false ) 
+	#(227 3 #reduceActionForTypedThing3: 6189059 false ) 
+	#(227 3 #reduceActionForTypedThing5: 6189061 false ) 
+	#(275 4 #reduceActionForConstant2: 11334658 false ) 
+	#(378 2 #reduceActionFor_Argument__argument_________________3: 21560323 false ) 
+	#(378 2 #reduceActionFor_Argument__argument_________________4: 21560324 false ) 
+	#(377 3 #reduceActionForArgumentList2: 21544962 false ) 
+	#(380 1 #reduceActionFor_Argument__argument_________________1: 21620737 false ) 
+	#(380 1 #reduceActionFor______________Argument__argument____3: 21620739 false ) 
+	#(381 2 #reduceActionFor_Argument__argument__________________2: 21620738 false ) 
+	#(246 4 #reduceActionForEvent2: 7895042 false ) 
+	#(236 4 #reduceActionForExplicitAssignement2: 6996994 false ) 
+	#(236 4 #reduceActionForExplicitAssignement2: 6996993 false ) 
+	#(375 4 #reduceActionForProcedureCallOrArrayAccess3: 20989954 false ) 
+	#(375 4 #reduceActionForProcedureCallOrArrayAccess3: 20989953 false ) 
+	#(375 4 #reduceActionForProcedureCallOrArrayAccess4: 20989956 false ) 
+	#(175 5 #reduceActionFormodule3: 1987587 false ) 
+	#(316 5 #reduceActionForLineInputClause1: 14926849 false ) 
+	#(310 1 #liftFirstValue: 14451716 false ) 
+	#(310 1 #liftFirstValue: 14451714 false ) 
+	#(310 1 #liftFirstValue: 14451715 false ) 
+	#(309 1 #liftFirstValue: 14401537 false ) 
+	#(310 1 #liftFirstValue: 14451713 false ) 
+	#(309 1 #liftFirstValue: 14401538 false ) 
+	#(313 5 #reduceActionForPrintFileClause5: 14783493 false ) 
+	#(313 5 #reduceActionForPrintFileClause3: 14783491 false ) 
+	#(313 5 #reduceActionForPrintFileClause2: 14783490 false ) 
+	#(315 2 #reduceActionFor______Constant__constant____2: 14867458 false ) 
+	#(322 5 #reduceActionForUntilTrue1: 15773697 false ) 
+	#(321 5 #reduceActionForWhileTrue2: 15638530 false ) 
+	#(321 5 #reduceActionForWhileTrue3: 15638531 false ) 
+	#(323 5 #reduceActionForDoWhileTrue2: 15901698 false ) 
+	#(213 4 #reduceActionForBlock4: 5562372 false ) 
+	#(324 5 #reduceActionForDoUntilTrue1: 16038913 false ) 
+	#(323 5 #reduceActionForDoWhileTrue3: 15901699 false ) 
+	#(214 3 #reduceActionFor___eol__________IntegerLiteral__lineNumber____Statement__statement____2: 5626882 false ) 
+	#(250 1 #reduceActionForEnumEntry1: 8147969 false ) 
+	#(248 2 #reduceActionFor__eol___ModuleStatement__element___1: 8076289 false ) 
+	#(257 1 #reduceActionFor_____Expression__default___2: 8665090 false ) 
+	#(255 2 #reduceActionForParameter1: 8549377 false ) 
+	#(355 2 #reduceActionFor______Constant__constant___1: 19144705 false ) 
+	#(218 2 #reduceActionForOneLineBlock3: 5719043 false ) 
+	#(218 2 #reduceActionForOneLineBlock2: 5719042 false ) 
+	#(220 2 #reduceActionFor______Constant__constant____2: 5761026 false ) 
+	#(336 1 #reduceActionForElse1: 17719297 false ) 
+	#(335 2 #reduceActionFor_eol__2: 17616898 false ) 
+	#(334 1 #liftFirstValue: 17616897 false ) 
+	#(346 1 #liftFirstValue: 18580481 false ) 
+	#(347 1 #reduceActionFor_HEX_INTEGER___1: 18580481 false ) 
+	#(243 2 #reduceActionFor__eol___ModuleStatement__element___1: 7724033 false ) 
+	#(325 5 #reduceActionForWhileWend4: 16236548 false ) 
+	#(364 5 #reduceActionForWith1: 19860481 false ) 
+	#(190 2 #reduceActionFor_eol__2: 2946050 false ) 
+	#(230 2 #reduceActionFor______Constant__constant___1: 6488065 false ) 
+	#(229 4 #reduceActionForTypeSize2: 6452226 false ) 
+	#(228 4 #reduceActionForTypedAndInstantiatedThing3: 6308867 false ) 
+	#(224 2 #reduceActionFor______Constant__constant___1: 6105089 false ) 
+	#(227 4 #reduceActionForTypedThing2: 6189058 false ) 
+	#(228 4 #reduceActionForTypedAndInstantiatedThing5: 6308869 false ) 
+	#(227 4 #reduceActionForTypedThing7: 6189063 false ) 
+	#(380 2 #reduceActionFor______________Argument__argument____2: 21620738 false ) 
+	#(380 2 #reduceActionFor_Argument__argument_________________4: 21620740 false ) 
+	#(206 2 #reduceActionFor___eol___SetUpAssignation__setting___2: 4667394 false ) 
+	#(263 5 #reduceActionForDefineSub1: 9700353 false ) 
+	#(175 6 #reduceActionFormodule4: 1987588 false ) 
+	#(327 6 #reduceActionForForEach1: 16488449 false ) 
+	#(316 6 #reduceActionForLineInputClause3: 14926851 false ) 
+	#(316 6 #reduceActionForLineInputClause2: 14926850 false ) 
+	#(312 6 #reduceActionForOpenFileClause1: 14590977 false ) 
+	#(309 2 #liftFirstValue: 14401539 false ) 
+	#(313 6 #reduceActionForPrintFileClause7: 14783495 false ) 
+	#(313 6 #reduceActionForPrintFileClause6: 14783494 false ) 
+	#(313 6 #reduceActionForPrintFileClause4: 14783492 false ) 
+	#(314 2 #reduceActionFor______Constant__constant___1: 14867457 false ) 
+	#(322 6 #reduceActionForUntilTrue2: 15773698 false ) 
+	#(321 6 #reduceActionForWhileTrue4: 15638532 false ) 
+	#(324 6 #reduceActionForDoUntilTrue2: 16038914 false ) 
+	#(323 6 #reduceActionForDoWhileTrue4: 15901700 false ) 
+	#(247 6 #reduceActionForDefineEnum1: 8003585 false ) 
+	#(255 3 #reduceActionForParameter9: 8549385 false ) 
+	#(255 3 #reduceActionForParameter3: 8549379 false ) 
+	#(256 2 #reduceActionFor______Constant__constant___1: 8665089 false ) 
+	#(255 3 #reduceActionForParameter2: 8549378 false ) 
+	#(255 3 #reduceActionForParameter5: 8549381 false ) 
+	#(252 4 #reduceActionForParameterList2: 8448002 false ) 
+	#(254 2 #reduceActionFor______Constant__constant____2: 8492034 false ) 
+	#(218 3 #reduceActionForOneLineBlock4: 5719044 false ) 
+	#(332 6 #reduceActionForIfThenElseOneLine2: 17387522 false ) 
+	#(332 6 #reduceActionForIfThenElseOneLine3: 17387523 false ) 
+	#(219 2 #reduceActionFor______Constant__constant___1: 5761025 false ) 
+	#(336 2 #reduceActionForElse2: 17719298 false ) 
+	#(333 6 #reduceActionForIfThenElse1: 17544193 false ) 
+	#(336 2 #reduceActionForElse3: 17719299 false ) 
+	#(332 6 #reduceActionForIfThenElseOneLine5: 17387525 false ) 
+	#(332 6 #reduceActionForIfThenElseOneLine6: 17387526 false ) 
+	#(344 0 #reduceActionFor__eol___ModuleStatement__element____1: 18424833 false ) 
+	#(341 1 #liftFirstValue: 18263044 false ) 
+	#(341 1 #liftFirstValue: 18263042 false ) 
+	#(341 1 #liftFirstValue: 18263043 false ) 
+	#(341 1 #liftFirstValue: 18263041 false ) 
+	#(347 2 #reduceActionFor_eol__2: 18580482 false ) 
+	#(242 6 #reduceActionForDefineType1: 7655425 false ) 
+	#(245 2 #reduceActionForTypeEntry1: 7795713 false ) 
+	#(364 6 #reduceActionForWith2: 19860482 false ) 
+	#(228 5 #reduceActionForTypedAndInstantiatedThing2: 6308866 false ) 
+	#(227 5 #reduceActionForTypedThing4: 6189060 false ) 
+	#(228 5 #reduceActionForTypedAndInstantiatedThing7: 6308871 false ) 
+	#(227 5 #reduceActionForTypedThing6: 6189062 false ) 
+	#(204 6 #reduceActionForConfiguration1: 4605953 false ) 
+	#(205 2 #reduceActionFor__eol___ModuleStatement__element___1: 4667393 false ) 
+	#(258 6 #reduceActionForDeclareSub1: 8858625 false ) 
+	#(262 6 #reduceActionForDefineFunction1: 9494529 false ) 
+	#(264 6 #reduceActionForModulePropertyGet1: 9874433 false ) 
+	#(266 6 #reduceActionForModulePropertyLet1: 10301441 false ) 
+	#(265 6 #reduceActionForModulePropertySet1: 10094593 false ) 
+	#(263 6 #reduceActionForDefineSub2: 9700354 false ) 
+	#(263 6 #reduceActionForDefineSub5: 9700357 false ) 
+	#(263 6 #reduceActionForDefineSub3: 9700355 false ) 
+	#(327 7 #reduceActionForForEach2: 16488450 false ) 
+	#(327 7 #reduceActionForForEach3: 16488451 false ) 
+	#(327 7 #reduceActionForForEach5: 16488453 false ) 
+	#(328 7 #reduceActionForForNext1: 16668673 false ) 
+	#(329 7 #reduceActionForForNext1: 16879617 false ) 
+	#(316 7 #reduceActionForLineInputClause4: 14926852 false ) 
+	#(312 7 #reduceActionForOpenFileClause5: 14590981 false ) 
+	#(312 7 #reduceActionForOpenFileClause3: 14590979 false ) 
+	#(313 7 #reduceActionForPrintFileClause8: 14783496 false ) 
+	#(250 3 #reduceActionForEnumEntry2: 8147970 false ) 
+	#(255 4 #reduceActionForParameter11: 8549387 false ) 
+	#(255 4 #reduceActionForParameter10: 8549386 false ) 
+	#(255 4 #reduceActionForParameter13: 8549389 false ) 
+	#(255 4 #reduceActionForParameter4: 8549380 false ) 
+	#(255 4 #reduceActionForParameter7: 8549383 false ) 
+	#(255 4 #reduceActionForParameter6: 8549382 false ) 
+	#(253 2 #reduceActionFor______Constant__constant___1: 8492033 false ) 
+	#(333 7 #reduceActionForIfThenElse5: 17544197 false ) 
+	#(337 3 #reduceActionForElseIf1: 17807361 false ) 
+	#(336 3 #reduceActionForElse4: 17719300 false ) 
+	#(333 7 #reduceActionForIfThenElse2: 17544194 false ) 
+	#(333 7 #reduceActionForIfThenElse3: 17544195 false ) 
+	#(342 3 #reduceActionForCase7: 18336775 false ) 
+	#(342 3 #reduceActionForCase1: 18336769 false ) 
+	#(345 7 #reduceActionForSelect1: 18523137 false ) 
+	#(228 6 #reduceActionForTypedAndInstantiatedThing4: 6308868 false ) 
+	#(228 6 #reduceActionForTypedAndInstantiatedThing6: 6308870 false ) 
+	#(227 6 #reduceActionForTypedThing8: 6189064 false ) 
+	#(247 7 #reduceActionForDefineEnum2: 8003586 false ) 
+	#(242 7 #reduceActionForDefineType2: 7655426 false ) 
+	#(259 7 #reduceActionForDeclareFunction1: 9049089 false ) 
+	#(262 7 #reduceActionForDefineFunction2: 9494530 false ) 
+	#(264 7 #reduceActionForModulePropertyGet2: 9874434 false ) 
+	#(264 7 #reduceActionForModulePropertyGet3: 9874435 false ) 
+	#(266 7 #reduceActionForModulePropertyLet2: 10301442 false ) 
+	#(265 7 #reduceActionForModulePropertySet2: 10094594 false ) 
+	#(258 7 #reduceActionForDeclareSub3: 8858627 false ) 
+	#(262 7 #reduceActionForDefineFunction5: 9494533 false ) 
+	#(264 7 #reduceActionForModulePropertyGet9: 9874441 false ) 
+	#(266 7 #reduceActionForModulePropertyLet5: 10301445 false ) 
+	#(265 7 #reduceActionForModulePropertySet5: 10094597 false ) 
+	#(263 7 #reduceActionForDefineSub6: 9700358 false ) 
+	#(263 7 #reduceActionForDefineSub7: 9700359 false ) 
+	#(262 7 #reduceActionForDefineFunction3: 9494531 false ) 
+	#(264 7 #reduceActionForModulePropertyGet5: 9874437 false ) 
+	#(266 7 #reduceActionForModulePropertyLet3: 10301443 false ) 
+	#(265 7 #reduceActionForModulePropertySet3: 10094595 false ) 
+	#(263 7 #reduceActionForDefineSub4: 9700356 false ) 
+	#(327 8 #reduceActionForForEach4: 16488452 false ) 
+	#(327 8 #reduceActionForForEach6: 16488454 false ) 
+	#(327 8 #reduceActionForForEach7: 16488455 false ) 
+	#(328 8 #reduceActionForForNext2: 16668674 false ) 
+	#(328 8 #reduceActionForForNext3: 16668675 false ) 
+	#(328 8 #reduceActionForForNext5: 16668677 false ) 
+	#(329 8 #reduceActionForForNext5: 16879618 false ) 
+	#(312 8 #reduceActionForOpenFileClause7: 14590983 false ) 
+	#(255 5 #reduceActionForParameter12: 8549388 false ) 
+	#(255 5 #reduceActionForParameter15: 8549391 false ) 
+	#(255 5 #reduceActionForParameter14: 8549390 false ) 
+	#(255 5 #reduceActionForParameter8: 8549384 false ) 
+	#(333 8 #reduceActionForIfThenElse6: 17544198 false ) 
+	#(333 8 #reduceActionForIfThenElse7: 17544199 false ) 
+	#(337 4 #reduceActionForElseIf2: 17807362 false ) 
+	#(337 4 #reduceActionForElseIf3: 17807363 false ) 
+	#(333 8 #reduceActionForIfThenElse4: 17544196 false ) 
+	#(342 4 #reduceActionForCase10: 18336778 false ) 
+	#(342 4 #reduceActionForCase8: 18336776 false ) 
+	#(344 2 #reduceActionFor______Constant__constant____2: 18424834 false ) 
+	#(342 4 #reduceActionForCase4: 18336772 false ) 
+	#(342 4 #reduceActionForCase2: 18336770 false ) 
+	#(342 4 #reduceActionForCase19: 18336787 false ) 
+	#(342 4 #reduceActionForCase13: 18336781 false ) 
+	#(345 8 #reduceActionForSelect2: 18523138 false ) 
+	#(245 4 #reduceActionForTypeEntry2: 7795714 false ) 
+	#(228 7 #reduceActionForTypedAndInstantiatedThing8: 6308872 false ) 
+	#(258 8 #reduceActionForDeclareSub2: 8858626 false ) 
+	#(264 8 #reduceActionForModulePropertyGet4: 9874436 false ) 
+	#(259 8 #reduceActionForDeclareFunction3: 9049091 false ) 
+	#(262 8 #reduceActionForDefineFunction6: 9494534 false ) 
+	#(264 8 #reduceActionForModulePropertyGet10: 9874442 false ) 
+	#(264 8 #reduceActionForModulePropertyGet11: 9874443 false ) 
+	#(266 8 #reduceActionForModulePropertyLet6: 10301446 false ) 
+	#(265 8 #reduceActionForModulePropertySet6: 10094598 false ) 
+	#(262 8 #reduceActionForDefineFunction7: 9494535 false ) 
+	#(264 8 #reduceActionForModulePropertyGet13: 9874445 false ) 
+	#(266 8 #reduceActionForModulePropertyLet7: 10301447 false ) 
+	#(265 8 #reduceActionForModulePropertySet7: 10094599 false ) 
+	#(263 8 #reduceActionForDefineSub8: 9700360 false ) 
+	#(262 8 #reduceActionForDefineFunction4: 9494532 false ) 
+	#(264 8 #reduceActionForModulePropertyGet6: 9874438 false ) 
+	#(264 8 #reduceActionForModulePropertyGet7: 9874439 false ) 
+	#(266 8 #reduceActionForModulePropertyLet4: 10301444 false ) 
+	#(265 8 #reduceActionForModulePropertySet4: 10094596 false ) 
+	#(327 9 #reduceActionForForEach8: 16488456 false ) 
+	#(330 9 #reduceActionForForStepNext1: 17042433 false ) 
+	#(328 9 #reduceActionForForNext4: 16668676 false ) 
+	#(328 9 #reduceActionForForNext6: 16668678 false ) 
+	#(328 9 #reduceActionForForNext7: 16668679 false ) 
+	#(312 9 #reduceActionForOpenFileClause2: 14590978 false ) 
+	#(255 6 #reduceActionForParameter16: 8549392 false ) 
+	#(333 9 #reduceActionForIfThenElse8: 17544200 false ) 
+	#(337 5 #reduceActionForElseIf4: 17807364 false ) 
+	#(343 2 #reduceActionFor______Constant__constant___1: 18424833 false ) 
+	#(342 5 #reduceActionForCase11: 18336779 false ) 
+	#(342 5 #reduceActionForCase9: 18336777 false ) 
+	#(342 5 #reduceActionForCase5: 18336773 false ) 
+	#(342 5 #reduceActionForCase3: 18336771 false ) 
+	#(342 5 #reduceActionForCase22: 18336790 false ) 
+	#(342 5 #reduceActionForCase20: 18336788 false ) 
+	#(342 5 #reduceActionForCase16: 18336784 false ) 
+	#(342 5 #reduceActionForCase14: 18336782 false ) 
+	#(259 9 #reduceActionForDeclareFunction2: 9049090 false ) 
+	#(258 9 #reduceActionForDeclareSub4: 8858628 false ) 
+	#(264 9 #reduceActionForModulePropertyGet12: 9874444 false ) 
+	#(262 9 #reduceActionForDefineFunction8: 9494536 false ) 
+	#(264 9 #reduceActionForModulePropertyGet14: 9874446 false ) 
+	#(264 9 #reduceActionForModulePropertyGet15: 9874447 false ) 
+	#(266 9 #reduceActionForModulePropertyLet8: 10301448 false ) 
+	#(265 9 #reduceActionForModulePropertySet8: 10094600 false ) 
+	#(264 9 #reduceActionForModulePropertyGet8: 9874440 false ) 
+	#(330 10 #reduceActionForForStepNext2: 17042434 false ) 
+	#(330 10 #reduceActionForForStepNext3: 17042435 false ) 
+	#(330 10 #reduceActionForForStepNext5: 17042437 false ) 
+	#(328 10 #reduceActionForForNext8: 16668680 false ) 
+	#(312 10 #reduceActionForOpenFileClause6: 14590982 false ) 
+	#(312 10 #reduceActionForOpenFileClause4: 14590980 false ) 
+	#(342 6 #reduceActionForCase12: 18336780 false ) 
+	#(342 6 #reduceActionForCase6: 18336774 false ) 
+	#(342 6 #reduceActionForCase23: 18336791 false ) 
+	#(342 6 #reduceActionForCase21: 18336789 false ) 
+	#(342 6 #reduceActionForCase17: 18336785 false ) 
+	#(342 6 #reduceActionForCase15: 18336783 false ) 
+	#(259 10 #reduceActionForDeclareFunction4: 9049092 false ) 
+	#(264 10 #reduceActionForModulePropertyGet16: 9874448 false ) 
+	#(330 11 #reduceActionForForStepNext4: 17042436 false ) 
+	#(330 11 #reduceActionForForStepNext6: 17042438 false ) 
+	#(330 11 #reduceActionForForStepNext7: 17042439 false ) 
+	#(312 11 #reduceActionForOpenFileClause8: 14590984 false ) 
+	#(342 7 #reduceActionForCase24: 18336792 false ) 
+	#(342 7 #reduceActionForCase18: 18336786 false ) 
+	#(188 11 #reduceActionForGuidLiteral1: 2910209 false ) 
+	#(330 12 #reduceActionForForStepNext8: 17042440 false )
 	).
 ]
 
@@ -1701,244 +1701,32 @@ VBParser class >> scannerClass [
 
 { #category : #generated }
 VBParser class >> startingStateForBehaviourDefinition [
-
 	^ 4
 ]
 
 { #category : #generated }
 VBParser class >> startingStateForModuleStatement [
-
 	^ 3
 ]
 
 { #category : #generated }
 VBParser class >> startingStateForStatement [
-
 	^ 2
 ]
 
 { #category : #generated }
 VBParser class >> startingStateFormodule [
-
 	^ 1
 ]
 
 { #category : #generated }
 VBParser class >> symbolNames [
-
-	^ #( '"!"' '"&"' '"("' '")"' '"*"' '"+"' '","' '"-"' '"."' '"/"'
-	     '":"' '":="' '";"' '"<"' '"<<"' '"<="' '"<>"' '"="' '">"' '">="'
-	     '">>"' '"APPEND"' '"AS"' '"AddressOf"' '"BINARY"' '"Call"'
-	     '"DefBool"' '"DefByte"' '"DefCur"' '"DefDate"' '"DefDbl"'
-	     '"DefDec"' '"DefInt"' '"DefLng"' '"DefLngPtr"' '"DefLnglng"'
-	     '"DefObj"' '"DefSng"' '"DefStr"' '"DefVar"' '"DoEvents"'
-	     '"ERROR"' '"FOR"' '"INPUT"' '"IS"' '"IsNot"' '"LIKE"' '"Line"'
-	     '"Lock Read Write"' '"Lock Read"' '"Lock Write"' '"Mod"' '"NEW"'
-	     '"OBJECT"' '"OPEN"' '"Output"' '"PRINT"' '"RaiseEvent"'
-	     '"Random"' '"Read"' '"Shared"' '"TypeOf"' '"WithEvents"'
-	     '"Write"' '"["' '"\"' '"^"' '"alias"' '"and"' '"attribute"'
-	     '"base"' '"beep"' '"begin"' '"bold"' '"boolean"' '"byref"'
-	     '"byte"' '"byval"' '"case"' '"class"' '"collection"'
-	     '"compare"' '"const"' '"currency"' '"database"' '"date"'
-	     '"decimal"' '"declare"' '"dim"' '"do"' '"double"' '"each"'
-	     '"else"' '"else:"' '"elseif"' '"end"' '"enum"' '"eqv"' '"event"'
-	     '"exit"' '"explicit"' '"friend"' '"function"' '"get"' '"global"'
-	     '"gosub"' '"goto"' '"if"' '"implements"' '"in"' '"integer"'
-	     '"len"' '"let"' '"lib"' '"long"' '"longlong"' '"longptr"'
-	     '"loop"' '"module"' '"name"' '"next"' '"not"' '"on"' '"option"'
-	     '"optional"' '"or"' '"paramarray"' '"preserve"' '"private"'
-	     '"property"' '"public"' '"redim"' '"resume"' '"return"'
-	     '"select"' '"set"' '"single"' '"static"' '"step"' '"string"'
-	     '"sub"' '"text"' '"then"' '"then:"' '"to"' '"type"' '"until"'
-	     '"variant"' '"version"' '"wend"' '"while"' '"with"' '"xor"'
-	     '"{"' '"}"' '"~"' '<lineContinuation>' '<HEX_INTEGER>'
-	     '<DATE_LITERAL>' '<COLOR_LITERAL>' '<INTEGER_LITERAL>'
-	     '<FLOATING_POINT_LITERAL>' '<BOOLEAN_LITERAL>'
-	     '<STRING_LITERAL>' '<NULL_LITERAL>' '<IDENTIFIER>'
-	     '<SBIDENTIFIER>' '<DEFTYPE>' '<HASH_NUMBER>' '<HASH_IDENTIFIER>'
-	     '<whitespace>' '<eol>' '<comment>' 'B e g i n' 'module' '<eol>*'
-	     '(<eol>* ModuleStatement ''element'' )'
-	     '(<eol>* ModuleStatement ''element'' )*'
-	     'literal' 'FileDescriptorLiteral' 'IntegerLiteral'
-	     'ColorLiteral' 'DateLiteral' 'FloatLiteral' 'BooleanLiteral'
-	     'StringLiteral' 'Null' 'GuidLiteral' '<HEX_INTEGER> +'
-	     '<HEX_INTEGER>+' 'Identifier' 'KeywordIdentifier'
-	     'UsableKeywords' 'IdentifierWords' 'HashIdentifier'
-	     'SquareBracketIdentifier' 'SimpleIdentifier' 'LabelTag'
-	     'header' 'Option' 'OptionBase' 'SetUpAssignation'
-	     'Attribute' 'Configuration' '( <eol>+ SetUpAssignation ''setting'')'
-	     '( <eol>+ SetUpAssignation ''setting'')*'
-	     '<eol>+' 'Implements' 'DefTypeLabel' 'DefType' 'ModuleStatement'
-	     'Statement' 'Block' '((<eol>| ":")+ (IntegerLiteral ''lineNumber'')? Statement ''statement''  )'
-	     '((<eol>| ":")+ (IntegerLiteral ''lineNumber'')? Statement ''statement''  )*'
-	     '(<eol>| ":")' '(<eol>| ":")+' 'OneLineBlock' '(":" Statement ''statement''  )'
-	     '(":" Statement ''statement''  )*'
-	     'BaseType' 'Visibility' 'ComplexType' '("."  UsableKeywords  ''member'')'
-	     '("."  UsableKeywords  ''member'')*'
-	     'Type' 'TypedThing' 'TypedAndInstantiatedThing'
-	     'TypeSize' '( "," Expression ''size'')'
-	     '( "," Expression ''size'')*' 'AsType' 'StatementAssignment'
-	     'ExplicitLetSet' 'Assignment' 'ExplicitAssignement'
-	     'OtherStatements' 'Rename' 'Beep' 'DoEvents' 'Types' 'DefineType'
-	     '( <eol>* TypeEntry ''field'' )'
-	     '( <eol>* TypeEntry ''field'' )*'
-	     'TypeEntry' 'Event' 'DefineEnum' '( <eol>* EnumEntry ''field'')'
-	     '( <eol>* EnumEntry ''field'')*'
-	     'EnumEntry' 'ParameterPassingStrategy'
-	     'ParameterList' '( "," Parameter ''parameter'')'
-	     '( "," Parameter ''parameter'')*'
-	     'Parameter' '("=" Expression ''default'')'
-	     '("=" Expression ''default'')?' 'DeclareSub' 'DeclareFunction'
-	     'DeclareExternal' 'Modifier' 'DefineFunction' 'DefineSub'
-	     'ModulePropertyGet' 'ModulePropertySet' 'ModulePropertyLet'
-	     'BehaviourDefinition' 'ModuleProperty' 'ModuleConstant'
-	     'DefineVariable' 'ReDefineVariable' 'ReDefineExpression'
-	     'StaticVariable' 'Variable' 'Constant' 'ModuleProperties'
-	     'ModuleConstants' 'DefineVariables' 'ReDefineVariables'
-	     'StaticVariables' 'VariableList' '(","  Variable ''variable'' )'
-	     '(","  Variable ''variable'' )+'
-	     'ConstantList' '(","  Constant ''constant'' )'
-	     '(","  Constant ''constant'' )+'
-	     'VariableDefinition' 'Expression' 'ParentheseesExpression'
-	     'Interval' 'Operation' 'UnaryOperation' 'NegatedOperation'
-	     'PositiveOperation' 'NotOperation' 'BinaryOperation'
-	     'ComparisonOperator' 'ComparisonOperation' 'ArithmeticOperator'
-	     'ArithmeticOperation' 'BooleanOperator' 'BooleanBinaryOperation'
-	     'ConcatenationOperation' 'Equals' 'ValueClause' 'AddressOfClause'
-	     'NewClause' 'OpenMode' 'OpenAccess' 'Lock' 'FileClauses'
-	     'OpenFileClause' 'PrintFileClause' '(";" Expression ''value'')'
-	     '(";" Expression ''value'')*' 'LineInputClause'
-	     'ControlFlowStatement' 'Loops' 'DoLoop' 'InfinityLoop'
-	     'WhileTrue' 'UntilTrue' 'DoWhileTrue' 'DoUntilTrue'
-	     'WhileWend' 'ForLoop' 'ForEach' 'ForNext' 'ForNextOneLine'
-	     'ForStepNext' 'If' 'IfThenElseOneLine' 'IfThenElse' '(ElseIf ''elseif'')'
-	     '(ElseIf ''elseif'')*' 'Else' 'ElseIf' 'RaiseError' 'To' 'Label'
-	     'CaseCondition' 'Case' '( "," (CaseCondition ''expression''))'
-	     '( "," (CaseCondition ''expression''))*'
-	     'Select' '(Case ''case'')' '(Case ''case'')+' 'Resume' 'ResumeLabel'
-	     'ResumeNext' 'ResumeEmpty' 'Go' 'Destination' 'DestinationList'
-	     '("," Destination ''label'')' '("," Destination ''label'')*'
-	     'GoToStatement' 'GoSub' 'On' 'OnErrorGoTo' 'OnErrorResumeNext'
-	     'OnExpressionGo' 'Error' 'With' 'Exits' 'ExitFunction'
-	     'ExitSub' 'ExitDo' 'ExitFor' 'ExitProperty' 'Return' 'DictionaryAccess'
-	     'MemberAccess' 'ImplicitParenthesesLessCall'
-	     'ProcedureCallOrArrayAccess' 'Argument' 'ArgumentList'
-	     '(Argument ''argument'' ? ("," | ";" ))'
-	     '(Argument ''argument'' ? ("," | ";" ))*'
-	     '( ("," | ";" )Argument ''argument'' ?)'
-	     '( ("," | ";" )Argument ''argument'' ?)*'
-	     'StateAccess' 'ExplicitCall' 'RaiseEvent' 'TypeOf' 'StatementCalls'
-	     'ExpressionCalls' 'E O F' 'error' )
+	^ #('"!"' '"&"' '"("' '")"' '"*"' '"+"' '","' '"-"' '"."' '"/"' '":"' '":="' '";"' '"<"' '"<<"' '"<="' '"<>"' '"="' '">"' '">="' '">>"' '"APPEND"' '"AS"' '"AddressOf"' '"BINARY"' '"Call"' '"DefBool"' '"DefByte"' '"DefCur"' '"DefDate"' '"DefDbl"' '"DefDec"' '"DefInt"' '"DefLng"' '"DefLngPtr"' '"DefLnglng"' '"DefObj"' '"DefSng"' '"DefStr"' '"DefVar"' '"DoEvents"' '"ERROR"' '"FOR"' '"INPUT"' '"IS"' '"IsNot"' '"LIKE"' '"Line"' '"Lock Read Write"' '"Lock Read"' '"Lock Write"' '"Mod"' '"NEW"' '"OBJECT"' '"OPEN"' '"Output"' '"PRINT"' '"RaiseEvent"' '"Random"' '"Read"' '"Shared"' '"TypeOf"' '"WithEvents"' '"Write"' '"["' '"\"' '"^"' '"alias"' '"and"' '"attribute"' '"base"' '"beep"' '"begin"' '"bold"' '"boolean"' '"byref"' '"byte"' '"byval"' '"case"' '"class"' '"collection"' '"compare"' '"const"' '"currency"' '"database"' '"date"' '"decimal"' '"declare"' '"dim"' '"do"' '"double"' '"each"' '"else"' '"else:"' '"elseif"' '"end"' '"enum"' '"eqv"' '"event"' '"exit"' '"explicit"' '"friend"' '"function"' '"get"' '"global"' '"gosub"' '"goto"' '"if"' '"implements"' '"in"' '"integer"' '"len"' '"let"' '"lib"' '"long"' '"longlong"' '"longptr"' '"loop"' '"module"' '"name"' '"next"' '"not"' '"on"' '"option"' '"optional"' '"or"' '"paramarray"' '"preserve"' '"private"' '"property"' '"public"' '"redim"' '"resume"' '"return"' '"select"' '"set"' '"single"' '"static"' '"step"' '"string"' '"sub"' '"text"' '"then"' '"then:"' '"to"' '"type"' '"until"' '"variant"' '"version"' '"wend"' '"while"' '"with"' '"xor"' '"{"' '"}"' '"~"' '<lineContinuation>' '<HEX_INTEGER>' '<DATE_LITERAL>' '<COLOR_LITERAL>' '<INTEGER_LITERAL>' '<FLOATING_POINT_LITERAL>' '<BOOLEAN_LITERAL>' '<STRING_LITERAL>' '<NULL_LITERAL>' '<IDENTIFIER>' '<SBIDENTIFIER>' '<DEFTYPE>' '<HASH_NUMBER>' '<HASH_IDENTIFIER>' '<whitespace>' '<eol>' '<comment>' 'B e g i n' 'module' '<eol>*' '(<eol>* ModuleStatement ''element'' )' '(<eol>* ModuleStatement ''element'' )*' 'literal' 'FileDescriptorLiteral' 'IntegerLiteral' 'ColorLiteral' 'DateLiteral' 'FloatLiteral' 'BooleanLiteral' 'StringLiteral' 'Null' 'GuidLiteral' '<HEX_INTEGER> +' '<HEX_INTEGER>+' 'Identifier' 'KeywordIdentifier' 'UsableKeywords' 'IdentifierWords' 'HashIdentifier' 'SquareBracketIdentifier' 'SimpleIdentifier' 'LabelTag' 'header' 'Option' 'OptionBase' 'SetUpAssignation' 'Attribute' 'Configuration' '( <eol>+ SetUpAssignation ''setting'')' '( <eol>+ SetUpAssignation ''setting'')*' '<eol>+' 'Implements' 'DefTypeLabel' 'DefType' 'ModuleStatement' 'Statement' 'Block' '((<eol>| ":")+ (IntegerLiteral ''lineNumber'')? Statement ''statement''  )' '((<eol>| ":")+ (IntegerLiteral ''lineNumber'')? Statement ''statement''  )*' '(<eol>| ":")' '(<eol>| ":")+' 'OneLineBlock' '(":" Statement ''statement''  )' '(":" Statement ''statement''  )*' 'BaseType' 'Visibility' 'ComplexType' '("."  UsableKeywords  ''member'')' '("."  UsableKeywords  ''member'')*' 'Type' 'TypedThing' 'TypedAndInstantiatedThing' 'TypeSize' '( "," Expression ''size'')' '( "," Expression ''size'')*' 'AsType' 'StatementAssignment' 'ExplicitLetSet' 'Assignment' 'ExplicitAssignement' 'OtherStatements' 'Rename' 'Beep' 'DoEvents' 'Types' 'DefineType' '( <eol>* TypeEntry ''field'' )' '( <eol>* TypeEntry ''field'' )*' 'TypeEntry' 'Event' 'DefineEnum' '( <eol>* EnumEntry ''field'')' '( <eol>* EnumEntry ''field'')*' 'EnumEntry' 'ParameterPassingStrategy' 'ParameterList' '( "," Parameter ''parameter'')' '( "," Parameter ''parameter'')*' 'Parameter' '("=" Expression ''default'')' '("=" Expression ''default'')?' 'DeclareSub' 'DeclareFunction' 'DeclareExternal' 'Modifier' 'DefineFunction' 'DefineSub' 'ModulePropertyGet' 'ModulePropertySet' 'ModulePropertyLet' 'BehaviourDefinition' 'ModuleProperty' 'ModuleConstant' 'DefineVariable' 'ReDefineVariable' 'ReDefineExpression' 'StaticVariable' 'Variable' 'Constant' 'ModuleProperties' 'ModuleConstants' 'DefineVariables' 'ReDefineVariables' 'StaticVariables' 'VariableList' '(","  Variable ''variable'' )' '(","  Variable ''variable'' )+' 'ConstantList' '(","  Constant ''constant'' )' '(","  Constant ''constant'' )+' 'VariableDefinition' 'Expression' 'ParentheseesExpression' 'Interval' 'Operation' 'UnaryOperation' 'NegatedOperation' 'PositiveOperation' 'NotOperation' 'BinaryOperation' 'ComparisonOperator' 'ComparisonOperation' 'ArithmeticOperator' 'ArithmeticOperation' 'BooleanOperator' 'BooleanBinaryOperation' 'ConcatenationOperation' 'Equals' 'ValueClause' 'AddressOfClause' 'NewClause' 'OpenMode' 'OpenAccess' 'Lock' 'FileClauses' 'OpenFileClause' 'PrintFileClause' '(";" Expression ''value'')' '(";" Expression ''value'')*' 'LineInputClause' 'ControlFlowStatement' 'Loops' 'DoLoop' 'InfinityLoop' 'WhileTrue' 'UntilTrue' 'DoWhileTrue' 'DoUntilTrue' 'WhileWend' 'ForLoop' 'ForEach' 'ForNext' 'ForNextOneLine' 'ForStepNext' 'If' 'IfThenElseOneLine' 'IfThenElse' '(ElseIf ''elseif'')' '(ElseIf ''elseif'')*' 'Else' 'ElseIf' 'RaiseError' 'To' 'Label' 'CaseCondition' 'Case' '( "," (CaseCondition ''expression''))' '( "," (CaseCondition ''expression''))*' 'Select' '(Case ''case'')' '(Case ''case'')+' 'Resume' 'ResumeLabel' 'ResumeNext' 'ResumeEmpty' 'Go' 'Destination' 'DestinationList' '("," Destination ''label'')' '("," Destination ''label'')*' 'GoToStatement' 'GoSub' 'On' 'OnErrorGoTo' 'OnErrorResumeNext' 'OnExpressionGo' 'Error' 'With' 'Exits' 'ExitFunction' 'ExitSub' 'ExitDo' 'ExitFor' 'ExitProperty' 'Return' 'DictionaryAccess' 'MemberAccess' 'ImplicitParenthesesLessCall' 'ProcedureCallOrArrayAccess' 'Argument' 'ArgumentList' '(Argument ''argument'' ? ("," | ";" ))' '(Argument ''argument'' ? ("," | ";" ))*' '( ("," | ";" )Argument ''argument'' ?)' '( ("," | ";" )Argument ''argument'' ?)*' 'StateAccess' 'ExplicitCall' 'RaiseEvent' 'TypeOf' 'StatementCalls' 'ExpressionCalls' 'E O F' 'error')
 ]
 
 { #category : #generated }
 VBParser class >> symbolTypes [
-
-	^ #( #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken
-	     #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken
-	     #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken
-	     #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken
-	     #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken
-	     #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken
-	     #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken
-	     #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken
-	     #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken
-	     #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken
-	     #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken
-	     #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken
-	     #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken
-	     #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken
-	     #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken
-	     #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken
-	     #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken
-	     #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken
-	     #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken
-	     #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken
-	     #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken
-	     #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken
-	     #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken
-	     #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken
-	     #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken
-	     #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken
-	     #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken
-	     #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken
-	     #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken
-	     #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken
-	     #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken
-	     #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken
-	     #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken
-	     #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken
-	     #SmaCCToken #SmaCCToken #SmaCCToken #VBModuleNode #VBModuleNode
-	     #OrderedCollection #OrderedCollection #OrderedCollection
-	     #VBProgramNode #VBFileDescriptorLiteralNode
-	     #VBIntegerLiteralNode #VBColorLiteralNode #VBDateLiteralNode
-	     #VBFloatLiteralNode #VBBooleanLiteralNode #VBStringLiteralNode
-	     #VBNullNode #VBGuidLiteralNode #OrderedCollection
-	     #OrderedCollection #VBProgramNode #VBProgramNode #SmaCCToken
-	     #SmaCCToken #VBHashIdentifierNode #VBSquareBracketIdentifierNode
-	     #VBSimpleIdentifierNode #VBLabelTagNode #VBHeaderNode
-	     #VBProgramNode #VBOptionBaseNode #VBSetUpAssignationNode
-	     #VBModuleAttributeNode #VBConfigurationNode #OrderedCollection
-	     #OrderedCollection #OrderedCollection #VBImplementsNode
-	     #SmaCCToken #VBDefTypeNode #VBProgramNode #Object #VBBlockNode
-	     #OrderedCollection #OrderedCollection #OrderedCollection
-	     #OrderedCollection #VBBlockNode #OrderedCollection
-	     #OrderedCollection #Object #SmaCCToken #VBComplexTypeNode
-	     #OrderedCollection #OrderedCollection #Object #VBTypedThingNode
-	     #VBAsTypeAndNewNode #VBTypeSizeNode #OrderedCollection
-	     #OrderedCollection #VBProgramNode #VBExplicitAssignementNode
-	     #SmaCCToken #VBExplicitAssignementNode
-	     #VBExplicitAssignementNode #Object #VBRenameNode #SmaCCToken
-	     #VBDoEventsNode #VBProgramNode #VBDefineTypeNode
-	     #OrderedCollection #OrderedCollection #VBTypeEntryNode
-	     #VBEventNode #VBDefineEnumNode #OrderedCollection
-	     #OrderedCollection #VBEnumEntryNode #Object #VBParameterListNode
-	     #OrderedCollection #OrderedCollection #VBParameterNode
-	     #OrderedCollection #OrderedCollection #VBExternalSubNode
-	     #VBExternalFunctionNode #VBProgramNode #SmaCCToken #VBFunctionDefinitionNode
-	     #VBSubDefinitionNode #VBModulePropertyGetNode
-	     #VBModulePropertyGetNode #VBModulePropertyGetNode
-	     #VBProgramNode #VBModulePropertyNode #VBModuleConstantNode
-	     #VBDimVariableNode #VBReDimVariableNode #VBReDimVariableNode
-	     #VBStaticVariableNode #VBVariableNode #VBConstantNode
-	     #VBModuleMultiplePropertiesNode #VBModuleMultipleConstantsNode
-	     #VBDimMultipleVariablesNode #VBReDimMultipleVariablesNode
-	     #VBStaticMultipleVariablesNode #VBVariableListNode
-	     #OrderedCollection #OrderedCollection #VBConstantListNode
-	     #OrderedCollection #OrderedCollection #VBProgramNode
-	     #VBProgramNode #VBParentheseesExpressionNode
-	     #VBIntervalNode #VBProgramNode #VBProgramNode #VBNegatedOperationNode
-	     #VBPositiveOperationNode #VBNotOperationNode #VBProgramNode
-	     #OrderedCollection #VBComparisonOperationNode
-	     #OrderedCollection #VBArithmeticOperationNode
-	     #OrderedCollection #VBArithmeticOperationNode
-	     #VBConcatenationOperationNode #VBEqualsNode #VBProgramNode
-	     #VBAddressOfClauseNode #VBNewClauseNode #SmaCCToken #SmaCCToken
-	     #SmaCCToken #VBProgramNode #VBOpenClauseNode #VBPrintIntoFileClauseNode
-	     #OrderedCollection #OrderedCollection #VBLineInputClauseNode
-	     #VBProgramNode #VBProgramNode #VBProgramNode #VBInfinityLoopNode
-	     #VBWhileTrueNode #VBUntilTrueNode #VBDoWhileTrueNode
-	     #VBDoUntilTrueNode #VBWhileWendNode #VBProgramNode
-	     #VBForEachNode #VBForNextNode #VBForNextNode #VBForStepNextNode
-	     #VBIfThenElseNode #VBIfThenElseNode #VBIfThenElseNode
-	     #VBElseIfBlockNode #OrderedCollection #VBElseIfBlockNode
-	     #VBElseIfBlockNode #VBRaiseErrorNode #VBLabelNode #VBLabelNode
-	     #VBProgramNode #VBCaseNode #OrderedCollection #OrderedCollection
-	     #VBSelectNode #VBCaseNode #OrderedCollection #VBProgramNode
-	     #VBResumeLabelNode #VBResumeNextNode #VBResumeEmptyNode
-	     #VBProgramNode #VBProgramNode #VBDestinationListNode
-	     #OrderedCollection #OrderedCollection #VBGoToStatementNode
-	     #VBGoSubNode #VBProgramNode #VBOnErrorGoToNode
-	     #VBOnErrorResumeNextNode #VBOnExpressionGoNode
-	     #VBErrorNode #VBWithNode #VBProgramNode #VBExitsNode
-	     #VBExitsNode #VBExitsNode #VBExitsNode #VBExitsNode #VBReturnNode
-	     #VBDictionaryAccessNode #VBMemberAccessNode #VBImplicitParenthesesLessCallNode
-	     #VBProcedureCallOrArrayAccessNode
-	     #VBArgumentNode #VBArgumentListNode #OrderedCollection
-	     #OrderedCollection #OrderedCollection #OrderedCollection
-	     #VBProgramNode #VBExplicitCallNode #VBRaiseEventNode
-	     #VBTypeOfNode #VBProgramNode #VBProgramNode #SmaCCToken
-	     #SmaCCErrorNode )
+	^ #(#SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #VBModuleNode #VBModuleNode #OrderedCollection #OrderedCollection #OrderedCollection #VBProgramNode #VBFileDescriptorLiteralNode #VBIntegerLiteralNode #VBColorLiteralNode #VBDateLiteralNode #VBFloatLiteralNode #VBBooleanLiteralNode #VBStringLiteralNode #VBNullNode #VBGuidLiteralNode #OrderedCollection #OrderedCollection #VBProgramNode #VBProgramNode #SmaCCToken #SmaCCToken #VBHashIdentifierNode #VBSquareBracketIdentifierNode #VBSimpleIdentifierNode #VBLabelTagNode #VBHeaderNode #VBProgramNode #VBOptionBaseNode #VBSetUpAssignationNode #VBModuleAttributeNode #VBConfigurationNode #OrderedCollection #OrderedCollection #OrderedCollection #VBImplementsNode #SmaCCToken #VBDefTypeNode #VBProgramNode #Object #VBBlockNode #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #VBBlockNode #OrderedCollection #OrderedCollection #Object #SmaCCToken #VBComplexTypeNode #OrderedCollection #OrderedCollection #Object #VBTypedThingNode #VBAsTypeAndNewNode #VBTypeSizeNode #OrderedCollection #OrderedCollection #VBProgramNode #VBExplicitAssignementNode #SmaCCToken #VBExplicitAssignementNode #VBExplicitAssignementNode #Object #VBRenameNode #SmaCCToken #VBDoEventsNode #VBProgramNode #VBDefineTypeNode #OrderedCollection #OrderedCollection #VBTypeEntryNode #VBEventNode #VBDefineEnumNode #OrderedCollection #OrderedCollection #VBEnumEntryNode #Object #VBParameterListNode #OrderedCollection #OrderedCollection #VBParameterNode #OrderedCollection #OrderedCollection #VBExternalSubNode #VBExternalFunctionNode #VBProgramNode #SmaCCToken #VBFunctionDefinitionNode #VBSubDefinitionNode #VBModulePropertyGetNode #VBModulePropertyGetNode #VBModulePropertyGetNode #VBProgramNode #VBModulePropertyNode #VBModuleConstantNode #VBDimVariableNode #VBReDimVariableNode #VBReDimVariableNode #VBStaticVariableNode #VBVariableNode #VBConstantNode #VBModuleMultiplePropertiesNode #VBModuleMultipleConstantsNode #VBDimMultipleVariablesNode #VBReDimMultipleVariablesNode #VBStaticMultipleVariablesNode #VBVariableListNode #OrderedCollection #OrderedCollection #VBConstantListNode #OrderedCollection #OrderedCollection #VBProgramNode #VBProgramNode #VBParentheseesExpressionNode #VBIntervalNode #VBProgramNode #VBProgramNode #VBNegatedOperationNode #VBPositiveOperationNode #VBNotOperationNode #VBProgramNode #OrderedCollection #VBComparisonOperationNode #OrderedCollection #VBArithmeticOperationNode #OrderedCollection #VBArithmeticOperationNode #VBConcatenationOperationNode #VBEqualsNode #VBProgramNode #VBAddressOfClauseNode #VBNewClauseNode #SmaCCToken #SmaCCToken #SmaCCToken #VBProgramNode #VBOpenClauseNode #VBPrintIntoFileClauseNode #OrderedCollection #OrderedCollection #VBLineInputClauseNode #VBProgramNode #VBProgramNode #VBProgramNode #VBInfinityLoopNode #VBWhileTrueNode #VBUntilTrueNode #VBDoWhileTrueNode #VBDoUntilTrueNode #VBWhileWendNode #VBProgramNode #VBForEachNode #VBForNextNode #VBForNextNode #VBForStepNextNode #VBIfThenElseNode #VBIfThenElseNode #VBIfThenElseNode #VBElseIfBlockNode #OrderedCollection #VBElseIfBlockNode #VBElseIfBlockNode #VBRaiseErrorNode #VBLabelNode #VBLabelNode #VBProgramNode #VBCaseNode #OrderedCollection #OrderedCollection #VBSelectNode #VBCaseNode #OrderedCollection #VBProgramNode #VBResumeLabelNode #VBResumeNextNode #VBResumeEmptyNode #VBProgramNode #VBProgramNode #VBDestinationListNode #OrderedCollection #OrderedCollection #VBGoToStatementNode #VBGoSubNode #VBProgramNode #VBOnErrorGoToNode #VBOnErrorResumeNextNode #VBOnExpressionGoNode #VBErrorNode #VBWithNode #VBProgramNode #VBExitsNode #VBExitsNode #VBExitsNode #VBExitsNode #VBExitsNode #VBReturnNode #VBDictionaryAccessNode #VBMemberAccessNode #VBImplicitParenthesesLessCallNode #VBProcedureCallOrArrayAccessNode #VBArgumentNode #VBArgumentListNode #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #VBProgramNode #VBExplicitCallNode #VBRaiseEventNode #VBTypeOfNode #VBProgramNode #VBProgramNode #SmaCCToken #SmaCCErrorNode)
 ]
 
 { #category : #generated }
@@ -2447,8 +2235,8 @@ VBParser class >> transitionTable [
 #[1 5 181 0 2 3 206 0 4 5 185 0 5 5 189 0 6 3 206 0 7 5 193 0 8 5 197 0 10 5 205 0 14 5 209 0 16 5 213 0 17 6 201 0 18 5 221 0 19 5 225 0 20 5 229 0 45 5 233 0 47 5 237 0 52 5 241 0 66 5 245 0 67 5 249 0 69 5 253 0 98 6 1 0 126 6 5 0 145 6 9 0 153 10 129 0 231 6 13 1 41 6 17 1 43 6 21 1 45] 
 #[0 10 133 0 4] 
 #[0 4 226 0 1 0 2 0 3 0 4 0 5 0 6 0 7 0 8 0 9 0 10 0 11 0 12 0 13 0 14 0 16 0 17 0 18 0 19 0 20 0 22 0 23 0 24 0 26 0 27 0 28 0 29 0 30 0 31 0 32 0 33 0 34 0 35 0 36 0 37 0 38 0 39 0 40 0 41 0 42 0 43 0 44 0 45 0 46 0 47 0 48 0 52 0 53 0 54 0 55 0 57 0 58 0 62 0 66 0 67 0 69 0 70 0 72 0 73 0 74 0 76 0 78 0 79 0 81 0 83 0 85 0 86 0 88 0 89 0 90 0 93 0 94 0 96 0 97 0 98 0 99 0 100 0 102 0 103 0 104 0 105 0 106 0 107 0 108 0 109 0 112 0 113 0 118 0 120 0 121 0 122 0 123 0 124 0 126 0 127 0 129 0 130 0 131 0 132 0 133 0 134 0 135 0 136 0 138 0 139 0 141 0 142 0 143 0 144 0 145 0 146 0 149 0 150 0 151 0 152 0 153 0 154 0 159 0 160 0 161 0 162 0 163 0 164 0 165 0 166 0 167 0 169 0 170 0 172 1 132] 
-#[1 4 230 0 1 5 181 0 2 4 230 0 3 4 230 0 4 5 185 0 5 5 189 0 6 4 230 0 7 5 193 0 8 4 230 0 9 5 197 0 10 4 230 0 11 4 230 0 12 4 230 0 13 5 205 0 14 5 209 0 16 5 213 0 17 4 230 0 18 5 221 0 19 5 225 0 20 4 230 0 22 4 230 0 23 4 230 0 24 4 230 0 26 4 230 0 27 4 230 0 28 4 230 0 29 4 230 0 30 4 230 0 31 4 230 0 32 4 230 0 33 4 230 0 34 4 230 0 35 4 230 0 36 4 230 0 37 4 230 0 38 4 230 0 39 4 230 0 40 4 230 0 41 4 230 0 42 4 230 0 43 4 230 0 44 4 11 0 45 4 230 0 46 4 15 0 47 4 230 0 48 5 237 0 52 4 230 0 53 4 230 0 54 4 230 0 55 4 230 0 57 4 230 0 58 4 230 0 62 4 19 0 66 5 245 0 67 5 249 0 69 4 230 0 70 4 230 0 72 4 230 0 73 4 230 0 74 4 230 0 79 4 230 0 81 4 230 0 83 4 230 0 85 4 230 0 86 4 230 0 88 4 230 0 89 4 230 0 90 4 230 0 93 4 230 0 94 4 230 0 96 4 230 0 97 5 253 0 98 4 230 0 99 4 230 0 100 4 230 0 102 4 230 0 103 4 230 0 104 4 230 0 105 4 230 0 106 4 230 0 107 4 230 0 108 4 230 0 109 4 230 0 112 4 230 0 113 4 230 0 118 4 230 0 120 4 230 0 121 4 230 0 122 4 230 0 123 4 230 0 124 6 1 0 126 4 230 0 129 4 230 0 130 4 230 0 131 4 230 0 132 4 230 0 133 4 230 0 134 4 230 0 135 4 230 0 136 4 230 0 138 4 230 0 139 4 230 0 141 4 230 0 142 4 230 0 143 4 230 0 144 4 23 0 145 4 230 0 146 4 230 0 149 4 230 0 150 4 230 0 151 4 230 0 152 6 9 0 153 4 230 0 154 4 230 0 159 4 230 0 160 4 230 0 161 4 230 0 162 4 230 0 163 4 230 0 164 4 230 0 165 4 230 0 166 4 230 0 167 4 230 0 169 4 230 0 170 4 230 0 172 6 13 1 41 6 17 1 43 6 21 1 45 4 230 1 132] 
-#[1 5 181 0 2 5 185 0 5 5 189 0 6 4 234 0 7 5 193 0 8 5 197 0 10 4 238 0 11 4 242 0 12 5 205 0 14 5 209 0 16 5 213 0 17 4 242 0 18 5 221 0 19 5 225 0 20 4 27 0 45 4 31 0 47 5 237 0 52 4 35 0 66 5 245 0 67 5 249 0 69 4 238 0 93 4 238 0 94 5 253 0 98 4 238 0 121 6 1 0 126 4 39 0 145 6 9 0 153 4 238 0 172 6 13 1 41 6 17 1 43 6 21 1 45 4 238 1 132] 
+#[1 4 230 0 1 5 181 0 2 4 230 0 3 4 230 0 4 5 185 0 5 5 189 0 6 4 230 0 7 5 193 0 8 4 230 0 9 5 197 0 10 4 230 0 11 4 230 0 12 4 230 0 13 5 205 0 14 5 209 0 16 5 213 0 17 5 221 0 19 5 225 0 20 4 230 0 22 4 230 0 23 4 230 0 24 4 230 0 26 4 230 0 27 4 230 0 28 4 230 0 29 4 230 0 30 4 230 0 31 4 230 0 32 4 230 0 33 4 230 0 34 4 230 0 35 4 230 0 36 4 230 0 37 4 230 0 38 4 230 0 39 4 230 0 40 4 230 0 41 4 230 0 42 4 230 0 43 4 230 0 44 4 11 0 45 4 230 0 46 4 15 0 47 4 230 0 48 5 237 0 52 4 230 0 53 4 230 0 54 4 230 0 55 4 230 0 57 4 230 0 58 4 230 0 62 4 19 0 66 5 245 0 67 5 249 0 69 4 230 0 70 4 230 0 72 4 230 0 73 4 230 0 74 4 230 0 79 4 230 0 81 4 230 0 83 4 230 0 85 4 230 0 86 4 230 0 88 4 230 0 89 4 230 0 90 4 230 0 93 4 230 0 94 4 230 0 96 4 230 0 97 5 253 0 98 4 230 0 99 4 230 0 100 4 230 0 102 4 230 0 103 4 230 0 104 4 230 0 105 4 230 0 106 4 230 0 107 4 230 0 108 4 230 0 109 4 230 0 112 4 230 0 113 4 230 0 118 4 230 0 120 4 230 0 121 4 230 0 122 4 230 0 123 4 230 0 124 6 1 0 126 4 230 0 129 4 230 0 130 4 230 0 131 4 230 0 132 4 230 0 133 4 230 0 134 4 230 0 135 4 230 0 136 4 230 0 138 4 230 0 139 4 230 0 141 4 230 0 142 4 230 0 143 4 230 0 144 4 23 0 145 4 230 0 146 4 230 0 149 4 230 0 150 4 230 0 151 4 230 0 152 6 9 0 153 4 230 0 154 4 230 0 159 4 230 0 160 4 230 0 161 4 230 0 162 4 230 0 163 4 230 0 164 4 230 0 165 4 230 0 166 4 230 0 167 4 230 0 169 4 230 0 170 4 230 0 172 6 13 1 41 6 17 1 43 6 21 1 45 4 230 1 132] 
+#[1 5 181 0 2 5 185 0 5 5 189 0 6 4 234 0 7 5 193 0 8 5 197 0 10 4 238 0 11 4 242 0 12 5 205 0 14 5 209 0 16 5 213 0 17 5 221 0 19 5 225 0 20 4 27 0 45 4 31 0 47 5 237 0 52 4 35 0 66 5 245 0 67 5 249 0 69 4 238 0 93 4 238 0 94 5 253 0 98 4 238 0 121 6 1 0 126 4 39 0 145 6 9 0 153 4 238 0 172 6 13 1 41 6 17 1 43 6 21 1 45 4 238 1 132] 
 #[1 3 210 0 1 3 210 0 3 3 210 0 4 3 210 0 5 3 210 0 6 3 210 0 7 3 210 0 8 3 210 0 9 3 210 0 11 3 210 0 18 2 143 0 22 3 210 0 24 3 210 0 26 3 210 0 27 3 210 0 28 3 210 0 29 3 210 0 30 3 210 0 31 3 210 0 32 3 210 0 33 3 210 0 34 3 210 0 35 3 210 0 36 3 210 0 37 3 210 0 38 3 210 0 39 3 210 0 40 3 210 0 41 3 210 0 42 3 210 0 43 2 147 0 44 3 210 0 48 3 210 0 53 2 155 0 54 3 210 0 55 2 159 0 57 3 210 0 58 3 210 0 62 3 210 0 70 3 210 0 72 3 210 0 73 2 163 0 74 10 137 0 75 10 137 0 77 2 167 0 81 3 210 0 83 10 137 0 84 2 171 0 85 2 175 0 86 10 137 0 87 3 210 0 88 3 210 0 89 3 210 0 90 10 137 0 91 3 210 0 93 3 210 0 94 3 210 0 96 3 210 0 97 3 210 0 99 3 210 0 100 3 210 0 102 3 210 0 103 2 179 0 104 3 210 0 105 3 210 0 106 3 210 0 107 3 210 0 108 3 210 0 109 10 137 0 111 2 183 0 112 2 187 0 113 10 137 0 115 10 137 0 116 10 137 0 117 2 191 0 120 3 210 0 121 3 210 0 122 3 210 0 123 3 210 0 124 3 210 0 129 3 210 0 130 3 210 0 131 3 210 0 132 3 210 0 133 3 210 0 134 3 210 0 135 2 195 0 136 10 137 0 137 3 210 0 138 10 137 0 140 3 210 0 141 2 199 0 142 3 210 0 146 8 37 0 148 2 203 0 149 3 210 0 151 3 210 0 152 3 210 0 154 3 210 0 159 3 210 0 160 3 210 0 161 3 210 0 162 3 210 0 163 3 210 0 164 3 210 0 165 2 207 0 166 2 211 0 167 3 210 0 169 2 215 0 170 3 210 0 172 8 41 0 191 1 89 0 194 8 41 0 195 8 41 0 196 8 41 0 197 10 137 0 221 10 137 0 223 8 53 0 225 10 137 0 226 3 210 1 132] 
 #[0 4 43 0 1 0 3 0 4 0 5 0 6 0 7 0 8 0 9 0 11 0 18 0 22 0 24 0 26 0 27 0 28 0 29 0 30 0 31 0 32 0 33 0 34 0 35 0 36 0 37 0 38 0 39 0 40 0 41 0 42 0 43 0 44 0 48 0 53 0 54 0 55 0 57 0 58 0 62 0 70 0 72 0 73 0 74 0 81 0 83 0 85 0 86 0 88 0 89 0 90 0 93 0 94 0 96 0 97 0 99 0 100 0 102 0 103 0 104 0 105 0 106 0 107 0 108 0 109 0 112 0 113 0 120 0 121 0 122 0 123 0 124 0 129 0 130 0 131 0 132 0 133 0 134 0 135 0 136 0 138 0 141 0 142 0 146 0 149 0 151 0 152 0 154 0 159 0 160 0 161 0 162 0 163 0 164 0 165 0 166 0 167 0 169 0 170 0 172 1 132] 
 #[0 4 250 0 1 0 3 0 4 0 5 0 6 0 7 0 8 0 9 0 11 0 18 0 22 0 24 0 26 0 27 0 28 0 29 0 30 0 31 0 32 0 33 0 34 0 35 0 36 0 37 0 38 0 39 0 40 0 41 0 42 0 43 0 44 0 48 0 53 0 54 0 55 0 57 0 58 0 62 0 70 0 72 0 73 0 74 0 81 0 83 0 85 0 86 0 88 0 89 0 90 0 93 0 94 0 96 0 97 0 99 0 100 0 102 0 103 0 104 0 105 0 106 0 107 0 108 0 109 0 112 0 113 0 120 0 121 0 122 0 123 0 124 0 129 0 130 0 131 0 132 0 133 0 134 0 135 0 136 0 138 0 141 0 142 0 146 0 149 0 151 0 152 0 154 0 159 0 160 0 161 0 162 0 163 0 164 0 165 0 166 0 167 0 169 0 170 0 172 1 132] 
@@ -2487,7 +2275,7 @@ VBParser class >> transitionTable [
 #[0 5 90 0 7 0 11 0 22 0 27 0 28 0 29 0 30 0 31 0 32 0 33 0 34 0 35 0 36 0 37 0 38 0 39 0 40 0 44 0 54 0 57 0 70 0 73 0 74 0 81 0 83 0 85 0 86 0 88 0 89 0 93 0 94 0 97 0 99 0 102 0 103 0 104 0 105 0 109 0 112 0 113 0 120 0 121 0 124 0 129 0 130 0 131 0 132 0 136 0 138 0 141 0 142 0 146 0 149 0 166 0 167 0 170 0 172 1 132] 
 #[0 5 94 0 7 0 11 0 22 0 27 0 28 0 29 0 30 0 31 0 32 0 33 0 34 0 35 0 36 0 37 0 38 0 39 0 40 0 44 0 54 0 57 0 70 0 73 0 74 0 81 0 83 0 85 0 86 0 88 0 89 0 93 0 94 0 97 0 99 0 102 0 103 0 104 0 105 0 109 0 112 0 113 0 120 0 121 0 124 0 129 0 130 0 131 0 132 0 136 0 138 0 141 0 142 0 146 0 149 0 166 0 167 0 170 0 172 1 132] 
 #[1 5 98 0 1 5 98 0 2 5 98 0 3 5 98 0 4 5 185 0 5 5 189 0 6 5 98 0 7 5 193 0 8 5 98 0 9 5 197 0 10 5 98 0 11 5 98 0 12 5 98 0 13 5 98 0 14 5 98 0 16 5 98 0 17 5 98 0 18 5 98 0 19 5 98 0 20 5 98 0 22 5 98 0 23 5 98 0 24 5 98 0 26 5 98 0 27 5 98 0 28 5 98 0 29 5 98 0 30 5 98 0 31 5 98 0 32 5 98 0 33 5 98 0 34 5 98 0 35 5 98 0 36 5 98 0 37 5 98 0 38 5 98 0 39 5 98 0 40 5 98 0 41 5 98 0 42 5 98 0 43 5 98 0 44 4 67 0 45 5 98 0 46 4 71 0 47 5 98 0 48 5 237 0 52 5 98 0 53 5 98 0 54 5 98 0 55 5 98 0 57 5 98 0 58 5 98 0 62 4 75 0 66 5 245 0 67 5 98 0 69 5 98 0 70 5 98 0 72 5 98 0 73 5 98 0 74 5 98 0 79 5 98 0 81 5 98 0 83 5 98 0 85 5 98 0 86 5 98 0 88 5 98 0 89 5 98 0 90 5 98 0 93 5 98 0 94 5 98 0 96 5 98 0 97 5 98 0 98 5 98 0 99 5 98 0 100 5 98 0 102 5 98 0 103 5 98 0 104 5 98 0 105 5 98 0 106 5 98 0 107 5 98 0 108 5 98 0 109 5 98 0 112 5 98 0 113 5 98 0 118 5 98 0 120 5 98 0 121 5 98 0 122 5 98 0 123 5 98 0 124 5 98 0 126 5 98 0 129 5 98 0 130 5 98 0 131 5 98 0 132 5 98 0 133 5 98 0 134 5 98 0 135 5 98 0 136 5 98 0 138 5 98 0 139 5 98 0 141 5 98 0 142 5 98 0 143 5 98 0 144 4 79 0 145 5 98 0 146 5 98 0 149 5 98 0 150 5 98 0 151 5 98 0 152 5 98 0 153 5 98 0 154 5 98 0 159 5 98 0 160 5 98 0 161 5 98 0 162 5 98 0 163 5 98 0 164 5 98 0 165 5 98 0 166 5 98 0 167 5 98 0 169 5 98 0 170 5 98 0 172 6 13 1 41 6 17 1 43 6 21 1 45 5 98 1 132] 
-#[1 5 102 0 1 5 181 0 2 5 102 0 3 5 102 0 4 5 185 0 5 5 189 0 6 5 102 0 7 5 193 0 8 5 102 0 9 5 197 0 10 5 102 0 11 5 102 0 12 5 102 0 13 5 205 0 14 5 209 0 16 5 213 0 17 5 102 0 18 5 221 0 19 5 225 0 20 5 102 0 22 5 102 0 23 5 102 0 24 5 102 0 26 5 102 0 27 5 102 0 28 5 102 0 29 5 102 0 30 5 102 0 31 5 102 0 32 5 102 0 33 5 102 0 34 5 102 0 35 5 102 0 36 5 102 0 37 5 102 0 38 5 102 0 39 5 102 0 40 5 102 0 41 5 102 0 42 5 102 0 43 5 102 0 44 4 83 0 45 5 102 0 46 4 87 0 47 5 102 0 48 5 237 0 52 5 102 0 53 5 102 0 54 5 102 0 55 5 102 0 57 5 102 0 58 5 102 0 62 4 91 0 66 5 245 0 67 5 249 0 69 5 102 0 70 5 102 0 72 5 102 0 73 5 102 0 74 5 102 0 79 5 102 0 81 5 102 0 83 5 102 0 85 5 102 0 86 5 102 0 88 5 102 0 89 5 102 0 90 5 102 0 93 5 102 0 94 5 102 0 96 5 102 0 97 5 253 0 98 5 102 0 99 5 102 0 100 5 102 0 102 5 102 0 103 5 102 0 104 5 102 0 105 5 102 0 106 5 102 0 107 5 102 0 108 5 102 0 109 5 102 0 112 5 102 0 113 5 102 0 118 5 102 0 120 5 102 0 121 5 102 0 122 5 102 0 123 5 102 0 124 6 1 0 126 5 102 0 129 5 102 0 130 5 102 0 131 5 102 0 132 5 102 0 133 5 102 0 134 5 102 0 135 5 102 0 136 5 102 0 138 5 102 0 139 5 102 0 141 5 102 0 142 5 102 0 143 5 102 0 144 4 95 0 145 5 102 0 146 5 102 0 149 5 102 0 150 5 102 0 151 5 102 0 152 6 9 0 153 5 102 0 154 5 102 0 159 5 102 0 160 5 102 0 161 5 102 0 162 5 102 0 163 5 102 0 164 5 102 0 165 5 102 0 166 5 102 0 167 5 102 0 169 5 102 0 170 5 102 0 172 6 13 1 41 6 17 1 43 6 21 1 45 5 102 1 132] 
+#[1 5 102 0 1 5 181 0 2 5 102 0 3 5 102 0 4 5 185 0 5 5 189 0 6 5 102 0 7 5 193 0 8 5 102 0 9 5 197 0 10 5 102 0 11 5 102 0 12 5 102 0 13 5 205 0 14 5 209 0 16 5 213 0 17 5 221 0 19 5 225 0 20 5 102 0 22 5 102 0 23 5 102 0 24 5 102 0 26 5 102 0 27 5 102 0 28 5 102 0 29 5 102 0 30 5 102 0 31 5 102 0 32 5 102 0 33 5 102 0 34 5 102 0 35 5 102 0 36 5 102 0 37 5 102 0 38 5 102 0 39 5 102 0 40 5 102 0 41 5 102 0 42 5 102 0 43 5 102 0 44 4 83 0 45 5 102 0 46 4 87 0 47 5 102 0 48 5 237 0 52 5 102 0 53 5 102 0 54 5 102 0 55 5 102 0 57 5 102 0 58 5 102 0 62 4 91 0 66 5 245 0 67 5 249 0 69 5 102 0 70 5 102 0 72 5 102 0 73 5 102 0 74 5 102 0 79 5 102 0 81 5 102 0 83 5 102 0 85 5 102 0 86 5 102 0 88 5 102 0 89 5 102 0 90 5 102 0 93 5 102 0 94 5 102 0 96 5 102 0 97 5 253 0 98 5 102 0 99 5 102 0 100 5 102 0 102 5 102 0 103 5 102 0 104 5 102 0 105 5 102 0 106 5 102 0 107 5 102 0 108 5 102 0 109 5 102 0 112 5 102 0 113 5 102 0 118 5 102 0 120 5 102 0 121 5 102 0 122 5 102 0 123 5 102 0 124 6 1 0 126 5 102 0 129 5 102 0 130 5 102 0 131 5 102 0 132 5 102 0 133 5 102 0 134 5 102 0 135 5 102 0 136 5 102 0 138 5 102 0 139 5 102 0 141 5 102 0 142 5 102 0 143 5 102 0 144 4 95 0 145 5 102 0 146 5 102 0 149 5 102 0 150 5 102 0 151 5 102 0 152 6 9 0 153 5 102 0 154 5 102 0 159 5 102 0 160 5 102 0 161 5 102 0 162 5 102 0 163 5 102 0 164 5 102 0 165 5 102 0 166 5 102 0 167 5 102 0 169 5 102 0 170 5 102 0 172 6 13 1 41 6 17 1 43 6 21 1 45 5 102 1 132] 
 #[1 4 99 0 1 4 103 0 2 4 99 0 3 4 99 0 4 4 107 0 5 4 111 0 6 4 99 0 7 4 115 0 8 4 99 0 9 4 119 0 10 4 99 0 11 4 99 0 12 4 99 0 13 4 123 0 14 4 127 0 16 4 131 0 17 4 135 0 18 4 139 0 19 4 143 0 20 4 99 0 22 4 99 0 23 4 99 0 24 4 99 0 26 4 99 0 27 4 99 0 28 4 99 0 29 4 99 0 30 4 99 0 31 4 99 0 32 4 99 0 33 4 99 0 34 4 99 0 35 4 99 0 36 4 99 0 37 4 99 0 38 4 99 0 39 4 99 0 40 4 99 0 41 4 99 0 42 4 99 0 43 4 99 0 44 4 147 0 45 4 99 0 46 4 151 0 47 4 99 0 48 4 155 0 52 4 99 0 53 4 99 0 54 4 99 0 55 4 99 0 57 4 99 0 58 4 99 0 62 4 159 0 66 4 163 0 67 4 167 0 69 4 99 0 70 4 99 0 72 4 99 0 73 4 99 0 74 4 99 0 79 4 99 0 81 4 99 0 83 4 99 0 85 4 99 0 86 4 99 0 88 4 99 0 89 4 99 0 90 4 99 0 93 4 99 0 94 4 99 0 96 4 99 0 97 4 171 0 98 4 99 0 99 4 99 0 100 4 99 0 102 4 99 0 103 4 99 0 104 4 99 0 105 4 99 0 106 4 99 0 107 4 99 0 108 4 99 0 109 4 99 0 112 4 99 0 113 4 99 0 118 4 99 0 120 4 99 0 121 4 99 0 122 4 99 0 123 4 99 0 124 4 175 0 126 4 99 0 129 4 99 0 130 4 99 0 131 4 99 0 132 4 99 0 133 4 99 0 134 4 99 0 135 4 99 0 136 4 99 0 138 4 99 0 139 4 99 0 141 4 99 0 142 4 99 0 143 4 99 0 144 4 179 0 145 4 99 0 146 4 99 0 149 4 99 0 150 4 99 0 151 4 99 0 152 4 183 0 153 4 99 0 154 4 99 0 159 4 99 0 160 4 99 0 161 4 99 0 162 4 99 0 163 4 99 0 164 4 99 0 165 4 99 0 166 4 99 0 167 4 99 0 169 4 99 0 170 4 99 0 172 6 13 1 41 6 17 1 43 6 21 1 45 4 99 1 132] 
 #[1 5 114 0 1 5 181 0 2 5 114 0 3 5 114 0 4 5 185 0 5 5 189 0 6 5 114 0 7 5 193 0 8 5 114 0 9 5 197 0 10 5 114 0 11 5 114 0 12 5 114 0 13 5 205 0 14 5 209 0 16 5 213 0 17 6 201 0 18 5 221 0 19 5 225 0 20 5 114 0 22 5 114 0 23 5 114 0 24 5 114 0 26 5 114 0 27 5 114 0 28 5 114 0 29 5 114 0 30 5 114 0 31 5 114 0 32 5 114 0 33 5 114 0 34 5 114 0 35 5 114 0 36 5 114 0 37 5 114 0 38 5 114 0 39 5 114 0 40 5 114 0 41 5 114 0 42 5 114 0 43 5 114 0 44 4 187 0 45 5 114 0 46 4 191 0 47 5 114 0 48 5 237 0 52 5 114 0 53 5 114 0 54 5 114 0 55 5 114 0 57 5 114 0 58 5 114 0 62 4 195 0 66 5 245 0 67 5 249 0 69 5 114 0 70 5 114 0 72 5 114 0 73 5 114 0 74 5 114 0 79 5 114 0 81 5 114 0 83 5 114 0 85 5 114 0 86 5 114 0 88 5 114 0 89 5 114 0 90 5 114 0 93 5 114 0 94 5 114 0 96 5 114 0 97 5 253 0 98 5 114 0 99 5 114 0 100 5 114 0 102 5 114 0 103 5 114 0 104 5 114 0 105 5 114 0 106 5 114 0 107 5 114 0 108 5 114 0 109 5 114 0 112 5 114 0 113 5 114 0 118 5 114 0 120 5 114 0 121 5 114 0 122 5 114 0 123 5 114 0 124 6 1 0 126 5 114 0 129 5 114 0 130 5 114 0 131 5 114 0 132 5 114 0 133 5 114 0 134 5 114 0 135 5 114 0 136 5 114 0 138 5 114 0 139 5 114 0 141 5 114 0 142 5 114 0 143 5 114 0 144 4 199 0 145 5 114 0 146 5 114 0 149 5 114 0 150 5 114 0 151 5 114 0 152 6 9 0 153 5 114 0 154 5 114 0 159 5 114 0 160 5 114 0 161 5 114 0 162 5 114 0 163 5 114 0 164 5 114 0 165 5 114 0 166 5 114 0 167 5 114 0 169 5 114 0 170 5 114 0 172 6 13 1 41 6 17 1 43 6 21 1 45 5 114 1 132] 
 #[1 5 118 0 1 5 181 0 2 5 118 0 3 5 118 0 4 5 185 0 5 5 189 0 6 5 118 0 7 5 193 0 8 5 118 0 9 5 197 0 10 5 118 0 11 5 118 0 12 5 118 0 13 5 205 0 14 5 209 0 16 5 213 0 17 6 201 0 18 5 221 0 19 5 225 0 20 5 118 0 22 5 118 0 23 5 118 0 24 5 118 0 26 5 118 0 27 5 118 0 28 5 118 0 29 5 118 0 30 5 118 0 31 5 118 0 32 5 118 0 33 5 118 0 34 5 118 0 35 5 118 0 36 5 118 0 37 5 118 0 38 5 118 0 39 5 118 0 40 5 118 0 41 5 118 0 42 5 118 0 43 5 118 0 44 4 203 0 45 5 118 0 46 4 207 0 47 5 118 0 48 5 237 0 52 5 118 0 53 5 118 0 54 5 118 0 55 5 118 0 57 5 118 0 58 5 118 0 62 4 211 0 66 5 245 0 67 5 249 0 69 5 118 0 70 5 118 0 72 5 118 0 73 5 118 0 74 5 118 0 79 5 118 0 81 5 118 0 83 5 118 0 85 5 118 0 86 5 118 0 88 5 118 0 89 5 118 0 90 5 118 0 93 5 118 0 94 5 118 0 96 5 118 0 97 5 253 0 98 5 118 0 99 5 118 0 100 5 118 0 102 5 118 0 103 5 118 0 104 5 118 0 105 5 118 0 106 5 118 0 107 5 118 0 108 5 118 0 109 5 118 0 112 5 118 0 113 5 118 0 118 5 118 0 120 5 118 0 121 5 118 0 122 5 118 0 123 5 118 0 124 6 1 0 126 5 118 0 129 5 118 0 130 5 118 0 131 5 118 0 132 5 118 0 133 5 118 0 134 5 118 0 135 5 118 0 136 5 118 0 138 5 118 0 139 5 118 0 141 5 118 0 142 5 118 0 143 5 118 0 144 4 215 0 145 5 118 0 146 5 118 0 149 5 118 0 150 5 118 0 151 5 118 0 152 6 9 0 153 5 118 0 154 5 118 0 159 5 118 0 160 5 118 0 161 5 118 0 162 5 118 0 163 5 118 0 164 5 118 0 165 5 118 0 166 5 118 0 167 5 118 0 169 5 118 0 170 5 118 0 172 6 13 1 41 6 17 1 43 6 21 1 45 5 118 1 132] 
@@ -2496,7 +2284,7 @@ VBParser class >> transitionTable [
 #[0 5 130 0 1 0 2 0 3 0 4 0 5 0 6 0 7 0 8 0 9 0 10 0 11 0 12 0 13 0 14 0 16 0 17 0 18 0 19 0 20 0 22 0 23 0 24 0 26 0 27 0 28 0 29 0 30 0 31 0 32 0 33 0 34 0 35 0 36 0 37 0 38 0 39 0 40 0 41 0 42 0 43 0 44 0 45 0 46 0 47 0 48 0 52 0 53 0 54 0 55 0 57 0 58 0 62 0 66 0 67 0 69 0 70 0 72 0 73 0 74 0 79 0 81 0 83 0 85 0 86 0 88 0 89 0 90 0 93 0 94 0 96 0 97 0 98 0 99 0 100 0 102 0 103 0 104 0 105 0 106 0 107 0 108 0 109 0 112 0 113 0 118 0 120 0 121 0 122 0 123 0 124 0 126 0 129 0 130 0 131 0 132 0 133 0 134 0 135 0 136 0 138 0 139 0 141 0 142 0 143 0 144 0 145 0 146 0 149 0 150 0 151 0 152 0 153 0 154 0 159 0 160 0 161 0 162 0 163 0 164 0 165 0 166 0 167 0 169 0 170 0 172 1 132] 
 #[0 10 217 0 4] 
 #[0 5 134 0 1 0 2 0 3 0 4 0 5 0 6 0 7 0 8 0 9 0 10 0 11 0 12 0 13 0 14 0 16 0 17 0 18 0 19 0 20 0 22 0 23 0 24 0 26 0 27 0 28 0 29 0 30 0 31 0 32 0 33 0 34 0 35 0 36 0 37 0 38 0 39 0 40 0 41 0 42 0 43 0 44 0 45 0 46 0 47 0 48 0 52 0 53 0 54 0 55 0 57 0 58 0 62 0 66 0 67 0 69 0 70 0 72 0 73 0 74 0 76 0 78 0 79 0 81 0 83 0 85 0 86 0 88 0 89 0 90 0 93 0 94 0 96 0 97 0 98 0 99 0 100 0 102 0 103 0 104 0 105 0 106 0 107 0 108 0 109 0 112 0 113 0 118 0 120 0 121 0 122 0 123 0 124 0 126 0 127 0 129 0 130 0 131 0 132 0 133 0 134 0 135 0 136 0 138 0 139 0 141 0 142 0 143 0 144 0 145 0 146 0 149 0 150 0 151 0 152 0 153 0 154 0 159 0 160 0 161 0 162 0 163 0 164 0 165 0 166 0 167 0 169 0 170 0 172 1 132] 
-#[1 5 138 0 1 5 181 0 2 5 138 0 3 5 138 0 4 5 185 0 5 5 189 0 6 5 138 0 7 5 193 0 8 5 138 0 9 5 197 0 10 5 138 0 11 5 138 0 12 5 138 0 13 5 205 0 14 5 209 0 16 5 213 0 17 5 138 0 18 5 221 0 19 5 225 0 20 5 138 0 22 5 138 0 23 5 138 0 24 5 138 0 26 5 138 0 27 5 138 0 28 5 138 0 29 5 138 0 30 5 138 0 31 5 138 0 32 5 138 0 33 5 138 0 34 5 138 0 35 5 138 0 36 5 138 0 37 5 138 0 38 5 138 0 39 5 138 0 40 5 138 0 41 5 138 0 42 5 138 0 43 5 138 0 44 4 251 0 45 5 138 0 46 4 255 0 47 5 138 0 48 5 237 0 52 5 138 0 53 5 138 0 54 5 138 0 55 5 138 0 57 5 138 0 58 5 138 0 62 5 3 0 66 5 245 0 67 5 249 0 69 5 138 0 70 5 138 0 72 5 138 0 73 5 138 0 74 5 138 0 79 5 138 0 81 5 138 0 83 5 138 0 85 5 138 0 86 5 138 0 88 5 138 0 89 5 138 0 90 5 138 0 93 5 138 0 94 5 138 0 96 5 138 0 97 5 253 0 98 5 138 0 99 5 138 0 100 5 138 0 102 5 138 0 103 5 138 0 104 5 138 0 105 5 138 0 106 5 138 0 107 5 138 0 108 5 138 0 109 5 138 0 112 5 138 0 113 5 138 0 118 5 138 0 120 5 138 0 121 5 138 0 122 5 138 0 123 5 138 0 124 6 1 0 126 5 138 0 129 5 138 0 130 5 138 0 131 5 138 0 132 5 138 0 133 5 138 0 134 5 138 0 135 5 138 0 136 5 138 0 138 5 138 0 139 5 138 0 141 5 138 0 142 5 138 0 143 5 138 0 144 5 7 0 145 5 138 0 146 5 138 0 149 5 138 0 150 5 138 0 151 5 138 0 152 6 9 0 153 5 138 0 154 5 138 0 159 5 138 0 160 5 138 0 161 5 138 0 162 5 138 0 163 5 138 0 164 5 138 0 165 5 138 0 166 5 138 0 167 5 138 0 169 5 138 0 170 5 138 0 172 6 13 1 41 6 17 1 43 6 21 1 45 5 138 1 132] 
+#[1 5 138 0 1 5 181 0 2 5 138 0 3 5 138 0 4 5 185 0 5 5 189 0 6 5 138 0 7 5 193 0 8 5 138 0 9 5 197 0 10 5 138 0 11 5 138 0 12 5 138 0 13 5 205 0 14 5 209 0 16 5 213 0 17 5 221 0 19 5 225 0 20 5 138 0 22 5 138 0 23 5 138 0 24 5 138 0 26 5 138 0 27 5 138 0 28 5 138 0 29 5 138 0 30 5 138 0 31 5 138 0 32 5 138 0 33 5 138 0 34 5 138 0 35 5 138 0 36 5 138 0 37 5 138 0 38 5 138 0 39 5 138 0 40 5 138 0 41 5 138 0 42 5 138 0 43 5 138 0 44 4 251 0 45 5 138 0 46 4 255 0 47 5 138 0 48 5 237 0 52 5 138 0 53 5 138 0 54 5 138 0 55 5 138 0 57 5 138 0 58 5 138 0 62 5 3 0 66 5 245 0 67 5 249 0 69 5 138 0 70 5 138 0 72 5 138 0 73 5 138 0 74 5 138 0 79 5 138 0 81 5 138 0 83 5 138 0 85 5 138 0 86 5 138 0 88 5 138 0 89 5 138 0 90 5 138 0 93 5 138 0 94 5 138 0 96 5 138 0 97 5 253 0 98 5 138 0 99 5 138 0 100 5 138 0 102 5 138 0 103 5 138 0 104 5 138 0 105 5 138 0 106 5 138 0 107 5 138 0 108 5 138 0 109 5 138 0 112 5 138 0 113 5 138 0 118 5 138 0 120 5 138 0 121 5 138 0 122 5 138 0 123 5 138 0 124 6 1 0 126 5 138 0 129 5 138 0 130 5 138 0 131 5 138 0 132 5 138 0 133 5 138 0 134 5 138 0 135 5 138 0 136 5 138 0 138 5 138 0 139 5 138 0 141 5 138 0 142 5 138 0 143 5 138 0 144 5 7 0 145 5 138 0 146 5 138 0 149 5 138 0 150 5 138 0 151 5 138 0 152 6 9 0 153 5 138 0 154 5 138 0 159 5 138 0 160 5 138 0 161 5 138 0 162 5 138 0 163 5 138 0 164 5 138 0 165 5 138 0 166 5 138 0 167 5 138 0 169 5 138 0 170 5 138 0 172 6 13 1 41 6 17 1 43 6 21 1 45 5 138 1 132] 
 #[1 5 11 0 1 5 15 0 2 5 11 0 3 5 11 0 4 5 19 0 5 5 23 0 6 5 11 0 7 5 27 0 8 5 11 0 9 5 31 0 10 5 11 0 11 5 11 0 12 5 11 0 13 5 35 0 14 5 39 0 16 5 43 0 17 5 47 0 18 5 51 0 19 5 55 0 20 5 11 0 22 5 11 0 23 5 11 0 24 5 11 0 26 5 11 0 27 5 11 0 28 5 11 0 29 5 11 0 30 5 11 0 31 5 11 0 32 5 11 0 33 5 11 0 34 5 11 0 35 5 11 0 36 5 11 0 37 5 11 0 38 5 11 0 39 5 11 0 40 5 11 0 41 5 11 0 42 5 11 0 43 5 11 0 44 5 59 0 45 5 11 0 46 5 63 0 47 5 11 0 48 5 67 0 52 5 11 0 53 5 11 0 54 5 11 0 55 5 11 0 57 5 11 0 58 5 11 0 62 5 71 0 66 5 75 0 67 5 79 0 69 5 11 0 70 5 11 0 72 5 11 0 73 5 11 0 74 5 11 0 79 5 11 0 81 5 11 0 83 5 11 0 85 5 11 0 86 5 11 0 88 5 11 0 89 5 11 0 90 5 11 0 93 5 11 0 94 5 11 0 96 5 11 0 97 5 83 0 98 5 11 0 99 5 11 0 100 5 11 0 102 5 11 0 103 5 11 0 104 5 11 0 105 5 11 0 106 5 11 0 107 5 11 0 108 5 11 0 109 5 11 0 112 5 11 0 113 5 11 0 118 5 11 0 120 5 11 0 121 5 11 0 122 5 11 0 123 5 11 0 124 5 87 0 126 5 11 0 129 5 11 0 130 5 11 0 131 5 11 0 132 5 11 0 133 5 11 0 134 5 11 0 135 5 11 0 136 5 11 0 138 5 11 0 139 5 11 0 141 5 11 0 142 5 11 0 143 5 11 0 144 5 91 0 145 5 11 0 146 5 11 0 149 5 11 0 150 5 11 0 151 5 11 0 152 5 95 0 153 5 11 0 154 5 11 0 159 5 11 0 160 5 11 0 161 5 11 0 162 5 11 0 163 5 11 0 164 5 11 0 165 5 11 0 166 5 11 0 167 5 11 0 169 5 11 0 170 5 11 0 172 6 13 1 41 6 17 1 43 6 21 1 45 5 11 1 132] 
 #[0 5 150 0 1 0 2 0 3 0 4 0 5 0 6 0 7 0 8 0 9 0 10 0 11 0 12 0 13 0 14 0 16 0 17 0 18 0 19 0 20 0 22 0 23 0 24 0 26 0 27 0 28 0 29 0 30 0 31 0 32 0 33 0 34 0 35 0 36 0 37 0 38 0 39 0 40 0 41 0 42 0 43 0 44 0 45 0 46 0 47 0 48 0 52 0 53 0 54 0 55 0 57 0 58 0 62 0 66 0 67 0 69 0 70 0 72 0 73 0 74 0 79 0 81 0 83 0 85 0 86 0 88 0 89 0 90 0 93 0 94 0 96 0 97 0 98 0 99 0 100 0 102 0 103 0 104 0 105 0 106 0 107 0 108 0 109 0 112 0 113 0 118 0 120 0 121 0 122 0 123 0 124 0 126 0 129 0 130 0 131 0 132 0 133 0 134 0 135 0 136 0 138 0 139 0 141 0 142 0 143 0 144 0 145 0 146 0 149 0 150 0 151 0 152 0 153 0 154 0 159 0 160 0 161 0 162 0 163 0 164 0 165 0 166 0 167 0 169 0 170 0 172 1 132] 
 #[0 10 221 0 4] 
@@ -2539,9 +2327,9 @@ VBParser class >> transitionTable [
 #[1 0 6 0 22 0 6 0 27 0 6 0 28 0 6 0 29 0 6 0 30 0 6 0 31 0 6 0 32 0 6 0 33 0 6 0 34 0 6 0 35 0 6 0 36 0 6 0 37 0 6 0 38 0 6 0 39 0 6 0 40 0 6 0 44 0 6 0 54 0 6 0 57 0 6 0 70 0 6 0 73 0 6 0 74 0 6 0 81 0 6 0 83 0 6 0 85 0 6 0 86 0 6 0 88 0 6 0 89 0 6 0 97 0 6 0 99 0 6 0 102 0 6 0 103 0 6 0 104 0 6 0 105 0 6 0 109 0 6 0 112 0 6 0 113 0 6 0 120 0 6 0 124 0 6 0 129 0 6 0 130 0 6 0 131 0 6 0 132 0 6 0 136 0 6 0 138 0 6 0 141 0 6 0 142 0 6 0 146 0 6 0 149 0 6 0 166 0 6 0 167 0 6 0 170 0 6 0 172 11 117 0 176 6 177 0 177 0 6 1 132] 
 #[1 0 10 0 22 0 10 0 27 0 10 0 28 0 10 0 29 0 10 0 30 0 10 0 31 0 10 0 32 0 10 0 33 0 10 0 34 0 10 0 35 0 10 0 36 0 10 0 37 0 10 0 38 0 10 0 39 0 10 0 40 0 10 0 44 0 10 0 54 0 10 0 57 0 10 0 70 0 10 0 73 0 10 0 74 0 10 0 81 0 10 0 83 0 10 0 85 0 10 0 86 0 10 0 88 0 10 0 89 0 10 0 97 0 10 0 99 0 10 0 102 0 10 0 103 0 10 0 104 0 10 0 105 0 10 0 109 0 10 0 112 0 10 0 113 0 10 0 120 0 10 0 124 0 10 0 129 0 10 0 130 0 10 0 131 0 10 0 132 0 10 0 136 0 10 0 138 0 10 0 141 0 10 0 142 0 10 0 146 0 10 0 149 0 10 0 166 0 10 0 167 0 10 0 170 0 10 0 172 11 121 0 178 0 10 1 132] 
 #[1 1 89 0 22 3 133 0 27 3 133 0 28 3 133 0 29 3 133 0 30 3 133 0 31 3 133 0 32 3 133 0 33 3 133 0 34 3 133 0 35 3 133 0 36 3 133 0 37 3 133 0 38 3 133 0 39 3 133 0 40 1 89 0 44 1 89 0 54 1 89 0 57 0 105 0 70 3 61 0 73 1 89 0 74 1 89 0 81 0 121 0 83 1 89 0 85 1 89 0 86 3 65 0 88 0 133 0 89 0 141 0 97 0 145 0 99 3 145 0 102 3 69 0 103 1 89 0 104 3 145 0 105 3 73 0 109 1 89 0 112 1 89 0 113 1 89 0 120 3 85 0 124 3 145 0 129 3 89 0 130 3 145 0 131 0 209 0 132 1 89 0 136 3 97 0 138 3 101 0 141 1 89 0 142 0 237 0 146 1 89 0 149 1 89 0 166 1 33 0 167 1 41 0 170 3 213 0 172 3 109 0 191 1 89 0 194 3 109 0 195 3 109 0 196 3 109 0 197 9 65 0 200 9 65 0 201 9 65 0 203 9 65 0 204 9 65 0 208 3 133 0 209 9 65 0 210 9 65 0 211 3 145 0 222 9 65 0 241 9 65 0 242 9 65 0 246 9 65 0 247 9 65 1 2 9 65 1 3 9 65 1 4 3 165 1 5 9 65 1 6 9 65 1 7 9 65 1 8 9 65 1 9 9 65 1 10 9 65 1 11 9 65 1 12 9 65 1 13 9 65 1 14 9 65 1 15 9 65 1 16 9 65 1 17 1 197 1 19 9 65 1 20 9 65 1 21 9 65 1 22 9 65 1 23 9 65 1 24 9 65 1 28 9 65 1 31 5 194 1 132] 
-#[1 4 242 0 1 5 181 0 2 4 242 0 3 4 242 0 4 5 185 0 5 5 189 0 6 4 242 0 7 5 193 0 8 4 242 0 9 5 197 0 10 4 242 0 11 4 242 0 12 4 242 0 13 5 205 0 14 5 209 0 16 5 213 0 17 4 242 0 18 5 221 0 19 5 225 0 20 4 242 0 22 4 242 0 23 4 242 0 24 4 242 0 26 4 242 0 27 4 242 0 28 4 242 0 29 4 242 0 30 4 242 0 31 4 242 0 32 4 242 0 33 4 242 0 34 4 242 0 35 4 242 0 36 4 242 0 37 4 242 0 38 4 242 0 39 4 242 0 40 4 242 0 41 4 242 0 42 4 242 0 43 4 242 0 44 4 27 0 45 4 242 0 46 4 31 0 47 4 242 0 48 5 237 0 52 4 242 0 53 4 242 0 54 4 242 0 55 4 242 0 57 4 242 0 58 4 242 0 62 4 35 0 66 5 245 0 67 5 249 0 69 4 242 0 70 4 242 0 72 4 242 0 73 4 242 0 74 4 242 0 79 4 242 0 81 4 242 0 83 4 242 0 85 4 242 0 86 4 242 0 88 4 242 0 89 4 242 0 90 4 242 0 93 4 242 0 94 4 242 0 96 4 242 0 97 5 253 0 98 4 242 0 99 4 242 0 100 4 242 0 102 4 242 0 103 4 242 0 104 4 242 0 105 4 242 0 106 4 242 0 107 4 242 0 108 4 242 0 109 4 242 0 112 4 242 0 113 4 242 0 118 4 242 0 120 4 242 0 121 4 242 0 122 4 242 0 123 4 242 0 124 6 1 0 126 4 242 0 129 4 242 0 130 4 242 0 131 4 242 0 132 4 242 0 133 4 242 0 134 4 242 0 135 4 242 0 136 4 242 0 138 4 242 0 139 4 242 0 141 4 242 0 142 4 242 0 143 4 242 0 144 4 39 0 145 4 242 0 146 4 242 0 149 4 242 0 150 4 242 0 151 4 242 0 152 6 9 0 153 4 242 0 154 4 242 0 159 4 242 0 160 4 242 0 161 4 242 0 162 4 242 0 163 4 242 0 164 4 242 0 165 4 242 0 166 4 242 0 167 4 242 0 169 4 242 0 170 4 242 0 172 6 13 1 41 6 17 1 43 6 21 1 45 4 242 1 132] 
-#[1 5 106 0 1 5 181 0 2 5 106 0 3 5 106 0 4 5 185 0 5 5 189 0 6 5 106 0 7 5 193 0 8 5 106 0 9 5 197 0 10 5 106 0 11 5 106 0 12 5 106 0 13 5 205 0 14 5 209 0 16 5 213 0 17 5 106 0 18 5 221 0 19 5 225 0 20 5 106 0 22 5 106 0 23 5 106 0 24 5 106 0 26 5 106 0 27 5 106 0 28 5 106 0 29 5 106 0 30 5 106 0 31 5 106 0 32 5 106 0 33 5 106 0 34 5 106 0 35 5 106 0 36 5 106 0 37 5 106 0 38 5 106 0 39 5 106 0 40 5 106 0 41 5 106 0 42 5 106 0 43 5 106 0 44 5 99 0 45 5 106 0 46 5 103 0 47 5 106 0 48 5 237 0 52 5 106 0 53 5 106 0 54 5 106 0 55 5 106 0 57 5 106 0 58 5 106 0 62 5 107 0 66 5 245 0 67 5 249 0 69 5 106 0 70 5 106 0 72 5 106 0 73 5 106 0 74 5 106 0 79 5 106 0 81 5 106 0 83 5 106 0 85 5 106 0 86 5 106 0 88 5 106 0 89 5 106 0 90 5 106 0 93 5 106 0 94 5 106 0 96 5 106 0 97 5 253 0 98 5 106 0 99 5 106 0 100 5 106 0 102 5 106 0 103 5 106 0 104 5 106 0 105 5 106 0 106 5 106 0 107 5 106 0 108 5 106 0 109 5 106 0 112 5 106 0 113 5 106 0 118 5 106 0 120 5 106 0 121 5 106 0 122 5 106 0 123 5 106 0 124 6 1 0 126 5 106 0 129 5 106 0 130 5 106 0 131 5 106 0 132 5 106 0 133 5 106 0 134 5 106 0 135 5 106 0 136 5 106 0 138 5 106 0 139 5 106 0 141 5 106 0 142 5 106 0 143 5 106 0 144 5 111 0 145 5 106 0 146 5 106 0 149 5 106 0 150 5 106 0 151 5 106 0 152 6 9 0 153 5 106 0 154 5 106 0 159 5 106 0 160 5 106 0 161 5 106 0 162 5 106 0 163 5 106 0 164 5 106 0 165 5 106 0 166 5 106 0 167 5 106 0 169 5 106 0 170 5 106 0 172 6 13 1 41 6 17 1 43 6 21 1 45 5 106 1 132] 
-#[1 5 146 0 1 5 181 0 2 5 146 0 3 5 146 0 4 5 185 0 5 5 189 0 6 5 146 0 7 5 193 0 8 5 146 0 9 5 197 0 10 5 146 0 11 5 146 0 12 5 146 0 13 5 205 0 14 5 209 0 16 5 213 0 17 5 146 0 18 5 221 0 19 5 225 0 20 5 146 0 22 5 146 0 23 5 146 0 24 5 146 0 26 5 146 0 27 5 146 0 28 5 146 0 29 5 146 0 30 5 146 0 31 5 146 0 32 5 146 0 33 5 146 0 34 5 146 0 35 5 146 0 36 5 146 0 37 5 146 0 38 5 146 0 39 5 146 0 40 5 146 0 41 5 146 0 42 5 146 0 43 5 146 0 44 5 115 0 45 5 146 0 46 5 119 0 47 5 146 0 48 5 237 0 52 5 146 0 53 5 146 0 54 5 146 0 55 5 146 0 57 5 146 0 58 5 146 0 62 5 123 0 66 5 245 0 67 5 249 0 69 5 146 0 70 5 146 0 72 5 146 0 73 5 146 0 74 5 146 0 79 5 146 0 81 5 146 0 83 5 146 0 85 5 146 0 86 5 146 0 88 5 146 0 89 5 146 0 90 5 146 0 93 5 146 0 94 5 146 0 96 5 146 0 97 5 253 0 98 5 146 0 99 5 146 0 100 5 146 0 102 5 146 0 103 5 146 0 104 5 146 0 105 5 146 0 106 5 146 0 107 5 146 0 108 5 146 0 109 5 146 0 112 5 146 0 113 5 146 0 118 5 146 0 120 5 146 0 121 5 146 0 122 5 146 0 123 5 146 0 124 6 1 0 126 5 146 0 129 5 146 0 130 5 146 0 131 5 146 0 132 5 146 0 133 5 146 0 134 5 146 0 135 5 146 0 136 5 146 0 138 5 146 0 139 5 146 0 141 5 146 0 142 5 146 0 143 5 146 0 144 5 127 0 145 5 146 0 146 5 146 0 149 5 146 0 150 5 146 0 151 5 146 0 152 6 9 0 153 5 146 0 154 5 146 0 159 5 146 0 160 5 146 0 161 5 146 0 162 5 146 0 163 5 146 0 164 5 146 0 165 5 146 0 166 5 146 0 167 5 146 0 169 5 146 0 170 5 146 0 172 6 13 1 41 6 17 1 43 6 21 1 45 5 146 1 132] 
+#[1 4 242 0 1 5 181 0 2 4 242 0 3 4 242 0 4 5 185 0 5 5 189 0 6 4 242 0 7 5 193 0 8 4 242 0 9 5 197 0 10 4 242 0 11 4 242 0 12 4 242 0 13 5 205 0 14 5 209 0 16 5 213 0 17 5 221 0 19 5 225 0 20 4 242 0 22 4 242 0 23 4 242 0 24 4 242 0 26 4 242 0 27 4 242 0 28 4 242 0 29 4 242 0 30 4 242 0 31 4 242 0 32 4 242 0 33 4 242 0 34 4 242 0 35 4 242 0 36 4 242 0 37 4 242 0 38 4 242 0 39 4 242 0 40 4 242 0 41 4 242 0 42 4 242 0 43 4 242 0 44 4 27 0 45 4 242 0 46 4 31 0 47 4 242 0 48 5 237 0 52 4 242 0 53 4 242 0 54 4 242 0 55 4 242 0 57 4 242 0 58 4 242 0 62 4 35 0 66 5 245 0 67 5 249 0 69 4 242 0 70 4 242 0 72 4 242 0 73 4 242 0 74 4 242 0 79 4 242 0 81 4 242 0 83 4 242 0 85 4 242 0 86 4 242 0 88 4 242 0 89 4 242 0 90 4 242 0 93 4 242 0 94 4 242 0 96 4 242 0 97 5 253 0 98 4 242 0 99 4 242 0 100 4 242 0 102 4 242 0 103 4 242 0 104 4 242 0 105 4 242 0 106 4 242 0 107 4 242 0 108 4 242 0 109 4 242 0 112 4 242 0 113 4 242 0 118 4 242 0 120 4 242 0 121 4 242 0 122 4 242 0 123 4 242 0 124 6 1 0 126 4 242 0 129 4 242 0 130 4 242 0 131 4 242 0 132 4 242 0 133 4 242 0 134 4 242 0 135 4 242 0 136 4 242 0 138 4 242 0 139 4 242 0 141 4 242 0 142 4 242 0 143 4 242 0 144 4 39 0 145 4 242 0 146 4 242 0 149 4 242 0 150 4 242 0 151 4 242 0 152 6 9 0 153 4 242 0 154 4 242 0 159 4 242 0 160 4 242 0 161 4 242 0 162 4 242 0 163 4 242 0 164 4 242 0 165 4 242 0 166 4 242 0 167 4 242 0 169 4 242 0 170 4 242 0 172 6 13 1 41 6 17 1 43 6 21 1 45 4 242 1 132] 
+#[1 5 106 0 1 5 181 0 2 5 106 0 3 5 106 0 4 5 185 0 5 5 189 0 6 5 106 0 7 5 193 0 8 5 106 0 9 5 197 0 10 5 106 0 11 5 106 0 12 5 106 0 13 5 205 0 14 5 209 0 16 5 213 0 17 5 221 0 19 5 225 0 20 5 106 0 22 5 106 0 23 5 106 0 24 5 106 0 26 5 106 0 27 5 106 0 28 5 106 0 29 5 106 0 30 5 106 0 31 5 106 0 32 5 106 0 33 5 106 0 34 5 106 0 35 5 106 0 36 5 106 0 37 5 106 0 38 5 106 0 39 5 106 0 40 5 106 0 41 5 106 0 42 5 106 0 43 5 106 0 44 5 99 0 45 5 106 0 46 5 103 0 47 5 106 0 48 5 237 0 52 5 106 0 53 5 106 0 54 5 106 0 55 5 106 0 57 5 106 0 58 5 106 0 62 5 107 0 66 5 245 0 67 5 249 0 69 5 106 0 70 5 106 0 72 5 106 0 73 5 106 0 74 5 106 0 79 5 106 0 81 5 106 0 83 5 106 0 85 5 106 0 86 5 106 0 88 5 106 0 89 5 106 0 90 5 106 0 93 5 106 0 94 5 106 0 96 5 106 0 97 5 253 0 98 5 106 0 99 5 106 0 100 5 106 0 102 5 106 0 103 5 106 0 104 5 106 0 105 5 106 0 106 5 106 0 107 5 106 0 108 5 106 0 109 5 106 0 112 5 106 0 113 5 106 0 118 5 106 0 120 5 106 0 121 5 106 0 122 5 106 0 123 5 106 0 124 6 1 0 126 5 106 0 129 5 106 0 130 5 106 0 131 5 106 0 132 5 106 0 133 5 106 0 134 5 106 0 135 5 106 0 136 5 106 0 138 5 106 0 139 5 106 0 141 5 106 0 142 5 106 0 143 5 106 0 144 5 111 0 145 5 106 0 146 5 106 0 149 5 106 0 150 5 106 0 151 5 106 0 152 6 9 0 153 5 106 0 154 5 106 0 159 5 106 0 160 5 106 0 161 5 106 0 162 5 106 0 163 5 106 0 164 5 106 0 165 5 106 0 166 5 106 0 167 5 106 0 169 5 106 0 170 5 106 0 172 6 13 1 41 6 17 1 43 6 21 1 45 5 106 1 132] 
+#[1 5 142 0 1 5 181 0 2 5 142 0 3 5 142 0 4 5 185 0 5 5 189 0 6 5 142 0 7 5 193 0 8 5 142 0 9 5 197 0 10 5 142 0 11 5 142 0 12 5 142 0 13 5 205 0 14 5 209 0 16 5 213 0 17 5 221 0 19 5 225 0 20 5 142 0 22 5 142 0 23 5 142 0 24 5 142 0 26 5 142 0 27 5 142 0 28 5 142 0 29 5 142 0 30 5 142 0 31 5 142 0 32 5 142 0 33 5 142 0 34 5 142 0 35 5 142 0 36 5 142 0 37 5 142 0 38 5 142 0 39 5 142 0 40 5 142 0 41 5 142 0 42 5 142 0 43 5 142 0 44 5 115 0 45 5 142 0 46 5 119 0 47 5 142 0 48 5 237 0 52 5 142 0 53 5 142 0 54 5 142 0 55 5 142 0 57 5 142 0 58 5 142 0 62 5 123 0 66 5 245 0 67 5 249 0 69 5 142 0 70 5 142 0 72 5 142 0 73 5 142 0 74 5 142 0 79 5 142 0 81 5 142 0 83 5 142 0 85 5 142 0 86 5 142 0 88 5 142 0 89 5 142 0 90 5 142 0 93 5 142 0 94 5 142 0 96 5 142 0 97 5 253 0 98 5 142 0 99 5 142 0 100 5 142 0 102 5 142 0 103 5 142 0 104 5 142 0 105 5 142 0 106 5 142 0 107 5 142 0 108 5 142 0 109 5 142 0 112 5 142 0 113 5 142 0 118 5 142 0 120 5 142 0 121 5 142 0 122 5 142 0 123 5 142 0 124 6 1 0 126 5 142 0 129 5 142 0 130 5 142 0 131 5 142 0 132 5 142 0 133 5 142 0 134 5 142 0 135 5 142 0 136 5 142 0 138 5 142 0 139 5 142 0 141 5 142 0 142 5 142 0 143 5 142 0 144 5 127 0 145 5 142 0 146 5 142 0 149 5 142 0 150 5 142 0 151 5 142 0 152 6 9 0 153 5 142 0 154 5 142 0 159 5 142 0 160 5 142 0 161 5 142 0 162 5 142 0 163 5 142 0 164 5 142 0 165 5 142 0 166 5 142 0 167 5 142 0 169 5 142 0 170 5 142 0 172 6 13 1 41 6 17 1 43 6 21 1 45 5 142 1 132] 
 #[1 0 29 0 1 0 33 0 3 0 37 0 6 0 41 0 8 0 45 0 9 1 89 0 22 0 53 0 24 1 89 0 44 0 81 0 53 1 89 0 54 1 89 0 57 0 101 0 62 1 89 0 74 1 89 0 81 1 89 0 85 1 89 0 86 1 89 0 104 1 89 0 112 1 89 0 113 1 89 0 120 0 189 0 122 1 89 0 136 1 89 0 142 1 89 0 149 0 253 0 154 1 1 0 159 1 5 0 160 1 9 0 161 1 13 0 162 1 17 0 163 1 21 0 164 1 25 0 165 1 89 0 166 1 33 0 167 1 37 0 169 1 41 0 170 11 125 0 179 11 125 0 180 11 125 0 181 11 125 0 182 11 125 0 183 11 125 0 184 11 125 0 185 11 125 0 186 11 125 0 187 11 125 0 188 4 9 0 191 1 89 0 194 4 9 0 195 4 9 0 196 4 9 0 197 11 125 1 32 11 125 1 33 11 125 1 34 11 125 1 35 11 125 1 36 11 125 1 37 11 125 1 38 11 125 1 39 11 125 1 40 11 125 1 42 11 125 1 44 11 125 1 46 11 125 1 47 11 125 1 48 2 29 1 49 2 29 1 50 2 29 1 51 2 233 1 116 4 17 1 117 2 253 1 119 2 233 1 126 2 253 1 129 2 253 1 131] 
 #[1 5 181 0 2 5 185 0 5 5 189 0 6 5 193 0 8 5 197 0 10 5 205 0 14 5 209 0 16 5 213 0 17 6 201 0 18 5 221 0 19 5 225 0 20 5 229 0 45 5 233 0 47 5 237 0 52 5 241 0 66 5 245 0 67 5 249 0 69 5 253 0 98 6 1 0 126 11 129 0 145 6 9 0 153 6 13 1 41 6 17 1 43 6 21 1 45] 
 #[0 11 133 0 7] 
@@ -2908,7 +2696,7 @@ VBParser class >> transitionTable [
 #[0 16 153 0 130] 
 #[0 8 54 0 22 0 27 0 28 0 29 0 30 0 31 0 32 0 33 0 34 0 35 0 36 0 37 0 38 0 39 0 40 0 44 0 54 0 57 0 70 0 73 0 74 0 81 0 83 0 85 0 86 0 88 0 89 0 97 0 99 0 102 0 103 0 104 0 105 0 109 0 112 0 113 0 120 0 124 0 129 0 130 0 131 0 132 0 136 0 138 0 141 0 142 0 146 0 149 0 166 0 167 0 170 0 172 1 132] 
 #[0 16 157 0 130] 
-#[1 5 181 0 2 6 31 0 4 5 185 0 5 5 189 0 6 6 31 0 7 5 193 0 8 5 197 0 10 5 205 0 14 5 209 0 16 5 213 0 17 4 242 0 18 5 221 0 19 5 225 0 20 4 27 0 45 4 31 0 47 5 237 0 52 4 35 0 66 5 245 0 67 5 249 0 69 5 253 0 98 6 1 0 126 4 39 0 145 6 9 0 153 6 13 1 41 6 17 1 43 6 21 1 45] 
+#[1 5 181 0 2 6 31 0 4 5 185 0 5 5 189 0 6 6 31 0 7 5 193 0 8 5 197 0 10 5 205 0 14 5 209 0 16 5 213 0 17 5 221 0 19 5 225 0 20 4 27 0 45 4 31 0 47 5 237 0 52 4 35 0 66 5 245 0 67 5 249 0 69 5 253 0 98 6 1 0 126 4 39 0 145 6 9 0 153 6 13 1 41 6 17 1 43 6 21 1 45] 
 #[0 8 58 0 22 0 27 0 28 0 29 0 30 0 31 0 32 0 33 0 34 0 35 0 36 0 37 0 38 0 39 0 40 0 44 0 54 0 57 0 70 0 73 0 74 0 81 0 83 0 85 0 86 0 88 0 89 0 97 0 99 0 102 0 103 0 104 0 105 0 109 0 112 0 113 0 120 0 124 0 129 0 130 0 131 0 132 0 136 0 138 0 141 0 142 0 146 0 149 0 166 0 167 0 170 0 172 1 132] 
 #[1 7 105 0 3 16 161 0 68 16 165 0 252] 
 #[1 7 105 0 3 16 169 0 68 16 173 0 252] 
@@ -3183,7 +2971,6 @@ VBParser class >> transitionTable [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForAddressOfClause1: nodes [
-
 	| result |
 	result := VBAddressOfClauseNode new.
 	result addressOfToken: (nodes at: 1).
@@ -3193,7 +2980,6 @@ VBParser >> reduceActionForAddressOfClause1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForArgument2: nodes [
-
 	| result |
 	result := VBArgumentNode new.
 	result value: (nodes at: 1).
@@ -3202,7 +2988,6 @@ VBParser >> reduceActionForArgument2: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForArgument4: nodes [
-
 	| result |
 	result := VBArgumentNode new.
 	result paramarrayToken: (nodes at: 1).
@@ -3212,7 +2997,6 @@ VBParser >> reduceActionForArgument4: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForArgument6: nodes [
-
 	| result |
 	result := VBArgumentNode new.
 	result strategy: (nodes at: 1).
@@ -3222,7 +3006,6 @@ VBParser >> reduceActionForArgument6: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForArgument8: nodes [
-
 	| result |
 	result := VBArgumentNode new.
 	result strategy: (nodes at: 1).
@@ -3233,7 +3016,6 @@ VBParser >> reduceActionForArgument8: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForArgumentList1: nodes [
-
 	| result |
 	result := VBArgumentListNode new.
 	result addTokens: ((nodes at: 1) at: 1) to: result commaTokens.
@@ -3247,7 +3029,6 @@ VBParser >> reduceActionForArgumentList1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForArgumentList2: nodes [
-
 	| result |
 	result := VBArgumentListNode new.
 	result addTokens: ((nodes at: 1) at: 1) to: result commaTokens.
@@ -3262,7 +3043,6 @@ VBParser >> reduceActionForArgumentList2: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForArithmeticOperation1: nodes [
-
 	| result |
 	result := VBArithmeticOperationNode new.
 	result left: (nodes at: 1).
@@ -3279,7 +3059,6 @@ VBParser >> reduceActionForArithmeticOperation1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForArithmeticOperator1: nodes [
-
 	| result |
 	result := Array new: 7.
 	result at: 1 put: (nodes at: 1).
@@ -3288,7 +3067,6 @@ VBParser >> reduceActionForArithmeticOperator1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForArithmeticOperator2: nodes [
-
 	| result |
 	result := Array new: 7.
 	result at: 2 put: (nodes at: 1).
@@ -3297,7 +3075,6 @@ VBParser >> reduceActionForArithmeticOperator2: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForArithmeticOperator3: nodes [
-
 	| result |
 	result := Array new: 7.
 	result at: 3 put: (nodes at: 1).
@@ -3306,7 +3083,6 @@ VBParser >> reduceActionForArithmeticOperator3: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForArithmeticOperator4: nodes [
-
 	| result |
 	result := Array new: 7.
 	result at: 4 put: (nodes at: 1).
@@ -3315,7 +3091,6 @@ VBParser >> reduceActionForArithmeticOperator4: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForAssignment2: nodes [
-
 	| result |
 	result := VBExplicitAssignementNode new.
 	result left: (nodes at: 1).
@@ -3326,7 +3101,6 @@ VBParser >> reduceActionForAssignment2: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForAttribute1: nodes [
-
 	| result |
 	result := VBModuleAttributeNode new.
 	result attributeToken: (nodes at: 1).
@@ -3336,7 +3110,6 @@ VBParser >> reduceActionForAttribute1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForBaseType15: nodes [
-
 	| result |
 	result := VBBaseTypeNode new.
 	result variantToken: (nodes at: 1).
@@ -3345,7 +3118,6 @@ VBParser >> reduceActionForBaseType15: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForBlock1: nodes [
-
 	| result |
 	result := VBBlockNode new.
 	result addObjects: ((nodes at: 1) at: 1) to: result statements.
@@ -3358,7 +3130,6 @@ VBParser >> reduceActionForBlock1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForBlock2: nodes [
-
 	| result |
 	result := VBBlockNode new.
 	result addObject: (nodes at: 1) to: result statements.
@@ -3372,7 +3143,6 @@ VBParser >> reduceActionForBlock2: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForBlock3: nodes [
-
 	| result |
 	result := VBBlockNode new.
 	result addNode: (nodes at: 1) to: result lineNumbers.
@@ -3386,7 +3156,6 @@ VBParser >> reduceActionForBlock3: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForBlock4: nodes [
-
 	| result |
 	result := VBBlockNode new.
 	result addNode: (nodes at: 1) to: result lineNumbers.
@@ -3401,7 +3170,6 @@ VBParser >> reduceActionForBlock4: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForBooleanBinaryOperation1: nodes [
-
 	| result |
 	result := VBArithmeticOperationNode new.
 	result left: (nodes at: 1).
@@ -3415,7 +3183,6 @@ VBParser >> reduceActionForBooleanBinaryOperation1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForBooleanLiteral1: nodes [
-
 	| result |
 	result := VBBooleanLiteralNode new.
 	result token: (nodes at: 1).
@@ -3424,7 +3191,6 @@ VBParser >> reduceActionForBooleanLiteral1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForBooleanOperator1: nodes [
-
 	| result |
 	result := Array new: 4.
 	result at: 1 put: (nodes at: 1).
@@ -3433,7 +3199,6 @@ VBParser >> reduceActionForBooleanOperator1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForBooleanOperator2: nodes [
-
 	| result |
 	result := Array new: 4.
 	result at: 2 put: (nodes at: 1).
@@ -3442,7 +3207,6 @@ VBParser >> reduceActionForBooleanOperator2: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForBooleanOperator3: nodes [
-
 	| result |
 	result := Array new: 4.
 	result at: 3 put: (nodes at: 1).
@@ -3451,7 +3215,6 @@ VBParser >> reduceActionForBooleanOperator3: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForBooleanOperator4: nodes [
-
 	| result |
 	result := Array new: 4.
 	result at: 4 put: (nodes at: 1).
@@ -3460,7 +3223,6 @@ VBParser >> reduceActionForBooleanOperator4: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForCase10: nodes [
-
 	| result |
 	result := VBCaseNode new.
 	result caseToken: (nodes at: 1).
@@ -3473,7 +3235,6 @@ VBParser >> reduceActionForCase10: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForCase11: nodes [
-
 	| result |
 	result := VBCaseNode new.
 	result caseToken: (nodes at: 1).
@@ -3487,7 +3248,6 @@ VBParser >> reduceActionForCase11: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForCase12: nodes [
-
 	| result |
 	result := VBCaseNode new.
 	result caseToken: (nodes at: 1).
@@ -3502,7 +3262,6 @@ VBParser >> reduceActionForCase12: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForCase13: nodes [
-
 	| result |
 	result := VBCaseNode new.
 	result lineNumber: (nodes at: 1).
@@ -3515,7 +3274,6 @@ VBParser >> reduceActionForCase13: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForCase14: nodes [
-
 	| result |
 	result := VBCaseNode new.
 	result lineNumber: (nodes at: 1).
@@ -3529,7 +3287,6 @@ VBParser >> reduceActionForCase14: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForCase15: nodes [
-
 	| result |
 	result := VBCaseNode new.
 	result lineNumber: (nodes at: 1).
@@ -3544,7 +3301,6 @@ VBParser >> reduceActionForCase15: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForCase16: nodes [
-
 	| result |
 	result := VBCaseNode new.
 	result lineNumber: (nodes at: 1).
@@ -3558,7 +3314,6 @@ VBParser >> reduceActionForCase16: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForCase17: nodes [
-
 	| result |
 	result := VBCaseNode new.
 	result lineNumber: (nodes at: 1).
@@ -3573,7 +3328,6 @@ VBParser >> reduceActionForCase17: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForCase18: nodes [
-
 	| result |
 	result := VBCaseNode new.
 	result lineNumber: (nodes at: 1).
@@ -3589,7 +3343,6 @@ VBParser >> reduceActionForCase18: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForCase19: nodes [
-
 	| result |
 	result := VBCaseNode new.
 	result lineNumber: (nodes at: 1).
@@ -3602,7 +3355,6 @@ VBParser >> reduceActionForCase19: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForCase1: nodes [
-
 	| result |
 	result := VBCaseNode new.
 	result caseToken: (nodes at: 1).
@@ -3614,7 +3366,6 @@ VBParser >> reduceActionForCase1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForCase20: nodes [
-
 	| result |
 	result := VBCaseNode new.
 	result lineNumber: (nodes at: 1).
@@ -3628,7 +3379,6 @@ VBParser >> reduceActionForCase20: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForCase21: nodes [
-
 	| result |
 	result := VBCaseNode new.
 	result lineNumber: (nodes at: 1).
@@ -3643,7 +3393,6 @@ VBParser >> reduceActionForCase21: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForCase22: nodes [
-
 	| result |
 	result := VBCaseNode new.
 	result lineNumber: (nodes at: 1).
@@ -3657,7 +3406,6 @@ VBParser >> reduceActionForCase22: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForCase23: nodes [
-
 	| result |
 	result := VBCaseNode new.
 	result lineNumber: (nodes at: 1).
@@ -3672,7 +3420,6 @@ VBParser >> reduceActionForCase23: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForCase24: nodes [
-
 	| result |
 	result := VBCaseNode new.
 	result lineNumber: (nodes at: 1).
@@ -3688,7 +3435,6 @@ VBParser >> reduceActionForCase24: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForCase2: nodes [
-
 	| result |
 	result := VBCaseNode new.
 	result caseToken: (nodes at: 1).
@@ -3701,7 +3447,6 @@ VBParser >> reduceActionForCase2: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForCase3: nodes [
-
 	| result |
 	result := VBCaseNode new.
 	result caseToken: (nodes at: 1).
@@ -3715,7 +3460,6 @@ VBParser >> reduceActionForCase3: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForCase4: nodes [
-
 	| result |
 	result := VBCaseNode new.
 	result caseToken: (nodes at: 1).
@@ -3728,7 +3472,6 @@ VBParser >> reduceActionForCase4: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForCase5: nodes [
-
 	| result |
 	result := VBCaseNode new.
 	result caseToken: (nodes at: 1).
@@ -3742,7 +3485,6 @@ VBParser >> reduceActionForCase5: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForCase6: nodes [
-
 	| result |
 	result := VBCaseNode new.
 	result caseToken: (nodes at: 1).
@@ -3757,7 +3499,6 @@ VBParser >> reduceActionForCase6: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForCase7: nodes [
-
 	| result |
 	result := VBCaseNode new.
 	result caseToken: (nodes at: 1).
@@ -3769,7 +3510,6 @@ VBParser >> reduceActionForCase7: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForCase8: nodes [
-
 	| result |
 	result := VBCaseNode new.
 	result caseToken: (nodes at: 1).
@@ -3782,7 +3522,6 @@ VBParser >> reduceActionForCase8: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForCase9: nodes [
-
 	| result |
 	result := VBCaseNode new.
 	result caseToken: (nodes at: 1).
@@ -3796,7 +3535,6 @@ VBParser >> reduceActionForCase9: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForColorLiteral1: nodes [
-
 	| result |
 	result := VBColorLiteralNode new.
 	result token: (nodes at: 1).
@@ -3805,7 +3543,6 @@ VBParser >> reduceActionForColorLiteral1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForComparisonOperation1: nodes [
-
 	| result |
 	result := VBComparisonOperationNode new.
 	result left: (nodes at: 1).
@@ -3822,7 +3559,6 @@ VBParser >> reduceActionForComparisonOperation1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForComparisonOperator5: nodes [
-
 	| result |
 	result := Array new: 7.
 	result at: 5 put: (nodes at: 1).
@@ -3831,7 +3567,6 @@ VBParser >> reduceActionForComparisonOperator5: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForComparisonOperator6: nodes [
-
 	| result |
 	result := Array new: 7.
 	result at: 6 put: (nodes at: 1).
@@ -3840,7 +3575,6 @@ VBParser >> reduceActionForComparisonOperator6: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForComparisonOperator7: nodes [
-
 	| result |
 	result := Array new: 7.
 	result at: 7 put: (nodes at: 1).
@@ -3849,7 +3583,6 @@ VBParser >> reduceActionForComparisonOperator7: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForComplexType1: nodes [
-
 	| result |
 	result := VBComplexTypeNode new.
 	result addTokens: ((nodes at: 1) at: 1) to: result periodTokens.
@@ -3859,7 +3592,6 @@ VBParser >> reduceActionForComplexType1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForComplexType2: nodes [
-
 	| result |
 	result := VBComplexTypeNode new.
 	result base: (nodes at: 1).
@@ -3870,7 +3602,6 @@ VBParser >> reduceActionForComplexType2: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForConcatenationOperation1: nodes [
-
 	| result |
 	result := VBConcatenationOperationNode new.
 	result left: (nodes at: 1).
@@ -3881,7 +3612,6 @@ VBParser >> reduceActionForConcatenationOperation1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForConfiguration1: nodes [
-
 	| result |
 	result := VBConfigurationNode new.
 	result beginToken: (nodes at: 1).
@@ -3896,7 +3626,6 @@ VBParser >> reduceActionForConfiguration1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForConstant1: nodes [
-
 	| result |
 	result := VBConstantNode new.
 	result constant: (nodes at: 1).
@@ -3907,7 +3636,6 @@ VBParser >> reduceActionForConstant1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForConstant2: nodes [
-
 	| result |
 	result := VBConstantNode new.
 	result constant: (nodes at: 1).
@@ -3919,7 +3647,6 @@ VBParser >> reduceActionForConstant2: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForConstantList1: nodes [
-
 	| result |
 	result := VBConstantListNode new.
 	result addNode: (nodes at: 1) to: result constants.
@@ -3930,7 +3657,6 @@ VBParser >> reduceActionForConstantList1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForDateLiteral1: nodes [
-
 	| result |
 	result := VBDateLiteralNode new.
 	result token: (nodes at: 1).
@@ -3939,7 +3665,6 @@ VBParser >> reduceActionForDateLiteral1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForDeclareFunction1: nodes [
-
 	| result |
 	result := VBExternalFunctionNode new.
 	result declareToken: (nodes at: 1).
@@ -3954,7 +3679,6 @@ VBParser >> reduceActionForDeclareFunction1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForDeclareFunction2: nodes [
-
 	| result |
 	result := VBExternalFunctionNode new.
 	result declareToken: (nodes at: 1).
@@ -3971,7 +3695,6 @@ VBParser >> reduceActionForDeclareFunction2: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForDeclareFunction3: nodes [
-
 	| result |
 	result := VBExternalFunctionNode new.
 	result visibility: (nodes at: 1).
@@ -3987,7 +3710,6 @@ VBParser >> reduceActionForDeclareFunction3: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForDeclareFunction4: nodes [
-
 	| result |
 	result := VBExternalFunctionNode new.
 	result visibility: (nodes at: 1).
@@ -4005,7 +3727,6 @@ VBParser >> reduceActionForDeclareFunction4: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForDeclareSub1: nodes [
-
 	| result |
 	result := VBExternalSubNode new.
 	result declareToken: (nodes at: 1).
@@ -4019,7 +3740,6 @@ VBParser >> reduceActionForDeclareSub1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForDeclareSub2: nodes [
-
 	| result |
 	result := VBExternalSubNode new.
 	result declareToken: (nodes at: 1).
@@ -4035,7 +3755,6 @@ VBParser >> reduceActionForDeclareSub2: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForDeclareSub3: nodes [
-
 	| result |
 	result := VBExternalSubNode new.
 	result visibility: (nodes at: 1).
@@ -4050,7 +3769,6 @@ VBParser >> reduceActionForDeclareSub3: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForDeclareSub4: nodes [
-
 	| result |
 	result := VBExternalSubNode new.
 	result visibility: (nodes at: 1).
@@ -4067,7 +3785,6 @@ VBParser >> reduceActionForDeclareSub4: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForDefType1: nodes [
-
 	| result |
 	result := VBDefTypeNode new.
 	result deftype: (nodes at: 1).
@@ -4077,7 +3794,6 @@ VBParser >> reduceActionForDefType1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForDefineEnum1: nodes [
-
 	| result |
 	result := VBDefineEnumNode new.
 	result addToken: (nodes at: 1) to: result enumTokens.
@@ -4092,7 +3808,6 @@ VBParser >> reduceActionForDefineEnum1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForDefineEnum2: nodes [
-
 	| result |
 	result := VBDefineEnumNode new.
 	result visibility: (nodes at: 1).
@@ -4108,7 +3823,6 @@ VBParser >> reduceActionForDefineEnum2: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForDefineFunction1: nodes [
-
 	| result |
 	result := VBFunctionDefinitionNode new.
 	result addToken: (nodes at: 1) to: result functionTokens.
@@ -4122,7 +3836,6 @@ VBParser >> reduceActionForDefineFunction1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForDefineFunction2: nodes [
-
 	| result |
 	result := VBFunctionDefinitionNode new.
 	result addToken: (nodes at: 1) to: result functionTokens.
@@ -4137,7 +3850,6 @@ VBParser >> reduceActionForDefineFunction2: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForDefineFunction3: nodes [
-
 	| result |
 	result := VBFunctionDefinitionNode new.
 	result modifier: (nodes at: 1).
@@ -4152,7 +3864,6 @@ VBParser >> reduceActionForDefineFunction3: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForDefineFunction4: nodes [
-
 	| result |
 	result := VBFunctionDefinitionNode new.
 	result modifier: (nodes at: 1).
@@ -4168,7 +3879,6 @@ VBParser >> reduceActionForDefineFunction4: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForDefineFunction5: nodes [
-
 	| result |
 	result := VBFunctionDefinitionNode new.
 	result visibility: (nodes at: 1).
@@ -4183,7 +3893,6 @@ VBParser >> reduceActionForDefineFunction5: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForDefineFunction6: nodes [
-
 	| result |
 	result := VBFunctionDefinitionNode new.
 	result visibility: (nodes at: 1).
@@ -4199,7 +3908,6 @@ VBParser >> reduceActionForDefineFunction6: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForDefineFunction7: nodes [
-
 	| result |
 	result := VBFunctionDefinitionNode new.
 	result visibility: (nodes at: 1).
@@ -4215,7 +3923,6 @@ VBParser >> reduceActionForDefineFunction7: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForDefineFunction8: nodes [
-
 	| result |
 	result := VBFunctionDefinitionNode new.
 	result visibility: (nodes at: 1).
@@ -4232,7 +3939,6 @@ VBParser >> reduceActionForDefineFunction8: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForDefineSub1: nodes [
-
 	| result |
 	result := VBSubDefinitionNode new.
 	result addToken: (nodes at: 1) to: result subTokens.
@@ -4245,7 +3951,6 @@ VBParser >> reduceActionForDefineSub1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForDefineSub2: nodes [
-
 	| result |
 	result := VBSubDefinitionNode new.
 	result addToken: (nodes at: 1) to: result subTokens.
@@ -4259,7 +3964,6 @@ VBParser >> reduceActionForDefineSub2: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForDefineSub3: nodes [
-
 	| result |
 	result := VBSubDefinitionNode new.
 	result modifier: (nodes at: 1).
@@ -4273,7 +3977,6 @@ VBParser >> reduceActionForDefineSub3: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForDefineSub4: nodes [
-
 	| result |
 	result := VBSubDefinitionNode new.
 	result modifier: (nodes at: 1).
@@ -4288,7 +3991,6 @@ VBParser >> reduceActionForDefineSub4: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForDefineSub5: nodes [
-
 	| result |
 	result := VBSubDefinitionNode new.
 	result visibility: (nodes at: 1).
@@ -4302,7 +4004,6 @@ VBParser >> reduceActionForDefineSub5: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForDefineSub6: nodes [
-
 	| result |
 	result := VBSubDefinitionNode new.
 	result visibility: (nodes at: 1).
@@ -4317,7 +4018,6 @@ VBParser >> reduceActionForDefineSub6: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForDefineSub7: nodes [
-
 	| result |
 	result := VBSubDefinitionNode new.
 	result visibility: (nodes at: 1).
@@ -4332,7 +4032,6 @@ VBParser >> reduceActionForDefineSub7: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForDefineSub8: nodes [
-
 	| result |
 	result := VBSubDefinitionNode new.
 	result visibility: (nodes at: 1).
@@ -4348,7 +4047,6 @@ VBParser >> reduceActionForDefineSub8: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForDefineType1: nodes [
-
 	| result |
 	result := VBDefineTypeNode new.
 	result addToken: (nodes at: 1) to: result typeTokens.
@@ -4363,7 +4061,6 @@ VBParser >> reduceActionForDefineType1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForDefineType2: nodes [
-
 	| result |
 	result := VBDefineTypeNode new.
 	result visibility: (nodes at: 1).
@@ -4379,7 +4076,6 @@ VBParser >> reduceActionForDefineType2: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForDefineVariable1: nodes [
-
 	| result |
 	result := VBDimVariableNode new.
 	result dimToken: (nodes at: 1).
@@ -4389,7 +4085,6 @@ VBParser >> reduceActionForDefineVariable1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForDefineVariables1: nodes [
-
 	| result |
 	result := VBDimMultipleVariablesNode new.
 	result dimToken: (nodes at: 1).
@@ -4399,7 +4094,6 @@ VBParser >> reduceActionForDefineVariables1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForDestinationList1: nodes [
-
 	| result |
 	result := VBDestinationListNode new.
 	result addNode: (nodes at: 1) to: result labels.
@@ -4410,7 +4104,6 @@ VBParser >> reduceActionForDestinationList1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForDictionaryAccess1: nodes [
-
 	| result |
 	result := VBDictionaryAccessNode new.
 	result bangToken: (nodes at: 1).
@@ -4420,7 +4113,6 @@ VBParser >> reduceActionForDictionaryAccess1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForDictionaryAccess4: nodes [
-
 	| result |
 	result := VBDictionaryAccessNode new.
 	result receiver: (nodes at: 1).
@@ -4431,7 +4123,6 @@ VBParser >> reduceActionForDictionaryAccess4: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForDoEvents1: nodes [
-
 	| result |
 	result := VBDoEventsNode new.
 	result doEventsToken: (nodes at: 1).
@@ -4440,7 +4131,6 @@ VBParser >> reduceActionForDoEvents1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForDoUntilTrue1: nodes [
-
 	| result |
 	result := VBDoUntilTrueNode new.
 	result doToken: (nodes at: 1).
@@ -4453,7 +4143,6 @@ VBParser >> reduceActionForDoUntilTrue1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForDoUntilTrue2: nodes [
-
 	| result |
 	result := VBDoUntilTrueNode new.
 	result doToken: (nodes at: 1).
@@ -4467,7 +4156,6 @@ VBParser >> reduceActionForDoUntilTrue2: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForDoWhileTrue1: nodes [
-
 	| result |
 	result := VBDoWhileTrueNode new.
 	result doToken: (nodes at: 1).
@@ -4479,7 +4167,6 @@ VBParser >> reduceActionForDoWhileTrue1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForDoWhileTrue2: nodes [
-
 	| result |
 	result := VBDoWhileTrueNode new.
 	result doToken: (nodes at: 1).
@@ -4492,7 +4179,6 @@ VBParser >> reduceActionForDoWhileTrue2: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForDoWhileTrue3: nodes [
-
 	| result |
 	result := VBDoWhileTrueNode new.
 	result doToken: (nodes at: 1).
@@ -4505,7 +4191,6 @@ VBParser >> reduceActionForDoWhileTrue3: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForDoWhileTrue4: nodes [
-
 	| result |
 	result := VBDoWhileTrueNode new.
 	result doToken: (nodes at: 1).
@@ -4519,7 +4204,6 @@ VBParser >> reduceActionForDoWhileTrue4: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForElse1: nodes [
-
 	| result |
 	result := VBElseIfBlockNode new.
 	result elseToken: (nodes at: 1).
@@ -4528,7 +4212,6 @@ VBParser >> reduceActionForElse1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForElse2: nodes [
-
 	| result |
 	result := VBElseIfBlockNode new.
 	result elseToken: (nodes at: 1).
@@ -4538,7 +4221,6 @@ VBParser >> reduceActionForElse2: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForElse3: nodes [
-
 	| result |
 	result := VBElseIfBlockNode new.
 	result endLineNumber: (nodes at: 1).
@@ -4548,7 +4230,6 @@ VBParser >> reduceActionForElse3: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForElse4: nodes [
-
 	| result |
 	result := VBElseIfBlockNode new.
 	result endLineNumber: (nodes at: 1).
@@ -4559,7 +4240,6 @@ VBParser >> reduceActionForElse4: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForElseIf1: nodes [
-
 	| result |
 	result := VBElseIfBlockNode new.
 	result elseifToken: (nodes at: 1).
@@ -4570,7 +4250,6 @@ VBParser >> reduceActionForElseIf1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForElseIf2: nodes [
-
 	| result |
 	result := VBElseIfBlockNode new.
 	result elseifToken: (nodes at: 1).
@@ -4582,7 +4261,6 @@ VBParser >> reduceActionForElseIf2: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForElseIf3: nodes [
-
 	| result |
 	result := VBElseIfBlockNode new.
 	result endLineNumber: (nodes at: 1).
@@ -4594,7 +4272,6 @@ VBParser >> reduceActionForElseIf3: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForElseIf4: nodes [
-
 	| result |
 	result := VBElseIfBlockNode new.
 	result endLineNumber: (nodes at: 1).
@@ -4607,7 +4284,6 @@ VBParser >> reduceActionForElseIf4: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForEnumEntry1: nodes [
-
 	| result |
 	result := VBEnumEntryNode new.
 	result name: (nodes at: 1).
@@ -4616,7 +4292,6 @@ VBParser >> reduceActionForEnumEntry1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForEnumEntry2: nodes [
-
 	| result |
 	result := VBEnumEntryNode new.
 	result name: (nodes at: 1).
@@ -4627,7 +4302,6 @@ VBParser >> reduceActionForEnumEntry2: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForEquals1: nodes [
-
 	| result |
 	result := VBEqualsNode new.
 	result left: (nodes at: 1).
@@ -4638,7 +4312,6 @@ VBParser >> reduceActionForEquals1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForEvent1: nodes [
-
 	| result |
 	result := VBEventNode new.
 	result eventToken: (nodes at: 1).
@@ -4649,7 +4322,6 @@ VBParser >> reduceActionForEvent1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForEvent2: nodes [
-
 	| result |
 	result := VBEventNode new.
 	result visibility: (nodes at: 1).
@@ -4661,7 +4333,6 @@ VBParser >> reduceActionForEvent2: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForExitDo1: nodes [
-
 	| result |
 	result := VBExitsNode new.
 	result exitToken: (nodes at: 1).
@@ -4671,7 +4342,6 @@ VBParser >> reduceActionForExitDo1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForExitFor1: nodes [
-
 	| result |
 	result := VBExitsNode new.
 	result exitToken: (nodes at: 1).
@@ -4681,7 +4351,6 @@ VBParser >> reduceActionForExitFor1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForExitFunction1: nodes [
-
 	| result |
 	result := VBExitsNode new.
 	result exitToken: (nodes at: 1).
@@ -4691,7 +4360,6 @@ VBParser >> reduceActionForExitFunction1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForExitProperty1: nodes [
-
 	| result |
 	result := VBExitsNode new.
 	result exitToken: (nodes at: 1).
@@ -4701,7 +4369,6 @@ VBParser >> reduceActionForExitProperty1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForExitSub1: nodes [
-
 	| result |
 	result := VBExitsNode new.
 	result exitToken: (nodes at: 1).
@@ -4711,7 +4378,6 @@ VBParser >> reduceActionForExitSub1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForExplicitAssignement2: nodes [
-
 	| result |
 	result := VBExplicitAssignementNode new.
 	result kind: (nodes at: 1).
@@ -4723,7 +4389,6 @@ VBParser >> reduceActionForExplicitAssignement2: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForExplicitCall1: nodes [
-
 	| result |
 	result := VBExplicitCallNode new.
 	result callToken: (nodes at: 1).
@@ -4733,7 +4398,6 @@ VBParser >> reduceActionForExplicitCall1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForFileDescriptorLiteral1: nodes [
-
 	| result |
 	result := VBFileDescriptorLiteralNode new.
 	result token: (nodes at: 1).
@@ -4742,7 +4406,6 @@ VBParser >> reduceActionForFileDescriptorLiteral1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForFloatLiteral1: nodes [
-
 	| result |
 	result := VBFloatLiteralNode new.
 	result token: (nodes at: 1).
@@ -4751,7 +4414,6 @@ VBParser >> reduceActionForFloatLiteral1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForForEach1: nodes [
-
 	| result |
 	result := VBForEachNode new.
 	result fORToken: (nodes at: 1).
@@ -4765,7 +4427,6 @@ VBParser >> reduceActionForForEach1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForForEach2: nodes [
-
 	| result |
 	result := VBForEachNode new.
 	result fORToken: (nodes at: 1).
@@ -4780,7 +4441,6 @@ VBParser >> reduceActionForForEach2: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForForEach3: nodes [
-
 	| result |
 	result := VBForEachNode new.
 	result fORToken: (nodes at: 1).
@@ -4795,7 +4455,6 @@ VBParser >> reduceActionForForEach3: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForForEach4: nodes [
-
 	| result |
 	result := VBForEachNode new.
 	result fORToken: (nodes at: 1).
@@ -4811,7 +4470,6 @@ VBParser >> reduceActionForForEach4: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForForEach5: nodes [
-
 	| result |
 	result := VBForEachNode new.
 	result fORToken: (nodes at: 1).
@@ -4826,7 +4484,6 @@ VBParser >> reduceActionForForEach5: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForForEach6: nodes [
-
 	| result |
 	result := VBForEachNode new.
 	result fORToken: (nodes at: 1).
@@ -4842,7 +4499,6 @@ VBParser >> reduceActionForForEach6: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForForEach7: nodes [
-
 	| result |
 	result := VBForEachNode new.
 	result fORToken: (nodes at: 1).
@@ -4858,7 +4514,6 @@ VBParser >> reduceActionForForEach7: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForForEach8: nodes [
-
 	| result |
 	result := VBForEachNode new.
 	result fORToken: (nodes at: 1).
@@ -4875,7 +4530,6 @@ VBParser >> reduceActionForForEach8: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForForNext1: nodes [
-
 	| result |
 	result := VBForNextNode new.
 	result fORToken: (nodes at: 1).
@@ -4890,7 +4544,6 @@ VBParser >> reduceActionForForNext1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForForNext2: nodes [
-
 	| result |
 	result := VBForNextNode new.
 	result fORToken: (nodes at: 1).
@@ -4906,7 +4559,6 @@ VBParser >> reduceActionForForNext2: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForForNext3: nodes [
-
 	| result |
 	result := VBForNextNode new.
 	result fORToken: (nodes at: 1).
@@ -4922,7 +4574,6 @@ VBParser >> reduceActionForForNext3: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForForNext4: nodes [
-
 	| result |
 	result := VBForNextNode new.
 	result fORToken: (nodes at: 1).
@@ -4939,7 +4590,6 @@ VBParser >> reduceActionForForNext4: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForForNext5: nodes [
-
 	| result |
 	result := VBForNextNode new.
 	result fORToken: (nodes at: 1).
@@ -4955,7 +4605,6 @@ VBParser >> reduceActionForForNext5: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForForNext6: nodes [
-
 	| result |
 	result := VBForNextNode new.
 	result fORToken: (nodes at: 1).
@@ -4972,7 +4621,6 @@ VBParser >> reduceActionForForNext6: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForForNext7: nodes [
-
 	| result |
 	result := VBForNextNode new.
 	result fORToken: (nodes at: 1).
@@ -4989,7 +4637,6 @@ VBParser >> reduceActionForForNext7: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForForNext8: nodes [
-
 	| result |
 	result := VBForNextNode new.
 	result fORToken: (nodes at: 1).
@@ -5007,7 +4654,6 @@ VBParser >> reduceActionForForNext8: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForForStepNext1: nodes [
-
 	| result |
 	result := VBForStepNextNode new.
 	result fORToken: (nodes at: 1).
@@ -5024,7 +4670,6 @@ VBParser >> reduceActionForForStepNext1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForForStepNext2: nodes [
-
 	| result |
 	result := VBForStepNextNode new.
 	result fORToken: (nodes at: 1).
@@ -5042,7 +4687,6 @@ VBParser >> reduceActionForForStepNext2: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForForStepNext3: nodes [
-
 	| result |
 	result := VBForStepNextNode new.
 	result fORToken: (nodes at: 1).
@@ -5060,7 +4704,6 @@ VBParser >> reduceActionForForStepNext3: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForForStepNext4: nodes [
-
 	| result |
 	result := VBForStepNextNode new.
 	result fORToken: (nodes at: 1).
@@ -5079,7 +4722,6 @@ VBParser >> reduceActionForForStepNext4: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForForStepNext5: nodes [
-
 	| result |
 	result := VBForStepNextNode new.
 	result fORToken: (nodes at: 1).
@@ -5097,7 +4739,6 @@ VBParser >> reduceActionForForStepNext5: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForForStepNext6: nodes [
-
 	| result |
 	result := VBForStepNextNode new.
 	result fORToken: (nodes at: 1).
@@ -5116,7 +4757,6 @@ VBParser >> reduceActionForForStepNext6: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForForStepNext7: nodes [
-
 	| result |
 	result := VBForStepNextNode new.
 	result fORToken: (nodes at: 1).
@@ -5135,7 +4775,6 @@ VBParser >> reduceActionForForStepNext7: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForForStepNext8: nodes [
-
 	| result |
 	result := VBForStepNextNode new.
 	result fORToken: (nodes at: 1).
@@ -5155,7 +4794,6 @@ VBParser >> reduceActionForForStepNext8: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForGoSub1: nodes [
-
 	| result |
 	result := VBGoSubNode new.
 	result gosubToken: (nodes at: 1).
@@ -5165,7 +4803,6 @@ VBParser >> reduceActionForGoSub1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForGoToStatement1: nodes [
-
 	| result |
 	result := VBGoToStatementNode new.
 	result gotoToken: (nodes at: 1).
@@ -5175,7 +4812,6 @@ VBParser >> reduceActionForGoToStatement1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForGuidLiteral1: nodes [
-
 	| result |
 	result := VBGuidLiteralNode new.
 	result leftBraceToken: (nodes at: 1).
@@ -5194,7 +4830,6 @@ VBParser >> reduceActionForGuidLiteral1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForHashIdentifier1: nodes [
-
 	| result |
 	result := VBHashIdentifierNode new.
 	result token: (nodes at: 1).
@@ -5203,7 +4838,6 @@ VBParser >> reduceActionForHashIdentifier1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForIfThenElse1: nodes [
-
 	| result |
 	result := VBIfThenElseNode new.
 	result addToken: (nodes at: 1) to: result ifTokens.
@@ -5217,7 +4851,6 @@ VBParser >> reduceActionForIfThenElse1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForIfThenElse2: nodes [
-
 	| result |
 	result := VBIfThenElseNode new.
 	result addToken: (nodes at: 1) to: result ifTokens.
@@ -5232,7 +4865,6 @@ VBParser >> reduceActionForIfThenElse2: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForIfThenElse3: nodes [
-
 	| result |
 	result := VBIfThenElseNode new.
 	result addToken: (nodes at: 1) to: result ifTokens.
@@ -5247,7 +4879,6 @@ VBParser >> reduceActionForIfThenElse3: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForIfThenElse4: nodes [
-
 	| result |
 	result := VBIfThenElseNode new.
 	result addToken: (nodes at: 1) to: result ifTokens.
@@ -5263,13 +4894,13 @@ VBParser >> reduceActionForIfThenElse4: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForIfThenElse5: nodes [
-
 	| result |
 	result := VBIfThenElseNode new.
 	result addToken: (nodes at: 1) to: result ifTokens.
 	result condition: (nodes at: 2).
 	result thenToken: (nodes at: 3).
-	result ifTrue: (nodes at: 4).
+	result
+		ifTrue: (nodes at: 4).
 	result addNodes: (nodes at: 5) to: result elseifs.
 	result endToken: (nodes at: 6).
 	result addToken: (nodes at: 7) to: result ifTokens.
@@ -5278,13 +4909,13 @@ VBParser >> reduceActionForIfThenElse5: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForIfThenElse6: nodes [
-
 	| result |
 	result := VBIfThenElseNode new.
 	result addToken: (nodes at: 1) to: result ifTokens.
 	result condition: (nodes at: 2).
 	result thenToken: (nodes at: 3).
-	result ifTrue: (nodes at: 4).
+	result
+		ifTrue: (nodes at: 4).
 	result addNodes: (nodes at: 5) to: result elseifs.
 	result endLineNumber: (nodes at: 6).
 	result endToken: (nodes at: 7).
@@ -5294,13 +4925,13 @@ VBParser >> reduceActionForIfThenElse6: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForIfThenElse7: nodes [
-
 	| result |
 	result := VBIfThenElseNode new.
 	result addToken: (nodes at: 1) to: result ifTokens.
 	result condition: (nodes at: 2).
 	result thenToken: (nodes at: 3).
-	result ifTrue: (nodes at: 4).
+	result
+		ifTrue: (nodes at: 4).
 	result addNodes: (nodes at: 5) to: result elseifs.
 	result else: (nodes at: 6).
 	result endToken: (nodes at: 7).
@@ -5310,13 +4941,13 @@ VBParser >> reduceActionForIfThenElse7: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForIfThenElse8: nodes [
-
 	| result |
 	result := VBIfThenElseNode new.
 	result addToken: (nodes at: 1) to: result ifTokens.
 	result condition: (nodes at: 2).
 	result thenToken: (nodes at: 3).
-	result ifTrue: (nodes at: 4).
+	result
+		ifTrue: (nodes at: 4).
 	result addNodes: (nodes at: 5) to: result elseifs.
 	result else: (nodes at: 6).
 	result endLineNumber: (nodes at: 7).
@@ -5327,87 +4958,90 @@ VBParser >> reduceActionForIfThenElse8: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForIfThenElseOneLine1: nodes [
-
 	| result |
 	result := VBIfThenElseNode new.
 	result addToken: (nodes at: 1) to: result ifTokens.
 	result condition: (nodes at: 2).
 	result thenToken: (nodes at: 3).
-	result ifTrue: (nodes at: 4).
+	result
+		ifTrue: (nodes at: 4).
 	^ result
 ]
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForIfThenElseOneLine2: nodes [
-
 	| result |
 	result := VBIfThenElseNode new.
 	result addToken: (nodes at: 1) to: result ifTokens.
 	result condition: (nodes at: 2).
 	result thenToken: (nodes at: 3).
-	result ifTrue: (nodes at: 4).
+	result
+		ifTrue: (nodes at: 4).
 	result elseToken: (nodes at: 5).
-	result ifFalse: (nodes at: 6).
+	result
+		ifFalse: (nodes at: 6).
 	^ result
 ]
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForIfThenElseOneLine3: nodes [
-
 	| result |
 	result := VBIfThenElseNode new.
 	result addToken: (nodes at: 1) to: result ifTokens.
 	result condition: (nodes at: 2).
 	result thenToken: (nodes at: 3).
-	result ifTrue: (nodes at: 4).
+	result
+		ifTrue: (nodes at: 4).
 	result elseColonToken: (nodes at: 5).
-	result ifFalse: (nodes at: 6).
+	result
+		ifFalse: (nodes at: 6).
 	^ result
 ]
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForIfThenElseOneLine4: nodes [
-
 	| result |
 	result := VBIfThenElseNode new.
 	result addToken: (nodes at: 1) to: result ifTokens.
 	result condition: (nodes at: 2).
 	result thenColonToken: (nodes at: 3).
-	result ifTrue: (nodes at: 4).
+	result
+		ifTrue: (nodes at: 4).
 	^ result
 ]
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForIfThenElseOneLine5: nodes [
-
 	| result |
 	result := VBIfThenElseNode new.
 	result addToken: (nodes at: 1) to: result ifTokens.
 	result condition: (nodes at: 2).
 	result thenColonToken: (nodes at: 3).
-	result ifTrue: (nodes at: 4).
+	result
+		ifTrue: (nodes at: 4).
 	result elseToken: (nodes at: 5).
-	result ifFalse: (nodes at: 6).
+	result
+		ifFalse: (nodes at: 6).
 	^ result
 ]
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForIfThenElseOneLine6: nodes [
-
 	| result |
 	result := VBIfThenElseNode new.
 	result addToken: (nodes at: 1) to: result ifTokens.
 	result condition: (nodes at: 2).
 	result thenColonToken: (nodes at: 3).
-	result ifTrue: (nodes at: 4).
+	result
+		ifTrue: (nodes at: 4).
 	result elseColonToken: (nodes at: 5).
-	result ifFalse: (nodes at: 6).
+	result
+		ifFalse: (nodes at: 6).
 	^ result
 ]
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForImplements1: nodes [
-
 	| result |
 	result := VBImplementsNode new.
 	result implementsToken: (nodes at: 1).
@@ -5417,7 +5051,6 @@ VBParser >> reduceActionForImplements1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForImplicitParenthesesLessCall2: nodes [
-
 	| result |
 	result := VBImplicitParenthesesLessCallNode new.
 	result selector: (nodes at: 1).
@@ -5427,7 +5060,6 @@ VBParser >> reduceActionForImplicitParenthesesLessCall2: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForInfinityLoop1: nodes [
-
 	| result |
 	result := VBInfinityLoopNode new.
 	result doToken: (nodes at: 1).
@@ -5437,7 +5069,6 @@ VBParser >> reduceActionForInfinityLoop1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForInfinityLoop2: nodes [
-
 	| result |
 	result := VBInfinityLoopNode new.
 	result doToken: (nodes at: 1).
@@ -5448,7 +5079,6 @@ VBParser >> reduceActionForInfinityLoop2: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForInfinityLoop3: nodes [
-
 	| result |
 	result := VBInfinityLoopNode new.
 	result doToken: (nodes at: 1).
@@ -5459,7 +5089,6 @@ VBParser >> reduceActionForInfinityLoop3: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForInfinityLoop4: nodes [
-
 	| result |
 	result := VBInfinityLoopNode new.
 	result doToken: (nodes at: 1).
@@ -5471,7 +5100,6 @@ VBParser >> reduceActionForInfinityLoop4: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForIntegerLiteral1: nodes [
-
 	| result |
 	result := VBIntegerLiteralNode new.
 	result token: (nodes at: 1).
@@ -5480,7 +5108,6 @@ VBParser >> reduceActionForIntegerLiteral1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForInterval1: nodes [
-
 	| result |
 	result := VBIntervalNode new.
 	result from: (nodes at: 1).
@@ -5491,7 +5118,6 @@ VBParser >> reduceActionForInterval1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForLabel1: nodes [
-
 	| result |
 	result := VBLabelNode new.
 	result label: (nodes at: 1).
@@ -5500,7 +5126,6 @@ VBParser >> reduceActionForLabel1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForLabelTag1: nodes [
-
 	| result |
 	result := VBLabelTagNode new.
 	result name: (nodes at: 1).
@@ -5510,7 +5135,6 @@ VBParser >> reduceActionForLabelTag1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForLabelTag2: nodes [
-
 	| result |
 	result := VBLabelTagNode new.
 	result name: (nodes at: 1).
@@ -5521,7 +5145,6 @@ VBParser >> reduceActionForLabelTag2: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForLineInputClause1: nodes [
-
 	| result |
 	result := VBLineInputClauseNode new.
 	result lineToken: (nodes at: 1).
@@ -5534,7 +5157,6 @@ VBParser >> reduceActionForLineInputClause1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForLineInputClause2: nodes [
-
 	| result |
 	result := VBLineInputClauseNode new.
 	result lineToken: (nodes at: 1).
@@ -5548,7 +5170,6 @@ VBParser >> reduceActionForLineInputClause2: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForLineInputClause3: nodes [
-
 	| result |
 	result := VBLineInputClauseNode new.
 	result lineToken: (nodes at: 1).
@@ -5562,7 +5183,6 @@ VBParser >> reduceActionForLineInputClause3: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForLineInputClause4: nodes [
-
 	| result |
 	result := VBLineInputClauseNode new.
 	result lineToken: (nodes at: 1).
@@ -5577,7 +5197,6 @@ VBParser >> reduceActionForLineInputClause4: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForMemberAccess1: nodes [
-
 	| result |
 	result := VBMemberAccessNode new.
 	result periodToken: (nodes at: 1).
@@ -5587,7 +5206,6 @@ VBParser >> reduceActionForMemberAccess1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForMemberAccess4: nodes [
-
 	| result |
 	result := VBMemberAccessNode new.
 	result receiver: (nodes at: 1).
@@ -5598,7 +5216,6 @@ VBParser >> reduceActionForMemberAccess4: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForModuleConstant1: nodes [
-
 	| result |
 	result := VBModuleConstantNode new.
 	result constToken: (nodes at: 1).
@@ -5608,7 +5225,6 @@ VBParser >> reduceActionForModuleConstant1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForModuleConstant2: nodes [
-
 	| result |
 	result := VBModuleConstantNode new.
 	result visibility: (nodes at: 1).
@@ -5619,7 +5235,6 @@ VBParser >> reduceActionForModuleConstant2: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForModuleConstants1: nodes [
-
 	| result |
 	result := VBModuleMultipleConstantsNode new.
 	result constToken: (nodes at: 1).
@@ -5629,7 +5244,6 @@ VBParser >> reduceActionForModuleConstants1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForModuleConstants2: nodes [
-
 	| result |
 	result := VBModuleMultipleConstantsNode new.
 	result visibility: (nodes at: 1).
@@ -5640,7 +5254,6 @@ VBParser >> reduceActionForModuleConstants2: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForModuleProperties1: nodes [
-
 	| result |
 	result := VBModuleMultiplePropertiesNode new.
 	result visibility: (nodes at: 1).
@@ -5650,7 +5263,6 @@ VBParser >> reduceActionForModuleProperties1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForModuleProperty1: nodes [
-
 	| result |
 	result := VBModulePropertyNode new.
 	result visibility: (nodes at: 1).
@@ -5660,7 +5272,6 @@ VBParser >> reduceActionForModuleProperty1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForModulePropertyGet10: nodes [
-
 	| result |
 	result := VBModulePropertyGetNode new.
 	result visibility: (nodes at: 1).
@@ -5676,7 +5287,6 @@ VBParser >> reduceActionForModulePropertyGet10: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForModulePropertyGet11: nodes [
-
 	| result |
 	result := VBModulePropertyGetNode new.
 	result visibility: (nodes at: 1).
@@ -5692,7 +5302,6 @@ VBParser >> reduceActionForModulePropertyGet11: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForModulePropertyGet12: nodes [
-
 	| result |
 	result := VBModulePropertyGetNode new.
 	result visibility: (nodes at: 1).
@@ -5709,7 +5318,6 @@ VBParser >> reduceActionForModulePropertyGet12: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForModulePropertyGet13: nodes [
-
 	| result |
 	result := VBModulePropertyGetNode new.
 	result visibility: (nodes at: 1).
@@ -5725,7 +5333,6 @@ VBParser >> reduceActionForModulePropertyGet13: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForModulePropertyGet14: nodes [
-
 	| result |
 	result := VBModulePropertyGetNode new.
 	result visibility: (nodes at: 1).
@@ -5742,7 +5349,6 @@ VBParser >> reduceActionForModulePropertyGet14: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForModulePropertyGet15: nodes [
-
 	| result |
 	result := VBModulePropertyGetNode new.
 	result visibility: (nodes at: 1).
@@ -5759,7 +5365,6 @@ VBParser >> reduceActionForModulePropertyGet15: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForModulePropertyGet16: nodes [
-
 	| result |
 	result := VBModulePropertyGetNode new.
 	result visibility: (nodes at: 1).
@@ -5777,7 +5382,6 @@ VBParser >> reduceActionForModulePropertyGet16: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForModulePropertyGet1: nodes [
-
 	| result |
 	result := VBModulePropertyGetNode new.
 	result addToken: (nodes at: 1) to: result propertyTokens.
@@ -5791,7 +5395,6 @@ VBParser >> reduceActionForModulePropertyGet1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForModulePropertyGet2: nodes [
-
 	| result |
 	result := VBModulePropertyGetNode new.
 	result addToken: (nodes at: 1) to: result propertyTokens.
@@ -5806,7 +5409,6 @@ VBParser >> reduceActionForModulePropertyGet2: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForModulePropertyGet3: nodes [
-
 	| result |
 	result := VBModulePropertyGetNode new.
 	result addToken: (nodes at: 1) to: result propertyTokens.
@@ -5821,7 +5423,6 @@ VBParser >> reduceActionForModulePropertyGet3: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForModulePropertyGet4: nodes [
-
 	| result |
 	result := VBModulePropertyGetNode new.
 	result addToken: (nodes at: 1) to: result propertyTokens.
@@ -5837,7 +5438,6 @@ VBParser >> reduceActionForModulePropertyGet4: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForModulePropertyGet5: nodes [
-
 	| result |
 	result := VBModulePropertyGetNode new.
 	result modifier: (nodes at: 1).
@@ -5852,7 +5452,6 @@ VBParser >> reduceActionForModulePropertyGet5: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForModulePropertyGet6: nodes [
-
 	| result |
 	result := VBModulePropertyGetNode new.
 	result modifier: (nodes at: 1).
@@ -5868,7 +5467,6 @@ VBParser >> reduceActionForModulePropertyGet6: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForModulePropertyGet7: nodes [
-
 	| result |
 	result := VBModulePropertyGetNode new.
 	result modifier: (nodes at: 1).
@@ -5884,7 +5482,6 @@ VBParser >> reduceActionForModulePropertyGet7: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForModulePropertyGet8: nodes [
-
 	| result |
 	result := VBModulePropertyGetNode new.
 	result modifier: (nodes at: 1).
@@ -5901,7 +5498,6 @@ VBParser >> reduceActionForModulePropertyGet8: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForModulePropertyGet9: nodes [
-
 	| result |
 	result := VBModulePropertyGetNode new.
 	result visibility: (nodes at: 1).
@@ -5916,7 +5512,6 @@ VBParser >> reduceActionForModulePropertyGet9: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForModulePropertyLet1: nodes [
-
 	| result |
 	result := VBModulePropertyGetNode new.
 	result addToken: (nodes at: 1) to: result propertyTokens.
@@ -5930,7 +5525,6 @@ VBParser >> reduceActionForModulePropertyLet1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForModulePropertyLet2: nodes [
-
 	| result |
 	result := VBModulePropertyGetNode new.
 	result addToken: (nodes at: 1) to: result propertyTokens.
@@ -5945,7 +5539,6 @@ VBParser >> reduceActionForModulePropertyLet2: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForModulePropertyLet3: nodes [
-
 	| result |
 	result := VBModulePropertyGetNode new.
 	result modifier: (nodes at: 1).
@@ -5960,7 +5553,6 @@ VBParser >> reduceActionForModulePropertyLet3: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForModulePropertyLet4: nodes [
-
 	| result |
 	result := VBModulePropertyGetNode new.
 	result modifier: (nodes at: 1).
@@ -5976,7 +5568,6 @@ VBParser >> reduceActionForModulePropertyLet4: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForModulePropertyLet5: nodes [
-
 	| result |
 	result := VBModulePropertyGetNode new.
 	result visibility: (nodes at: 1).
@@ -5991,7 +5582,6 @@ VBParser >> reduceActionForModulePropertyLet5: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForModulePropertyLet6: nodes [
-
 	| result |
 	result := VBModulePropertyGetNode new.
 	result visibility: (nodes at: 1).
@@ -6007,7 +5597,6 @@ VBParser >> reduceActionForModulePropertyLet6: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForModulePropertyLet7: nodes [
-
 	| result |
 	result := VBModulePropertyGetNode new.
 	result visibility: (nodes at: 1).
@@ -6023,7 +5612,6 @@ VBParser >> reduceActionForModulePropertyLet7: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForModulePropertyLet8: nodes [
-
 	| result |
 	result := VBModulePropertyGetNode new.
 	result visibility: (nodes at: 1).
@@ -6040,7 +5628,6 @@ VBParser >> reduceActionForModulePropertyLet8: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForModulePropertySet1: nodes [
-
 	| result |
 	result := VBModulePropertyGetNode new.
 	result addToken: (nodes at: 1) to: result propertyTokens.
@@ -6054,7 +5641,6 @@ VBParser >> reduceActionForModulePropertySet1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForModulePropertySet2: nodes [
-
 	| result |
 	result := VBModulePropertyGetNode new.
 	result addToken: (nodes at: 1) to: result propertyTokens.
@@ -6069,7 +5655,6 @@ VBParser >> reduceActionForModulePropertySet2: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForModulePropertySet3: nodes [
-
 	| result |
 	result := VBModulePropertyGetNode new.
 	result modifier: (nodes at: 1).
@@ -6084,7 +5669,6 @@ VBParser >> reduceActionForModulePropertySet3: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForModulePropertySet4: nodes [
-
 	| result |
 	result := VBModulePropertyGetNode new.
 	result modifier: (nodes at: 1).
@@ -6100,7 +5684,6 @@ VBParser >> reduceActionForModulePropertySet4: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForModulePropertySet5: nodes [
-
 	| result |
 	result := VBModulePropertyGetNode new.
 	result visibility: (nodes at: 1).
@@ -6115,7 +5698,6 @@ VBParser >> reduceActionForModulePropertySet5: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForModulePropertySet6: nodes [
-
 	| result |
 	result := VBModulePropertyGetNode new.
 	result visibility: (nodes at: 1).
@@ -6131,7 +5713,6 @@ VBParser >> reduceActionForModulePropertySet6: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForModulePropertySet7: nodes [
-
 	| result |
 	result := VBModulePropertyGetNode new.
 	result visibility: (nodes at: 1).
@@ -6147,7 +5728,6 @@ VBParser >> reduceActionForModulePropertySet7: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForModulePropertySet8: nodes [
-
 	| result |
 	result := VBModulePropertyGetNode new.
 	result visibility: (nodes at: 1).
@@ -6164,7 +5744,6 @@ VBParser >> reduceActionForModulePropertySet8: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForNegatedOperation1: nodes [
-
 	| result |
 	result := VBNegatedOperationNode new.
 	result minusToken: (nodes at: 1).
@@ -6174,7 +5753,6 @@ VBParser >> reduceActionForNegatedOperation1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForNewClause1: nodes [
-
 	| result |
 	result := VBNewClauseNode new.
 	result nEWToken: (nodes at: 1).
@@ -6184,7 +5762,6 @@ VBParser >> reduceActionForNewClause1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForNotOperation1: nodes [
-
 	| result |
 	result := VBNotOperationNode new.
 	result notToken: (nodes at: 1).
@@ -6194,7 +5771,6 @@ VBParser >> reduceActionForNotOperation1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForNull1: nodes [
-
 	| result |
 	result := VBNullNode new.
 	result token: (nodes at: 1).
@@ -6203,7 +5779,6 @@ VBParser >> reduceActionForNull1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForOnErrorGoTo1: nodes [
-
 	| result |
 	result := VBOnErrorGoToNode new.
 	result onToken: (nodes at: 1).
@@ -6214,7 +5789,6 @@ VBParser >> reduceActionForOnErrorGoTo1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForOnErrorResumeNext1: nodes [
-
 	| result |
 	result := VBOnErrorResumeNextNode new.
 	result onToken: (nodes at: 1).
@@ -6226,7 +5800,6 @@ VBParser >> reduceActionForOnErrorResumeNext1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForOnExpressionGo1: nodes [
-
 	| result |
 	result := VBOnExpressionGoNode new.
 	result onToken: (nodes at: 1).
@@ -6237,7 +5810,6 @@ VBParser >> reduceActionForOnExpressionGo1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForOneLineBlock1: nodes [
-
 	| result |
 	result := VBBlockNode new.
 	result addTokens: ((nodes at: 1) at: 1) to: result colonTokens.
@@ -6247,7 +5819,6 @@ VBParser >> reduceActionForOneLineBlock1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForOneLineBlock2: nodes [
-
 	| result |
 	result := VBBlockNode new.
 	result addTokens: ((nodes at: 1) at: 1) to: result colonTokens.
@@ -6258,7 +5829,6 @@ VBParser >> reduceActionForOneLineBlock2: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForOneLineBlock3: nodes [
-
 	| result |
 	result := VBBlockNode new.
 	result addObject: (nodes at: 1) to: result statements.
@@ -6269,7 +5839,6 @@ VBParser >> reduceActionForOneLineBlock3: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForOneLineBlock4: nodes [
-
 	| result |
 	result := VBBlockNode new.
 	result addObject: (nodes at: 1) to: result statements.
@@ -6281,7 +5850,6 @@ VBParser >> reduceActionForOneLineBlock4: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForOpenFileClause1: nodes [
-
 	| result |
 	result := VBOpenClauseNode new.
 	result oPENToken: (nodes at: 1).
@@ -6295,7 +5863,6 @@ VBParser >> reduceActionForOpenFileClause1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForOpenFileClause2: nodes [
-
 	| result |
 	result := VBOpenClauseNode new.
 	result oPENToken: (nodes at: 1).
@@ -6312,7 +5879,6 @@ VBParser >> reduceActionForOpenFileClause2: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForOpenFileClause3: nodes [
-
 	| result |
 	result := VBOpenClauseNode new.
 	result oPENToken: (nodes at: 1).
@@ -6327,7 +5893,6 @@ VBParser >> reduceActionForOpenFileClause3: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForOpenFileClause4: nodes [
-
 	| result |
 	result := VBOpenClauseNode new.
 	result oPENToken: (nodes at: 1).
@@ -6345,7 +5910,6 @@ VBParser >> reduceActionForOpenFileClause4: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForOpenFileClause5: nodes [
-
 	| result |
 	result := VBOpenClauseNode new.
 	result oPENToken: (nodes at: 1).
@@ -6360,7 +5924,6 @@ VBParser >> reduceActionForOpenFileClause5: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForOpenFileClause6: nodes [
-
 	| result |
 	result := VBOpenClauseNode new.
 	result oPENToken: (nodes at: 1).
@@ -6378,7 +5941,6 @@ VBParser >> reduceActionForOpenFileClause6: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForOpenFileClause7: nodes [
-
 	| result |
 	result := VBOpenClauseNode new.
 	result oPENToken: (nodes at: 1).
@@ -6394,7 +5956,6 @@ VBParser >> reduceActionForOpenFileClause7: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForOpenFileClause8: nodes [
-
 	| result |
 	result := VBOpenClauseNode new.
 	result oPENToken: (nodes at: 1).
@@ -6413,7 +5974,6 @@ VBParser >> reduceActionForOpenFileClause8: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForOption1: nodes [
-
 	| result |
 	result := VBOptionValueNode new.
 	result optionToken: (nodes at: 1).
@@ -6423,7 +5983,6 @@ VBParser >> reduceActionForOption1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForOption2: nodes [
-
 	| result |
 	result := VBOptionCompareDatabaseNode new.
 	result optionToken: (nodes at: 1).
@@ -6434,7 +5993,6 @@ VBParser >> reduceActionForOption2: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForOption3: nodes [
-
 	| result |
 	result := VBOptionCompareNode new.
 	result optionToken: (nodes at: 1).
@@ -6445,7 +6003,6 @@ VBParser >> reduceActionForOption3: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForOption4: nodes [
-
 	| result |
 	result := VBOptionCompareNode new.
 	result optionToken: (nodes at: 1).
@@ -6456,7 +6013,6 @@ VBParser >> reduceActionForOption4: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForOption5: nodes [
-
 	| result |
 	result := VBOptionExplicitNode new.
 	result optionToken: (nodes at: 1).
@@ -6466,7 +6022,6 @@ VBParser >> reduceActionForOption5: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForOption6: nodes [
-
 	| result |
 	result := VBOptionPrivateModuleNode new.
 	result optionToken: (nodes at: 1).
@@ -6477,7 +6032,6 @@ VBParser >> reduceActionForOption6: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForOptionBase1: nodes [
-
 	| result |
 	result := VBOptionBaseNode new.
 	result optionToken: (nodes at: 1).
@@ -6488,7 +6042,6 @@ VBParser >> reduceActionForOptionBase1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForParameter10: nodes [
-
 	| result |
 	result := VBParameterNode new.
 	result optionalToken: (nodes at: 1).
@@ -6501,7 +6054,6 @@ VBParser >> reduceActionForParameter10: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForParameter11: nodes [
-
 	| result |
 	result := VBParameterNode new.
 	result optionalToken: (nodes at: 1).
@@ -6514,7 +6066,6 @@ VBParser >> reduceActionForParameter11: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForParameter12: nodes [
-
 	| result |
 	result := VBParameterNode new.
 	result optionalToken: (nodes at: 1).
@@ -6528,7 +6079,6 @@ VBParser >> reduceActionForParameter12: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForParameter13: nodes [
-
 	| result |
 	result := VBParameterNode new.
 	result optionalToken: (nodes at: 1).
@@ -6541,7 +6091,6 @@ VBParser >> reduceActionForParameter13: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForParameter14: nodes [
-
 	| result |
 	result := VBParameterNode new.
 	result optionalToken: (nodes at: 1).
@@ -6555,7 +6104,6 @@ VBParser >> reduceActionForParameter14: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForParameter15: nodes [
-
 	| result |
 	result := VBParameterNode new.
 	result optionalToken: (nodes at: 1).
@@ -6569,7 +6117,6 @@ VBParser >> reduceActionForParameter15: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForParameter16: nodes [
-
 	| result |
 	result := VBParameterNode new.
 	result optionalToken: (nodes at: 1).
@@ -6584,7 +6131,6 @@ VBParser >> reduceActionForParameter16: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForParameter1: nodes [
-
 	| result |
 	result := VBParameterNode new.
 	result name: (nodes at: 1).
@@ -6595,7 +6141,6 @@ VBParser >> reduceActionForParameter1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForParameter2: nodes [
-
 	| result |
 	result := VBParameterNode new.
 	result name: (nodes at: 1).
@@ -6607,7 +6152,6 @@ VBParser >> reduceActionForParameter2: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForParameter3: nodes [
-
 	| result |
 	result := VBParameterNode new.
 	result paramarrayToken: (nodes at: 1).
@@ -6619,7 +6163,6 @@ VBParser >> reduceActionForParameter3: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForParameter4: nodes [
-
 	| result |
 	result := VBParameterNode new.
 	result paramarrayToken: (nodes at: 1).
@@ -6632,7 +6175,6 @@ VBParser >> reduceActionForParameter4: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForParameter5: nodes [
-
 	| result |
 	result := VBParameterNode new.
 	result strategy: (nodes at: 1).
@@ -6644,7 +6186,6 @@ VBParser >> reduceActionForParameter5: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForParameter6: nodes [
-
 	| result |
 	result := VBParameterNode new.
 	result strategy: (nodes at: 1).
@@ -6657,7 +6198,6 @@ VBParser >> reduceActionForParameter6: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForParameter7: nodes [
-
 	| result |
 	result := VBParameterNode new.
 	result strategy: (nodes at: 1).
@@ -6670,7 +6210,6 @@ VBParser >> reduceActionForParameter7: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForParameter8: nodes [
-
 	| result |
 	result := VBParameterNode new.
 	result strategy: (nodes at: 1).
@@ -6684,7 +6223,6 @@ VBParser >> reduceActionForParameter8: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForParameter9: nodes [
-
 	| result |
 	result := VBParameterNode new.
 	result optionalToken: (nodes at: 1).
@@ -6696,7 +6234,6 @@ VBParser >> reduceActionForParameter9: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForParameterList1: nodes [
-
 	| result |
 	result := VBParameterListNode new.
 	result leftParenToken: (nodes at: 1).
@@ -6706,7 +6243,6 @@ VBParser >> reduceActionForParameterList1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForParameterList2: nodes [
-
 	| result |
 	result := VBParameterListNode new.
 	result leftParenToken: (nodes at: 1).
@@ -6719,7 +6255,6 @@ VBParser >> reduceActionForParameterList2: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForParameterPassingStrategy2: nodes [
-
 	| result |
 	result := VBParameterPassingStrategyNode new.
 	result byrefToken: (nodes at: 1).
@@ -6728,7 +6263,6 @@ VBParser >> reduceActionForParameterPassingStrategy2: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForParentheseesExpression1: nodes [
-
 	| result |
 	result := VBParentheseesExpressionNode new.
 	result leftParenToken: (nodes at: 1).
@@ -6739,7 +6273,6 @@ VBParser >> reduceActionForParentheseesExpression1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForPositiveOperation1: nodes [
-
 	| result |
 	result := VBPositiveOperationNode new.
 	result plusToken: (nodes at: 1).
@@ -6749,7 +6282,6 @@ VBParser >> reduceActionForPositiveOperation1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForPrintFileClause1: nodes [
-
 	| result |
 	result := VBPrintIntoFileClauseNode new.
 	result pRINTToken: (nodes at: 1).
@@ -6762,7 +6294,6 @@ VBParser >> reduceActionForPrintFileClause1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForPrintFileClause2: nodes [
-
 	| result |
 	result := VBPrintIntoFileClauseNode new.
 	result pRINTToken: (nodes at: 1).
@@ -6776,7 +6307,6 @@ VBParser >> reduceActionForPrintFileClause2: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForPrintFileClause3: nodes [
-
 	| result |
 	result := VBPrintIntoFileClauseNode new.
 	result pRINTToken: (nodes at: 1).
@@ -6790,7 +6320,6 @@ VBParser >> reduceActionForPrintFileClause3: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForPrintFileClause4: nodes [
-
 	| result |
 	result := VBPrintIntoFileClauseNode new.
 	result pRINTToken: (nodes at: 1).
@@ -6805,7 +6334,6 @@ VBParser >> reduceActionForPrintFileClause4: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForPrintFileClause5: nodes [
-
 	| result |
 	result := VBPrintIntoFileClauseNode new.
 	result pRINTToken: (nodes at: 1).
@@ -6819,7 +6347,6 @@ VBParser >> reduceActionForPrintFileClause5: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForPrintFileClause6: nodes [
-
 	| result |
 	result := VBPrintIntoFileClauseNode new.
 	result pRINTToken: (nodes at: 1).
@@ -6834,7 +6361,6 @@ VBParser >> reduceActionForPrintFileClause6: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForPrintFileClause7: nodes [
-
 	| result |
 	result := VBPrintIntoFileClauseNode new.
 	result pRINTToken: (nodes at: 1).
@@ -6849,7 +6375,6 @@ VBParser >> reduceActionForPrintFileClause7: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForPrintFileClause8: nodes [
-
 	| result |
 	result := VBPrintIntoFileClauseNode new.
 	result pRINTToken: (nodes at: 1).
@@ -6865,7 +6390,6 @@ VBParser >> reduceActionForPrintFileClause8: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForProcedureCallOrArrayAccess3: nodes [
-
 	| result |
 	result := VBProcedureCallOrArrayAccessNode new.
 	result selector: (nodes at: 1).
@@ -6877,7 +6401,6 @@ VBParser >> reduceActionForProcedureCallOrArrayAccess3: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForProcedureCallOrArrayAccess4: nodes [
-
 	| result |
 	result := VBProcedureCallOrArrayAccessNode new.
 	result receiver: (nodes at: 1).
@@ -6889,7 +6412,6 @@ VBParser >> reduceActionForProcedureCallOrArrayAccess4: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForRaiseError1: nodes [
-
 	| result |
 	result := VBRaiseErrorNode new.
 	result eRRORToken: (nodes at: 1).
@@ -6899,7 +6421,6 @@ VBParser >> reduceActionForRaiseError1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForRaiseEvent1: nodes [
-
 	| result |
 	result := VBRaiseEventNode new.
 	result raiseEventToken: (nodes at: 1).
@@ -6909,7 +6430,6 @@ VBParser >> reduceActionForRaiseEvent1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForReDefineVariable1: nodes [
-
 	| result |
 	result := VBReDimVariableNode new.
 	result redimToken: (nodes at: 1).
@@ -6919,7 +6439,6 @@ VBParser >> reduceActionForReDefineVariable1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForReDefineVariable2: nodes [
-
 	| result |
 	result := VBReDimVariableNode new.
 	result redimToken: (nodes at: 1).
@@ -6930,7 +6449,6 @@ VBParser >> reduceActionForReDefineVariable2: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForReDefineVariables1: nodes [
-
 	| result |
 	result := VBReDimMultipleVariablesNode new.
 	result redimToken: (nodes at: 1).
@@ -6940,7 +6458,6 @@ VBParser >> reduceActionForReDefineVariables1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForReDefineVariables2: nodes [
-
 	| result |
 	result := VBReDimMultipleVariablesNode new.
 	result redimToken: (nodes at: 1).
@@ -6951,7 +6468,6 @@ VBParser >> reduceActionForReDefineVariables2: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForRename1: nodes [
-
 	| result |
 	result := VBRenameNode new.
 	result nameToken: (nodes at: 1).
@@ -6963,7 +6479,6 @@ VBParser >> reduceActionForRename1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForResumeEmpty1: nodes [
-
 	| result |
 	result := VBResumeEmptyNode new.
 	result resumeToken: (nodes at: 1).
@@ -6972,7 +6487,6 @@ VBParser >> reduceActionForResumeEmpty1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForResumeLabel1: nodes [
-
 	| result |
 	result := VBResumeLabelNode new.
 	result resumeToken: (nodes at: 1).
@@ -6982,7 +6496,6 @@ VBParser >> reduceActionForResumeLabel1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForResumeNext1: nodes [
-
 	| result |
 	result := VBResumeNextNode new.
 	result resumeToken: (nodes at: 1).
@@ -6992,7 +6505,6 @@ VBParser >> reduceActionForResumeNext1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForReturn1: nodes [
-
 	| result |
 	result := VBReturnNode new.
 	result returnToken: (nodes at: 1).
@@ -7001,7 +6513,6 @@ VBParser >> reduceActionForReturn1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForSelect1: nodes [
-
 	| result |
 	result := VBSelectNode new.
 	result addToken: (nodes at: 1) to: result selectTokens.
@@ -7016,7 +6527,6 @@ VBParser >> reduceActionForSelect1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForSelect2: nodes [
-
 	| result |
 	result := VBSelectNode new.
 	result addToken: (nodes at: 1) to: result selectTokens.
@@ -7032,7 +6542,6 @@ VBParser >> reduceActionForSelect2: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForSetUpAssignation1: nodes [
-
 	| result |
 	result := VBSetUpAssignationNode new.
 	result identifier: (nodes at: 1).
@@ -7043,7 +6552,6 @@ VBParser >> reduceActionForSetUpAssignation1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForSimpleIdentifier1: nodes [
-
 	| result |
 	result := VBSimpleIdentifierNode new.
 	result token: (nodes at: 1).
@@ -7052,7 +6560,6 @@ VBParser >> reduceActionForSimpleIdentifier1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForSquareBracketIdentifier1: nodes [
-
 	| result |
 	result := VBSquareBracketIdentifierNode new.
 	result token: (nodes at: 1).
@@ -7061,7 +6568,6 @@ VBParser >> reduceActionForSquareBracketIdentifier1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForStaticVariable1: nodes [
-
 	| result |
 	result := VBStaticVariableNode new.
 	result staticToken: (nodes at: 1).
@@ -7071,7 +6577,6 @@ VBParser >> reduceActionForStaticVariable1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForStaticVariables1: nodes [
-
 	| result |
 	result := VBStaticMultipleVariablesNode new.
 	result staticToken: (nodes at: 1).
@@ -7081,7 +6586,6 @@ VBParser >> reduceActionForStaticVariables1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForStringLiteral1: nodes [
-
 	| result |
 	result := VBStringLiteralNode new.
 	result token: (nodes at: 1).
@@ -7090,7 +6594,6 @@ VBParser >> reduceActionForStringLiteral1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForTypeEntry1: nodes [
-
 	| result |
 	result := VBTypeEntryNode new.
 	result name: (nodes at: 1).
@@ -7100,7 +6603,6 @@ VBParser >> reduceActionForTypeEntry1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForTypeEntry2: nodes [
-
 	| result |
 	result := VBTypeEntryNode new.
 	result name: (nodes at: 1).
@@ -7112,7 +6614,6 @@ VBParser >> reduceActionForTypeEntry2: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForTypeOf1: nodes [
-
 	| result |
 	result := VBTypeOfNode new.
 	result typeOfToken: (nodes at: 1).
@@ -7124,7 +6625,6 @@ VBParser >> reduceActionForTypeOf1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForTypeOf2: nodes [
-
 	| result |
 	result := VBTypeOfNode new.
 	result typeOfToken: (nodes at: 1).
@@ -7136,7 +6636,6 @@ VBParser >> reduceActionForTypeOf2: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForTypeSize1: nodes [
-
 	| result |
 	result := VBTypeSizeNode new.
 	result leftParenToken: (nodes at: 1).
@@ -7148,7 +6647,6 @@ VBParser >> reduceActionForTypeSize1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForTypeSize2: nodes [
-
 	| result |
 	result := VBTypeSizeNode new.
 	result leftParenToken: (nodes at: 1).
@@ -7161,7 +6659,6 @@ VBParser >> reduceActionForTypeSize2: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForTypedAndInstantiatedThing1: nodes [
-
 	| result |
 	result := VBAsTypeAndNewNode new.
 	result aSToken: (nodes at: 1).
@@ -7172,7 +6669,6 @@ VBParser >> reduceActionForTypedAndInstantiatedThing1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForTypedAndInstantiatedThing2: nodes [
-
 	| result |
 	result := VBAsTypeAndNewNode new.
 	result aSToken: (nodes at: 1).
@@ -7185,7 +6681,6 @@ VBParser >> reduceActionForTypedAndInstantiatedThing2: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForTypedAndInstantiatedThing3: nodes [
-
 	| result |
 	result := VBAsTypeAndNewNode new.
 	result aSToken: (nodes at: 1).
@@ -7197,7 +6692,6 @@ VBParser >> reduceActionForTypedAndInstantiatedThing3: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForTypedAndInstantiatedThing4: nodes [
-
 	| result |
 	result := VBAsTypeAndNewNode new.
 	result aSToken: (nodes at: 1).
@@ -7211,7 +6705,6 @@ VBParser >> reduceActionForTypedAndInstantiatedThing4: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForTypedAndInstantiatedThing5: nodes [
-
 	| result |
 	result := VBAsTypeAndNewNode new.
 	result addNode: (nodes at: 1) to: result sizes.
@@ -7223,7 +6716,6 @@ VBParser >> reduceActionForTypedAndInstantiatedThing5: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForTypedAndInstantiatedThing6: nodes [
-
 	| result |
 	result := VBAsTypeAndNewNode new.
 	result addNode: (nodes at: 1) to: result sizes.
@@ -7237,7 +6729,6 @@ VBParser >> reduceActionForTypedAndInstantiatedThing6: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForTypedAndInstantiatedThing7: nodes [
-
 	| result |
 	result := VBAsTypeAndNewNode new.
 	result addNode: (nodes at: 1) to: result sizes.
@@ -7250,7 +6741,6 @@ VBParser >> reduceActionForTypedAndInstantiatedThing7: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForTypedAndInstantiatedThing8: nodes [
-
 	| result |
 	result := VBAsTypeAndNewNode new.
 	result addNode: (nodes at: 1) to: result sizes.
@@ -7265,7 +6755,6 @@ VBParser >> reduceActionForTypedAndInstantiatedThing8: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForTypedThing1: nodes [
-
 	| result |
 	result := VBTypedThingNode new.
 	result aSToken: (nodes at: 1).
@@ -7275,7 +6764,6 @@ VBParser >> reduceActionForTypedThing1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForTypedThing2: nodes [
-
 	| result |
 	result := VBTypedThingNode new.
 	result aSToken: (nodes at: 1).
@@ -7287,7 +6775,6 @@ VBParser >> reduceActionForTypedThing2: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForTypedThing3: nodes [
-
 	| result |
 	result := VBTypedThingNode new.
 	result aSToken: (nodes at: 1).
@@ -7298,7 +6785,6 @@ VBParser >> reduceActionForTypedThing3: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForTypedThing4: nodes [
-
 	| result |
 	result := VBTypedThingNode new.
 	result aSToken: (nodes at: 1).
@@ -7311,7 +6797,6 @@ VBParser >> reduceActionForTypedThing4: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForTypedThing5: nodes [
-
 	| result |
 	result := VBTypedThingNode new.
 	result addNode: (nodes at: 1) to: result sizes.
@@ -7322,7 +6807,6 @@ VBParser >> reduceActionForTypedThing5: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForTypedThing6: nodes [
-
 	| result |
 	result := VBTypedThingNode new.
 	result addNode: (nodes at: 1) to: result sizes.
@@ -7335,7 +6819,6 @@ VBParser >> reduceActionForTypedThing6: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForTypedThing7: nodes [
-
 	| result |
 	result := VBTypedThingNode new.
 	result addNode: (nodes at: 1) to: result sizes.
@@ -7347,7 +6830,6 @@ VBParser >> reduceActionForTypedThing7: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForTypedThing8: nodes [
-
 	| result |
 	result := VBTypedThingNode new.
 	result addNode: (nodes at: 1) to: result sizes.
@@ -7361,7 +6843,6 @@ VBParser >> reduceActionForTypedThing8: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForUntilTrue1: nodes [
-
 	| result |
 	result := VBUntilTrueNode new.
 	result doToken: (nodes at: 1).
@@ -7374,7 +6855,6 @@ VBParser >> reduceActionForUntilTrue1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForUntilTrue2: nodes [
-
 	| result |
 	result := VBUntilTrueNode new.
 	result doToken: (nodes at: 1).
@@ -7388,7 +6868,6 @@ VBParser >> reduceActionForUntilTrue2: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForVariable1: nodes [
-
 	| result |
 	result := VBVariableNode new.
 	result name: (nodes at: 1).
@@ -7397,7 +6876,6 @@ VBParser >> reduceActionForVariable1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForVariable2: nodes [
-
 	| result |
 	result := VBVariableNode new.
 	result name: (nodes at: 1).
@@ -7407,7 +6885,6 @@ VBParser >> reduceActionForVariable2: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForVariable3: nodes [
-
 	| result |
 	result := VBVariableNode new.
 	result withEventsToken: (nodes at: 1).
@@ -7417,7 +6894,6 @@ VBParser >> reduceActionForVariable3: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForVariable4: nodes [
-
 	| result |
 	result := VBVariableNode new.
 	result withEventsToken: (nodes at: 1).
@@ -7428,7 +6904,6 @@ VBParser >> reduceActionForVariable4: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForVariableList1: nodes [
-
 	| result |
 	result := VBVariableListNode new.
 	result addNode: (nodes at: 1) to: result variables.
@@ -7439,7 +6914,6 @@ VBParser >> reduceActionForVariableList1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForWhileTrue1: nodes [
-
 	| result |
 	result := VBWhileTrueNode new.
 	result doToken: (nodes at: 1).
@@ -7451,7 +6925,6 @@ VBParser >> reduceActionForWhileTrue1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForWhileTrue2: nodes [
-
 	| result |
 	result := VBWhileTrueNode new.
 	result doToken: (nodes at: 1).
@@ -7464,7 +6937,6 @@ VBParser >> reduceActionForWhileTrue2: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForWhileTrue3: nodes [
-
 	| result |
 	result := VBWhileTrueNode new.
 	result doToken: (nodes at: 1).
@@ -7477,7 +6949,6 @@ VBParser >> reduceActionForWhileTrue3: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForWhileTrue4: nodes [
-
 	| result |
 	result := VBWhileTrueNode new.
 	result doToken: (nodes at: 1).
@@ -7491,7 +6962,6 @@ VBParser >> reduceActionForWhileTrue4: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForWhileWend1: nodes [
-
 	| result |
 	result := VBWhileWendNode new.
 	result whileToken: (nodes at: 1).
@@ -7502,7 +6972,6 @@ VBParser >> reduceActionForWhileWend1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForWhileWend2: nodes [
-
 	| result |
 	result := VBWhileWendNode new.
 	result whileToken: (nodes at: 1).
@@ -7514,7 +6983,6 @@ VBParser >> reduceActionForWhileWend2: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForWhileWend3: nodes [
-
 	| result |
 	result := VBWhileWendNode new.
 	result whileToken: (nodes at: 1).
@@ -7526,7 +6994,6 @@ VBParser >> reduceActionForWhileWend3: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForWhileWend4: nodes [
-
 	| result |
 	result := VBWhileWendNode new.
 	result whileToken: (nodes at: 1).
@@ -7539,7 +7006,6 @@ VBParser >> reduceActionForWhileWend4: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForWith1: nodes [
-
 	| result |
 	result := VBWithNode new.
 	result addToken: (nodes at: 1) to: result withTokens.
@@ -7552,7 +7018,6 @@ VBParser >> reduceActionForWith1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForWith2: nodes [
-
 	| result |
 	result := VBWithNode new.
 	result addToken: (nodes at: 1) to: result withTokens.
@@ -7566,7 +7031,6 @@ VBParser >> reduceActionForWith2: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionFor_Argument__argument_________________1: nodes [
-
 	| result |
 	result := Array new: 3.
 	result at: 1 put: (nodes at: 1).
@@ -7575,7 +7039,6 @@ VBParser >> reduceActionFor_Argument__argument_________________1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionFor_Argument__argument_________________2: nodes [
-
 	| result |
 	result := Array new: 3.
 	result at: 2 put: (nodes at: 1).
@@ -7584,7 +7047,6 @@ VBParser >> reduceActionFor_Argument__argument_________________2: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionFor_Argument__argument_________________3: nodes [
-
 	| result |
 	result := Array new: 3.
 	result at: 3 put: (nodes at: 1).
@@ -7594,7 +7056,6 @@ VBParser >> reduceActionFor_Argument__argument_________________3: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionFor_Argument__argument_________________4: nodes [
-
 	| result |
 	result := Array new: 3.
 	result at: 3 put: (nodes at: 1).
@@ -7604,7 +7065,6 @@ VBParser >> reduceActionFor_Argument__argument_________________4: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionFor_Argument__argument__________________1: nodes [
-
 	| result |
 	result := Array new: 3.
 	result at: 1 put: (OrderedCollection new: 2).
@@ -7615,7 +7075,6 @@ VBParser >> reduceActionFor_Argument__argument__________________1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionFor_Argument__argument__________________2: nodes [
-
 	| result |
 	result := nodes at: 1.
 	self add: ((nodes at: 2) at: 1) to: (result at: 1).
@@ -7626,7 +7085,6 @@ VBParser >> reduceActionFor_Argument__argument__________________2: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionFor_HEX_INTEGER___1: nodes [
-
 	| result |
 	result := OrderedCollection new: 2.
 	self add: (nodes at: 1) to: result.
@@ -7635,7 +7093,6 @@ VBParser >> reduceActionFor_HEX_INTEGER___1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionFor_____Expression__default___1: nodes [
-
 	| result |
 	result := Array new: 2.
 	^ result
@@ -7643,7 +7100,6 @@ VBParser >> reduceActionFor_____Expression__default___1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionFor_____Expression__default___2: nodes [
-
 	| result |
 	result := nodes at: 1.
 	^ result
@@ -7651,7 +7107,6 @@ VBParser >> reduceActionFor_____Expression__default___2: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionFor______Constant__constant___1: nodes [
-
 	| result |
 	result := Array new: 2.
 	result at: 1 put: (nodes at: 1).
@@ -7661,7 +7116,6 @@ VBParser >> reduceActionFor______Constant__constant___1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionFor______Constant__constant____1: nodes [
-
 	| result |
 	result := Array new: 2.
 	result at: 1 put: (OrderedCollection new: 2).
@@ -7673,7 +7127,6 @@ VBParser >> reduceActionFor______Constant__constant____1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionFor______Constant__constant____2: nodes [
-
 	| result |
 	result := nodes at: 1.
 	self add: ((nodes at: 2) at: 1) to: (result at: 1).
@@ -7683,7 +7136,6 @@ VBParser >> reduceActionFor______Constant__constant____2: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionFor______________Argument__argument____2: nodes [
-
 	| result |
 	result := Array new: 3.
 	result at: 1 put: (nodes at: 1).
@@ -7693,7 +7145,6 @@ VBParser >> reduceActionFor______________Argument__argument____2: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionFor______________Argument__argument____3: nodes [
-
 	| result |
 	result := Array new: 3.
 	result at: 3 put: (nodes at: 1).
@@ -7702,7 +7153,6 @@ VBParser >> reduceActionFor______________Argument__argument____3: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionFor___eol___SetUpAssignation__setting___2: nodes [
-
 	| result |
 	result := nodes at: 1.
 	self addAll: ((nodes at: 2) at: 1) to: (result at: 2).
@@ -7712,7 +7162,6 @@ VBParser >> reduceActionFor___eol___SetUpAssignation__setting___2: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionFor___eol__________IntegerLiteral__lineNumber____Statement__statement____1: nodes [
-
 	| result |
 	result := Array new: 4.
 	result at: 1 put: (OrderedCollection new: 2).
@@ -7725,7 +7174,6 @@ VBParser >> reduceActionFor___eol__________IntegerLiteral__lineNumber____Stateme
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionFor___eol__________IntegerLiteral__lineNumber____Statement__statement____2: nodes [
-
 	| result |
 	result := Array new: 4.
 	result at: 1 put: (OrderedCollection new: 2).
@@ -7739,7 +7187,6 @@ VBParser >> reduceActionFor___eol__________IntegerLiteral__lineNumber____Stateme
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionFor___eol__________IntegerLiteral__lineNumber____Statement__statement_____1: nodes [
-
 	| result |
 	result := Array new: 4.
 	result at: 1 put: (OrderedCollection new: 2).
@@ -7751,7 +7198,6 @@ VBParser >> reduceActionFor___eol__________IntegerLiteral__lineNumber____Stateme
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionFor___eol__________IntegerLiteral__lineNumber____Statement__statement_____2: nodes [
-
 	| result |
 	result := nodes at: 1.
 	self addAll: ((nodes at: 2) at: 1) to: (result at: 3).
@@ -7763,7 +7209,6 @@ VBParser >> reduceActionFor___eol__________IntegerLiteral__lineNumber____Stateme
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionFor__eol___ModuleStatement__element___1: nodes [
-
 	| result |
 	result := Array new: 2.
 	result at: 1 put: (OrderedCollection new: 2).
@@ -7774,7 +7219,6 @@ VBParser >> reduceActionFor__eol___ModuleStatement__element___1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionFor__eol___ModuleStatement__element____1: nodes [
-
 	| result |
 	result := Array new: 2.
 	result at: 1 put: (OrderedCollection new: 2).
@@ -7784,7 +7228,6 @@ VBParser >> reduceActionFor__eol___ModuleStatement__element____1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionFor__eol___ModuleStatement__element____2: nodes [
-
 	| result |
 	result := nodes at: 1.
 	self addAll: ((nodes at: 2) at: 1) to: (result at: 1).
@@ -7794,7 +7237,6 @@ VBParser >> reduceActionFor__eol___ModuleStatement__element____2: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionFor__eol_______1: nodes [
-
 	| result |
 	result := Array new: 2.
 	result at: 1 put: (nodes at: 1).
@@ -7803,7 +7245,6 @@ VBParser >> reduceActionFor__eol_______1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionFor__eol_______2: nodes [
-
 	| result |
 	result := Array new: 2.
 	result at: 2 put: (nodes at: 1).
@@ -7812,7 +7253,6 @@ VBParser >> reduceActionFor__eol_______2: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionFor_eol__1: nodes [
-
 	| result |
 	result := OrderedCollection new: 2.
 	^ result
@@ -7820,7 +7260,6 @@ VBParser >> reduceActionFor_eol__1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionFor_eol__2: nodes [
-
 	| result |
 	result := nodes at: 1.
 	self add: (nodes at: 2) to: result.
@@ -7829,7 +7268,6 @@ VBParser >> reduceActionFor_eol__2: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForheader1: nodes [
-
 	| result |
 	result := VBHeaderNode new.
 	result versionToken: (nodes at: 1).
@@ -7839,7 +7277,6 @@ VBParser >> reduceActionForheader1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionForheader2: nodes [
-
 	| result |
 	result := VBHeaderNode new.
 	result versionToken: (nodes at: 1).
@@ -7850,7 +7287,6 @@ VBParser >> reduceActionForheader2: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionFormodule1: nodes [
-
 	| result |
 	result := VBModuleNode new.
 	result addTokens: (nodes at: 1) to: result eolTokens.
@@ -7862,7 +7298,6 @@ VBParser >> reduceActionFormodule1: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionFormodule2: nodes [
-
 	| result |
 	result := VBModuleNode new.
 	result addTokens: (nodes at: 1) to: result eolTokens.
@@ -7875,7 +7310,6 @@ VBParser >> reduceActionFormodule2: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionFormodule3: nodes [
-
 	| result |
 	result := VBModuleNode new.
 	result addTokens: (nodes at: 1) to: result eolTokens.
@@ -7889,7 +7323,6 @@ VBParser >> reduceActionFormodule3: nodes [
 
 { #category : #'generated-reduction actions' }
 VBParser >> reduceActionFormodule4: nodes [
-
 	| result |
 	result := VBModuleNode new.
 	result addTokens: (nodes at: 1) to: result eolTokens.
