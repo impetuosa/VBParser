@@ -3,15 +3,27 @@ Class {
 	#superclass : #VBProgramNode,
 	#instVars : [
 		'redimToken',
+		'whitespaceTokens',
 		'variable',
 		'preserveToken'
 	],
-	#category : #'VBParser-Scanner'
+	#category : #'VBParser-ParsingCore'
 }
 
 { #category : #generated }
 VBReDimVariableNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitReDimVariable: self
+]
+
+{ #category : #generated }
+VBReDimVariableNode >> compositeTokenVariables [
+	^ #(#whitespaceTokens)
+]
+
+{ #category : #'generated-initialize-release' }
+VBReDimVariableNode >> initialize [
+	super initialize.
+	whitespaceTokens := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -56,4 +68,14 @@ VBReDimVariableNode >> variable: aVBProgramNode [
 	variable := aVBProgramNode.
 	self variable notNil
 		ifTrue: [ self variable parent: self ]
+]
+
+{ #category : #generated }
+VBReDimVariableNode >> whitespaceTokens [
+	^ whitespaceTokens
+]
+
+{ #category : #generated }
+VBReDimVariableNode >> whitespaceTokens: anOrderedCollection [
+	whitespaceTokens := anOrderedCollection
 ]

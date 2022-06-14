@@ -6,7 +6,7 @@ Class {
 		'elements',
 		'header'
 	],
-	#category : #'VBParser-Scanner'
+	#category : #'VBParser-AST-Model'
 }
 
 { #category : #generated }

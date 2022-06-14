@@ -3,13 +3,14 @@ Class {
 	#superclass : #VBProgramNode,
 	#instVars : [
 		'exitToken',
+		'whitespaceToken',
 		'functionToken',
 		'subToken',
 		'doToken',
 		'fORToken',
 		'propertyToken'
 	],
-	#category : #'VBParser-Scanner'
+	#category : #'VBParser-AST-Model'
 }
 
 { #category : #generated }
@@ -79,5 +80,15 @@ VBExitsNode >> subToken: aSmaCCToken [
 
 { #category : #generated }
 VBExitsNode >> tokenVariables [
-	^ #(#exitToken #functionToken #subToken #doToken #fORToken #propertyToken)
+	^ #(#exitToken #whitespaceToken #functionToken #subToken #doToken #fORToken #propertyToken)
+]
+
+{ #category : #generated }
+VBExitsNode >> whitespaceToken [
+	^ whitespaceToken
+]
+
+{ #category : #generated }
+VBExitsNode >> whitespaceToken: aSmaCCToken [
+	whitespaceToken := aSmaCCToken
 ]

@@ -3,6 +3,7 @@ Class {
 	#superclass : #VBProgramNode,
 	#instVars : [
 		'oPENToken',
+		'whitespaceTokens',
 		'filepath',
 		'fORToken',
 		'mode',
@@ -14,7 +15,7 @@ Class {
 		'lock',
 		'access'
 	],
-	#category : #'VBParser-Scanner'
+	#category : #'VBParser-AST-Model'
 }
 
 { #category : #generated }
@@ -40,6 +41,11 @@ VBOpenClauseNode >> access [
 { #category : #generated }
 VBOpenClauseNode >> access: aSmaCCToken [
 	access := aSmaCCToken
+]
+
+{ #category : #generated }
+VBOpenClauseNode >> compositeTokenVariables [
+	^ #(#whitespaceTokens)
 ]
 
 { #category : #generated }
@@ -88,6 +94,12 @@ VBOpenClauseNode >> filepath: aVBProgramNode [
 	filepath := aVBProgramNode.
 	self filepath notNil
 		ifTrue: [ self filepath parent: self ]
+]
+
+{ #category : #'generated-initialize-release' }
+VBOpenClauseNode >> initialize [
+	super initialize.
+	whitespaceTokens := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -152,4 +164,14 @@ VBOpenClauseNode >> oPENToken: aSmaCCToken [
 { #category : #generated }
 VBOpenClauseNode >> tokenVariables [
 	^ #(#oPENToken #fORToken #mode #aSToken #lenToken #equalToken #lock #access)
+]
+
+{ #category : #generated }
+VBOpenClauseNode >> whitespaceTokens [
+	^ whitespaceTokens
+]
+
+{ #category : #generated }
+VBOpenClauseNode >> whitespaceTokens: anOrderedCollection [
+	whitespaceTokens := anOrderedCollection
 ]

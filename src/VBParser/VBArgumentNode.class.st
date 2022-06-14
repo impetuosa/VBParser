@@ -4,14 +4,26 @@ Class {
 	#instVars : [
 		'value',
 		'paramarrayToken',
+		'whitespaceTokens',
 		'strategy'
 	],
-	#category : #'VBParser-Scanner'
+	#category : #'VBParser-AST-Model'
 }
 
 { #category : #generated }
 VBArgumentNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitArgument: self
+]
+
+{ #category : #generated }
+VBArgumentNode >> compositeTokenVariables [
+	^ #(#whitespaceTokens)
+]
+
+{ #category : #'generated-initialize-release' }
+VBArgumentNode >> initialize [
+	super initialize.
+	whitespaceTokens := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -63,4 +75,14 @@ VBArgumentNode >> value: aVBProgramNode [
 	value := aVBProgramNode.
 	self value notNil
 		ifTrue: [ self value parent: self ]
+]
+
+{ #category : #generated }
+VBArgumentNode >> whitespaceTokens [
+	^ whitespaceTokens
+]
+
+{ #category : #generated }
+VBArgumentNode >> whitespaceTokens: anOrderedCollection [
+	whitespaceTokens := anOrderedCollection
 ]

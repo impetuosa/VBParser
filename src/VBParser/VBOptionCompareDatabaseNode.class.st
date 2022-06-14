@@ -3,10 +3,11 @@ Class {
 	#superclass : #VBProgramNode,
 	#instVars : [
 		'optionToken',
+		'whitespaceTokens',
 		'compareToken',
 		'databaseToken'
 	],
-	#category : #'VBParser-Scanner'
+	#category : #'VBParser-AST-Model'
 }
 
 { #category : #generated }
@@ -25,6 +26,11 @@ VBOptionCompareDatabaseNode >> compareToken: aSmaCCToken [
 ]
 
 { #category : #generated }
+VBOptionCompareDatabaseNode >> compositeTokenVariables [
+	^ #(#whitespaceTokens)
+]
+
+{ #category : #generated }
 VBOptionCompareDatabaseNode >> databaseToken [
 	^ databaseToken
 ]
@@ -32,6 +38,12 @@ VBOptionCompareDatabaseNode >> databaseToken [
 { #category : #generated }
 VBOptionCompareDatabaseNode >> databaseToken: aSmaCCToken [
 	databaseToken := aSmaCCToken
+]
+
+{ #category : #'generated-initialize-release' }
+VBOptionCompareDatabaseNode >> initialize [
+	super initialize.
+	whitespaceTokens := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -47,4 +59,14 @@ VBOptionCompareDatabaseNode >> optionToken: aSmaCCToken [
 { #category : #generated }
 VBOptionCompareDatabaseNode >> tokenVariables [
 	^ #(#optionToken #compareToken #databaseToken)
+]
+
+{ #category : #generated }
+VBOptionCompareDatabaseNode >> whitespaceTokens [
+	^ whitespaceTokens
+]
+
+{ #category : #generated }
+VBOptionCompareDatabaseNode >> whitespaceTokens: anOrderedCollection [
+	whitespaceTokens := anOrderedCollection
 ]

@@ -3,13 +3,14 @@ Class {
 	#superclass : #VBProgramNode,
 	#instVars : [
 		'enumTokens',
+		'whitespaceTokens',
 		'name',
 		'eolTokens',
 		'fields',
 		'endToken',
 		'visibility'
 	],
-	#category : #'VBParser-Scanner'
+	#category : #'VBParser-AST-Model'
 }
 
 { #category : #generated }
@@ -24,7 +25,7 @@ VBDefineEnumNode >> compositeNodeVariables [
 
 { #category : #generated }
 VBDefineEnumNode >> compositeTokenVariables [
-	^ #(#enumTokens #eolTokens)
+	^ #(#enumTokens #whitespaceTokens #eolTokens)
 ]
 
 { #category : #generated }
@@ -73,6 +74,7 @@ VBDefineEnumNode >> fields: anOrderedCollection [
 VBDefineEnumNode >> initialize [
 	super initialize.
 	enumTokens := OrderedCollection new: 2.
+	whitespaceTokens := OrderedCollection new: 2.
 	eolTokens := OrderedCollection new: 2.
 	fields := OrderedCollection new: 2.
 ]
@@ -109,4 +111,14 @@ VBDefineEnumNode >> visibility [
 { #category : #generated }
 VBDefineEnumNode >> visibility: aSmaCCToken [
 	visibility := aSmaCCToken
+]
+
+{ #category : #generated }
+VBDefineEnumNode >> whitespaceTokens [
+	^ whitespaceTokens
+]
+
+{ #category : #generated }
+VBDefineEnumNode >> whitespaceTokens: anOrderedCollection [
+	whitespaceTokens := anOrderedCollection
 ]

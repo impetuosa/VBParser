@@ -10,14 +10,20 @@ Class {
 		'greaterThanEqualToken',
 		'iSToken',
 		'lIKEToken',
-		'right'
+		'right',
+		'whitespaceTokens'
 	],
-	#category : #'VBParser-Scanner'
+	#category : #'VBParser-AST-Model'
 }
 
 { #category : #generated }
 VBComparisonOperationNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitComparisonOperation: self
+]
+
+{ #category : #generated }
+VBComparisonOperationNode >> compositeTokenVariables [
+	^ #(#whitespaceTokens)
 ]
 
 { #category : #generated }
@@ -48,6 +54,12 @@ VBComparisonOperationNode >> iSToken [
 { #category : #generated }
 VBComparisonOperationNode >> iSToken: aSmaCCToken [
 	iSToken := aSmaCCToken
+]
+
+{ #category : #'generated-initialize-release' }
+VBComparisonOperationNode >> initialize [
+	super initialize.
+	whitespaceTokens := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -126,4 +138,14 @@ VBComparisonOperationNode >> right: aVBProgramNode [
 { #category : #generated }
 VBComparisonOperationNode >> tokenVariables [
 	^ #(#greaterThanToken #lessThanToken #lessThanGreaterThanToken #lessThanEqualToken #greaterThanEqualToken #iSToken #lIKEToken)
+]
+
+{ #category : #generated }
+VBComparisonOperationNode >> whitespaceTokens [
+	^ whitespaceTokens
+]
+
+{ #category : #generated }
+VBComparisonOperationNode >> whitespaceTokens: anOrderedCollection [
+	whitespaceTokens := anOrderedCollection
 ]

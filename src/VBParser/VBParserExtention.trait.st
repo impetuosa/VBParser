@@ -1,6 +1,6 @@
 Trait {
 	#name : #VBParserExtention,
-	#category : #'VBParser-Scanner'
+	#category : #'VBParser-ParsingCore'
 }
 
 { #category : #private }
@@ -16,7 +16,7 @@ VBParserExtention >> parse [
 VBParserExtention >> popNodeStack [
 
 	self nodeStack last species = VBBlockNode
-		ifTrue: [ self halt .self tagLabeledStatements: self nodeStack last ].
+		ifTrue: [ .self tagLabeledStatements: self nodeStack last ].
 	^ super popNodeStack
 ]
 

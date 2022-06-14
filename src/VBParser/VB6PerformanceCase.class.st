@@ -6,5 +6,13 @@ Class {
 
 { #category : #parsing }
 VB6PerformanceCase >> parse: aString [
-	self assert: (VBParser parseAll: aString startingAt: 1) size < 30
+	| value |
+	[ value := VBParser parseAll: aString startingAt: 1 ]
+		on: Error
+		do: [ :e | 
+			
+			"(self preparse: aString) inspect."
+			
+			e pass ].
+	self assert: value size < 30
 ]

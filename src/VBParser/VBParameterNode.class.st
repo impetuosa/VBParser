@@ -3,19 +3,40 @@ Class {
 	#superclass : #VBProgramNode,
 	#instVars : [
 		'name',
+		'type',
+		'whitespaceTokens',
 		'equalToken',
 		'default',
-		'type',
+		'_size',
 		'paramarrayToken',
 		'strategy',
 		'optionalToken'
 	],
-	#category : #'VBParser-Scanner'
+	#category : #'VBParser-ParsingCore'
 }
+
+{ #category : #generated }
+VBParameterNode >> _size [
+	^ _size
+]
+
+{ #category : #generated }
+VBParameterNode >> _size: aVBTypeSizeNode [
+	self _size notNil
+		ifTrue: [ self _size parent: nil ].
+	_size := aVBTypeSizeNode.
+	self _size notNil
+		ifTrue: [ self _size parent: self ]
+]
 
 { #category : #generated }
 VBParameterNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitParameter: self
+]
+
+{ #category : #generated }
+VBParameterNode >> compositeTokenVariables [
+	^ #(#whitespaceTokens)
 ]
 
 { #category : #generated }
@@ -42,10 +63,10 @@ VBParameterNode >> equalToken: aSmaCCToken [
 	equalToken := aSmaCCToken
 ]
 
-{ #category : #testing }
-VBParameterNode >> isOptional [
-
-	^ optionalToken isNotNil
+{ #category : #'generated-initialize-release' }
+VBParameterNode >> initialize [
+	super initialize.
+	whitespaceTokens := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -64,7 +85,7 @@ VBParameterNode >> name: aVBProgramNode [
 
 { #category : #generated }
 VBParameterNode >> nodeVariables [
-	^ #(#name #default #type)
+	^ #(#name #type #default #_size)
 ]
 
 { #category : #generated }
@@ -121,4 +142,14 @@ VBParameterNode >> type: aVBProgramNode [
 	type := aVBProgramNode.
 	self type notNil
 		ifTrue: [ self type parent: self ]
+]
+
+{ #category : #generated }
+VBParameterNode >> whitespaceTokens [
+	^ whitespaceTokens
+]
+
+{ #category : #generated }
+VBParameterNode >> whitespaceTokens: anOrderedCollection [
+	whitespaceTokens := anOrderedCollection
 ]

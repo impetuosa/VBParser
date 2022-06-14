@@ -3,9 +3,10 @@ Class {
 	#superclass : #VBProgramNode,
 	#instVars : [
 		'attributeToken',
+		'whitespaceToken',
 		'setting'
 	],
-	#category : #'VBParser-Scanner'
+	#category : #'VBParser-AST-Model'
 }
 
 { #category : #generated }
@@ -44,5 +45,15 @@ VBModuleAttributeNode >> setting: aVBSetUpAssignationNode [
 
 { #category : #generated }
 VBModuleAttributeNode >> tokenVariables [
-	^ #(#attributeToken)
+	^ #(#attributeToken #whitespaceToken)
+]
+
+{ #category : #generated }
+VBModuleAttributeNode >> whitespaceToken [
+	^ whitespaceToken
+]
+
+{ #category : #generated }
+VBModuleAttributeNode >> whitespaceToken: aSmaCCToken [
+	whitespaceToken := aSmaCCToken
 ]

@@ -4,10 +4,11 @@ Class {
 	#instVars : [
 		'statements',
 		'lineNumbers',
+		'whitespaceTokens',
 		'eolTokens',
 		'colonTokens'
 	],
-	#category : #'VBParser-Scanner'
+	#category : #'VBParser-AST-Model'
 }
 
 { #category : #generated }
@@ -32,7 +33,7 @@ VBBlockNode >> compositeNodeVariables [
 
 { #category : #generated }
 VBBlockNode >> compositeTokenVariables [
-	^ #(#eolTokens #colonTokens)
+	^ #(#whitespaceTokens #eolTokens #colonTokens)
 ]
 
 { #category : #generated }
@@ -50,6 +51,7 @@ VBBlockNode >> initialize [
 	super initialize.
 	statements := OrderedCollection new: 2.
 	lineNumbers := OrderedCollection new: 2.
+	whitespaceTokens := OrderedCollection new: 2.
 	eolTokens := OrderedCollection new: 2.
 	colonTokens := OrderedCollection new: 2.
 ]
@@ -81,4 +83,14 @@ VBBlockNode >> statements: anOrderedCollection [
 	self setParent: self statements to: nil.
 	statements := anOrderedCollection.
 	self setParent: self statements to: self
+]
+
+{ #category : #generated }
+VBBlockNode >> whitespaceTokens [
+	^ whitespaceTokens
+]
+
+{ #category : #generated }
+VBBlockNode >> whitespaceTokens: anOrderedCollection [
+	whitespaceTokens := anOrderedCollection
 ]

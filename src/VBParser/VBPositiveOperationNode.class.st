@@ -3,9 +3,10 @@ Class {
 	#superclass : #VBProgramNode,
 	#instVars : [
 		'plusToken',
-		'value'
+		'value',
+		'whitespaceToken'
 	],
-	#category : #'VBParser-Scanner'
+	#category : #'VBParser-AST-Model'
 }
 
 { #category : #generated }
@@ -30,7 +31,7 @@ VBPositiveOperationNode >> plusToken: aSmaCCToken [
 
 { #category : #generated }
 VBPositiveOperationNode >> tokenVariables [
-	^ #(#plusToken)
+	^ #(#plusToken #whitespaceToken)
 ]
 
 { #category : #generated }
@@ -45,4 +46,14 @@ VBPositiveOperationNode >> value: aVBProgramNode [
 	value := aVBProgramNode.
 	self value notNil
 		ifTrue: [ self value parent: self ]
+]
+
+{ #category : #generated }
+VBPositiveOperationNode >> whitespaceToken [
+	^ whitespaceToken
+]
+
+{ #category : #generated }
+VBPositiveOperationNode >> whitespaceToken: aSmaCCToken [
+	whitespaceToken := aSmaCCToken
 ]

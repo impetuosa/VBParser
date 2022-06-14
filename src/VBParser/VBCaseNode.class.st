@@ -3,15 +3,15 @@ Class {
 	#superclass : #VBProgramNode,
 	#instVars : [
 		'caseToken',
-		'commaTokens',
+		'whitespaceTokens',
 		'expressions',
+		'commaTokens',
 		'body',
-		'eolTokens',
 		'colonToken',
 		'elseToken',
 		'lineNumber'
 	],
-	#category : #'VBParser-Scanner'
+	#category : #'VBParser-AST-Model'
 }
 
 { #category : #generated }
@@ -25,10 +25,12 @@ VBCaseNode >> body [
 ]
 
 { #category : #generated }
-VBCaseNode >> body: anObject [
-	self setParent: self body to: nil.
-	body := anObject.
-	self setParent: self body to: self
+VBCaseNode >> body: aVBBlockNode [
+	self body notNil
+		ifTrue: [ self body parent: nil ].
+	body := aVBBlockNode.
+	self body notNil
+		ifTrue: [ self body parent: self ]
 ]
 
 { #category : #generated }
@@ -68,7 +70,7 @@ VBCaseNode >> compositeNodeVariables [
 
 { #category : #generated }
 VBCaseNode >> compositeTokenVariables [
-	^ #(#commaTokens #eolTokens)
+	^ #(#whitespaceTokens #commaTokens)
 ]
 
 { #category : #generated }
@@ -79,16 +81,6 @@ VBCaseNode >> elseToken [
 { #category : #generated }
 VBCaseNode >> elseToken: aSmaCCToken [
 	elseToken := aSmaCCToken
-]
-
-{ #category : #generated }
-VBCaseNode >> eolTokens [
-	^ eolTokens
-]
-
-{ #category : #generated }
-VBCaseNode >> eolTokens: anOrderedCollection [
-	eolTokens := anOrderedCollection
 ]
 
 { #category : #generated }
@@ -106,9 +98,9 @@ VBCaseNode >> expressions: anOrderedCollection [
 { #category : #'generated-initialize-release' }
 VBCaseNode >> initialize [
 	super initialize.
+	whitespaceTokens := OrderedCollection new: 2.
 	expressions := OrderedCollection new: 2.
 	commaTokens := OrderedCollection new: 2.
-	eolTokens := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -127,15 +119,20 @@ VBCaseNode >> lineNumber: aVBIntegerLiteralNode [
 
 { #category : #generated }
 VBCaseNode >> nodeVariables [
-	^ #(#lineNumber)
-]
-
-{ #category : #generated }
-VBCaseNode >> otherVariables [
-	^ #(#body)
+	^ #(#body #lineNumber)
 ]
 
 { #category : #generated }
 VBCaseNode >> tokenVariables [
 	^ #(#caseToken #colonToken #elseToken)
+]
+
+{ #category : #generated }
+VBCaseNode >> whitespaceTokens [
+	^ whitespaceTokens
+]
+
+{ #category : #generated }
+VBCaseNode >> whitespaceTokens: anOrderedCollection [
+	whitespaceTokens := anOrderedCollection
 ]

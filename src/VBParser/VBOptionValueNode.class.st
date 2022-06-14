@@ -3,9 +3,10 @@ Class {
 	#superclass : #VBProgramNode,
 	#instVars : [
 		'optionToken',
+		'whitespaceToken',
 		'value'
 	],
-	#category : #'VBParser-Scanner'
+	#category : #'VBParser-AST-Model'
 }
 
 { #category : #generated }
@@ -30,7 +31,7 @@ VBOptionValueNode >> optionToken: aSmaCCToken [
 
 { #category : #generated }
 VBOptionValueNode >> tokenVariables [
-	^ #(#optionToken)
+	^ #(#optionToken #whitespaceToken)
 ]
 
 { #category : #generated }
@@ -45,4 +46,14 @@ VBOptionValueNode >> value: aVBIntegerLiteralNode [
 	value := aVBIntegerLiteralNode.
 	self value notNil
 		ifTrue: [ self value parent: self ]
+]
+
+{ #category : #generated }
+VBOptionValueNode >> whitespaceToken [
+	^ whitespaceToken
+]
+
+{ #category : #generated }
+VBOptionValueNode >> whitespaceToken: aSmaCCToken [
+	whitespaceToken := aSmaCCToken
 ]

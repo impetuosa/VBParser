@@ -3,9 +3,10 @@ Class {
 	#superclass : #VBProgramNode,
 	#instVars : [
 		'labels',
-		'commaTokens'
+		'commaTokens',
+		'whitespaceTokens'
 	],
-	#category : #'VBParser-Scanner'
+	#category : #'VBParser-AST-Model'
 }
 
 { #category : #generated }
@@ -30,7 +31,7 @@ VBDestinationListNode >> compositeNodeVariables [
 
 { #category : #generated }
 VBDestinationListNode >> compositeTokenVariables [
-	^ #(#commaTokens)
+	^ #(#commaTokens #whitespaceTokens)
 ]
 
 { #category : #'generated-initialize-release' }
@@ -38,6 +39,7 @@ VBDestinationListNode >> initialize [
 	super initialize.
 	labels := OrderedCollection new: 2.
 	commaTokens := OrderedCollection new: 2.
+	whitespaceTokens := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -50,4 +52,14 @@ VBDestinationListNode >> labels: anOrderedCollection [
 	self setParents: self labels to: nil.
 	labels := anOrderedCollection.
 	self setParents: self labels to: self
+]
+
+{ #category : #generated }
+VBDestinationListNode >> whitespaceTokens [
+	^ whitespaceTokens
+]
+
+{ #category : #generated }
+VBDestinationListNode >> whitespaceTokens: anOrderedCollection [
+	whitespaceTokens := anOrderedCollection
 ]

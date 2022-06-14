@@ -3,9 +3,10 @@ Class {
 	#superclass : #VBProgramNode,
 	#instVars : [
 		'deftype',
+		'whitespaceToken',
 		'pattern'
 	],
-	#category : #'VBParser-Scanner'
+	#category : #'VBParser-AST-Model'
 }
 
 { #category : #generated }
@@ -35,5 +36,15 @@ VBDefTypeNode >> pattern: aSmaCCToken [
 
 { #category : #generated }
 VBDefTypeNode >> tokenVariables [
-	^ #(#deftype #pattern)
+	^ #(#deftype #whitespaceToken #pattern)
+]
+
+{ #category : #generated }
+VBDefTypeNode >> whitespaceToken [
+	^ whitespaceToken
+]
+
+{ #category : #generated }
+VBDefTypeNode >> whitespaceToken: aSmaCCToken [
+	whitespaceToken := aSmaCCToken
 ]

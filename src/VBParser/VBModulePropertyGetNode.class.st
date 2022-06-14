@@ -3,19 +3,35 @@ Class {
 	#superclass : #VBProgramNode,
 	#instVars : [
 		'propertyTokens',
+		'whitespaceTokens',
 		'getToken',
 		'selector',
+		'parameters',
 		'block',
 		'endToken',
 		'type',
-		'parameters',
+		'_size',
 		'modifier',
 		'visibility',
 		'setToken',
 		'letToken'
 	],
-	#category : #'VBParser-Scanner'
+	#category : #'VBParser-ParsingCore'
 }
+
+{ #category : #generated }
+VBModulePropertyGetNode >> _size [
+	^ _size
+]
+
+{ #category : #generated }
+VBModulePropertyGetNode >> _size: aVBTypeSizeNode [
+	self _size notNil
+		ifTrue: [ self _size parent: nil ].
+	_size := aVBTypeSizeNode.
+	self _size notNil
+		ifTrue: [ self _size parent: self ]
+]
 
 { #category : #generated }
 VBModulePropertyGetNode >> acceptVisitor: aProgramVisitor [
@@ -38,7 +54,7 @@ VBModulePropertyGetNode >> block: aVBBlockNode [
 
 { #category : #generated }
 VBModulePropertyGetNode >> compositeTokenVariables [
-	^ #(#propertyTokens)
+	^ #(#propertyTokens #whitespaceTokens)
 ]
 
 { #category : #generated }
@@ -65,6 +81,7 @@ VBModulePropertyGetNode >> getToken: aSmaCCToken [
 VBModulePropertyGetNode >> initialize [
 	super initialize.
 	propertyTokens := OrderedCollection new: 2.
+	whitespaceTokens := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -89,7 +106,7 @@ VBModulePropertyGetNode >> modifier: aSmaCCToken [
 
 { #category : #generated }
 VBModulePropertyGetNode >> nodeVariables [
-	^ #(#selector #block #type #parameters)
+	^ #(#selector #parameters #block #type #_size)
 ]
 
 { #category : #generated }
@@ -167,4 +184,14 @@ VBModulePropertyGetNode >> visibility [
 { #category : #generated }
 VBModulePropertyGetNode >> visibility: aSmaCCToken [
 	visibility := aSmaCCToken
+]
+
+{ #category : #generated }
+VBModulePropertyGetNode >> whitespaceTokens [
+	^ whitespaceTokens
+]
+
+{ #category : #generated }
+VBModulePropertyGetNode >> whitespaceTokens: anOrderedCollection [
+	whitespaceTokens := anOrderedCollection
 ]

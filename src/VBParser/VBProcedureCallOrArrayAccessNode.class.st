@@ -6,9 +6,9 @@ Class {
 		'leftParenToken',
 		'arguments',
 		'rightParenToken',
-		'receiver'
+		'whitespaceToken'
 	],
-	#category : #'VBParser-Scanner'
+	#category : #'VBParser-AST-Model'
 }
 
 { #category : #generated }
@@ -30,11 +30,6 @@ VBProcedureCallOrArrayAccessNode >> arguments: aVBArgumentListNode [
 		ifTrue: [ self arguments parent: self ]
 ]
 
-{ #category : #testing }
-VBProcedureCallOrArrayAccessNode >> isIdentifier [
-	^ false 
-]
-
 { #category : #generated }
 VBProcedureCallOrArrayAccessNode >> leftParenToken [
 	^ leftParenToken
@@ -47,21 +42,7 @@ VBProcedureCallOrArrayAccessNode >> leftParenToken: aSmaCCToken [
 
 { #category : #generated }
 VBProcedureCallOrArrayAccessNode >> nodeVariables [
-	^ #(#selector #arguments #receiver)
-]
-
-{ #category : #generated }
-VBProcedureCallOrArrayAccessNode >> receiver [
-	^ receiver
-]
-
-{ #category : #generated }
-VBProcedureCallOrArrayAccessNode >> receiver: aVBProgramNode [
-	self receiver notNil
-		ifTrue: [ self receiver parent: nil ].
-	receiver := aVBProgramNode.
-	self receiver notNil
-		ifTrue: [ self receiver parent: self ]
+	^ #(#selector #arguments)
 ]
 
 { #category : #generated }
@@ -90,5 +71,15 @@ VBProcedureCallOrArrayAccessNode >> selector: aVBProgramNode [
 
 { #category : #generated }
 VBProcedureCallOrArrayAccessNode >> tokenVariables [
-	^ #(#leftParenToken #rightParenToken)
+	^ #(#leftParenToken #rightParenToken #whitespaceToken)
+]
+
+{ #category : #generated }
+VBProcedureCallOrArrayAccessNode >> whitespaceToken [
+	^ whitespaceToken
+]
+
+{ #category : #generated }
+VBProcedureCallOrArrayAccessNode >> whitespaceToken: aSmaCCToken [
+	whitespaceToken := aSmaCCToken
 ]

@@ -3,9 +3,10 @@ Class {
 	#superclass : #VBProgramNode,
 	#instVars : [
 		'selector',
+		'whitespaceToken',
 		'arguments'
 	],
-	#category : #'VBParser-Scanner'
+	#category : #'VBParser-AST-Model'
 }
 
 { #category : #generated }
@@ -44,4 +45,19 @@ VBImplicitParenthesesLessCallNode >> selector: aVBProgramNode [
 	selector := aVBProgramNode.
 	self selector notNil
 		ifTrue: [ self selector parent: self ]
+]
+
+{ #category : #generated }
+VBImplicitParenthesesLessCallNode >> tokenVariables [
+	^ #(#whitespaceToken)
+]
+
+{ #category : #generated }
+VBImplicitParenthesesLessCallNode >> whitespaceToken [
+	^ whitespaceToken
+]
+
+{ #category : #generated }
+VBImplicitParenthesesLessCallNode >> whitespaceToken: aSmaCCToken [
+	whitespaceToken := aSmaCCToken
 ]

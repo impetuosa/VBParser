@@ -3,6 +3,7 @@ Class {
 	#superclass : #VBProgramNode,
 	#instVars : [
 		'selectTokens',
+		'whitespaceTokens',
 		'caseToken',
 		'expression',
 		'eolTokens',
@@ -10,7 +11,7 @@ Class {
 		'endToken',
 		'endLineNumber'
 	],
-	#category : #'VBParser-Scanner'
+	#category : #'VBParser-AST-Model'
 }
 
 { #category : #generated }
@@ -47,7 +48,7 @@ VBSelectNode >> compositeNodeVariables [
 
 { #category : #generated }
 VBSelectNode >> compositeTokenVariables [
-	^ #(#selectTokens #eolTokens)
+	^ #(#selectTokens #whitespaceTokens #eolTokens)
 ]
 
 { #category : #generated }
@@ -102,6 +103,7 @@ VBSelectNode >> expression: aVBProgramNode [
 VBSelectNode >> initialize [
 	super initialize.
 	selectTokens := OrderedCollection new: 2.
+	whitespaceTokens := OrderedCollection new: 2.
 	eolTokens := OrderedCollection new: 2.
 	cases := OrderedCollection new: 2.
 ]
@@ -124,4 +126,14 @@ VBSelectNode >> selectTokens: anOrderedCollection [
 { #category : #generated }
 VBSelectNode >> tokenVariables [
 	^ #(#caseToken #endToken)
+]
+
+{ #category : #generated }
+VBSelectNode >> whitespaceTokens [
+	^ whitespaceTokens
+]
+
+{ #category : #generated }
+VBSelectNode >> whitespaceTokens: anOrderedCollection [
+	whitespaceTokens := anOrderedCollection
 ]

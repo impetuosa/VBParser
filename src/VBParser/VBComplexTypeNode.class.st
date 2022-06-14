@@ -6,7 +6,7 @@ Class {
 		'members',
 		'base'
 	],
-	#category : #'VBParser-Scanner'
+	#category : #'VBParser-AST-Model'
 }
 
 { #category : #generated }

@@ -3,15 +3,27 @@ Class {
 	#superclass : #VBProgramNode,
 	#instVars : [
 		'optionToken',
+		'whitespaceTokens',
 		'privateToken',
 		'moduleToken'
 	],
-	#category : #'VBParser-Scanner'
+	#category : #'VBParser-AST-Model'
 }
 
 { #category : #generated }
 VBOptionPrivateModuleNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitOptionPrivateModule: self
+]
+
+{ #category : #generated }
+VBOptionPrivateModuleNode >> compositeTokenVariables [
+	^ #(#whitespaceTokens)
+]
+
+{ #category : #'generated-initialize-release' }
+VBOptionPrivateModuleNode >> initialize [
+	super initialize.
+	whitespaceTokens := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -47,4 +59,14 @@ VBOptionPrivateModuleNode >> privateToken: aSmaCCToken [
 { #category : #generated }
 VBOptionPrivateModuleNode >> tokenVariables [
 	^ #(#optionToken #privateToken #moduleToken)
+]
+
+{ #category : #generated }
+VBOptionPrivateModuleNode >> whitespaceTokens [
+	^ whitespaceTokens
+]
+
+{ #category : #generated }
+VBOptionPrivateModuleNode >> whitespaceTokens: anOrderedCollection [
+	whitespaceTokens := anOrderedCollection
 ]

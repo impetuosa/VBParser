@@ -3,9 +3,10 @@ Class {
 	#superclass : #VBProgramNode,
 	#instVars : [
 		'raiseEventToken',
+		'whitespaceToken',
 		'selector'
 	],
-	#category : #'VBParser-Scanner'
+	#category : #'VBParser-AST-Model'
 }
 
 { #category : #generated }
@@ -44,5 +45,15 @@ VBRaiseEventNode >> selector: aVBProgramNode [
 
 { #category : #generated }
 VBRaiseEventNode >> tokenVariables [
-	^ #(#raiseEventToken)
+	^ #(#raiseEventToken #whitespaceToken)
+]
+
+{ #category : #generated }
+VBRaiseEventNode >> whitespaceToken [
+	^ whitespaceToken
+]
+
+{ #category : #generated }
+VBRaiseEventNode >> whitespaceToken: aSmaCCToken [
+	whitespaceToken := aSmaCCToken
 ]

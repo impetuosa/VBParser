@@ -3,9 +3,10 @@ Class {
 	#superclass : #VBProgramNode,
 	#instVars : [
 		'gosubToken',
+		'whitespaceToken',
 		'destination'
 	],
-	#category : #'VBParser-Scanner'
+	#category : #'VBParser-AST-Model'
 }
 
 { #category : #generated }
@@ -44,5 +45,15 @@ VBGoSubNode >> nodeVariables [
 
 { #category : #generated }
 VBGoSubNode >> tokenVariables [
-	^ #(#gosubToken)
+	^ #(#gosubToken #whitespaceToken)
+]
+
+{ #category : #generated }
+VBGoSubNode >> whitespaceToken [
+	^ whitespaceToken
+]
+
+{ #category : #generated }
+VBGoSubNode >> whitespaceToken: aSmaCCToken [
+	whitespaceToken := aSmaCCToken
 ]

@@ -3,12 +3,13 @@ Class {
 	#superclass : #VBProgramNode,
 	#instVars : [
 		'withTokens',
+		'whitespaceTokens',
 		'with',
 		'block',
 		'endToken',
 		'endLineNumber'
 	],
-	#category : #'VBParser-Scanner'
+	#category : #'VBParser-AST-Model'
 }
 
 { #category : #generated }
@@ -32,7 +33,7 @@ VBWithNode >> block: aVBBlockNode [
 
 { #category : #generated }
 VBWithNode >> compositeTokenVariables [
-	^ #(#withTokens)
+	^ #(#withTokens #whitespaceTokens)
 ]
 
 { #category : #generated }
@@ -63,6 +64,7 @@ VBWithNode >> endToken: aSmaCCToken [
 VBWithNode >> initialize [
 	super initialize.
 	withTokens := OrderedCollection new: 2.
+	whitespaceTokens := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -73,6 +75,16 @@ VBWithNode >> nodeVariables [
 { #category : #generated }
 VBWithNode >> tokenVariables [
 	^ #(#endToken)
+]
+
+{ #category : #generated }
+VBWithNode >> whitespaceTokens [
+	^ whitespaceTokens
+]
+
+{ #category : #generated }
+VBWithNode >> whitespaceTokens: anOrderedCollection [
+	whitespaceTokens := anOrderedCollection
 ]
 
 { #category : #generated }

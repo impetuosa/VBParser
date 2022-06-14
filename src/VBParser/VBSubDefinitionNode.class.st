@@ -3,6 +3,7 @@ Class {
 	#superclass : #VBProgramNode,
 	#instVars : [
 		'subTokens',
+		'whitespaceTokens',
 		'selector',
 		'block',
 		'endToken',
@@ -10,7 +11,7 @@ Class {
 		'modifier',
 		'visibility'
 	],
-	#category : #'VBParser-Scanner'
+	#category : #'VBParser-AST-Model'
 }
 
 { #category : #generated }
@@ -34,7 +35,7 @@ VBSubDefinitionNode >> block: aVBBlockNode [
 
 { #category : #generated }
 VBSubDefinitionNode >> compositeTokenVariables [
-	^ #(#subTokens)
+	^ #(#subTokens #whitespaceTokens)
 ]
 
 { #category : #generated }
@@ -51,6 +52,7 @@ VBSubDefinitionNode >> endToken: aSmaCCToken [
 VBSubDefinitionNode >> initialize [
 	super initialize.
 	subTokens := OrderedCollection new: 2.
+	whitespaceTokens := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -119,4 +121,14 @@ VBSubDefinitionNode >> visibility [
 { #category : #generated }
 VBSubDefinitionNode >> visibility: aSmaCCToken [
 	visibility := aSmaCCToken
+]
+
+{ #category : #generated }
+VBSubDefinitionNode >> whitespaceTokens [
+	^ whitespaceTokens
+]
+
+{ #category : #generated }
+VBSubDefinitionNode >> whitespaceTokens: anOrderedCollection [
+	whitespaceTokens := anOrderedCollection
 ]

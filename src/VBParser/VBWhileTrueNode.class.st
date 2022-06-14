@@ -3,13 +3,14 @@ Class {
 	#superclass : #VBProgramNode,
 	#instVars : [
 		'doToken',
+		'whitespaceTokens',
 		'whileToken',
 		'condition',
 		'loopToken',
 		'endLineNumber',
 		'body'
 	],
-	#category : #'VBParser-Scanner'
+	#category : #'VBParser-AST-Model'
 }
 
 { #category : #generated }
@@ -29,6 +30,11 @@ VBWhileTrueNode >> body: aVBBlockNode [
 	body := aVBBlockNode.
 	self body notNil
 		ifTrue: [ self body parent: self ]
+]
+
+{ #category : #generated }
+VBWhileTrueNode >> compositeTokenVariables [
+	^ #(#whitespaceTokens)
 ]
 
 { #category : #generated }
@@ -69,6 +75,12 @@ VBWhileTrueNode >> endLineNumber: aVBIntegerLiteralNode [
 		ifTrue: [ self endLineNumber parent: self ]
 ]
 
+{ #category : #'generated-initialize-release' }
+VBWhileTrueNode >> initialize [
+	super initialize.
+	whitespaceTokens := OrderedCollection new: 2.
+]
+
 { #category : #generated }
 VBWhileTrueNode >> loopToken [
 	^ loopToken
@@ -97,4 +109,14 @@ VBWhileTrueNode >> whileToken [
 { #category : #generated }
 VBWhileTrueNode >> whileToken: aSmaCCToken [
 	whileToken := aSmaCCToken
+]
+
+{ #category : #generated }
+VBWhileTrueNode >> whitespaceTokens [
+	^ whitespaceTokens
+]
+
+{ #category : #generated }
+VBWhileTrueNode >> whitespaceTokens: anOrderedCollection [
+	whitespaceTokens := anOrderedCollection
 ]

@@ -3,10 +3,11 @@ Class {
 	#superclass : #VBProgramNode,
 	#instVars : [
 		'optionToken',
+		'whitespaceTokens',
 		'baseToken',
 		'value'
 	],
-	#category : #'VBParser-Scanner'
+	#category : #'VBParser-AST-Model'
 }
 
 { #category : #generated }
@@ -22,6 +23,17 @@ VBOptionBaseNode >> baseToken [
 { #category : #generated }
 VBOptionBaseNode >> baseToken: aSmaCCToken [
 	baseToken := aSmaCCToken
+]
+
+{ #category : #generated }
+VBOptionBaseNode >> compositeTokenVariables [
+	^ #(#whitespaceTokens)
+]
+
+{ #category : #'generated-initialize-release' }
+VBOptionBaseNode >> initialize [
+	super initialize.
+	whitespaceTokens := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -56,4 +68,14 @@ VBOptionBaseNode >> value: aVBProgramNode [
 	value := aVBProgramNode.
 	self value notNil
 		ifTrue: [ self value parent: self ]
+]
+
+{ #category : #generated }
+VBOptionBaseNode >> whitespaceTokens [
+	^ whitespaceTokens
+]
+
+{ #category : #generated }
+VBOptionBaseNode >> whitespaceTokens: anOrderedCollection [
+	whitespaceTokens := anOrderedCollection
 ]

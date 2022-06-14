@@ -25,24 +25,31 @@ VB6TestCase class >> implementAll [
 
 { #category : #parsing }
 VB6TestCase >> parse: aString [
-	VBParser parse: aString
-	"	self assert: (VBParser parseAll: aString startingAt: 1) size equals: 1."
+	[ VBParser parse: aString ]
+		on: Error
+		do: [ :e | 
+			
+	(self preparse: aString) inspect.  
+	
+	
+	
+	
+	e pass ]
 ]
 
 { #category : #parsing }
 VB6TestCase >> preparse: aString [
-	| content  aStream isCuttingOnUnderscore |
-	aStream := aString readStream.
-	content := ''.
-	[ aStream atEnd ]
-		whileFalse: [ content := content
-				,
-					(aStream upToAnyBlock: [ :c | isCuttingOnUnderscore := c = $_ ]).
-			(String crlf includes: aStream peek)
-				ifTrue: [ aStream next ]
-				ifFalse: [ isCuttingOnUnderscore
-						ifTrue: [ content := content , '_' ] ] ].
-	^ content
+	| lcWithPoint lc |
+	" remove line continuation with points comming after. 
+	
+	"
+	lcWithPoint := ('[[:space:]]+[_][[:space:]]*[' , String crlf
+		, '][[:space:]]*\.') asRegex.
+	lc := ('[[:space:]]+[_][[:space:]]*[' , String crlf , '][[:space:]]*')
+		asRegex.
+	^ lc
+		copy: (lcWithPoint copy: aString replacingMatchesWith: '.')
+		replacingMatchesWith: ' '
 ]
 
 { #category : #'as yet unclassified' }

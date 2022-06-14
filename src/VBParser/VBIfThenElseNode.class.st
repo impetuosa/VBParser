@@ -3,6 +3,7 @@ Class {
 	#superclass : #VBProgramNode,
 	#instVars : [
 		'ifTokens',
+		'whitespaceTokens',
 		'condition',
 		'thenToken',
 		'ifTrue',
@@ -15,7 +16,7 @@ Class {
 		'endLineNumber',
 		'else'
 	],
-	#category : #'VBParser-Scanner'
+	#category : #'VBParser-ParsingCore'
 }
 
 { #category : #generated }
@@ -30,7 +31,7 @@ VBIfThenElseNode >> compositeNodeVariables [
 
 { #category : #generated }
 VBIfThenElseNode >> compositeTokenVariables [
-	^ #(#ifTokens)
+	^ #(#ifTokens #whitespaceTokens)
 ]
 
 { #category : #generated }
@@ -159,6 +160,7 @@ VBIfThenElseNode >> ifTrue: aVBBlockNode [
 VBIfThenElseNode >> initialize [
 	super initialize.
 	ifTokens := OrderedCollection new: 2.
+	whitespaceTokens := OrderedCollection new: 2.
 	elseifs := OrderedCollection new: 2.
 ]
 
@@ -190,4 +192,14 @@ VBIfThenElseNode >> thenToken: aSmaCCToken [
 { #category : #generated }
 VBIfThenElseNode >> tokenVariables [
 	^ #(#thenToken #elseToken #elseColonToken #thenColonToken #endToken)
+]
+
+{ #category : #generated }
+VBIfThenElseNode >> whitespaceTokens [
+	^ whitespaceTokens
+]
+
+{ #category : #generated }
+VBIfThenElseNode >> whitespaceTokens: anOrderedCollection [
+	whitespaceTokens := anOrderedCollection
 ]

@@ -3,9 +3,10 @@ Class {
 	#superclass : #VBProgramNode,
 	#instVars : [
 		'implementsToken',
+		'whitespaceToken',
 		'interface'
 	],
-	#category : #'VBParser-Scanner'
+	#category : #'VBParser-AST-Model'
 }
 
 { #category : #generated }
@@ -44,5 +45,15 @@ VBImplementsNode >> nodeVariables [
 
 { #category : #generated }
 VBImplementsNode >> tokenVariables [
-	^ #(#implementsToken)
+	^ #(#implementsToken #whitespaceToken)
+]
+
+{ #category : #generated }
+VBImplementsNode >> whitespaceToken [
+	^ whitespaceToken
+]
+
+{ #category : #generated }
+VBImplementsNode >> whitespaceToken: aSmaCCToken [
+	whitespaceToken := aSmaCCToken
 ]

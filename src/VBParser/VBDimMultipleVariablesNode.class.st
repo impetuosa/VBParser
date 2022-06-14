@@ -3,9 +3,10 @@ Class {
 	#superclass : #VBProgramNode,
 	#instVars : [
 		'dimToken',
+		'whitespaceToken',
 		'variables'
 	],
-	#category : #'VBParser-Scanner'
+	#category : #'VBParser-AST-Model'
 }
 
 { #category : #generated }
@@ -30,7 +31,7 @@ VBDimMultipleVariablesNode >> nodeVariables [
 
 { #category : #generated }
 VBDimMultipleVariablesNode >> tokenVariables [
-	^ #(#dimToken)
+	^ #(#dimToken #whitespaceToken)
 ]
 
 { #category : #generated }
@@ -45,4 +46,14 @@ VBDimMultipleVariablesNode >> variables: aVBVariableListNode [
 	variables := aVBVariableListNode.
 	self variables notNil
 		ifTrue: [ self variables parent: self ]
+]
+
+{ #category : #generated }
+VBDimMultipleVariablesNode >> whitespaceToken [
+	^ whitespaceToken
+]
+
+{ #category : #generated }
+VBDimMultipleVariablesNode >> whitespaceToken: aSmaCCToken [
+	whitespaceToken := aSmaCCToken
 ]

@@ -3,15 +3,21 @@ Class {
 	#superclass : #VBProgramNode,
 	#instVars : [
 		'from',
+		'whitespaceTokens',
 		'toToken',
 		'to'
 	],
-	#category : #'VBParser-Scanner'
+	#category : #'VBParser-AST-Model'
 }
 
 { #category : #generated }
 VBIntervalNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitInterval: self
+]
+
+{ #category : #generated }
+VBIntervalNode >> compositeTokenVariables [
+	^ #(#whitespaceTokens)
 ]
 
 { #category : #generated }
@@ -26,6 +32,12 @@ VBIntervalNode >> from: aVBProgramNode [
 	from := aVBProgramNode.
 	self from notNil
 		ifTrue: [ self from parent: self ]
+]
+
+{ #category : #'generated-initialize-release' }
+VBIntervalNode >> initialize [
+	super initialize.
+	whitespaceTokens := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -60,4 +72,14 @@ VBIntervalNode >> toToken: aSmaCCToken [
 { #category : #generated }
 VBIntervalNode >> tokenVariables [
 	^ #(#toToken)
+]
+
+{ #category : #generated }
+VBIntervalNode >> whitespaceTokens [
+	^ whitespaceTokens
+]
+
+{ #category : #generated }
+VBIntervalNode >> whitespaceTokens: anOrderedCollection [
+	whitespaceTokens := anOrderedCollection
 ]

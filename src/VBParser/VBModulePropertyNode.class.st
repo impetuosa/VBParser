@@ -3,9 +3,10 @@ Class {
 	#superclass : #VBProgramNode,
 	#instVars : [
 		'visibility',
+		'whitespaceToken',
 		'variable'
 	],
-	#category : #'VBParser-Scanner'
+	#category : #'VBParser-ParsingCore'
 }
 
 { #category : #generated }
@@ -20,7 +21,7 @@ VBModulePropertyNode >> nodeVariables [
 
 { #category : #generated }
 VBModulePropertyNode >> tokenVariables [
-	^ #(#visibility)
+	^ #(#visibility #whitespaceToken)
 ]
 
 { #category : #generated }
@@ -45,4 +46,14 @@ VBModulePropertyNode >> visibility [
 { #category : #generated }
 VBModulePropertyNode >> visibility: aSmaCCToken [
 	visibility := aSmaCCToken
+]
+
+{ #category : #generated }
+VBModulePropertyNode >> whitespaceToken [
+	^ whitespaceToken
+]
+
+{ #category : #generated }
+VBModulePropertyNode >> whitespaceToken: aSmaCCToken [
+	whitespaceToken := aSmaCCToken
 ]

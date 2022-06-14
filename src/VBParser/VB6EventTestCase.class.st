@@ -114,8 +114,9 @@ End Sub
 
 { #category : #'smoke tests ' }
 VB6EventTestCase >> testSmokeActivateDeActivate [
-			self parse: self activateDeActivateCase
-		
+	"	self new activateDeActivateCase "
+
+	self parse: self activateDeActivateCase
 ]
 
 { #category : #'smoke tests ' }
@@ -132,7 +133,8 @@ VB6EventTestCase >> testSmokeQueryClose [
 
 { #category : #'smoke tests ' }
 VB6EventTestCase >> testSmokeResize [
-			self parse: self resizeCase
+	" self new resizeCase "
+	self parse: self resizeCase
 		
 ]
 

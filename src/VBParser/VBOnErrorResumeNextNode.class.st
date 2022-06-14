@@ -3,16 +3,22 @@ Class {
 	#superclass : #VBProgramNode,
 	#instVars : [
 		'onToken',
+		'whitespaceTokens',
 		'eRRORToken',
 		'resumeToken',
 		'nextToken'
 	],
-	#category : #'VBParser-Scanner'
+	#category : #'VBParser-AST-Model'
 }
 
 { #category : #generated }
 VBOnErrorResumeNextNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitOnErrorResumeNext: self
+]
+
+{ #category : #generated }
+VBOnErrorResumeNextNode >> compositeTokenVariables [
+	^ #(#whitespaceTokens)
 ]
 
 { #category : #generated }
@@ -23,6 +29,12 @@ VBOnErrorResumeNextNode >> eRRORToken [
 { #category : #generated }
 VBOnErrorResumeNextNode >> eRRORToken: aSmaCCToken [
 	eRRORToken := aSmaCCToken
+]
+
+{ #category : #'generated-initialize-release' }
+VBOnErrorResumeNextNode >> initialize [
+	super initialize.
+	whitespaceTokens := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -58,4 +70,14 @@ VBOnErrorResumeNextNode >> resumeToken: aSmaCCToken [
 { #category : #generated }
 VBOnErrorResumeNextNode >> tokenVariables [
 	^ #(#onToken #eRRORToken #resumeToken #nextToken)
+]
+
+{ #category : #generated }
+VBOnErrorResumeNextNode >> whitespaceTokens [
+	^ whitespaceTokens
+]
+
+{ #category : #generated }
+VBOnErrorResumeNextNode >> whitespaceTokens: anOrderedCollection [
+	whitespaceTokens := anOrderedCollection
 ]

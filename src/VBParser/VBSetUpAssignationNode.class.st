@@ -3,15 +3,21 @@ Class {
 	#superclass : #VBProgramNode,
 	#instVars : [
 		'identifier',
+		'whitespaceTokens',
 		'equalToken',
 		'value'
 	],
-	#category : #'VBParser-Scanner'
+	#category : #'VBParser-AST-Model'
 }
 
 { #category : #generated }
 VBSetUpAssignationNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitSetUpAssignation: self
+]
+
+{ #category : #generated }
+VBSetUpAssignationNode >> compositeTokenVariables [
+	^ #(#whitespaceTokens)
 ]
 
 { #category : #generated }
@@ -38,6 +44,12 @@ VBSetUpAssignationNode >> identifier: aVBProgramNode [
 		ifTrue: [ self identifier parent: self ]
 ]
 
+{ #category : #'generated-initialize-release' }
+VBSetUpAssignationNode >> initialize [
+	super initialize.
+	whitespaceTokens := OrderedCollection new: 2.
+]
+
 { #category : #generated }
 VBSetUpAssignationNode >> nodeVariables [
 	^ #(#identifier #value)
@@ -60,4 +72,14 @@ VBSetUpAssignationNode >> value: aVBProgramNode [
 	value := aVBProgramNode.
 	self value notNil
 		ifTrue: [ self value parent: self ]
+]
+
+{ #category : #generated }
+VBSetUpAssignationNode >> whitespaceTokens [
+	^ whitespaceTokens
+]
+
+{ #category : #generated }
+VBSetUpAssignationNode >> whitespaceTokens: anOrderedCollection [
+	whitespaceTokens := anOrderedCollection
 ]

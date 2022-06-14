@@ -2,14 +2,12 @@ Class {
 	#name : #VBAsTypeAndNewNode,
 	#superclass : #VBProgramNode,
 	#instVars : [
+		'whitespaceTokens',
 		'aSToken',
 		'nEWToken',
-		'type',
-		'timesToken',
-		'fixedSize',
-		'sizes'
+		'type'
 	],
-	#category : #'VBParser-Scanner'
+	#category : #'VBParser-AST-Model'
 }
 
 { #category : #generated }
@@ -28,28 +26,14 @@ VBAsTypeAndNewNode >> acceptVisitor: aProgramVisitor [
 ]
 
 { #category : #generated }
-VBAsTypeAndNewNode >> compositeNodeVariables [
-	^ #(#sizes)
-]
-
-{ #category : #generated }
-VBAsTypeAndNewNode >> fixedSize [
-	^ fixedSize
-]
-
-{ #category : #generated }
-VBAsTypeAndNewNode >> fixedSize: aVBProgramNode [
-	self fixedSize notNil
-		ifTrue: [ self fixedSize parent: nil ].
-	fixedSize := aVBProgramNode.
-	self fixedSize notNil
-		ifTrue: [ self fixedSize parent: self ]
+VBAsTypeAndNewNode >> compositeTokenVariables [
+	^ #(#whitespaceTokens)
 ]
 
 { #category : #'generated-initialize-release' }
 VBAsTypeAndNewNode >> initialize [
 	super initialize.
-	sizes := OrderedCollection new: 2.
+	whitespaceTokens := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -63,40 +47,13 @@ VBAsTypeAndNewNode >> nEWToken: aSmaCCToken [
 ]
 
 { #category : #generated }
-VBAsTypeAndNewNode >> nodeVariables [
-	^ #(#fixedSize)
-]
-
-{ #category : #generated }
 VBAsTypeAndNewNode >> otherVariables [
 	^ #(#type)
 ]
 
 { #category : #generated }
-VBAsTypeAndNewNode >> sizes [
-	^ sizes
-]
-
-{ #category : #generated }
-VBAsTypeAndNewNode >> sizes: anOrderedCollection [
-	self setParents: self sizes to: nil.
-	sizes := anOrderedCollection.
-	self setParents: self sizes to: self
-]
-
-{ #category : #generated }
-VBAsTypeAndNewNode >> timesToken [
-	^ timesToken
-]
-
-{ #category : #generated }
-VBAsTypeAndNewNode >> timesToken: aSmaCCToken [
-	timesToken := aSmaCCToken
-]
-
-{ #category : #generated }
 VBAsTypeAndNewNode >> tokenVariables [
-	^ #(#aSToken #nEWToken #timesToken)
+	^ #(#aSToken #nEWToken)
 ]
 
 { #category : #generated }
@@ -109,4 +66,14 @@ VBAsTypeAndNewNode >> type: anObject [
 	self setParent: self type to: nil.
 	type := anObject.
 	self setParent: self type to: self
+]
+
+{ #category : #generated }
+VBAsTypeAndNewNode >> whitespaceTokens [
+	^ whitespaceTokens
+]
+
+{ #category : #generated }
+VBAsTypeAndNewNode >> whitespaceTokens: anOrderedCollection [
+	whitespaceTokens := anOrderedCollection
 ]

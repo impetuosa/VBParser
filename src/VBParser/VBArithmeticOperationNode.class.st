@@ -11,12 +11,13 @@ Class {
 		'_Token',
 		'modToken',
 		'right',
+		'whitespaceTokens',
 		'andToken',
 		'orToken',
 		'xorToken',
 		'eqvToken'
 	],
-	#category : #'VBParser-Scanner'
+	#category : #'VBParser-AST-Model'
 }
 
 { #category : #generated }
@@ -45,6 +46,11 @@ VBArithmeticOperationNode >> andToken: aSmaCCToken [
 ]
 
 { #category : #generated }
+VBArithmeticOperationNode >> compositeTokenVariables [
+	^ #(#whitespaceTokens)
+]
+
+{ #category : #generated }
 VBArithmeticOperationNode >> divideToken [
 	^ divideToken
 ]
@@ -62,6 +68,12 @@ VBArithmeticOperationNode >> eqvToken [
 { #category : #generated }
 VBArithmeticOperationNode >> eqvToken: aSmaCCToken [
 	eqvToken := aSmaCCToken
+]
+
+{ #category : #'generated-initialize-release' }
+VBArithmeticOperationNode >> initialize [
+	super initialize.
+	whitespaceTokens := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -160,6 +172,16 @@ VBArithmeticOperationNode >> upArrowToken [
 { #category : #generated }
 VBArithmeticOperationNode >> upArrowToken: aSmaCCToken [
 	upArrowToken := aSmaCCToken
+]
+
+{ #category : #generated }
+VBArithmeticOperationNode >> whitespaceTokens [
+	^ whitespaceTokens
+]
+
+{ #category : #generated }
+VBArithmeticOperationNode >> whitespaceTokens: anOrderedCollection [
+	whitespaceTokens := anOrderedCollection
 ]
 
 { #category : #generated }

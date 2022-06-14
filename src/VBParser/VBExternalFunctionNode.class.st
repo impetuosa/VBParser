@@ -3,6 +3,7 @@ Class {
 	#superclass : #VBProgramNode,
 	#instVars : [
 		'declareToken',
+		'whitespaceTokens',
 		'functionToken',
 		'selector',
 		'libToken',
@@ -13,7 +14,7 @@ Class {
 		'alias',
 		'visibility'
 	],
-	#category : #'VBParser-Scanner'
+	#category : #'VBParser-AST-Model'
 }
 
 { #category : #generated }
@@ -46,6 +47,11 @@ VBExternalFunctionNode >> aliasToken: aSmaCCToken [
 ]
 
 { #category : #generated }
+VBExternalFunctionNode >> compositeTokenVariables [
+	^ #(#whitespaceTokens)
+]
+
+{ #category : #generated }
 VBExternalFunctionNode >> declareToken [
 	^ declareToken
 ]
@@ -63,6 +69,12 @@ VBExternalFunctionNode >> functionToken [
 { #category : #generated }
 VBExternalFunctionNode >> functionToken: aSmaCCToken [
 	functionToken := aSmaCCToken
+]
+
+{ #category : #'generated-initialize-release' }
+VBExternalFunctionNode >> initialize [
+	super initialize.
+	whitespaceTokens := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -149,4 +161,14 @@ VBExternalFunctionNode >> visibility [
 { #category : #generated }
 VBExternalFunctionNode >> visibility: aSmaCCToken [
 	visibility := aSmaCCToken
+]
+
+{ #category : #generated }
+VBExternalFunctionNode >> whitespaceTokens [
+	^ whitespaceTokens
+]
+
+{ #category : #generated }
+VBExternalFunctionNode >> whitespaceTokens: anOrderedCollection [
+	whitespaceTokens := anOrderedCollection
 ]

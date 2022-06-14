@@ -4,10 +4,11 @@ Class {
 	#instVars : [
 		'leftParenToken',
 		'rightParenToken',
+		'whitespaceTokens',
 		'parameters',
 		'commaTokens'
 	],
-	#category : #'VBParser-Scanner'
+	#category : #'VBParser-AST-Model'
 }
 
 { #category : #generated }
@@ -32,12 +33,13 @@ VBParameterListNode >> compositeNodeVariables [
 
 { #category : #generated }
 VBParameterListNode >> compositeTokenVariables [
-	^ #(#commaTokens)
+	^ #(#whitespaceTokens #commaTokens)
 ]
 
 { #category : #'generated-initialize-release' }
 VBParameterListNode >> initialize [
 	super initialize.
+	whitespaceTokens := OrderedCollection new: 2.
 	parameters := OrderedCollection new: 2.
 	commaTokens := OrderedCollection new: 2.
 ]
@@ -77,4 +79,14 @@ VBParameterListNode >> rightParenToken: aSmaCCToken [
 { #category : #generated }
 VBParameterListNode >> tokenVariables [
 	^ #(#leftParenToken #rightParenToken)
+]
+
+{ #category : #generated }
+VBParameterListNode >> whitespaceTokens [
+	^ whitespaceTokens
+]
+
+{ #category : #generated }
+VBParameterListNode >> whitespaceTokens: anOrderedCollection [
+	whitespaceTokens := anOrderedCollection
 ]

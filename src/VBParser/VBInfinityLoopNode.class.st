@@ -5,9 +5,10 @@ Class {
 		'doToken',
 		'loopToken',
 		'endLineNumber',
+		'whitespaceToken',
 		'body'
 	],
-	#category : #'VBParser-Scanner'
+	#category : #'VBParser-AST-Model'
 }
 
 { #category : #generated }
@@ -70,5 +71,15 @@ VBInfinityLoopNode >> nodeVariables [
 
 { #category : #generated }
 VBInfinityLoopNode >> tokenVariables [
-	^ #(#doToken #loopToken)
+	^ #(#doToken #loopToken #whitespaceToken)
+]
+
+{ #category : #generated }
+VBInfinityLoopNode >> whitespaceToken [
+	^ whitespaceToken
+]
+
+{ #category : #generated }
+VBInfinityLoopNode >> whitespaceToken: aSmaCCToken [
+	whitespaceToken := aSmaCCToken
 ]

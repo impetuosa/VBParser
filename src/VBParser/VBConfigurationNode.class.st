@@ -7,7 +7,7 @@ Class {
 		'settings',
 		'endToken'
 	],
-	#category : #'VBParser-Scanner'
+	#category : #'VBParser-AST-Model'
 }
 
 { #category : #generated }

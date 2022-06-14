@@ -3,15 +3,21 @@ Class {
 	#superclass : #VBProgramNode,
 	#instVars : [
 		'constToken',
+		'whitespaceTokens',
 		'constant',
 		'visibility'
 	],
-	#category : #'VBParser-Scanner'
+	#category : #'VBParser-AST-Model'
 }
 
 { #category : #generated }
 VBModuleConstantNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitModuleConstant: self
+]
+
+{ #category : #generated }
+VBModuleConstantNode >> compositeTokenVariables [
+	^ #(#whitespaceTokens)
 ]
 
 { #category : #generated }
@@ -38,6 +44,12 @@ VBModuleConstantNode >> constant: aVBConstantNode [
 		ifTrue: [ self constant parent: self ]
 ]
 
+{ #category : #'generated-initialize-release' }
+VBModuleConstantNode >> initialize [
+	super initialize.
+	whitespaceTokens := OrderedCollection new: 2.
+]
+
 { #category : #generated }
 VBModuleConstantNode >> nodeVariables [
 	^ #(#constant)
@@ -56,4 +68,14 @@ VBModuleConstantNode >> visibility [
 { #category : #generated }
 VBModuleConstantNode >> visibility: aSmaCCToken [
 	visibility := aSmaCCToken
+]
+
+{ #category : #generated }
+VBModuleConstantNode >> whitespaceTokens [
+	^ whitespaceTokens
+]
+
+{ #category : #generated }
+VBModuleConstantNode >> whitespaceTokens: anOrderedCollection [
+	whitespaceTokens := anOrderedCollection
 ]

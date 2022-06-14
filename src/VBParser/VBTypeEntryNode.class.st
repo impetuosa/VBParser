@@ -5,9 +5,10 @@ Class {
 		'name',
 		'type',
 		'timesToken',
-		'_size'
+		'_size',
+		'whitespaceTokens'
 	],
-	#category : #'VBParser-Scanner'
+	#category : #'VBParser-AST-Model'
 }
 
 { #category : #generated }
@@ -27,6 +28,17 @@ VBTypeEntryNode >> _size: aVBIntegerLiteralNode [
 { #category : #generated }
 VBTypeEntryNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitTypeEntry: self
+]
+
+{ #category : #generated }
+VBTypeEntryNode >> compositeTokenVariables [
+	^ #(#whitespaceTokens)
+]
+
+{ #category : #'generated-initialize-release' }
+VBTypeEntryNode >> initialize [
+	super initialize.
+	whitespaceTokens := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -75,4 +87,14 @@ VBTypeEntryNode >> type: aVBProgramNode [
 	type := aVBProgramNode.
 	self type notNil
 		ifTrue: [ self type parent: self ]
+]
+
+{ #category : #generated }
+VBTypeEntryNode >> whitespaceTokens [
+	^ whitespaceTokens
+]
+
+{ #category : #generated }
+VBTypeEntryNode >> whitespaceTokens: anOrderedCollection [
+	whitespaceTokens := anOrderedCollection
 ]

@@ -5,16 +5,22 @@ Class {
 		'elseToken',
 		'ifMatch',
 		'endLineNumber',
+		'whitespaceTokens',
 		'elseifToken',
 		'condition',
 		'thenToken'
 	],
-	#category : #'VBParser-Scanner'
+	#category : #'VBParser-AST-Model'
 }
 
 { #category : #generated }
 VBElseIfBlockNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitElseIfBlock: self
+]
+
+{ #category : #generated }
+VBElseIfBlockNode >> compositeTokenVariables [
+	^ #(#whitespaceTokens)
 ]
 
 { #category : #generated }
@@ -79,6 +85,12 @@ VBElseIfBlockNode >> ifMatch: aVBBlockNode [
 		ifTrue: [ self ifMatch parent: self ]
 ]
 
+{ #category : #'generated-initialize-release' }
+VBElseIfBlockNode >> initialize [
+	super initialize.
+	whitespaceTokens := OrderedCollection new: 2.
+]
+
 { #category : #generated }
 VBElseIfBlockNode >> nodeVariables [
 	^ #(#ifMatch #endLineNumber #condition)
@@ -97,4 +109,14 @@ VBElseIfBlockNode >> thenToken: aSmaCCToken [
 { #category : #generated }
 VBElseIfBlockNode >> tokenVariables [
 	^ #(#elseToken #elseifToken #thenToken)
+]
+
+{ #category : #generated }
+VBElseIfBlockNode >> whitespaceTokens [
+	^ whitespaceTokens
+]
+
+{ #category : #generated }
+VBElseIfBlockNode >> whitespaceTokens: anOrderedCollection [
+	whitespaceTokens := anOrderedCollection
 ]

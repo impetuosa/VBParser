@@ -3,9 +3,10 @@ Class {
 	#superclass : #VBProgramNode,
 	#instVars : [
 		'addressOfToken',
+		'whitespaceToken',
 		'name'
 	],
-	#category : #'VBParser-Scanner'
+	#category : #'VBParser-AST-Model'
 }
 
 { #category : #generated }
@@ -44,5 +45,15 @@ VBAddressOfClauseNode >> nodeVariables [
 
 { #category : #generated }
 VBAddressOfClauseNode >> tokenVariables [
-	^ #(#addressOfToken)
+	^ #(#addressOfToken #whitespaceToken)
+]
+
+{ #category : #generated }
+VBAddressOfClauseNode >> whitespaceToken [
+	^ whitespaceToken
+]
+
+{ #category : #generated }
+VBAddressOfClauseNode >> whitespaceToken: aSmaCCToken [
+	whitespaceToken := aSmaCCToken
 ]

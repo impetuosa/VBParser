@@ -6,17 +6,12 @@ Class {
 		'member',
 		'receiver'
 	],
-	#category : #'VBParser-Scanner'
+	#category : #'VBParser-AST-Model'
 }
 
 { #category : #generated }
 VBMemberAccessNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitMemberAccess: self
-]
-
-{ #category : #testing }
-VBMemberAccessNode >> isIdentifier [
-	^ true 
 ]
 
 { #category : #generated }

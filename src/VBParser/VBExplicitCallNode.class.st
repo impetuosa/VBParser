@@ -3,9 +3,10 @@ Class {
 	#superclass : #VBProgramNode,
 	#instVars : [
 		'callToken',
+		'whitespaceToken',
 		'selector'
 	],
-	#category : #'VBParser-Scanner'
+	#category : #'VBParser-AST-Model'
 }
 
 { #category : #generated }
@@ -44,5 +45,15 @@ VBExplicitCallNode >> selector: aVBProgramNode [
 
 { #category : #generated }
 VBExplicitCallNode >> tokenVariables [
-	^ #(#callToken)
+	^ #(#callToken #whitespaceToken)
+]
+
+{ #category : #generated }
+VBExplicitCallNode >> whitespaceToken [
+	^ whitespaceToken
+]
+
+{ #category : #generated }
+VBExplicitCallNode >> whitespaceToken: aSmaCCToken [
+	whitespaceToken := aSmaCCToken
 ]

@@ -32,7 +32,7 @@ Const MyStr = "Hello", MyDouble As Double = 3.4567'
 VB6StatementsPerformanceCase >> dateCase [
 	 ^'Dim MyDate 
 MyDate = #February 12, 1985# '' Assign a date. 
-Date= MyDate '' Change system date. 
+Date = MyDate '' Change system date. 
 
 '
 ]
@@ -45,7 +45,7 @@ Declare Sub MessageBeep Lib "User" (ByVal N As Integer)
 '' Assume SomeBeep is an alias for the procedure name. 
 Declare Sub MessageBeep Lib "User" Alias "SomeBeep"(ByVal N As Integer) 
 '' Use an ordinal in the Alias clause to call GetWinFlags. 
-Declare Function GetWinFlags Lib "Kernel" Alias "#132"()As Long 
+Declare Function GetWinFlags Lib "Kernel" Alias "#132"() As Long 
  
 	'
 ]
@@ -91,14 +91,14 @@ Dim AnotherVar, Choice As Boolean, BirthDate As Date
 Dim DayArray(50) 
  
 '' Matrix is a two-dimensional array of integers. 
-Dim Matrix(3, 4)As Integer 
+Dim Matrix(3, 4) As Integer 
  
 '' MyMatrix is a three-dimensional array of doubles with explicit 
 '' bounds. 
-Dim MyMatrix(1 To 5, 4 To 9, 3 To 5)As Double 
+Dim MyMatrix(1 To 5, 4 To 9, 3 To 5) As Double 
  
 '' BirthDay is an array of dates with indexes from 1 to 10. 
-Dim BirthDay(1 To 10)As Date 
+Dim BirthDay(1 To 10) As Date 
  
 '' MyArray is a dynamic array of variants. 
 Dim MyArray()
@@ -111,7 +111,8 @@ VB6StatementsPerformanceCase >> enumCase [
  IllegalEntry = -1 
  SecurityLevel1 = 0 
  SecurityLevel2 = 1 
-End Enum '
+End Enum 
+'
 ]
 
 { #category : #'as yet unclassified' }
@@ -242,7 +243,7 @@ Dim Num
  Debug.Print Num 
  Exit Sub '' Use Exit to prevent an error. 
 MyRoutine:
- Num = Num/2 '' Perform the division. 
+ Num = Num / 2 '' Perform the division. 
  Return '' Return control to statement. 
 End Sub '' following the GoSub statement. 
 
@@ -580,10 +581,10 @@ VB6StatementsPerformanceCase >> printCase [
  	^ self subWrap: 'Open "TESTFILE" For Output As #1 '' Open file for output. 
 Print #1, "This is a test" '' Print text to file. 
 Print #1, '' Print blank line to file. 
-Print #1, "Zone 1"; Tab ; "Zone 2" '' Print in two print zones. 
-Print #1, "Hello" ; " " ; "World" '' Separate strings with space. 
-Print #1, Spc(5) ; "5 leading spaces " '' Print five leading spaces. 
-Print #1, Tab(10) ; "Hello" '' Print word at column 10. 
+Print #1, "Zone 1"; Tab; "Zone 2" '' Print in two print zones. 
+Print #1, "Hello"; " "; "World" '' Separate strings with space. 
+Print #1, Spc(5); "5 leading spaces " '' Print five leading spaces. 
+Print #1, Tab(10); "Hello" '' Print word at column 10. 
  
 '' Assign Boolean, Date, Null and Error values. 
 Dim MyBool, MyDate, MyNull, MyError 
@@ -592,10 +593,10 @@ MyError = CVErr(32767)
 '' True, False, Null, and Error are translated using locale settings of 
 '' your system. Date literals are written using standard short date 
 '' format. 
-Print #1, MyBool ; " is a Boolean value" 
-Print #1, MyDate ; " is a date" 
-Print #1, MyNull ; " is a null value" 
-Print #1, MyError ; " is an error value" 
+Print #1, MyBool; " is a Boolean value" 
+Print #1, MyDate; " is a date" 
+Print #1, MyNull; " is a null value" 
+Print #1, MyError; " is an error value" 
 Close #1 '' Close file. '
 ]
 
@@ -614,7 +615,8 @@ Property Get PenColor() As String
  Case BLUE 
  PenColor = "Blue" 
  End Select 
-End Property '
+End Property 
+'
 ]
 
 { #category : #'as yet unclassified' }
@@ -636,7 +638,8 @@ Property Let PenColor(ColorName As String)
  Case Else 
  CurrentColor = BLACK '' Assign default value. 
  End Select 
-End Property  '
+End Property 
+ '
 ]
 
 { #category : #'as yet unclassified' }
@@ -865,7 +868,7 @@ VB6StatementsPerformanceCase >> testSmokeLet [
 
 { #category : #'smoke tests ' }
 VB6StatementsPerformanceCase >> testSmokeLine [
-	self should: [ self parse: self lineCase ] raise: SmaCCParserError
+	self parse: self lineCase
 ]
 
 { #category : #'smoke tests ' }

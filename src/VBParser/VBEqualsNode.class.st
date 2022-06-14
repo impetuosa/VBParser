@@ -4,14 +4,26 @@ Class {
 	#instVars : [
 		'left',
 		'operator',
-		'right'
+		'right',
+		'whitespaceTokens'
 	],
-	#category : #'VBParser-Scanner'
+	#category : #'VBParser-AST-Model'
 }
 
 { #category : #generated }
 VBEqualsNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitEquals: self
+]
+
+{ #category : #generated }
+VBEqualsNode >> compositeTokenVariables [
+	^ #(#whitespaceTokens)
+]
+
+{ #category : #'generated-initialize-release' }
+VBEqualsNode >> initialize [
+	super initialize.
+	whitespaceTokens := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -60,4 +72,14 @@ VBEqualsNode >> right: aVBProgramNode [
 { #category : #generated }
 VBEqualsNode >> tokenVariables [
 	^ #(#operator)
+]
+
+{ #category : #generated }
+VBEqualsNode >> whitespaceTokens [
+	^ whitespaceTokens
+]
+
+{ #category : #generated }
+VBEqualsNode >> whitespaceTokens: anOrderedCollection [
+	whitespaceTokens := anOrderedCollection
 ]

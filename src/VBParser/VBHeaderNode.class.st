@@ -3,10 +3,11 @@ Class {
 	#superclass : #VBProgramNode,
 	#instVars : [
 		'versionToken',
+		'whitespaceToken',
 		'version',
 		'classToken'
 	],
-	#category : #'VBParser-Scanner'
+	#category : #'VBParser-AST-Model'
 }
 
 { #category : #generated }
@@ -31,7 +32,7 @@ VBHeaderNode >> nodeVariables [
 
 { #category : #generated }
 VBHeaderNode >> tokenVariables [
-	^ #(#versionToken #classToken)
+	^ #(#versionToken #whitespaceToken #classToken)
 ]
 
 { #category : #generated }
@@ -56,4 +57,14 @@ VBHeaderNode >> versionToken [
 { #category : #generated }
 VBHeaderNode >> versionToken: aSmaCCToken [
 	versionToken := aSmaCCToken
+]
+
+{ #category : #generated }
+VBHeaderNode >> whitespaceToken [
+	^ whitespaceToken
+]
+
+{ #category : #generated }
+VBHeaderNode >> whitespaceToken: aSmaCCToken [
+	whitespaceToken := aSmaCCToken
 ]

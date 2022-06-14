@@ -3,9 +3,10 @@ Class {
 	#superclass : #VBProgramNode,
 	#instVars : [
 		'eRRORToken',
+		'whitespaceToken',
 		'errorCode'
 	],
-	#category : #'VBParser-Scanner'
+	#category : #'VBParser-AST-Model'
 }
 
 { #category : #generated }
@@ -44,5 +45,15 @@ VBErrorNode >> nodeVariables [
 
 { #category : #generated }
 VBErrorNode >> tokenVariables [
-	^ #(#eRRORToken)
+	^ #(#eRRORToken #whitespaceToken)
+]
+
+{ #category : #generated }
+VBErrorNode >> whitespaceToken [
+	^ whitespaceToken
+]
+
+{ #category : #generated }
+VBErrorNode >> whitespaceToken: aSmaCCToken [
+	whitespaceToken := aSmaCCToken
 ]

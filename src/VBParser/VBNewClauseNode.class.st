@@ -3,9 +3,10 @@ Class {
 	#superclass : #VBProgramNode,
 	#instVars : [
 		'nEWToken',
+		'whitespaceToken',
 		'typeName'
 	],
-	#category : #'VBParser-Scanner'
+	#category : #'VBParser-AST-Model'
 }
 
 { #category : #generated }
@@ -30,7 +31,7 @@ VBNewClauseNode >> otherVariables [
 
 { #category : #generated }
 VBNewClauseNode >> tokenVariables [
-	^ #(#nEWToken)
+	^ #(#nEWToken #whitespaceToken)
 ]
 
 { #category : #generated }
@@ -43,4 +44,14 @@ VBNewClauseNode >> typeName: anObject [
 	self setParent: self typeName to: nil.
 	typeName := anObject.
 	self setParent: self typeName to: self
+]
+
+{ #category : #generated }
+VBNewClauseNode >> whitespaceToken [
+	^ whitespaceToken
+]
+
+{ #category : #generated }
+VBNewClauseNode >> whitespaceToken: aSmaCCToken [
+	whitespaceToken := aSmaCCToken
 ]

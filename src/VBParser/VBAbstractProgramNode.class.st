@@ -1,7 +1,7 @@
 Class {
 	#name : #VBAbstractProgramNode,
 	#superclass : #SmaCCParseNode,
-	#category : #'VBParser-Scanner'
+	#category : #'VBParser-AST-Model'
 }
 
 { #category : #'as yet unclassified' }

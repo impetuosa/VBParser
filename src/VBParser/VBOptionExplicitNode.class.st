@@ -3,9 +3,10 @@ Class {
 	#superclass : #VBProgramNode,
 	#instVars : [
 		'optionToken',
+		'whitespaceToken',
 		'explicitToken'
 	],
-	#category : #'VBParser-Scanner'
+	#category : #'VBParser-AST-Model'
 }
 
 { #category : #generated }
@@ -35,5 +36,15 @@ VBOptionExplicitNode >> optionToken: aSmaCCToken [
 
 { #category : #generated }
 VBOptionExplicitNode >> tokenVariables [
-	^ #(#optionToken #explicitToken)
+	^ #(#optionToken #whitespaceToken #explicitToken)
+]
+
+{ #category : #generated }
+VBOptionExplicitNode >> whitespaceToken [
+	^ whitespaceToken
+]
+
+{ #category : #generated }
+VBOptionExplicitNode >> whitespaceToken: aSmaCCToken [
+	whitespaceToken := aSmaCCToken
 ]

@@ -4,14 +4,20 @@ Class {
 	#instVars : [
 		'leftParenToken',
 		'expression',
-		'rightParenToken'
+		'rightParenToken',
+		'whitespaceTokens'
 	],
-	#category : #'VBParser-Scanner'
+	#category : #'VBParser-AST-Model'
 }
 
 { #category : #generated }
 VBParentheseesExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitParentheseesExpression: self
+]
+
+{ #category : #generated }
+VBParentheseesExpressionNode >> compositeTokenVariables [
+	^ #(#whitespaceTokens)
 ]
 
 { #category : #generated }
@@ -26,6 +32,12 @@ VBParentheseesExpressionNode >> expression: aVBProgramNode [
 	expression := aVBProgramNode.
 	self expression notNil
 		ifTrue: [ self expression parent: self ]
+]
+
+{ #category : #'generated-initialize-release' }
+VBParentheseesExpressionNode >> initialize [
+	super initialize.
+	whitespaceTokens := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -56,4 +68,14 @@ VBParentheseesExpressionNode >> rightParenToken: aSmaCCToken [
 { #category : #generated }
 VBParentheseesExpressionNode >> tokenVariables [
 	^ #(#leftParenToken #rightParenToken)
+]
+
+{ #category : #generated }
+VBParentheseesExpressionNode >> whitespaceTokens [
+	^ whitespaceTokens
+]
+
+{ #category : #generated }
+VBParentheseesExpressionNode >> whitespaceTokens: anOrderedCollection [
+	whitespaceTokens := anOrderedCollection
 ]

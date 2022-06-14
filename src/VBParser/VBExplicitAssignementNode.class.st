@@ -3,16 +3,28 @@ Class {
 	#superclass : #VBProgramNode,
 	#instVars : [
 		'left',
+		'whitespaceTokens',
 		'operator',
 		'right',
 		'kind'
 	],
-	#category : #'VBParser-Scanner'
+	#category : #'VBParser-AST-Model'
 }
 
 { #category : #generated }
 VBExplicitAssignementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitExplicitAssignement: self
+]
+
+{ #category : #generated }
+VBExplicitAssignementNode >> compositeTokenVariables [
+	^ #(#whitespaceTokens)
+]
+
+{ #category : #'generated-initialize-release' }
+VBExplicitAssignementNode >> initialize [
+	super initialize.
+	whitespaceTokens := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -71,4 +83,14 @@ VBExplicitAssignementNode >> right: aVBProgramNode [
 { #category : #generated }
 VBExplicitAssignementNode >> tokenVariables [
 	^ #(#operator #kind)
+]
+
+{ #category : #generated }
+VBExplicitAssignementNode >> whitespaceTokens [
+	^ whitespaceTokens
+]
+
+{ #category : #generated }
+VBExplicitAssignementNode >> whitespaceTokens: anOrderedCollection [
+	whitespaceTokens := anOrderedCollection
 ]

@@ -2,13 +2,13 @@ Class {
 	#name : #VBTypedThingNode,
 	#superclass : #VBProgramNode,
 	#instVars : [
-		'aSToken',
-		'type',
 		'timesToken',
 		'fixedSize',
-		'sizes'
+		'whitespaceTokens',
+		'aSToken',
+		'type'
 	],
-	#category : #'VBParser-Scanner'
+	#category : #'VBParser-ParsingCore'
 }
 
 { #category : #generated }
@@ -27,8 +27,8 @@ VBTypedThingNode >> acceptVisitor: aProgramVisitor [
 ]
 
 { #category : #generated }
-VBTypedThingNode >> compositeNodeVariables [
-	^ #(#sizes)
+VBTypedThingNode >> compositeTokenVariables [
+	^ #(#whitespaceTokens)
 ]
 
 { #category : #generated }
@@ -48,7 +48,7 @@ VBTypedThingNode >> fixedSize: aVBProgramNode [
 { #category : #'generated-initialize-release' }
 VBTypedThingNode >> initialize [
 	super initialize.
-	sizes := OrderedCollection new: 2.
+	whitespaceTokens := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -59,18 +59,6 @@ VBTypedThingNode >> nodeVariables [
 { #category : #generated }
 VBTypedThingNode >> otherVariables [
 	^ #(#type)
-]
-
-{ #category : #generated }
-VBTypedThingNode >> sizes [
-	^ sizes
-]
-
-{ #category : #generated }
-VBTypedThingNode >> sizes: anOrderedCollection [
-	self setParents: self sizes to: nil.
-	sizes := anOrderedCollection.
-	self setParents: self sizes to: self
 ]
 
 { #category : #generated }
@@ -85,7 +73,7 @@ VBTypedThingNode >> timesToken: aSmaCCToken [
 
 { #category : #generated }
 VBTypedThingNode >> tokenVariables [
-	^ #(#aSToken #timesToken)
+	^ #(#timesToken #aSToken)
 ]
 
 { #category : #generated }
@@ -98,4 +86,14 @@ VBTypedThingNode >> type: anObject [
 	self setParent: self type to: nil.
 	type := anObject.
 	self setParent: self type to: self
+]
+
+{ #category : #generated }
+VBTypedThingNode >> whitespaceTokens [
+	^ whitespaceTokens
+]
+
+{ #category : #generated }
+VBTypedThingNode >> whitespaceTokens: anOrderedCollection [
+	whitespaceTokens := anOrderedCollection
 ]

@@ -40,6 +40,9 @@ VB6ObjectUsagePerformanceCase >> testSmokeUseAddControlEvent [
 
 { #category : #'smoke tests ' }
 VB6ObjectUsagePerformanceCase >> testSmokeUseCollection [
+	 " 
+	self new useCollectionCase 
+	"
 			self parse: self useCollectionCase
 		
 ]
@@ -116,7 +119,7 @@ Do
     '' If user entered name, add it to the collection.
     If Inst.InstanceName <> "" Then
         '' Add the named object to the collection.
-        MyClasses. Add item := Inst, key := CStr(Num)
+        MyClasses.Add item := Inst, key := CStr(Num)
     End If
     '' Clear the current reference in preparation for next one.
     Set Inst = Nothing
@@ -368,7 +371,7 @@ VB6ObjectUsagePerformanceCase >> useFormExampleAddCutCase [
 	^ 'Dim MyTextBox As Control 
  
 Private Sub CommandButton1_Click() 
- Set MyTextBox = MultiPage1.Pages(MultiPage1.Value).Controls_
+ Set MyTextBox = MultiPage1.Pages(MultiPage1.Value).Controls _
  .Add("MSForms.TextBox.1", "MyTextBox", Visible) 
  CommandButton2.Enabled = True 
  CommandButton1.Enabled = False 
@@ -398,5 +401,6 @@ Private Sub UserForm_Initialize()
  CommandButton2.Enabled = False 
  CommandButton3.Enabled = False 
 End Sub
+
 '
 ]

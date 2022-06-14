@@ -5,9 +5,10 @@ Class {
 		'leftParenToken',
 		'commaTokens',
 		'sizes',
+		'whitespaceTokens',
 		'rightParenToken'
 	],
-	#category : #'VBParser-Scanner'
+	#category : #'VBParser-AST-Model'
 }
 
 { #category : #generated }
@@ -32,7 +33,7 @@ VBTypeSizeNode >> compositeNodeVariables [
 
 { #category : #generated }
 VBTypeSizeNode >> compositeTokenVariables [
-	^ #(#commaTokens)
+	^ #(#commaTokens #whitespaceTokens)
 ]
 
 { #category : #'generated-initialize-release' }
@@ -40,6 +41,7 @@ VBTypeSizeNode >> initialize [
 	super initialize.
 	commaTokens := OrderedCollection new: 2.
 	sizes := OrderedCollection new: 2.
+	whitespaceTokens := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -77,4 +79,14 @@ VBTypeSizeNode >> sizes: anOrderedCollection [
 { #category : #generated }
 VBTypeSizeNode >> tokenVariables [
 	^ #(#leftParenToken #rightParenToken)
+]
+
+{ #category : #generated }
+VBTypeSizeNode >> whitespaceTokens [
+	^ whitespaceTokens
+]
+
+{ #category : #generated }
+VBTypeSizeNode >> whitespaceTokens: anOrderedCollection [
+	whitespaceTokens := anOrderedCollection
 ]

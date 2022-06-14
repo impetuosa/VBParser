@@ -3,15 +3,27 @@ Class {
 	#superclass : #VBProgramNode,
 	#instVars : [
 		'onToken',
+		'whitespaceTokens',
 		'integerExpression',
 		'to'
 	],
-	#category : #'VBParser-Scanner'
+	#category : #'VBParser-AST-Model'
 }
 
 { #category : #generated }
 VBOnExpressionGoNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitOnExpressionGo: self
+]
+
+{ #category : #generated }
+VBOnExpressionGoNode >> compositeTokenVariables [
+	^ #(#whitespaceTokens)
+]
+
+{ #category : #'generated-initialize-release' }
+VBOnExpressionGoNode >> initialize [
+	super initialize.
+	whitespaceTokens := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -60,4 +72,14 @@ VBOnExpressionGoNode >> to: aVBProgramNode [
 { #category : #generated }
 VBOnExpressionGoNode >> tokenVariables [
 	^ #(#onToken)
+]
+
+{ #category : #generated }
+VBOnExpressionGoNode >> whitespaceTokens [
+	^ whitespaceTokens
+]
+
+{ #category : #generated }
+VBOnExpressionGoNode >> whitespaceTokens: anOrderedCollection [
+	whitespaceTokens := anOrderedCollection
 ]

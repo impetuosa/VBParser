@@ -3,16 +3,22 @@ Class {
 	#superclass : #VBProgramNode,
 	#instVars : [
 		'eventToken',
+		'whitespaceTokens',
 		'selector',
 		'parameters',
 		'visibility'
 	],
-	#category : #'VBParser-Scanner'
+	#category : #'VBParser-AST-Model'
 }
 
 { #category : #generated }
 VBEventNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitEvent: self
+]
+
+{ #category : #generated }
+VBEventNode >> compositeTokenVariables [
+	^ #(#whitespaceTokens)
 ]
 
 { #category : #generated }
@@ -23,6 +29,12 @@ VBEventNode >> eventToken [
 { #category : #generated }
 VBEventNode >> eventToken: aSmaCCToken [
 	eventToken := aSmaCCToken
+]
+
+{ #category : #'generated-initialize-release' }
+VBEventNode >> initialize [
+	super initialize.
+	whitespaceTokens := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -71,4 +83,14 @@ VBEventNode >> visibility [
 { #category : #generated }
 VBEventNode >> visibility: aSmaCCToken [
 	visibility := aSmaCCToken
+]
+
+{ #category : #generated }
+VBEventNode >> whitespaceTokens [
+	^ whitespaceTokens
+]
+
+{ #category : #generated }
+VBEventNode >> whitespaceTokens: anOrderedCollection [
+	whitespaceTokens := anOrderedCollection
 ]

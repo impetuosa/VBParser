@@ -3,14 +3,13 @@ Class {
 	#superclass : #VBProgramNode,
 	#instVars : [
 		'pRINTToken',
+		'whitespaceTokens',
 		'fileNumber',
 		'commaToken',
 		'semicolonTokens',
-		'values',
-		'rightParenToken',
-		'leftParenToken'
+		'values'
 	],
-	#category : #'VBParser-Scanner'
+	#category : #'VBParser-AST-Model'
 }
 
 { #category : #generated }
@@ -35,7 +34,7 @@ VBPrintIntoFileClauseNode >> compositeNodeVariables [
 
 { #category : #generated }
 VBPrintIntoFileClauseNode >> compositeTokenVariables [
-	^ #(#semicolonTokens)
+	^ #(#whitespaceTokens #semicolonTokens)
 ]
 
 { #category : #generated }
@@ -55,18 +54,9 @@ VBPrintIntoFileClauseNode >> fileNumber: aVBProgramNode [
 { #category : #'generated-initialize-release' }
 VBPrintIntoFileClauseNode >> initialize [
 	super initialize.
+	whitespaceTokens := OrderedCollection new: 2.
 	semicolonTokens := OrderedCollection new: 2.
 	values := OrderedCollection new: 2.
-]
-
-{ #category : #generated }
-VBPrintIntoFileClauseNode >> leftParenToken [
-	^ leftParenToken
-]
-
-{ #category : #generated }
-VBPrintIntoFileClauseNode >> leftParenToken: aSmaCCToken [
-	leftParenToken := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -85,16 +75,6 @@ VBPrintIntoFileClauseNode >> pRINTToken: aSmaCCToken [
 ]
 
 { #category : #generated }
-VBPrintIntoFileClauseNode >> rightParenToken [
-	^ rightParenToken
-]
-
-{ #category : #generated }
-VBPrintIntoFileClauseNode >> rightParenToken: aSmaCCToken [
-	rightParenToken := aSmaCCToken
-]
-
-{ #category : #generated }
 VBPrintIntoFileClauseNode >> semicolonTokens [
 	^ semicolonTokens
 ]
@@ -106,7 +86,7 @@ VBPrintIntoFileClauseNode >> semicolonTokens: anOrderedCollection [
 
 { #category : #generated }
 VBPrintIntoFileClauseNode >> tokenVariables [
-	^ #(#pRINTToken #commaToken #rightParenToken #leftParenToken)
+	^ #(#pRINTToken #commaToken)
 ]
 
 { #category : #generated }
@@ -119,4 +99,14 @@ VBPrintIntoFileClauseNode >> values: anOrderedCollection [
 	self setParents: self values to: nil.
 	values := anOrderedCollection.
 	self setParents: self values to: self
+]
+
+{ #category : #generated }
+VBPrintIntoFileClauseNode >> whitespaceTokens [
+	^ whitespaceTokens
+]
+
+{ #category : #generated }
+VBPrintIntoFileClauseNode >> whitespaceTokens: anOrderedCollection [
+	whitespaceTokens := anOrderedCollection
 ]

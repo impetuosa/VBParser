@@ -5,7 +5,7 @@ Class {
 		'minusToken',
 		'value'
 	],
-	#category : #'VBParser-Scanner'
+	#category : #'VBParser-ParsingCore'
 }
 
 { #category : #generated }

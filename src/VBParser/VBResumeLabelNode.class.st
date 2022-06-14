@@ -3,9 +3,10 @@ Class {
 	#superclass : #VBProgramNode,
 	#instVars : [
 		'resumeToken',
+		'whitespaceToken',
 		'destination'
 	],
-	#category : #'VBParser-Scanner'
+	#category : #'VBParser-AST-Model'
 }
 
 { #category : #generated }
@@ -44,5 +45,15 @@ VBResumeLabelNode >> resumeToken: aSmaCCToken [
 
 { #category : #generated }
 VBResumeLabelNode >> tokenVariables [
-	^ #(#resumeToken)
+	^ #(#resumeToken #whitespaceToken)
+]
+
+{ #category : #generated }
+VBResumeLabelNode >> whitespaceToken [
+	^ whitespaceToken
+]
+
+{ #category : #generated }
+VBResumeLabelNode >> whitespaceToken: aSmaCCToken [
+	whitespaceToken := aSmaCCToken
 ]

@@ -3,10 +3,11 @@ Class {
 	#superclass : #VBProgramNode,
 	#instVars : [
 		'commaTokens',
+		'whitespaceTokens',
 		'semicolonTokens',
 		'arguments'
 	],
-	#category : #'VBParser-Scanner'
+	#category : #'VBParser-AST-Model'
 }
 
 { #category : #generated }
@@ -43,13 +44,14 @@ VBArgumentListNode >> compositeNodeVariables [
 
 { #category : #generated }
 VBArgumentListNode >> compositeTokenVariables [
-	^ #(#commaTokens #semicolonTokens)
+	^ #(#commaTokens #whitespaceTokens #semicolonTokens)
 ]
 
 { #category : #'generated-initialize-release' }
 VBArgumentListNode >> initialize [
 	super initialize.
 	commaTokens := OrderedCollection new: 2.
+	whitespaceTokens := OrderedCollection new: 2.
 	semicolonTokens := OrderedCollection new: 2.
 	arguments := OrderedCollection new: 2.
 ]
@@ -62,4 +64,14 @@ VBArgumentListNode >> semicolonTokens [
 { #category : #generated }
 VBArgumentListNode >> semicolonTokens: anOrderedCollection [
 	semicolonTokens := anOrderedCollection
+]
+
+{ #category : #generated }
+VBArgumentListNode >> whitespaceTokens [
+	^ whitespaceTokens
+]
+
+{ #category : #generated }
+VBArgumentListNode >> whitespaceTokens: anOrderedCollection [
+	whitespaceTokens := anOrderedCollection
 ]

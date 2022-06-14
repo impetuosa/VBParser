@@ -3,13 +3,14 @@ Class {
 	#superclass : #VBProgramNode,
 	#instVars : [
 		'typeTokens',
+		'whitespaceTokens',
 		'name',
 		'eolTokens',
 		'fields',
 		'endToken',
 		'visibility'
 	],
-	#category : #'VBParser-Scanner'
+	#category : #'VBParser-AST-Model'
 }
 
 { #category : #generated }
@@ -24,7 +25,7 @@ VBDefineTypeNode >> compositeNodeVariables [
 
 { #category : #generated }
 VBDefineTypeNode >> compositeTokenVariables [
-	^ #(#typeTokens #eolTokens)
+	^ #(#typeTokens #whitespaceTokens #eolTokens)
 ]
 
 { #category : #generated }
@@ -63,6 +64,7 @@ VBDefineTypeNode >> fields: anOrderedCollection [
 VBDefineTypeNode >> initialize [
 	super initialize.
 	typeTokens := OrderedCollection new: 2.
+	whitespaceTokens := OrderedCollection new: 2.
 	eolTokens := OrderedCollection new: 2.
 	fields := OrderedCollection new: 2.
 ]
@@ -109,4 +111,14 @@ VBDefineTypeNode >> visibility [
 { #category : #generated }
 VBDefineTypeNode >> visibility: aSmaCCToken [
 	visibility := aSmaCCToken
+]
+
+{ #category : #generated }
+VBDefineTypeNode >> whitespaceTokens [
+	^ whitespaceTokens
+]
+
+{ #category : #generated }
+VBDefineTypeNode >> whitespaceTokens: anOrderedCollection [
+	whitespaceTokens := anOrderedCollection
 ]

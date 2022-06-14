@@ -3,13 +3,14 @@ Class {
 	#superclass : #VBProgramNode,
 	#instVars : [
 		'doToken',
+		'whitespaceTokens',
 		'untilToken',
 		'condition',
 		'body',
 		'loopToken',
 		'endLineNumber'
 	],
-	#category : #'VBParser-Scanner'
+	#category : #'VBParser-AST-Model'
 }
 
 { #category : #generated }
@@ -29,6 +30,11 @@ VBUntilTrueNode >> body: aVBBlockNode [
 	body := aVBBlockNode.
 	self body notNil
 		ifTrue: [ self body parent: self ]
+]
+
+{ #category : #generated }
+VBUntilTrueNode >> compositeTokenVariables [
+	^ #(#whitespaceTokens)
 ]
 
 { #category : #generated }
@@ -69,6 +75,12 @@ VBUntilTrueNode >> endLineNumber: aVBIntegerLiteralNode [
 		ifTrue: [ self endLineNumber parent: self ]
 ]
 
+{ #category : #'generated-initialize-release' }
+VBUntilTrueNode >> initialize [
+	super initialize.
+	whitespaceTokens := OrderedCollection new: 2.
+]
+
 { #category : #generated }
 VBUntilTrueNode >> loopToken [
 	^ loopToken
@@ -97,4 +109,14 @@ VBUntilTrueNode >> untilToken [
 { #category : #generated }
 VBUntilTrueNode >> untilToken: aSmaCCToken [
 	untilToken := aSmaCCToken
+]
+
+{ #category : #generated }
+VBUntilTrueNode >> whitespaceTokens [
+	^ whitespaceTokens
+]
+
+{ #category : #generated }
+VBUntilTrueNode >> whitespaceTokens: anOrderedCollection [
+	whitespaceTokens := anOrderedCollection
 ]

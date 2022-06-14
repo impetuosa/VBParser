@@ -3,9 +3,10 @@ Class {
 	#superclass : #VBProgramNode,
 	#instVars : [
 		'staticToken',
+		'whitespaceToken',
 		'variable'
 	],
-	#category : #'VBParser-Scanner'
+	#category : #'VBParser-ParsingCore'
 }
 
 { #category : #generated }
@@ -30,7 +31,7 @@ VBStaticVariableNode >> staticToken: aSmaCCToken [
 
 { #category : #generated }
 VBStaticVariableNode >> tokenVariables [
-	^ #(#staticToken)
+	^ #(#staticToken #whitespaceToken)
 ]
 
 { #category : #generated }
@@ -45,4 +46,14 @@ VBStaticVariableNode >> variable: aVBVariableNode [
 	variable := aVBVariableNode.
 	self variable notNil
 		ifTrue: [ self variable parent: self ]
+]
+
+{ #category : #generated }
+VBStaticVariableNode >> whitespaceToken [
+	^ whitespaceToken
+]
+
+{ #category : #generated }
+VBStaticVariableNode >> whitespaceToken: aSmaCCToken [
+	whitespaceToken := aSmaCCToken
 ]

@@ -3,12 +3,13 @@ Class {
 	#superclass : #VBProgramNode,
 	#instVars : [
 		'typeOfToken',
+		'whitespaceTokens',
 		'argument',
 		'iSToken',
 		'type',
 		'isNotToken'
 	],
-	#category : #'VBParser-Scanner'
+	#category : #'VBParser-AST-Model'
 }
 
 { #category : #generated }
@@ -31,6 +32,11 @@ VBTypeOfNode >> argument: aVBArgumentNode [
 ]
 
 { #category : #generated }
+VBTypeOfNode >> compositeTokenVariables [
+	^ #(#whitespaceTokens)
+]
+
+{ #category : #generated }
 VBTypeOfNode >> iSToken [
 	^ iSToken
 ]
@@ -38,6 +44,12 @@ VBTypeOfNode >> iSToken [
 { #category : #generated }
 VBTypeOfNode >> iSToken: aSmaCCToken [
 	iSToken := aSmaCCToken
+]
+
+{ #category : #'generated-initialize-release' }
+VBTypeOfNode >> initialize [
+	super initialize.
+	whitespaceTokens := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -82,4 +94,14 @@ VBTypeOfNode >> typeOfToken [
 { #category : #generated }
 VBTypeOfNode >> typeOfToken: aSmaCCToken [
 	typeOfToken := aSmaCCToken
+]
+
+{ #category : #generated }
+VBTypeOfNode >> whitespaceTokens [
+	^ whitespaceTokens
+]
+
+{ #category : #generated }
+VBTypeOfNode >> whitespaceTokens: anOrderedCollection [
+	whitespaceTokens := anOrderedCollection
 ]

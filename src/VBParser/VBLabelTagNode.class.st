@@ -3,10 +3,9 @@ Class {
 	#superclass : #VBProgramNode,
 	#instVars : [
 		'name',
-		'colonToken',
-		'whitespaceToken'
+		'colonToken'
 	],
-	#category : #'VBParser-Scanner'
+	#category : #'VBParser-AST-Model'
 }
 
 { #category : #generated }
@@ -36,15 +35,5 @@ VBLabelTagNode >> name: aSmaCCToken [
 
 { #category : #generated }
 VBLabelTagNode >> tokenVariables [
-	^ #(#name #colonToken #whitespaceToken)
-]
-
-{ #category : #generated }
-VBLabelTagNode >> whitespaceToken [
-	^ whitespaceToken
-]
-
-{ #category : #generated }
-VBLabelTagNode >> whitespaceToken: aSmaCCToken [
-	whitespaceToken := aSmaCCToken
+	^ #(#name #colonToken)
 ]

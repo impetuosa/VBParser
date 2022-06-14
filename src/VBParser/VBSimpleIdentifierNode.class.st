@@ -4,17 +4,12 @@ Class {
 	#instVars : [
 		'token'
 	],
-	#category : #'VBParser-Scanner'
+	#category : #'VBParser-AST-Model'
 }
 
 { #category : #generated }
 VBSimpleIdentifierNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitSimpleIdentifier: self
-]
-
-{ #category : #accessing }
-VBSimpleIdentifierNode >> isIdentifier [
-	^ true 
 ]
 
 { #category : #generated }

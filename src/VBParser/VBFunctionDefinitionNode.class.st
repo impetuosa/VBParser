@@ -3,16 +3,32 @@ Class {
 	#superclass : #VBProgramNode,
 	#instVars : [
 		'functionTokens',
+		'whitespaceTokens',
 		'selector',
 		'parameters',
+		'type',
+		'_size',
 		'block',
 		'endToken',
-		'type',
 		'modifier',
 		'visibility'
 	],
-	#category : #'VBParser-Scanner'
+	#category : #'VBParser-ParsingCore'
 }
+
+{ #category : #generated }
+VBFunctionDefinitionNode >> _size [
+	^ _size
+]
+
+{ #category : #generated }
+VBFunctionDefinitionNode >> _size: aVBTypeSizeNode [
+	self _size notNil
+		ifTrue: [ self _size parent: nil ].
+	_size := aVBTypeSizeNode.
+	self _size notNil
+		ifTrue: [ self _size parent: self ]
+]
 
 { #category : #generated }
 VBFunctionDefinitionNode >> acceptVisitor: aProgramVisitor [
@@ -35,7 +51,7 @@ VBFunctionDefinitionNode >> block: aVBBlockNode [
 
 { #category : #generated }
 VBFunctionDefinitionNode >> compositeTokenVariables [
-	^ #(#functionTokens)
+	^ #(#functionTokens #whitespaceTokens)
 ]
 
 { #category : #generated }
@@ -62,6 +78,7 @@ VBFunctionDefinitionNode >> functionTokens: anOrderedCollection [
 VBFunctionDefinitionNode >> initialize [
 	super initialize.
 	functionTokens := OrderedCollection new: 2.
+	whitespaceTokens := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -76,7 +93,7 @@ VBFunctionDefinitionNode >> modifier: aSmaCCToken [
 
 { #category : #generated }
 VBFunctionDefinitionNode >> nodeVariables [
-	^ #(#selector #parameters #block #type)
+	^ #(#selector #parameters #type #_size #block)
 ]
 
 { #category : #generated }
@@ -134,4 +151,14 @@ VBFunctionDefinitionNode >> visibility [
 { #category : #generated }
 VBFunctionDefinitionNode >> visibility: aSmaCCToken [
 	visibility := aSmaCCToken
+]
+
+{ #category : #generated }
+VBFunctionDefinitionNode >> whitespaceTokens [
+	^ whitespaceTokens
+]
+
+{ #category : #generated }
+VBFunctionDefinitionNode >> whitespaceTokens: anOrderedCollection [
+	whitespaceTokens := anOrderedCollection
 ]

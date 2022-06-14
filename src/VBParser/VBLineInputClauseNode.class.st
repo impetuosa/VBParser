@@ -3,14 +3,13 @@ Class {
 	#superclass : #VBProgramNode,
 	#instVars : [
 		'lineToken',
+		'whitespaceTokens',
 		'iNPUTToken',
 		'fileNumber',
 		'commaToken',
-		'value',
-		'rightParenToken',
-		'leftParenToken'
+		'value'
 	],
-	#category : #'VBParser-Scanner'
+	#category : #'VBParser-AST-Model'
 }
 
 { #category : #generated }
@@ -26,6 +25,11 @@ VBLineInputClauseNode >> commaToken [
 { #category : #generated }
 VBLineInputClauseNode >> commaToken: aSmaCCToken [
 	commaToken := aSmaCCToken
+]
+
+{ #category : #generated }
+VBLineInputClauseNode >> compositeTokenVariables [
+	^ #(#whitespaceTokens)
 ]
 
 { #category : #generated }
@@ -52,14 +56,10 @@ VBLineInputClauseNode >> iNPUTToken: aSmaCCToken [
 	iNPUTToken := aSmaCCToken
 ]
 
-{ #category : #generated }
-VBLineInputClauseNode >> leftParenToken [
-	^ leftParenToken
-]
-
-{ #category : #generated }
-VBLineInputClauseNode >> leftParenToken: aSmaCCToken [
-	leftParenToken := aSmaCCToken
+{ #category : #'generated-initialize-release' }
+VBLineInputClauseNode >> initialize [
+	super initialize.
+	whitespaceTokens := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -78,18 +78,8 @@ VBLineInputClauseNode >> nodeVariables [
 ]
 
 { #category : #generated }
-VBLineInputClauseNode >> rightParenToken [
-	^ rightParenToken
-]
-
-{ #category : #generated }
-VBLineInputClauseNode >> rightParenToken: aSmaCCToken [
-	rightParenToken := aSmaCCToken
-]
-
-{ #category : #generated }
 VBLineInputClauseNode >> tokenVariables [
-	^ #(#lineToken #iNPUTToken #commaToken #rightParenToken #leftParenToken)
+	^ #(#lineToken #iNPUTToken #commaToken)
 ]
 
 { #category : #generated }
@@ -104,4 +94,14 @@ VBLineInputClauseNode >> value: aVBProgramNode [
 	value := aVBProgramNode.
 	self value notNil
 		ifTrue: [ self value parent: self ]
+]
+
+{ #category : #generated }
+VBLineInputClauseNode >> whitespaceTokens [
+	^ whitespaceTokens
+]
+
+{ #category : #generated }
+VBLineInputClauseNode >> whitespaceTokens: anOrderedCollection [
+	whitespaceTokens := anOrderedCollection
 ]

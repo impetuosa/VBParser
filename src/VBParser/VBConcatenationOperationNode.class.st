@@ -4,9 +4,10 @@ Class {
 	#instVars : [
 		'left',
 		'andToken',
-		'right'
+		'right',
+		'whitespaceTokens'
 	],
-	#category : #'VBParser-Scanner'
+	#category : #'VBParser-AST-Model'
 }
 
 { #category : #generated }
@@ -22,6 +23,17 @@ VBConcatenationOperationNode >> andToken [
 { #category : #generated }
 VBConcatenationOperationNode >> andToken: aSmaCCToken [
 	andToken := aSmaCCToken
+]
+
+{ #category : #generated }
+VBConcatenationOperationNode >> compositeTokenVariables [
+	^ #(#whitespaceTokens)
+]
+
+{ #category : #'generated-initialize-release' }
+VBConcatenationOperationNode >> initialize [
+	super initialize.
+	whitespaceTokens := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -60,4 +72,14 @@ VBConcatenationOperationNode >> right: aVBProgramNode [
 { #category : #generated }
 VBConcatenationOperationNode >> tokenVariables [
 	^ #(#andToken)
+]
+
+{ #category : #generated }
+VBConcatenationOperationNode >> whitespaceTokens [
+	^ whitespaceTokens
+]
+
+{ #category : #generated }
+VBConcatenationOperationNode >> whitespaceTokens: anOrderedCollection [
+	whitespaceTokens := anOrderedCollection
 ]

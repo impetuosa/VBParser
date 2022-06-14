@@ -3,11 +3,12 @@ Class {
 	#superclass : #VBProgramNode,
 	#instVars : [
 		'nameToken',
+		'whitespaceTokens',
 		'oldName',
 		'aSToken',
 		'newName'
 	],
-	#category : #'VBParser-Scanner'
+	#category : #'VBParser-AST-Model'
 }
 
 { #category : #generated }
@@ -23,6 +24,17 @@ VBRenameNode >> aSToken: aSmaCCToken [
 { #category : #generated }
 VBRenameNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitRename: self
+]
+
+{ #category : #generated }
+VBRenameNode >> compositeTokenVariables [
+	^ #(#whitespaceTokens)
+]
+
+{ #category : #'generated-initialize-release' }
+VBRenameNode >> initialize [
+	super initialize.
+	whitespaceTokens := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -71,4 +83,14 @@ VBRenameNode >> oldName: aVBProgramNode [
 { #category : #generated }
 VBRenameNode >> tokenVariables [
 	^ #(#nameToken #aSToken)
+]
+
+{ #category : #generated }
+VBRenameNode >> whitespaceTokens [
+	^ whitespaceTokens
+]
+
+{ #category : #generated }
+VBRenameNode >> whitespaceTokens: anOrderedCollection [
+	whitespaceTokens := anOrderedCollection
 ]
