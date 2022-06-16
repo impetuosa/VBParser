@@ -9,12 +9,22 @@ Class {
 		'libToken',
 		'library',
 		'parameters',
-		'aliasToken',
+		'aLIASToken',
 		'alias',
 		'visibility'
 	],
-	#category : #'VBParser-AST-Model'
+	#category : #'VBParser-ParsingCore'
 }
+
+{ #category : #generated }
+VBExternalSubNode >> aLIASToken [
+	^ aLIASToken
+]
+
+{ #category : #generated }
+VBExternalSubNode >> aLIASToken: aSmaCCToken [
+	aLIASToken := aSmaCCToken
+]
 
 { #category : #generated }
 VBExternalSubNode >> acceptVisitor: aProgramVisitor [
@@ -33,16 +43,6 @@ VBExternalSubNode >> alias: aVBStringLiteralNode [
 	alias := aVBStringLiteralNode.
 	self alias notNil
 		ifTrue: [ self alias parent: self ]
-]
-
-{ #category : #generated }
-VBExternalSubNode >> aliasToken [
-	^ aliasToken
-]
-
-{ #category : #generated }
-VBExternalSubNode >> aliasToken: aSmaCCToken [
-	aliasToken := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -135,7 +135,7 @@ VBExternalSubNode >> subToken: aSmaCCToken [
 
 { #category : #generated }
 VBExternalSubNode >> tokenVariables [
-	^ #(#declareToken #subToken #libToken #aliasToken #visibility)
+	^ #(#declareToken #subToken #libToken #aLIASToken #visibility)
 ]
 
 { #category : #generated }

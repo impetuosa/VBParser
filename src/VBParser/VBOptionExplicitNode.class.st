@@ -3,15 +3,20 @@ Class {
 	#superclass : #VBProgramNode,
 	#instVars : [
 		'optionToken',
-		'whitespaceToken',
+		'whitespaceTokens',
 		'explicitToken'
 	],
-	#category : #'VBParser-AST-Model'
+	#category : #'VBParser-ParsingCore'
 }
 
 { #category : #generated }
 VBOptionExplicitNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitOptionExplicit: self
+]
+
+{ #category : #generated }
+VBOptionExplicitNode >> compositeTokenVariables [
+	^ #(#whitespaceTokens)
 ]
 
 { #category : #generated }
@@ -22,6 +27,12 @@ VBOptionExplicitNode >> explicitToken [
 { #category : #generated }
 VBOptionExplicitNode >> explicitToken: aSmaCCToken [
 	explicitToken := aSmaCCToken
+]
+
+{ #category : #'generated-initialize-release' }
+VBOptionExplicitNode >> initialize [
+	super initialize.
+	whitespaceTokens := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -36,15 +47,15 @@ VBOptionExplicitNode >> optionToken: aSmaCCToken [
 
 { #category : #generated }
 VBOptionExplicitNode >> tokenVariables [
-	^ #(#optionToken #whitespaceToken #explicitToken)
+	^ #(#optionToken #explicitToken)
 ]
 
 { #category : #generated }
-VBOptionExplicitNode >> whitespaceToken [
-	^ whitespaceToken
+VBOptionExplicitNode >> whitespaceTokens [
+	^ whitespaceTokens
 ]
 
 { #category : #generated }
-VBOptionExplicitNode >> whitespaceToken: aSmaCCToken [
-	whitespaceToken := aSmaCCToken
+VBOptionExplicitNode >> whitespaceTokens: anOrderedCollection [
+	whitespaceTokens := anOrderedCollection
 ]

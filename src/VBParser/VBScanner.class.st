@@ -10,7 +10,7 @@ Class {
 { #category : #'generated-initialization' }
 VBScanner class >> initializeKeywordMap [
 	keywordMap := Dictionary new.
-	#(#(167 'ADDRESSOF' 24) #(167 'ALIAS' 69) #(167 'AND' 70) #(167 'APPEND' 22) #(167 'AS' 23) #(167 'ATTRIBUTE' 71) #(167 'BASE' 72) #(167 'BEEP' 73) #(167 'BEGIN' 74) #(167 'BINARY' 25) #(167 'BOLD' 75) #(167 'BOOLEAN' 76) #(167 'BYREF' 77) #(167 'BYTE' 78) #(167 'BYVAL' 79) #(167 'CALL' 26) #(167 'CASE' 80) #(167 'CLASS' 81) #(167 'COLLECTION' 82) #(167 'COMPARE' 83) #(167 'CONST' 84) #(167 'CURRENCY' 85) #(167 'DATABASE' 86) #(167 'DATE' 87) #(167 'DECIMAL' 88) #(167 'DECLARE' 89) #(167 'DEFBOOL' 27) #(167 'DEFBYTE' 28) #(167 'DEFCUR' 29) #(167 'DEFDATE' 30) #(167 'DEFDBL' 31) #(167 'DEFDEC' 32) #(167 'DEFINT' 33) #(167 'DEFLNG' 34) #(167 'DEFLNGLNG' 36) #(167 'DEFLNGPTR' 35) #(167 'DEFOBJ' 37) #(167 'DEFSNG' 38) #(167 'DEFSTR' 39) #(167 'DEFVAR' 40) #(167 'DIM' 90) #(167 'DO' 91) #(167 'DOEVENTS' 41) #(167 'DOUBLE' 92) #(167 'EACH' 93) #(167 'ELSE' 94) #(167 'ELSEIF' 96) #(167 'END' 97) #(167 'ENUM' 98) #(167 'EQV' 99) #(167 'ERROR' 42) #(167 'EVENT' 100) #(167 'EXIT' 101) #(167 'EXPLICIT' 102) #(167 'FALSE' 164) #(167 'FOR' 43) #(167 'FRIEND' 103) #(167 'FUNCTION' 104) #(167 'GET' 105) #(167 'GLOBAL' 106) #(167 'GOSUB' 107) #(167 'GOTO' 108) #(167 'IF' 109) #(167 'IMPLEMENTS' 110) #(167 'IN' 111) #(167 'INPUT' 44) #(167 'INTEGER' 112) #(167 'IS' 45) #(167 'ISNOT' 46) #(167 'LEN' 113) #(167 'LET' 114) #(167 'LIB' 115) #(167 'LIKE' 47) #(167 'LINE' 48) #(167 'LONG' 116) #(167 'LONGLONG' 117) #(167 'LONGPTR' 118) #(167 'LOOP' 119) #(167 'MOD' 52) #(167 'MODULE' 120) #(167 'NAME' 121) #(167 'NEW' 53) #(167 'NEXT' 122) #(167 'NOT' 123) #(167 'NOTHING' 166) #(167 'OBJECT' 54) #(167 'ON' 124) #(167 'OPEN' 55) #(167 'OPTION' 125) #(167 'OPTIONAL' 126) #(167 'OR' 127) #(167 'OUTPUT' 56) #(167 'PARAMARRAY' 128) #(167 'PRESERVE' 129) #(167 'PRINT' 57) #(167 'PRIVATE' 130) #(167 'PROPERTY' 131) #(167 'PUBLIC' 132) #(167 'RAISEEVENT' 58) #(167 'RANDOM' 59) #(167 'READ' 61) #(167 'REDIM' 133) #(167 'RESUME' 134) #(167 'RETURN' 135) #(167 'SELECT' 136) #(167 'SET' 137) #(167 'SHARED' 62) #(167 'SINGLE' 138) #(167 'STATIC' 139) #(167 'STEP' 140) #(167 'STRING' 141) #(167 'SUB' 142) #(167 'TEXT' 143) #(167 'THEN' 144) #(167 'TO' 146) #(167 'TRUE' 164) #(167 'TYPE' 147) #(167 'TYPEOF' 63) #(167 'UNTIL' 148) #(167 'VARIANT' 149) #(167 'VERSION' 150) #(167 'WEND' 151) #(167 'WHILE' 152) #(167 'WITH' 153) #(167 'WITHEVENTS' 64) #(167 'WRITE' 65) #(167 'XOR' 154))
+	#(#(167 'ADDRESSOF' 25) #(167 'ALIAS' 22) #(167 'AND' 72) #(167 'APPEND' 23) #(167 'AS' 24) #(167 'ATTRIBUTE' 73) #(167 'BASE' 74) #(167 'BEEP' 75) #(167 'BEGIN' 76) #(167 'BINARY' 26) #(167 'BOLD' 77) #(167 'BOOLEAN' 78) #(167 'BYREF' 79) #(167 'BYTE' 80) #(167 'BYVAL' 81) #(167 'CALL' 27) #(167 'CASE' 82) #(167 'CLASS' 83) #(167 'COLLECTION' 84) #(167 'COMPARE' 85) #(167 'CONST' 86) #(167 'CURRENCY' 87) #(167 'DATABASE' 88) #(167 'DATE' 89) #(167 'DECIMAL' 90) #(167 'DECLARE' 91) #(167 'DEFBOOL' 28) #(167 'DEFBYTE' 29) #(167 'DEFCUR' 30) #(167 'DEFDATE' 31) #(167 'DEFDBL' 32) #(167 'DEFDEC' 33) #(167 'DEFINT' 34) #(167 'DEFLNG' 35) #(167 'DEFLNGLNG' 37) #(167 'DEFLNGPTR' 36) #(167 'DEFOBJ' 38) #(167 'DEFSNG' 39) #(167 'DEFSTR' 40) #(167 'DEFVAR' 41) #(167 'DIM' 92) #(167 'DO' 93) #(167 'DOEVENTS' 42) #(167 'DOUBLE' 94) #(167 'EACH' 95) #(167 'ELSE' 96) #(167 'ELSEIF' 98) #(167 'END' 99) #(167 'ENUM' 100) #(167 'EQV' 101) #(167 'ERROR' 43) #(167 'EVENT' 102) #(167 'EXIT' 103) #(167 'EXPLICIT' 104) #(167 'FALSE' 164) #(167 'FOR' 44) #(167 'FRIEND' 105) #(167 'FUNCTION' 106) #(167 'GET' 107) #(167 'GLOBAL' 108) #(167 'GOSUB' 109) #(167 'GOTO' 110) #(167 'IF' 111) #(167 'IMPLEMENTS' 112) #(167 'IN' 113) #(167 'INPUT' 45) #(167 'INTEGER' 114) #(167 'IS' 46) #(167 'ISNOT' 47) #(167 'LEN' 115) #(167 'LET' 116) #(167 'LIB' 117) #(167 'LIKE' 48) #(167 'LINE' 49) #(167 'LONG' 118) #(167 'LONGLONG' 119) #(167 'LONGPTR' 120) #(167 'LOOP' 121) #(167 'MOD' 53) #(167 'MODULE' 122) #(167 'NAME' 123) #(167 'NEW' 54) #(167 'NEXT' 55) #(167 'NOT' 124) #(167 'NOTHING' 166) #(167 'OBJECT' 56) #(167 'ON' 125) #(167 'OPEN' 57) #(167 'OPTION' 126) #(167 'OPTIONAL' 127) #(167 'OR' 128) #(167 'OUTPUT' 58) #(167 'PARAMARRAY' 129) #(167 'PRESERVE' 130) #(167 'PRINT' 59) #(167 'PRIVATE' 131) #(167 'PROPERTY' 132) #(167 'PUBLIC' 133) #(167 'RAISEEVENT' 60) #(167 'RANDOM' 61) #(167 'READ' 63) #(167 'REDIM' 134) #(167 'RESUME' 135) #(167 'RETURN' 136) #(167 'SELECT' 137) #(167 'SET' 138) #(167 'SHARED' 65) #(167 'SINGLE' 139) #(167 'STATIC' 140) #(167 'STEP' 141) #(167 'STRING' 64) #(167 'SUB' 142) #(167 'TEXT' 143) #(167 'THEN' 144) #(167 'TO' 146) #(167 'TRUE' 164) #(167 'TYPE' 147) #(167 'TYPEOF' 66) #(167 'UNTIL' 148) #(167 'VARIANT' 149) #(167 'VERSION' 150) #(167 'WEND' 151) #(167 'WHILE' 152) #(167 'WITH' 153) #(167 'WITHEVENTS' 68) #(167 'WRITE' 67) #(167 'XOR' 154))
 		do: [ :each | 
 			(keywordMap at: each first ifAbsentPut: [ Dictionary new ])
 				at: (each at: 2)
@@ -33,12 +33,12 @@ VBScanner >> disregardToken [
 
 { #category : #generated }
 VBScanner >> emptySymbolTokenId [
-	^ 398
+	^ 399
 ]
 
 { #category : #generated }
 VBScanner >> errorTokenId [
-	^ 399
+	^ 400
 ]
 
 { #category : #private }
@@ -208,7 +208,7 @@ VBScanner >> scan16 [
 						ifTrue: [ self recordMatch: #(167).
 							self step.
 							currentCharacter == $:
-								ifTrue: [ ^ self recordAndReportMatch: #(95) ] ] ] ].
+								ifTrue: [ ^ self recordAndReportMatch: #(97) ] ] ] ].
 	(currentCharacter isAlphaNumeric
 		or: [ '$_' includes: currentCharacter ])
 		ifTrue: [ [ self recordMatch: #(167).
@@ -254,7 +254,7 @@ VBScanner >> scan18 [
 											('Aa' includes: currentCharacter)
 												ifTrue: [ self step.
 													('Dd' includes: currentCharacter)
-														ifTrue: [ self recordMatch: #(50).
+														ifTrue: [ self recordMatch: #(51).
 															self step.
 															currentCharacter == Character space
 																ifTrue: [ self step.
@@ -267,7 +267,7 @@ VBScanner >> scan18 [
 																							('Tt' includes: currentCharacter)
 																								ifTrue: [ self step.
 																									('Ee' includes: currentCharacter)
-																										ifTrue: [ ^ self recordAndReportMatch: #(49) ] ] ] ] ] ] ] ] ].
+																										ifTrue: [ ^ self recordAndReportMatch: #(50) ] ] ] ] ] ] ] ] ].
 									^ self reportLastMatch ].
 							('Ww' includes: currentCharacter)
 								ifTrue: [ self step.
@@ -278,7 +278,7 @@ VBScanner >> scan18 [
 													('Tt' includes: currentCharacter)
 														ifTrue: [ self step.
 															('Ee' includes: currentCharacter)
-																ifTrue: [ ^ self recordAndReportMatch: #(51) ] ] ] ] ].
+																ifTrue: [ ^ self recordAndReportMatch: #(52) ] ] ] ] ].
 							^ self reportLastMatch ] ] ].
 	(currentCharacter isAlphaNumeric
 		or: [ '$_' includes: currentCharacter ])
@@ -307,7 +307,7 @@ VBScanner >> scan19 [
 											('Tt' includes: currentCharacter)
 												ifTrue: [ self step.
 													('Ee' includes: currentCharacter)
-														ifTrue: [ ^ self recordAndReportMatch: #(60) ] ] ] ] ].
+														ifTrue: [ ^ self recordAndReportMatch: #(62) ] ] ] ] ].
 					^ self reportLastMatch ] ].
 	(currentCharacter isAlphaNumeric
 		or: [ '$_' includes: currentCharacter ])
@@ -736,7 +736,7 @@ VBScanner >> scanForTokenX16 [
 { #category : #generated }
 VBScanner >> scanForTokenX17 [
 	currentCharacter == $^
-		ifTrue: [ ^ self recordAndReportMatch: #(68) ].
+		ifTrue: [ ^ self recordAndReportMatch: #(71) ].
 	currentCharacter == $r
 		ifTrue:
 			[ ^ self scanForTokenX7 ].
@@ -794,7 +794,7 @@ VBScanner >> scanForTokenX18 [
 		ifTrue:
 			[ ^ self scanForTokenX5 ].
 	currentCharacter == $\
-		ifTrue: [ ^ self recordAndReportMatch: #(67) ].
+		ifTrue: [ ^ self recordAndReportMatch: #(70) ].
 	^ self scanForTokenX17
 ]
 
@@ -927,7 +927,7 @@ VBScanner >> scanForTokenX4 [
 
 { #category : #generated }
 VBScanner >> scanForTokenX5 [
-	self recordMatch: #(66).
+	self recordMatch: #(69).
 	self step.
 	(currentCharacter isLetter or: [ '$_' includes: currentCharacter ])
 		ifTrue: [ [ self step.

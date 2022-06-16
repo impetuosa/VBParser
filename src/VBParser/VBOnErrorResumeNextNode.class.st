@@ -6,9 +6,9 @@ Class {
 		'whitespaceTokens',
 		'eRRORToken',
 		'resumeToken',
-		'nextToken'
+		'nEXTToken'
 	],
-	#category : #'VBParser-AST-Model'
+	#category : #'VBParser-ParsingCore'
 }
 
 { #category : #generated }
@@ -38,13 +38,13 @@ VBOnErrorResumeNextNode >> initialize [
 ]
 
 { #category : #generated }
-VBOnErrorResumeNextNode >> nextToken [
-	^ nextToken
+VBOnErrorResumeNextNode >> nEXTToken [
+	^ nEXTToken
 ]
 
 { #category : #generated }
-VBOnErrorResumeNextNode >> nextToken: aSmaCCToken [
-	nextToken := aSmaCCToken
+VBOnErrorResumeNextNode >> nEXTToken: aSmaCCToken [
+	nEXTToken := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -69,7 +69,7 @@ VBOnErrorResumeNextNode >> resumeToken: aSmaCCToken [
 
 { #category : #generated }
 VBOnErrorResumeNextNode >> tokenVariables [
-	^ #(#onToken #eRRORToken #resumeToken #nextToken)
+	^ #(#onToken #eRRORToken #resumeToken #nEXTToken)
 ]
 
 { #category : #generated }

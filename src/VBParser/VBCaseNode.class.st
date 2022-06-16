@@ -11,7 +11,7 @@ Class {
 		'elseToken',
 		'lineNumber'
 	],
-	#category : #'VBParser-AST-Model'
+	#category : #'VBParser-ParsingCore'
 }
 
 { #category : #generated }

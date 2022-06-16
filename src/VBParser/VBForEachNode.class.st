@@ -8,11 +8,11 @@ Class {
 		'elements',
 		'inToken',
 		'group',
-		'nextToken',
+		'nEXTToken',
 		'endLineNumber',
 		'body'
 	],
-	#category : #'VBParser-AST-Model'
+	#category : #'VBParser-ParsingCore'
 }
 
 { #category : #generated }
@@ -122,13 +122,13 @@ VBForEachNode >> initialize [
 ]
 
 { #category : #generated }
-VBForEachNode >> nextToken [
-	^ nextToken
+VBForEachNode >> nEXTToken [
+	^ nEXTToken
 ]
 
 { #category : #generated }
-VBForEachNode >> nextToken: aSmaCCToken [
-	nextToken := aSmaCCToken
+VBForEachNode >> nEXTToken: aSmaCCToken [
+	nEXTToken := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -138,7 +138,7 @@ VBForEachNode >> nodeVariables [
 
 { #category : #generated }
 VBForEachNode >> tokenVariables [
-	^ #(#fORToken #eachToken #inToken #nextToken)
+	^ #(#fORToken #eachToken #inToken #nEXTToken)
 ]
 
 { #category : #generated }

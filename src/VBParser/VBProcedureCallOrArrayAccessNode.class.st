@@ -6,9 +6,9 @@ Class {
 		'leftParenToken',
 		'arguments',
 		'rightParenToken',
-		'whitespaceToken'
+		'whitespaceTokens'
 	],
-	#category : #'VBParser-AST-Model'
+	#category : #'VBParser-ParsingCore'
 }
 
 { #category : #generated }
@@ -28,6 +28,17 @@ VBProcedureCallOrArrayAccessNode >> arguments: aVBArgumentListNode [
 	arguments := aVBArgumentListNode.
 	self arguments notNil
 		ifTrue: [ self arguments parent: self ]
+]
+
+{ #category : #generated }
+VBProcedureCallOrArrayAccessNode >> compositeTokenVariables [
+	^ #(#whitespaceTokens)
+]
+
+{ #category : #'generated-initialize-release' }
+VBProcedureCallOrArrayAccessNode >> initialize [
+	super initialize.
+	whitespaceTokens := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
@@ -71,15 +82,15 @@ VBProcedureCallOrArrayAccessNode >> selector: aVBProgramNode [
 
 { #category : #generated }
 VBProcedureCallOrArrayAccessNode >> tokenVariables [
-	^ #(#leftParenToken #rightParenToken #whitespaceToken)
+	^ #(#leftParenToken #rightParenToken)
 ]
 
 { #category : #generated }
-VBProcedureCallOrArrayAccessNode >> whitespaceToken [
-	^ whitespaceToken
+VBProcedureCallOrArrayAccessNode >> whitespaceTokens [
+	^ whitespaceTokens
 ]
 
 { #category : #generated }
-VBProcedureCallOrArrayAccessNode >> whitespaceToken: aSmaCCToken [
-	whitespaceToken := aSmaCCToken
+VBProcedureCallOrArrayAccessNode >> whitespaceTokens: anOrderedCollection [
+	whitespaceTokens := anOrderedCollection
 ]

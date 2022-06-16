@@ -5,12 +5,13 @@ Class {
 		'ifTokens',
 		'whitespaceTokens',
 		'condition',
+		'thenColonToken',
+		'eolToken',
 		'thenToken',
 		'ifTrue',
 		'elseToken',
 		'ifFalse',
 		'elseColonToken',
-		'thenColonToken',
 		'elseifs',
 		'endToken',
 		'endLineNumber',
@@ -119,6 +120,16 @@ VBIfThenElseNode >> endToken: aSmaCCToken [
 ]
 
 { #category : #generated }
+VBIfThenElseNode >> eolToken [
+	^ eolToken
+]
+
+{ #category : #generated }
+VBIfThenElseNode >> eolToken: aSmaCCToken [
+	eolToken := aSmaCCToken
+]
+
+{ #category : #generated }
 VBIfThenElseNode >> ifFalse [
 	^ ifFalse
 ]
@@ -191,7 +202,7 @@ VBIfThenElseNode >> thenToken: aSmaCCToken [
 
 { #category : #generated }
 VBIfThenElseNode >> tokenVariables [
-	^ #(#thenToken #elseToken #elseColonToken #thenColonToken #endToken)
+	^ #(#thenColonToken #eolToken #thenToken #elseToken #elseColonToken #endToken)
 ]
 
 { #category : #generated }

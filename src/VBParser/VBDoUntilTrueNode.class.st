@@ -10,7 +10,7 @@ Class {
 		'condition',
 		'endLineNumber'
 	],
-	#category : #'VBParser-AST-Model'
+	#category : #'VBParser-ParsingCore'
 }
 
 { #category : #generated }

@@ -2,14 +2,25 @@ Class {
 	#name : #VBIntegerLiteralNode,
 	#superclass : #VBProgramNode,
 	#instVars : [
-		'token'
+		'token',
+		'andToken'
 	],
-	#category : #'VBParser-AST-Model'
+	#category : #'VBParser-ParsingCore'
 }
 
 { #category : #generated }
 VBIntegerLiteralNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitIntegerLiteral: self
+]
+
+{ #category : #generated }
+VBIntegerLiteralNode >> andToken [
+	^ andToken
+]
+
+{ #category : #generated }
+VBIntegerLiteralNode >> andToken: aSmaCCToken [
+	andToken := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -24,5 +35,5 @@ VBIntegerLiteralNode >> token: aSmaCCToken [
 
 { #category : #generated }
 VBIntegerLiteralNode >> tokenVariables [
-	^ #(#token)
+	^ #(#token #andToken)
 ]

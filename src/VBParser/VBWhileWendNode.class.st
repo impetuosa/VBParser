@@ -9,7 +9,7 @@ Class {
 		'endLineNumber',
 		'body'
 	],
-	#category : #'VBParser-AST-Model'
+	#category : #'VBParser-ParsingCore'
 }
 
 { #category : #generated }

@@ -4,9 +4,9 @@ Class {
 	#instVars : [
 		'resumeToken',
 		'whitespaceToken',
-		'nextToken'
+		'nEXTToken'
 	],
-	#category : #'VBParser-AST-Model'
+	#category : #'VBParser-ParsingCore'
 }
 
 { #category : #generated }
@@ -15,13 +15,13 @@ VBResumeNextNode >> acceptVisitor: aProgramVisitor [
 ]
 
 { #category : #generated }
-VBResumeNextNode >> nextToken [
-	^ nextToken
+VBResumeNextNode >> nEXTToken [
+	^ nEXTToken
 ]
 
 { #category : #generated }
-VBResumeNextNode >> nextToken: aSmaCCToken [
-	nextToken := aSmaCCToken
+VBResumeNextNode >> nEXTToken: aSmaCCToken [
+	nEXTToken := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -36,7 +36,7 @@ VBResumeNextNode >> resumeToken: aSmaCCToken [
 
 { #category : #generated }
 VBResumeNextNode >> tokenVariables [
-	^ #(#resumeToken #whitespaceToken #nextToken)
+	^ #(#resumeToken #whitespaceToken #nEXTToken)
 ]
 
 { #category : #generated }

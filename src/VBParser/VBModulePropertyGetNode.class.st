@@ -9,6 +9,7 @@ Class {
 		'parameters',
 		'block',
 		'endToken',
+		'functionToken',
 		'type',
 		'_size',
 		'modifier',
@@ -65,6 +66,16 @@ VBModulePropertyGetNode >> endToken [
 { #category : #generated }
 VBModulePropertyGetNode >> endToken: aSmaCCToken [
 	endToken := aSmaCCToken
+]
+
+{ #category : #generated }
+VBModulePropertyGetNode >> functionToken [
+	^ functionToken
+]
+
+{ #category : #generated }
+VBModulePropertyGetNode >> functionToken: aSmaCCToken [
+	functionToken := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -159,7 +170,7 @@ VBModulePropertyGetNode >> setToken: aSmaCCToken [
 
 { #category : #generated }
 VBModulePropertyGetNode >> tokenVariables [
-	^ #(#getToken #endToken #modifier #visibility #setToken #letToken)
+	^ #(#getToken #endToken #functionToken #modifier #visibility #setToken #letToken)
 ]
 
 { #category : #generated }

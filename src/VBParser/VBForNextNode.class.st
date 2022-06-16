@@ -9,12 +9,12 @@ Class {
 		'initialValue',
 		'toToken',
 		'limit',
-		'nextToken',
+		'nEXTToken',
 		'element',
 		'endLineNumber',
 		'body'
 	],
-	#category : #'VBParser-AST-Model'
+	#category : #'VBParser-ParsingCore'
 }
 
 { #category : #generated }
@@ -138,13 +138,13 @@ VBForNextNode >> limit: aVBProgramNode [
 ]
 
 { #category : #generated }
-VBForNextNode >> nextToken [
-	^ nextToken
+VBForNextNode >> nEXTToken [
+	^ nEXTToken
 ]
 
 { #category : #generated }
-VBForNextNode >> nextToken: aSmaCCToken [
-	nextToken := aSmaCCToken
+VBForNextNode >> nEXTToken: aSmaCCToken [
+	nEXTToken := aSmaCCToken
 ]
 
 { #category : #generated }
@@ -164,7 +164,7 @@ VBForNextNode >> toToken: aSmaCCToken [
 
 { #category : #generated }
 VBForNextNode >> tokenVariables [
-	^ #(#fORToken #equalToken #toToken #nextToken)
+	^ #(#fORToken #equalToken #toToken #nEXTToken)
 ]
 
 { #category : #generated }
