@@ -14,7 +14,7 @@ Class {
 		'endLineNumber',
 		'body'
 	],
-	#category : #'VBParser-ParsingCore'
+	#category : #'VBParser-AST-Model'
 }
 
 { #category : #generated }
