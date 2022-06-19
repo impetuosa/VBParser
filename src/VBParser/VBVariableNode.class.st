@@ -8,7 +8,7 @@ Class {
 		'withEventsToken',
 		'whitespaceToken'
 	],
-	#category : #'VBParser-ParsingCore'
+	#category : #'VBParser-AST-Model'
 }
 
 { #category : #generated }

@@ -8,7 +8,7 @@ Class {
 		'resumeToken',
 		'nEXTToken'
 	],
-	#category : #'VBParser-ParsingCore'
+	#category : #'VBParser-AST-Model'
 }
 
 { #category : #generated }
