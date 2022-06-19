@@ -155,6 +155,14 @@ VBAbstractProgramNode >> isAssignment [
 ]
 
 { #category : #'as yet unclassified' }
+VBAbstractProgramNode >> isOptional [
+
+	self assert: (self isKindOf: VBParameterNode).
+
+	^ self optionalToken isNotNil
+]
+
+{ #category : #'as yet unclassified' }
 VBAbstractProgramNode >> isReturn [
 	self isAssignment
 		ifFalse: [ ^ false ].
