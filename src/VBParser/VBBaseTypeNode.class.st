@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'variantToken'
 	],
-	#category : #'VBParser-AST-Model'
+	#category : #'VBParser-ParsingCore'
 }
 
 { #category : #generated }

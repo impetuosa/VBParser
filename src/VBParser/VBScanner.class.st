@@ -33,12 +33,12 @@ VBScanner >> disregardToken [
 
 { #category : #generated }
 VBScanner >> emptySymbolTokenId [
-	^ 399
+	^ 400
 ]
 
 { #category : #generated }
 VBScanner >> errorTokenId [
-	^ 400
+	^ 401
 ]
 
 { #category : #private }

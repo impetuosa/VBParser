@@ -20,10 +20,10 @@ VBComplexTypeNode >> base [
 ]
 
 { #category : #generated }
-VBComplexTypeNode >> base: aVBProgramNode [
+VBComplexTypeNode >> base: aVBSimpleTypeNode [
 	self base notNil
 		ifTrue: [ self base parent: nil ].
-	base := aVBProgramNode.
+	base := aVBSimpleTypeNode.
 	self base notNil
 		ifTrue: [ self base parent: self ]
 ]

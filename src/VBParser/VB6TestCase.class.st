@@ -29,8 +29,7 @@ VB6TestCase >> parse: aString [
 		on: Error
 		do: [ :e | 
 			
-	"(self preparse: aString) inspect.  "
-	
+"(self preparse: aString) inspect.  "
 	
 	
 	e pass ]

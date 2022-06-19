@@ -7,6 +7,7 @@ Class {
 		'expressions',
 		'commaTokens',
 		'body',
+		'eolToken',
 		'colonToken',
 		'elseToken',
 		'lineNumber'
@@ -84,6 +85,16 @@ VBCaseNode >> elseToken: aSmaCCToken [
 ]
 
 { #category : #generated }
+VBCaseNode >> eolToken [
+	^ eolToken
+]
+
+{ #category : #generated }
+VBCaseNode >> eolToken: aSmaCCToken [
+	eolToken := aSmaCCToken
+]
+
+{ #category : #generated }
 VBCaseNode >> expressions [
 	^ expressions
 ]
@@ -124,7 +135,7 @@ VBCaseNode >> nodeVariables [
 
 { #category : #generated }
 VBCaseNode >> tokenVariables [
-	^ #(#caseToken #colonToken #elseToken)
+	^ #(#caseToken #eolToken #colonToken #elseToken)
 ]
 
 { #category : #generated }

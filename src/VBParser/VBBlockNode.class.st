@@ -33,7 +33,7 @@ VBBlockNode >> compositeNodeVariables [
 
 { #category : #generated }
 VBBlockNode >> compositeTokenVariables [
-	^ #(#whitespaceTokens #eolTokens #colonTokens)
+	^ #(#eolTokens #whitespaceTokens #colonTokens)
 ]
 
 { #category : #generated }
@@ -49,10 +49,10 @@ VBBlockNode >> eolTokens: anOrderedCollection [
 { #category : #'generated-initialize-release' }
 VBBlockNode >> initialize [
 	super initialize.
+	eolTokens := OrderedCollection new: 2.
 	statements := OrderedCollection new: 2.
 	lineNumbers := OrderedCollection new: 2.
 	whitespaceTokens := OrderedCollection new: 2.
-	eolTokens := OrderedCollection new: 2.
 	colonTokens := OrderedCollection new: 2.
 ]
 

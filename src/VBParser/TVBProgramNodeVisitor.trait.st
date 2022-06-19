@@ -501,6 +501,11 @@ TVBProgramNodeVisitor >> visitSimpleIdentifier: aSimpleIdentifier [
 ]
 
 { #category : #generated }
+TVBProgramNodeVisitor >> visitSimpleType: aSimpleType [
+	^ self visitProgram: aSimpleType
+]
+
+{ #category : #generated }
 TVBProgramNodeVisitor >> visitSquareBracketIdentifier: aSquareBracketIdentifier [
 	^ self visitProgram: aSquareBracketIdentifier
 ]
