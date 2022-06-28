@@ -2,7 +2,7 @@ Class {
 	#name : #VBDefineTypeNode,
 	#superclass : #VBProgramNode,
 	#instVars : [
-		'typeTokens',
+		'tYPETokens',
 		'whitespaceTokens',
 		'name',
 		'eolTokens',
@@ -25,7 +25,7 @@ VBDefineTypeNode >> compositeNodeVariables [
 
 { #category : #generated }
 VBDefineTypeNode >> compositeTokenVariables [
-	^ #(#typeTokens #whitespaceTokens #eolTokens)
+	^ #(#tYPETokens #whitespaceTokens #eolTokens)
 ]
 
 { #category : #generated }
@@ -63,7 +63,7 @@ VBDefineTypeNode >> fields: anOrderedCollection [
 { #category : #'generated-initialize-release' }
 VBDefineTypeNode >> initialize [
 	super initialize.
-	typeTokens := OrderedCollection new: 2.
+	tYPETokens := OrderedCollection new: 2.
 	whitespaceTokens := OrderedCollection new: 2.
 	eolTokens := OrderedCollection new: 2.
 	fields := OrderedCollection new: 2.
@@ -89,18 +89,18 @@ VBDefineTypeNode >> nodeVariables [
 ]
 
 { #category : #generated }
+VBDefineTypeNode >> tYPETokens [
+	^ tYPETokens
+]
+
+{ #category : #generated }
+VBDefineTypeNode >> tYPETokens: anOrderedCollection [
+	tYPETokens := anOrderedCollection
+]
+
+{ #category : #generated }
 VBDefineTypeNode >> tokenVariables [
 	^ #(#endToken #visibility)
-]
-
-{ #category : #generated }
-VBDefineTypeNode >> typeTokens [
-	^ typeTokens
-]
-
-{ #category : #generated }
-VBDefineTypeNode >> typeTokens: anOrderedCollection [
-	typeTokens := anOrderedCollection
 ]
 
 { #category : #generated }

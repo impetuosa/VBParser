@@ -5,29 +5,20 @@ Class {
 		'name',
 		'type',
 		'timesToken',
-		'_size',
+		'sizes',
 		'whitespaceTokens'
 	],
 	#category : #'VBParser-AST-Model'
 }
 
 { #category : #generated }
-VBTypeEntryNode >> _size [
-	^ _size
-]
-
-{ #category : #generated }
-VBTypeEntryNode >> _size: aVBIntegerLiteralNode [
-	self _size notNil
-		ifTrue: [ self _size parent: nil ].
-	_size := aVBIntegerLiteralNode.
-	self _size notNil
-		ifTrue: [ self _size parent: self ]
-]
-
-{ #category : #generated }
 VBTypeEntryNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitTypeEntry: self
+]
+
+{ #category : #generated }
+VBTypeEntryNode >> compositeNodeVariables [
+	^ #(#sizes)
 ]
 
 { #category : #generated }
@@ -38,6 +29,7 @@ VBTypeEntryNode >> compositeTokenVariables [
 { #category : #'generated-initialize-release' }
 VBTypeEntryNode >> initialize [
 	super initialize.
+	sizes := OrderedCollection new: 2.
 	whitespaceTokens := OrderedCollection new: 2.
 ]
 
@@ -57,7 +49,19 @@ VBTypeEntryNode >> name: aVBProgramNode [
 
 { #category : #generated }
 VBTypeEntryNode >> nodeVariables [
-	^ #(#name #type #_size)
+	^ #(#name #type)
+]
+
+{ #category : #generated }
+VBTypeEntryNode >> sizes [
+	^ sizes
+]
+
+{ #category : #generated }
+VBTypeEntryNode >> sizes: anOrderedCollection [
+	self setParents: self sizes to: nil.
+	sizes := anOrderedCollection.
+	self setParents: self sizes to: self
 ]
 
 { #category : #generated }

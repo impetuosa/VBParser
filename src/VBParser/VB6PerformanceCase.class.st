@@ -14,5 +14,5 @@ VB6PerformanceCase >> parse: aString [
 			"(self preparse: aString) inspect."
 			
 			e pass ].
-	self assert: value size < 30
+	self assert: value size < 33
 ]
