@@ -937,7 +937,7 @@ VBScanner >> scanForTokenX5 [
 				or: [ currentCharacter isSeparator
 						or: [ currentCharacter == Character pageUp
 								or:
-									[ '$/_' includes: currentCharacter ] ] ] ] whileTrue ].
+									[ '$-/_' includes: currentCharacter ] ] ] ] whileTrue ].
 	^ self reportLastMatch
 ]
 
