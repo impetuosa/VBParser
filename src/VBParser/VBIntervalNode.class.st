@@ -4,10 +4,10 @@ Class {
 	#instVars : [
 		'from',
 		'whitespaceTokens',
-		'toToken',
+		'tOToken',
 		'to'
 	],
-	#category : #'VBParser-AST-Model'
+	#category : #'VBParser-ParsingCore'
 }
 
 { #category : #generated }
@@ -46,6 +46,16 @@ VBIntervalNode >> nodeVariables [
 ]
 
 { #category : #generated }
+VBIntervalNode >> tOToken [
+	^ tOToken
+]
+
+{ #category : #generated }
+VBIntervalNode >> tOToken: aSmaCCToken [
+	tOToken := aSmaCCToken
+]
+
+{ #category : #generated }
 VBIntervalNode >> to [
 	^ to
 ]
@@ -60,18 +70,8 @@ VBIntervalNode >> to: aVBProgramNode [
 ]
 
 { #category : #generated }
-VBIntervalNode >> toToken [
-	^ toToken
-]
-
-{ #category : #generated }
-VBIntervalNode >> toToken: aSmaCCToken [
-	toToken := aSmaCCToken
-]
-
-{ #category : #generated }
 VBIntervalNode >> tokenVariables [
-	^ #(#toToken)
+	^ #(#tOToken)
 ]
 
 { #category : #generated }

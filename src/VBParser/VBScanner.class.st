@@ -10,7 +10,7 @@ Class {
 { #category : #'generated-initialization' }
 VBScanner class >> initializeKeywordMap [
 	keywordMap := Dictionary new.
-	#(#(167 'ADDRESSOF' 25) #(167 'ALIAS' 22) #(167 'AND' 73) #(167 'APPEND' 23) #(167 'AS' 24) #(167 'ATTRIBUTE' 74) #(167 'BASE' 75) #(167 'BEEP' 76) #(167 'BEGIN' 77) #(167 'BINARY' 26) #(167 'BOLD' 78) #(167 'BOOLEAN' 79) #(167 'BYREF' 80) #(167 'BYTE' 81) #(167 'BYVAL' 82) #(167 'CALL' 27) #(167 'CASE' 83) #(167 'CLASS' 84) #(167 'COLLECTION' 85) #(167 'COMPARE' 86) #(167 'CONST' 87) #(167 'CURRENCY' 88) #(167 'DATABASE' 89) #(167 'DATE' 90) #(167 'DECIMAL' 91) #(167 'DECLARE' 92) #(167 'DEFBOOL' 28) #(167 'DEFBYTE' 29) #(167 'DEFCUR' 30) #(167 'DEFDATE' 31) #(167 'DEFDBL' 32) #(167 'DEFDEC' 33) #(167 'DEFINT' 34) #(167 'DEFLNG' 35) #(167 'DEFLNGLNG' 37) #(167 'DEFLNGPTR' 36) #(167 'DEFOBJ' 38) #(167 'DEFSNG' 39) #(167 'DEFSTR' 40) #(167 'DEFVAR' 41) #(167 'DIM' 93) #(167 'DO' 94) #(167 'DOEVENTS' 42) #(167 'DOUBLE' 95) #(167 'EACH' 96) #(167 'ELSE' 97) #(167 'ELSEIF' 99) #(167 'END' 100) #(167 'ENUM' 101) #(167 'EQV' 102) #(167 'ERROR' 43) #(167 'EVENT' 103) #(167 'EXIT' 104) #(167 'EXPLICIT' 105) #(167 'FALSE' 164) #(167 'FOR' 44) #(167 'FRIEND' 106) #(167 'FUNCTION' 107) #(167 'GET' 108) #(167 'GLOBAL' 109) #(167 'GOSUB' 110) #(167 'GOTO' 111) #(167 'IF' 112) #(167 'IMPLEMENTS' 113) #(167 'IN' 114) #(167 'INPUT' 45) #(167 'INTEGER' 115) #(167 'IS' 46) #(167 'ISNOT' 47) #(167 'LEN' 116) #(167 'LET' 117) #(167 'LIB' 118) #(167 'LIKE' 48) #(167 'LINE' 49) #(167 'LONG' 119) #(167 'LONGLONG' 120) #(167 'LONGPTR' 121) #(167 'LOOP' 122) #(167 'MOD' 53) #(167 'MODULE' 123) #(167 'NAME' 124) #(167 'NEW' 54) #(167 'NEXT' 55) #(167 'NOT' 125) #(167 'NOTHING' 166) #(167 'OBJECT' 56) #(167 'ON' 126) #(167 'OPEN' 57) #(167 'OPTION' 127) #(167 'OPTIONAL' 128) #(167 'OR' 129) #(167 'OUTPUT' 58) #(167 'PARAMARRAY' 130) #(167 'PRESERVE' 131) #(167 'PRINT' 59) #(167 'PRIVATE' 132) #(167 'PROPERTY' 133) #(167 'PUBLIC' 134) #(167 'RAISEEVENT' 60) #(167 'RANDOM' 61) #(167 'READ' 63) #(167 'REDIM' 135) #(167 'RESUME' 136) #(167 'RETURN' 137) #(167 'SELECT' 138) #(167 'SET' 139) #(167 'SHARED' 65) #(167 'SINGLE' 140) #(167 'STATIC' 141) #(167 'STEP' 142) #(167 'STRING' 64) #(167 'SUB' 143) #(167 'TEXT' 144) #(167 'THEN' 145) #(167 'TO' 147) #(167 'TRUE' 164) #(167 'TYPE' 66) #(167 'TYPEOF' 67) #(167 'UNTIL' 148) #(167 'VARIANT' 149) #(167 'VERSION' 150) #(167 'WEND' 151) #(167 'WHILE' 152) #(167 'WITH' 153) #(167 'WITHEVENTS' 69) #(167 'WRITE' 68) #(167 'XOR' 154))
+	#(#(167 'ADDRESSOF' 25) #(167 'ALIAS' 22) #(167 'AND' 74) #(167 'APPEND' 23) #(167 'AS' 24) #(167 'ATTRIBUTE' 75) #(167 'BASE' 76) #(167 'BEEP' 77) #(167 'BEGIN' 78) #(167 'BINARY' 26) #(167 'BOLD' 79) #(167 'BOOLEAN' 80) #(167 'BYREF' 81) #(167 'BYTE' 82) #(167 'BYVAL' 83) #(167 'CALL' 27) #(167 'CASE' 84) #(167 'CLASS' 85) #(167 'COLLECTION' 86) #(167 'COMPARE' 87) #(167 'CONST' 88) #(167 'CURRENCY' 89) #(167 'DATABASE' 90) #(167 'DATE' 91) #(167 'DECIMAL' 92) #(167 'DECLARE' 93) #(167 'DEFBOOL' 28) #(167 'DEFBYTE' 29) #(167 'DEFCUR' 30) #(167 'DEFDATE' 31) #(167 'DEFDBL' 32) #(167 'DEFDEC' 33) #(167 'DEFINT' 34) #(167 'DEFLNG' 35) #(167 'DEFLNGLNG' 37) #(167 'DEFLNGPTR' 36) #(167 'DEFOBJ' 38) #(167 'DEFSNG' 39) #(167 'DEFSTR' 40) #(167 'DEFVAR' 41) #(167 'DIM' 94) #(167 'DO' 95) #(167 'DOEVENTS' 42) #(167 'DOUBLE' 96) #(167 'EACH' 97) #(167 'ELSE' 98) #(167 'ELSEIF' 100) #(167 'END' 101) #(167 'ENUM' 102) #(167 'EQV' 103) #(167 'ERROR' 43) #(167 'EVENT' 104) #(167 'EXIT' 105) #(167 'EXPLICIT' 106) #(167 'FALSE' 164) #(167 'FOR' 44) #(167 'FRIEND' 107) #(167 'FUNCTION' 108) #(167 'GET' 109) #(167 'GLOBAL' 110) #(167 'GOSUB' 111) #(167 'GOTO' 112) #(167 'IF' 113) #(167 'IMPLEMENTS' 114) #(167 'IN' 115) #(167 'INPUT' 45) #(167 'INTEGER' 116) #(167 'IS' 46) #(167 'ISNOT' 47) #(167 'LEN' 117) #(167 'LET' 118) #(167 'LIB' 119) #(167 'LIKE' 48) #(167 'LINE' 49) #(167 'LONG' 120) #(167 'LONGLONG' 121) #(167 'LONGPTR' 122) #(167 'LOOP' 123) #(167 'MOD' 53) #(167 'MODULE' 124) #(167 'NAME' 125) #(167 'NEW' 54) #(167 'NEXT' 55) #(167 'NOT' 126) #(167 'NOTHING' 166) #(167 'OBJECT' 56) #(167 'ON' 127) #(167 'OPEN' 57) #(167 'OPTION' 128) #(167 'OPTIONAL' 129) #(167 'OR' 130) #(167 'OUTPUT' 58) #(167 'PARAMARRAY' 131) #(167 'PRESERVE' 132) #(167 'PRINT' 59) #(167 'PRIVATE' 133) #(167 'PROPERTY' 134) #(167 'PUBLIC' 135) #(167 'RAISEEVENT' 60) #(167 'RANDOM' 61) #(167 'READ' 63) #(167 'REDIM' 136) #(167 'RESUME' 137) #(167 'RETURN' 138) #(167 'SELECT' 139) #(167 'SET' 140) #(167 'SHARED' 65) #(167 'SINGLE' 141) #(167 'STATIC' 142) #(167 'STEP' 143) #(167 'STRING' 64) #(167 'SUB' 144) #(167 'TEXT' 145) #(167 'THEN' 146) #(167 'TO' 66) #(167 'TRUE' 164) #(167 'TYPE' 67) #(167 'TYPEOF' 68) #(167 'UNTIL' 148) #(167 'VARIANT' 149) #(167 'VERSION' 150) #(167 'WEND' 151) #(167 'WHILE' 152) #(167 'WITH' 153) #(167 'WITHEVENTS' 70) #(167 'WRITE' 69) #(167 'XOR' 154))
 		do: [ :each | 
 			(keywordMap at: each first ifAbsentPut: [ Dictionary new ])
 				at: (each at: 2)
@@ -208,7 +208,7 @@ VBScanner >> scan16 [
 						ifTrue: [ self recordMatch: #(167).
 							self step.
 							currentCharacter == $:
-								ifTrue: [ ^ self recordAndReportMatch: #(98) ] ] ] ].
+								ifTrue: [ ^ self recordAndReportMatch: #(99) ] ] ] ].
 	(currentCharacter isAlphaNumeric
 		or: [ '$_' includes: currentCharacter ])
 		ifTrue: [ [ self recordMatch: #(167).
@@ -381,7 +381,7 @@ VBScanner >> scan21 [
 						ifTrue: [ self recordMatch: #(167).
 							self step.
 							currentCharacter == $:
-								ifTrue: [ ^ self recordAndReportMatch: #(146) ] ] ] ].
+								ifTrue: [ ^ self recordAndReportMatch: #(147) ] ] ] ].
 	(currentCharacter isAlphaNumeric
 		or: [ '$_' includes: currentCharacter ])
 		ifTrue: [ [ self recordMatch: #(167).
@@ -736,7 +736,7 @@ VBScanner >> scanForTokenX16 [
 { #category : #generated }
 VBScanner >> scanForTokenX17 [
 	currentCharacter == $^
-		ifTrue: [ ^ self recordAndReportMatch: #(72) ].
+		ifTrue: [ ^ self recordAndReportMatch: #(73) ].
 	currentCharacter == $r
 		ifTrue:
 			[ ^ self scanForTokenX7 ].
@@ -794,7 +794,7 @@ VBScanner >> scanForTokenX18 [
 		ifTrue:
 			[ ^ self scanForTokenX5 ].
 	currentCharacter == $\
-		ifTrue: [ ^ self recordAndReportMatch: #(71) ].
+		ifTrue: [ ^ self recordAndReportMatch: #(72) ].
 	^ self scanForTokenX17
 ]
 
@@ -927,7 +927,7 @@ VBScanner >> scanForTokenX4 [
 
 { #category : #generated }
 VBScanner >> scanForTokenX5 [
-	self recordMatch: #(70).
+	self recordMatch: #(71).
 	self step.
 	(currentCharacter isLetter or: [ '$_' includes: currentCharacter ])
 		ifTrue: [ [ self step.
