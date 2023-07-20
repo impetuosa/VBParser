@@ -93,6 +93,7 @@ VBAbstractProgramNode >> enclosing: aClass [
 
 { #category : #query }
 VBAbstractProgramNode >> enclosing: aClass starting: start [
+	 <doc: 'Climbs the AST tree up to finding an element of the given class. It starts from the given starting element.' >
 	| current |
 	current := start.
 	[ current isNil ]
@@ -104,12 +105,14 @@ VBAbstractProgramNode >> enclosing: aClass starting: start [
 
 { #category : #query }
 VBAbstractProgramNode >> enclosingAny: aClassArray [
+
+	<doc:
+	'Climbs the AST tree up to finding an element of any of the given classes. '>
 	| current |
 	current := parent.
-	[ current isNil ]
-		whileFalse: [ (aClassArray includes: current class)
-				ifTrue: [ ^ current ].
-			current := current parent ].
+	[ current isNil ] whileFalse: [ 
+		(aClassArray includes: current class) ifTrue: [ ^ current ].
+		current := current parent ].
 	self error: 'No enclosing this node '
 ]
 
@@ -212,17 +215,22 @@ VBAbstractProgramNode >> managesError [
 
 { #category : #query }
 VBAbstractProgramNode >> parentNonParentheses [
+
+	<doc:
+	'Climbs the AST tree up to finding an element which is not a parentheses expression'>
 	| current |
 	current := self parent.
-	[ current class = VBParentheseesExpressionNode ]
-		whileTrue: [ current := current parent.
-			current ifNil: [ ^ nil ] ].
+	[ current class = VBParentheseesExpressionNode ] whileTrue: [ 
+		current := current parent.
+		current ifNil: [ ^ nil ] ].
 	^ current
 ]
 
 { #category : #query }
 VBAbstractProgramNode >> parents [
 
+	<doc:
+	'Returns a recursive list of parents up to the root of the AST.'>
 	parent ifNil: [ ^ {  } ].
 	^ { parent } , parent parents
 ]

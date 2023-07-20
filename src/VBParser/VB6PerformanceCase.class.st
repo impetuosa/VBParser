@@ -11,20 +11,8 @@ As Microsoft Access grammar is extremely ambiguous, each modification may add ex
 In these tests we assert that there is no more than 33 possible outcomes, to ensure a minimal performance. 
 This number should be pushed down, but by the time been is good enough. 
 
-```
-parse: aString
-	| value |
-	[ value := VBParser parseAll: aString startingAt: 1 ]
-		on: Error
-		do: [ :e | 
-			
-			""(self preparse: aString) inspect.""
-			
-			e pass ].
-	self assert: value size < 33
-```
 
-Please note that the parse method implemented in the abstract test case includes an assertion. 
+
 
 "
 Class {
@@ -35,13 +23,14 @@ Class {
 
 { #category : #parsing }
 VB6PerformanceCase >> parse: aString [
+
+	<doc:
+	'This Performance test case furnishes a parse helper method which ensure to measure the ammount of possible AST to produce out of a piece of code.
+	Please note that the parse method implemented in the abstract test case includes an assertion. 
+	'>
 	| value |
 	[ value := VBParser parseAll: aString startingAt: 1 ]
 		on: Error
-		do: [ :e | 
-			
-			"(self preparse: aString) inspect."
-			
-			e pass ].
+		do: [ :e | "(self preparse: aString) inspect." e pass ].
 	self assert: value size < 33
 ]

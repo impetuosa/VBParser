@@ -1,3 +1,6 @@
+"
+This class contains tests based on the northwind training database furnished by Microsoft. 
+"
 Class {
 	#name : #VB6Northwind,
 	#superclass : #VB6TestCase,
