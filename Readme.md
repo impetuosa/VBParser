@@ -1,4 +1,4 @@
-# VBParser - Generated Doc
+# VBParser 
 ## Manifest
 This is a VBA / VB6 Parser GLR Parser developped by using SmaCC. 
 The repository of this project includes a grammar file which the last version of the grammar.
