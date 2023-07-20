@@ -1,8 +1,3 @@
-VBA / VB6 SmaCC Based parser. 
-
-[![Build Status](https://travis-ci.org/impetuosa/VB6Parser.svg?branch=master)](https://travis-ci.org/impetuosa/VB6Parser)
-
-
 # VBParser - Generated Doc
 ## Manifest
 This is a VBA / VB6 Parser GLR Parser developped by using SmaCC. 
@@ -15,46 +10,54 @@ For VBParser to work the only compulsory dependency is The SmaCCRuntime package,
 ## Project Examples
 ```smalltalk
 exampleDomainFunction 
+		"This example inspects the DomainFunction source code from the project Northwind. "
 		(VBParser parse: VB6Northwind new domainFunction) inspect.
 		 
 ```
 ```smalltalk
 exampleRecordsetWrapper 
+		"This example inspects the RecordsetWrapper source code from the project Northwind. "
 		(VBParser parse: VB6Northwind new recordsetWrapper) inspect.
 		 
 ```
 ```smalltalk
-exampleErrorHandling 
-		(VBParser parse: VB6Northwind new errorHandling) inspect.
-		 
+exampleErrorHandling
+	"This example inspects the ErrorHandling source code from the project Northwind. "
+	(VBParser parse: VB6Northwind new errorHandling) inspect
 ```
 ```smalltalk
 exampleCustomerOrders 
+		"This example inspects the CustomerOrders source code from the project Northwind. "
 		(VBParser parse: VB6Northwind new customerOrders) inspect.
 		 
 ```
 ```smalltalk
 exampleReflective 
+		"This example inspects the Reflective source code from the project Northwind. "
 		(VBParser parse: VB6Northwind new reflective) inspect.
 		 
 ```
 ```smalltalk
 exampleUtilities 
+		"This example inspects the Utilities source code from the project Northwind. "
 		(VBParser parse: VB6Northwind new utilities) inspect.
 		 
 ```
 ```smalltalk
 exampleInventory 
+		"This example inspects the Inventory source code from the project Northwind. "
 		(VBParser parse: VB6Northwind new inventory) inspect.
 		 
 ```
 ```smalltalk
 examplePurchaseOrders 
+		"This example inspects the PurchaseOrders source code from the project Northwind. "
 		(VBParser parse: VB6Northwind new purchaseOrders) inspect.
 		 
 ```
 ```smalltalk
 examplePrivileges 
+		"This example inspects the Privileges source code from the project Northwind. "
 		(VBParser parse: VB6Northwind new privileges) inspect.
 		 
 ```
