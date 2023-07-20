@@ -236,6 +236,12 @@ VBAbstractProgramNode >> registerStatement: aStatement [
 		ifAbsentPut: [ OrderedCollection new ]) add: aStatement
 ]
 
+{ #category : #'goto management' }
+VBAbstractProgramNode >> statements [
+
+	^ self subclassResponsibility
+]
+
 { #category : #accessing }
 VBAbstractProgramNode >> statementsAttribute [
 	self assert: self species = VBLabelNode.
