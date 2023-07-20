@@ -2,9 +2,12 @@
 ## Manifest
 This is a VBA / VB6 Parser GLR Parser developped by using SmaCC. 
 The repository of this project includes a grammar file which the last version of the grammar.
+
 However, please mind that the SmaCC grammar editor will charge the grammar stored in the ```VBParser definitionComment``` method. 
+
 The usage of the parser is extremely simple: 
 ``` VBParser parse: 'my program' ```
+
 For VBParser to work the only compulsory dependency is The SmaCCRuntime package, despite the baseline of VBParser loading the whole repository. 
 
 ## Project Examples
@@ -61,6 +64,59 @@ examplePrivileges
 		(VBParser parse: VB6Northwind new privileges) inspect.
 		 
 ```
+
+
+
+## VB6PerformanceCase
+#  Performance tsts
+Performance tests are exactly the same tests as the functional tests.
+However the parsing technique is different.
+In order to quickly detect regressions on performance, we use the parseAll: method. 
+This method calculates all the possible AST for a given code.
+As Microsoft Access grammar is extremely ambiguous, each modification may add exponential new possible AST, decreasing radically the performance. 
+In these tests we assert that there is no more than 33 possible outcomes, to ensure a minimal performance. 
+This number should be pushed down, but by the time been is good enough. 
+```
+parse: aString
+	| value |
+	[ value := VBParser parseAll: aString startingAt: 1 ]
+		on: Error
+		do: [ :e | 
+			
+			"(self preparse: aString) inspect."
+			
+			e pass ].
+	self assert: value size < 33
+```
+Please note that the parse method implemented in the abstract test case includes an assertion. 
+
+
+### Methods
+#### VB6PerformanceCase>>parse: aString
+This Performance test case furnishes a parse helper method which ensure to measure the ammount of possible AST to produce out of a piece of code
+
+
+
+## VB6TestCase
+#Smoke testing
+This parser is tested only with smoke tests, aiming to detect any regression in the grammar.
+These tests are principally based three different sources:
+   * the VBA official documentation. 
+   * Microsoft Northwind, an official application for learning Microsoft Access.
+   * Productive special cases.
+In order to ease the writing of tests, there is a method subWrap, which wraps the given text with the syntax of a SUB procedure. 
+
+```
+subWrap: aString
+	^ 'public sub example
+{1}
+end sub
+' format: {aString}
+```
+
+### Methods
+#### VB6TestCase>>subWrap: aString
+Wraps a given piece of code within a VBA sub procedure
 
 
 
