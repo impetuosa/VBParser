@@ -1,41 +1,40 @@
-
-
-definitionComment
-"%glr;
+%glr;
 %ignorecase;
 %annotate_tokens;
 
 #expression operators -- lowest precedence are first.
 
-%left "")""  ;
-%left  ""="" "":="";
-%left "","";
-%right "":"";
-%left ""eqv"" ;
+%left ")"  ;
+%nonassoc  "=" ":=";
+%nonassoc  "New";
+%left ",";
+%right ":";
+%left "eqv" ;
 
-%left ""xor"";
-%left  ""or"";
-%left  ""and"";
-%right ""not"" ;
-%nonassoc  ""<>"" ""<"" "">"" ""<="" "">="" ""Like"" ""Is"" ""IsNot"";
-%left ""<<"" "">>"";
-%left ""&"" ;
-%left ""+"" ""-"";
-%left ""*"" ""/"" ""Mod"";
-%right ""^"";
-%right  ""~"";
-%right ""["" ""("";
-%right ""!"" ;
+%left "xor";
+%left  "or";
+%left  "and";
+%nonassoc  "<>" "<" ">" "<=" ">=" "Like" "Is" "IsNot";
+%left "<<" ">>";
+%left "&" ;
+%left "+" "-";
+%left "*" "/" "Mod";
+%right "not" ;
+%right "^";
+%right  "~";
+%right "[" "(";
+%right "!" ;
 
 
 %prefix VB;
 %root Program;
 %suffix Node;
-%start module;
+%start module Statement ModuleStatement BehaviourDefinition;
 
 <lineContinuation>
-   :    (_) <whitespace> ? ( \r | \n | \r\n | \x2028 ) <whitespace> ?
+   :   ( \x20 | \xA0 | \x9) (_) ( \x20 | \xA0 | \x9)* ( \r | \n | \r\n | \x2028 ) ( \x20 | \xA0 | \x9)*
    ;
+
 <DECIMAL_INTEGER>
 	: 0 | [1-9] [0-9]*	
 	;
@@ -77,16 +76,18 @@ definitionComment
 	| false
 	;
 <STRING_LITERAL>
-   : \"" ([^\""\r\n] | \""\"")* \""
+   : \" ([^\"\r\n] | \"\")* \"
    ;
 <NULL_LITERAL>
 	: Nothing	
 	;
+
 <IDENTIFIER>
-	: (<isLetter> | [a-zA-Z_$] ) (<isLetter>|\w|$)* 
+	: (<isLetter> | [a-zA-Z_$] ) (<isLetter>|\w|$|&)* 
 	;
+
 <SBIDENTIFIER>
-	: (\[) (<isLetter> | [a-zA-Z_$] ) (<isLetter>|\w|/|$|\s)* (\]) 
+	: (\[) (<isLetter> | [a-zA-Z_$] ) (<isLetter>|\w|\-|/|$|\s)* (\]) 
 	;
 <DEFTYPE> 
 	: ([a-zA-Z]) (\-) ([a-zA-Z]); 
@@ -94,24 +95,26 @@ definitionComment
 <HASH_NUMBER>
 	: ( \#) (<DECIMAL_INTEGER>)
 	;
+	
 <HASH_IDENTIFIER>
 	: ( \#) (<isLetter>|\w|$)*
 	;
+
 <whitespace> : ( \x20 | \xA0 | \x9) + ; 
 
 <eol>
-   :  ( \r | \n | \r\n | \x2028 | \ ) 
+   : (<whitespace>?) ( \r | \n | \r\n | \x2028 | \ ) (<whitespace>?)
    ;
-# <LABEL> : <IDENTIFIER> (:) <whitespace> ?  ;
+
 <comment>
-   :  (\' | :?  REM  \ ) ( [^\n\r])* 
+   :  (<whitespace>?)(\' | :?  REM  \ ) ( [^\n\r])* 
    ;
 
 ###################################################### 
 ########## Basic module
 ###################################################### 
 
-module: <eol>* (header 'header' <eol>*)? (ModuleStatement 'element')?  (<eol>* ModuleStatement 'element' )*   <eol>* {{Module}};
+module: <eol>* (header 'header' <eol>*)? (ModuleStatement 'element')?  (<eol>* ModuleStatement 'element' )*  <eol>* {{Module}};
 
 ###################################################### 
 ########## Literals
@@ -129,15 +132,32 @@ literal
 	| GuidLiteral
 ;
 
-FileDescriptorLiteral : <HASH_NUMBER> 'token' {{FileDescriptorLiteral}};
-IntegerLiteral :  <INTEGER_LITERAL> 'token' {{IntegerLiteral}};
-ColorLiteral: <COLOR_LITERAL> 'token' {{ColorLiteral}} ; 
-DateLiteral:  <DATE_LITERAL> 'token' {{DateLiteral}};
-FloatLiteral: <FLOATING_POINT_LITERAL> 'token' {{FloatLiteral}};
-BooleanLiteral: <BOOLEAN_LITERAL> 'token' {{BooleanLiteral}};
-StringLiteral:  <STRING_LITERAL> 'token' {{StringLiteral}};
-Null: <NULL_LITERAL> 'token' {{Null}};
-GuidLiteral: ""{""<HEX_INTEGER> + ""-""<HEX_INTEGER>+""-"" <HEX_INTEGER>+ ""-""<HEX_INTEGER>+ ""-""<HEX_INTEGER>+ ""}"" {{GuidLiteral}};
+FileDescriptorLiteral 	: <HASH_NUMBER> 'token' 			{{FileDescriptorLiteral}};
+IntegerLiteral 			: <INTEGER_LITERAL> 'token' "&"? 	{{IntegerLiteral}};
+ColorLiteral			: <COLOR_LITERAL> 'token' 			{{ColorLiteral}} ; 
+DateLiteral				: <DATE_LITERAL> 'token' 			{{DateLiteral}};
+FloatLiteral			: <FLOATING_POINT_LITERAL> 'token' 	{{FloatLiteral}};
+BooleanLiteral			: <BOOLEAN_LITERAL> 'token' 		{{BooleanLiteral}};
+StringLiteral			: <STRING_LITERAL> 'token' 			{{StringLiteral}};
+Null					: <NULL_LITERAL> 'token' 			{{Null}};
+
+
+
+
+GuidLiteral: 
+		"{"
+		<HEX_INTEGER> + 
+		"-"
+		<HEX_INTEGER> +
+		"-" 
+		<HEX_INTEGER> + 
+		"-"
+		<HEX_INTEGER> + 
+		"-"
+		<HEX_INTEGER> + 
+		"}" 
+		{{GuidLiteral}};
+
 
 Identifier : 
 	 SimpleIdentifier
@@ -147,68 +167,209 @@ Identifier :
 KeywordIdentifier : UsableKeywords 'token'  {{SimpleIdentifier}} | SquareBracketIdentifier;
 
 
-UsableKeywords :  IdentifierWords  |""open"" | ""type"" | ""select"" | ""case"" |""else""   ;
-IdentifierWords :  <IDENTIFIER> | ""text"" |  ""name"" |""version"" |""database"" | ""collection"" | ""bold"" | ""append"" | ""Object""  | ""len"" | ""get"" | ""set""  | ""let"" |  ""date"" |  ""input"" |  ""print"";
+UsableKeywords  :  
+  IdentifierWords  
+| "open" 
+| "type" 
+| "select" 
+| "case" 
+| "else"   
+;
 
-HashIdentifier :  <HASH_IDENTIFIER> 'token'   {{HashIdentifier}};
-SquareBracketIdentifier : <SBIDENTIFIER> 'token' {{SquareBracketIdentifier}};
-SimpleIdentifier :IdentifierWords 'token'  {{SimpleIdentifier}};
+IdentifierWords :  
+  <IDENTIFIER>     
+| "text" 
+| "name" 
+| "version" 
+| "database" 
+| "collection" 
+| "bold" 
+| "append" 
+| "Object"  
+| "len" 
+| "get" | "set" | "let" 
+| "date" 
+| "input" 
+| "print" 
+| "write" 
+| "Error"
+| "Next"
+| "Output"
+| "Alias"
+| "String" 
+| "Type" 
+| "To"
+| "Line"
+;
+
+HashIdentifier 			: <HASH_IDENTIFIER> 'token' {{HashIdentifier}};
+SquareBracketIdentifier : <SBIDENTIFIER> 'token' 	{{SquareBracketIdentifier}};
+SimpleIdentifier 		: IdentifierWords 'token'  	{{SimpleIdentifier}};
 
 
-LabelTag : <IDENTIFIER> 'name' "":"" <whitespace> ?  {{LabelTag}};
+LabelTag : <IDENTIFIER> 'name' ":"  {{LabelTag}};
 
 ###################################################### 
 ########## Module header and configuration
 ###################################################### 
 
-header: ""version""   FloatLiteral  'version'  (""class"")?  {{}};
+header: <whitespace>? "version" <whitespace> FloatLiteral  'version'  ("class")?  {{}};
 Option
-   :   ""option"" IntegerLiteral 'value' {{OptionValue}}
-   |   ""option"" ""compare"" ""database"" {{OptionCompareDatabase}}
-   |   ""option"" ""compare""  (""binary""| ""text"" 'compare') {{OptionCompare}}
-   |   ""option"" ""explicit"" {{OptionExplicit}}
-   |   ""option"" ""private"" ""module""{{OptionPrivateModule}}
+   :  <whitespace>? "option" <whitespace> IntegerLiteral 'value' {{OptionValue}}
+   |  <whitespace>? "option" <whitespace> "compare" <whitespace> "database" {{OptionCompareDatabase}}
+   |  <whitespace>? "option" <whitespace> "compare" <whitespace> ("binary"| "text" 'compare') {{OptionCompare}}
+   |  <whitespace>? "option" <whitespace> "explicit" {{OptionExplicit}}
+   |  <whitespace>? "option" <whitespace> "private" <whitespace> "module"{{OptionPrivateModule}}
    | OptionBase
    ;
-OptionBase : ""option"" ""base"" Expression 'value' {{OptionBase}} ;
+   
+OptionBase : 
+	<whitespace>? 
+	"option" <whitespace> 
+	"base" <whitespace> 
+	Expression 'value' {{OptionBase}} 
+;
+
 SetUpAssignation :  
-	(Identifier  'identifier' | MemberAccess 'identifier') ""="" Expression 'value' {{SetUpAssignation}} 
+	(Identifier  'identifier' | MemberAccess 'identifier') <whitespace> "=" <whitespace> Expression 'value' {{SetUpAssignation}} 
 ;
 Attribute
- : ""attribute"" SetUpAssignation 'setting' {{ModuleAttribute}}
+ : "attribute" <whitespace> SetUpAssignation 'setting' {{ModuleAttribute}}
  ;
 Configuration 
-:	""begin""  <eol>* SetUpAssignation 'setting' ( <eol>+ SetUpAssignation 'setting')* <eol>*""end"" {{Configuration}};
+:	"begin"  <eol>* SetUpAssignation 'setting' ( <eol>+ SetUpAssignation 'setting')* <eol>*"end" {{Configuration}};
 
-Implements : ""implements"" Identifier 'interface' {{Implements}}; 
+Implements : "implements" <whitespace> StateAccessBase 'interface' {{Implements}}; 
 
-DefTypeLabel : ""DefBool"" | ""DefByte"" |""DefCur"" | ""DefDate"" | ""DefDec"" | ""DefDbl"" | ""DefInt"" | ""DefLng"" | ""DefLnglng"" | ""DefLngPtr"" | ""DefObj"" | ""DefSng"" | ""DefStr"" | ""DefVar"" ;
-DefType : DefTypeLabel  'deftype' <DEFTYPE> 'pattern' {{DefType}}; 
+DefTypeLabel : 
+  "DefBool" | "DefByte" |"DefCur" 
+| "DefDate" | "DefDec" | "DefDbl" 
+| "DefInt" | "DefLng" | "DefLnglng" 
+| "DefLngPtr" | "DefObj" | "DefSng" 
+| "DefStr" | "DefVar" 
+;
+
+DefType : DefTypeLabel 'deftype' <whitespace> <DEFTYPE> 'pattern' {{DefType}}; 
 
 ModuleStatement :  
-	Option  | Configuration | Attribute | DeclareExternal | VariableDefinition | BehaviourDefinition | Types | Implements | DefType
+  Option  
+| Configuration 
+| Attribute 
+| DeclareExternal 
+| VariableDefinition 
+| BehaviourDefinition 
+| Types 
+| Implements 
+| DefType
  ;
 
 ###################################################### 
 ########## Body statements
 ###################################################### 
 
-Statement :   VariableDefinition | Attribute | OptionBase | StatementCalls  | ControlFlowStatement | Types | Label |  Exits | Go |  FileClauses | RaiseEvent | OtherStatements | StatementAssignment;
-Block: (IntegerLiteral 'lineNumber')? (Statement 'statement')? ((<eol>| "":"")+ (IntegerLiteral 'lineNumber')? Statement 'statement'  )* <eol>+ {{Block}};
-OneLineBlock :  (Statement 'statement')? ("":"" Statement 'statement'  )* "":""? {{Block}};
+Statement :  
+  StatementAssignment 
+| VariableDefinition 
+| Attribute 
+| OptionBase 
+| StatementCalls  
+| ControlFlowStatement 
+| Types 
+| Label 
+| Exits 
+| Go 
+| FileClauses 
+| RaiseEvent 
+| OtherStatements ;
 
-BaseType : ""boolean"" | ""byte"" |""currency"" | ""collection"" | ""date"" | ""decimal"" | ""double"" | ""integer"" | ""long"" | ""longlong"" | ""longptr"" | ""object"" | ""single"" | ""string"" | ""variant"" {{BaseType}};
-Visibility: ""private"" | ""public"" | ""friend"" | ""global"" ; 
+# A Block is a list of statements. Each entry can be headed with a line number. Lines are splitted by newline 
+Block: 
+	    <eol>+
+		(IntegerLiteral 'lineNumber' <whitespace>)? 
+		 Statement 'statement'?
+	   (
+		 (<eol> | (<whitespace>? ":" <whitespace>?))+ 
+		 (IntegerLiteral 'lineNumber' <whitespace>)? 
+		  Statement 'statement' 
+	   )*
+	   <eol>*
+	   {{Block}};
+	   
+# Oneline blocks can have one or more "lines" splitted by ":" 
 
-ComplexType: (Identifier 'base')?  ("".""  UsableKeywords  'member')* {{ComplexType}};
-Type: BaseType | ComplexType ;
+OneLineBlock : 
+	<whitespace> Statement 'statement'? 
+	(<whitespace>? ":" <whitespace>? Statement 'statement')* 
+	{{Block}}
+;
 
-TypedThing : (TypeSize 'size')? ""as""  Type 'type' (TypeSize 'size')? (""*"" Expression 'fixedSize')?  {{TypedThing}}; 
-TypedAndInstantiatedThing: (TypeSize 'size')? ""as"" ""new""  Type 'type' (TypeSize 'size')?  (""*"" Expression 'fixedSize')? {{AsTypeAndNew}}; 
+BaseType : 
+  "boolean" 
+| "byte" 
+| "currency" 
+| "collection" 
+| "date" 
+| "decimal" 
+| "double" 
+| "integer" 
+| "long" 
+| "longlong"
+| "longptr" 
+| "object" 
+| "single" 
+| "string" 
+| "variant"
+{{BaseType}};
 
-TypeSize : (""("" Expression 'size'? ( "","" Expression 'size')* "")"") {{TypeSize}} ;
+SimpleType : 
+	Identifier 'typeName'
+	{{SimpleType}}
+	;
 
-AsType: TypedThing | TypedAndInstantiatedThing | TypeSize;
+
+Visibility: 
+  "private" 
+| "public" 
+| "friend" 
+| "global" ; 
+
+ComplexType: 
+	(SimpleType 'base')?  
+	("." UsableKeywords 'member')+ 
+	{{ComplexType}}
+;
+
+Type: 
+  BaseType 
+| SimpleType 
+| ComplexType 
+;
+
+
+
+TypedThing : 
+			 (<whitespace> "as" <whitespace> Type 'type')?
+			 (<whitespace>? "*" <whitespace>? Expression 'fixedSize')?  
+			 {{TypedThing}}
+;
+			 
+TypedAndInstantiatedThing :	 
+			<whitespace> "as" <whitespace>
+			"new" <whitespace> 
+			Type 'type'
+			{{AsTypeAndNew}}
+; 
+
+TypeSize : "(" 
+			Expression 'size'? 
+			(","<whitespace>? Expression 'size')* 
+			")" 
+			{{TypeSize}} 
+;
+
+AsType : 
+  TypedThing 
+| TypedAndInstantiatedThing;
 
 
 
@@ -218,211 +379,575 @@ AsType: TypedThing | TypedAndInstantiatedThing | TypeSize;
 
 StatementAssignment : Assignment | ExplicitAssignement ;
 
-ExplicitLetSet: ""let"" | ""set""; 
-Assignment : (Identifier 'left' | MemberAccess 'left' | Expression 'left') (""="" 'operator' | "":="" 'operator') Expression  'right' {{ExplicitAssignement}}; 
-ExplicitAssignement : ExplicitLetSet 'kind'  Identifier 'left' (""="" 'operator' |  "":="" 'operator')   Expression 'right' {{ExplicitAssignement}};
+ExplicitLetSet: "let" | "set"; 
 
-
-
+Assignment : 
+		(Identifier 'left' | StateAccessBase 'left') <whitespace> 
+		("=" 'operator' | ":=" 'operator') <whitespace> 
+		Expression 'right' 
+		{{ExplicitAssignement}};
+		
+ExplicitAssignement : 
+		ExplicitLetSet 'kind' <whitespace> 
+		(Identifier 'left' | StateAccessBase 'left') <whitespace> 
+		("=" 'operator' |  ":=" 'operator') <whitespace> 
+		Expression 'right' 
+		{{ExplicitAssignement}};
 
 ###################################################### 
 ########## other statements
 ###################################################### 
  
-OtherStatements : Rename | Beep | DoEvents;
-Rename : ""name"" Expression 'oldName' ""as""  Expression 'newName'  {{Rename}} ;
-Beep : ""beep"" ;
-DoEvents : ""DoEvents"" {{DoEvents}} ;
+OtherStatements : 
+  Rename 
+| Beep 
+| DoEvents;
 
-
-
+Rename : 
+	"name" <whitespace> 
+	Expression 'oldName' <whitespace> 
+	"as" <whitespace> 
+	Expression 'newName' 
+	{{Rename}} ;
+	
+Beep : "beep" ;
+DoEvents : "DoEvents" {{DoEvents}} ;
 
 ###################################################### 
 ########## Types
 ###################################################### 
 
-Types : DefineEnum | DefineType | Event ;
+Types : 
+  DefineEnum 
+| DefineType 
+| Event ;
 
-DefineType : 	 (Visibility 'visibility')? ""type"" Identifier 'name' ( <eol>* TypeEntry 'field' )* <eol>* ""end"" ""type"" {{DefineType}}    ;
-TypeEntry    : Identifier 'name' AsType 'type' (""*"" IntegerLiteral 'size' )? {{TypeEntry}}     ;
-Event  : (Visibility 'visibility')?  ""event"" Identifier 'selector' ParameterList 'parameters' {{Event}} ;
-DefineEnum    :  (Visibility 'visibility')?  ""enum"" Identifier 'name'  ( <eol>* EnumEntry 'field')* <eol>*  ""end"" ""enum"" {{DefineEnum}}    ;
-EnumEntry    : Identifier 'name'  ( ""=""  Expression 'value')? {{EnumEntry}}    ;
+DefineType : 
+      (Visibility 'visibility' <whitespace>)? 
+	  "type" <whitespace> 
+	  Identifier 'name' 
+	  ( <eol>* TypeEntry 'field' )* 
+	  <eol>* 
+	  "end" <whitespace>  "type" 
+	  {{DefineType}} ;
+	  
+TypeEntry :
+	  Identifier 'name'
+	  (TypeSize 'size')?
+	  AsType 'type' 
+	  (<whitespace>?"*"<whitespace>? IntegerLiteral 'size' )? 
+	  {{TypeEntry}};
+	  
+Event  : 
+	  (Visibility 'visibility' <whitespace>)?  
+	  "event" <whitespace> 
+	  Identifier 'selector' <whitespace>?
+	  ParameterList 'parameters'
+	  {{Event}} ;
+	  
+DefineEnum :  
+	  (Visibility 'visibility' <whitespace>)?  
+	  "enum" <whitespace> 
+	  Identifier 'name'  
+	  ( <eol>* EnumEntry 'field')* 
+	  <eol>*  
+	  "end" <whitespace> "enum" 
+	  {{DefineEnum}};
+	  
+EnumEntry : 
+      Identifier 'name'  
+	  ( <whitespace> "=" <whitespace> Expression 'value')? 
+	  {{EnumEntry}};
 
 ###################################################### 
 ########## Parameters
 ###################################################### 
 
-ParameterPassingStrategy :  ""byval"" | ""byref"" {{ParameterPassingStrategy}};
-ParameterList:  ""("" (Parameter 'parameter' ( "","" Parameter 'parameter')* )? "")"" {{ParameterList}};
-Parameter: ""optional"" ? (ParameterPassingStrategy 'strategy')? ""paramarray""? Identifier 'name'  (AsType 'type')? (""="" Expression 'default')? {{Parameter}};
+ParameterPassingStrategy :  "byval" | "byref" {{ParameterPassingStrategy}};
+ParameterList:"("(Parameter 'parameter' ("," <whitespace> Parameter 'parameter')* )? <whitespace>? ")" {{ParameterList}};
+	
+Parameter: 
+	("optional" <whitespace>)? 
+	(ParameterPassingStrategy 'strategy' <whitespace>)? 
+	("paramarray" <whitespace>)? 
+	Identifier 'name' 
+	(TypeSize 'size')?
+	(AsType 'type')? 
+	(<whitespace> "=" <whitespace> Expression 'default')? 
+	{{Parameter}};
 
 ###################################################### 
 ########## External declaration
 ###################################################### 
 
-DeclareSub: (Visibility 'visibility')? ""declare""  ""sub"" Identifier 'selector' ""lib"" StringLiteral 'library' (""alias"" StringLiteral 'alias')? ParameterList 'parameters'  {{ExternalSub}};
-DeclareFunction: (Visibility 'visibility')? ""declare""  ""function"" Identifier 'selector' ""lib"" StringLiteral 'library' (""alias"" StringLiteral 'alias')? ParameterList 'parameters'  AsType 'type' {{ExternalFunction}};
+DeclareSub: 
+			(Visibility 'visibility' <whitespace> )? 
+			"declare" <whitespace> 
+			"sub" <whitespace> 
+			Identifier 'selector' <whitespace> 
+			"lib" <whitespace> 
+			StringLiteral 'library' <whitespace>?
+			("alias" <whitespace> StringLiteral 'alias' <whitespace>?)? 
+			ParameterList 'parameters' 
+			{{ExternalSub}};
+			
+DeclareFunction: 
+		(Visibility 'visibility' <whitespace> )? 
+		"declare" <whitespace> 
+		"function" <whitespace> 
+		Identifier 'selector' <whitespace> 
+		"lib" <whitespace> 
+		StringLiteral 'library' <whitespace>? 
+		("alias" <whitespace>  StringLiteral 'alias' <whitespace>? )? 
+		ParameterList 'parameters'
+		AsType 'type'
+		{{ExternalFunction}};
+		
+		
 DeclareExternal : DeclareSub|DeclareFunction; 
 
 ###################################################### 
 ########## Function / Sub Definition 
 ###################################################### 
 
-Modifier: ""static"" ;
-DefineFunction: (Visibility 'visibility')? (Modifier 'modifier')? ""function"" Identifier 'selector' ParameterList 'parameters' (AsType 'type')? 
-	Block 'block' ""end"" ""function"" 
-{{FunctionDefinition}};
-DefineSub:  (Visibility 'visibility')? (Modifier 'modifier')? ""sub"" Identifier 'selector' (ParameterList 'parameters') ? 
-	Block 'block'
-""end"" ""sub"" 
-{{SubDefinition}};
+Modifier: "static" ;
 
-ModulePropertyGet : (Visibility 'visibility')? (Modifier 'modifier')? ""property"" ""get"" Identifier 'selector' (ParameterList 'parameters') ? (AsType 'type')? 
-	Block 'block' ""end"" ""property"" 
-{{ModulePropertyGet}}; 
-ModulePropertySet : (Visibility 'visibility')? (Modifier 'modifier')? ""property"" ""set"" Identifier 'selector'  (ParameterList 'parameters') ?   
-	Block 'block'  ""end"" ""property"" 
-{{ModulePropertyGet}}; 
-ModulePropertyLet : (Visibility 'visibility')? (Modifier 'modifier')? ""property"" ""let"" Identifier 'selector' (ParameterList 'parameters') ?   
-	 Block 'block'  ""end"" ""property"" 
+DefineFunction: 
+	(Visibility 'visibility' <whitespace>)? 
+	(Modifier 'modifier' <whitespace>)? 
+	"function"  <whitespace>
+	Identifier 'selector'<whitespace>?
+	ParameterList 'parameters' <whitespace>?
+	(AsType 'type' TypeSize 'size'?  )?
+	Block 'block' 
+	"end"  <whitespace> "function" 
+   {{FunctionDefinition}};
+
+DefineSub: 
+	(Visibility 'visibility' <whitespace>)? 
+	(Modifier 'modifier' <whitespace>)? 
+	"sub"  <whitespace>
+	Identifier 'selector'<whitespace>?
+	(ParameterList 'parameters')? <whitespace>?
+	Block 'block' 
+	"end" <whitespace> "sub" 
+   {{SubDefinition}};
+   
+
+ModulePropertyGet : 
+	(Visibility 'visibility' <whitespace>)? 
+	(Modifier 'modifier' <whitespace>)? 
+	"property" <whitespace> "get"  <whitespace>
+	Identifier 'selector'
+	ParameterList 'parameters'
+	(AsType 'type' TypeSize 'size'?)? 
+	Block 'block' 
+	"end" <whitespace> ("property" | "function") 
+    {{ModulePropertyGet}}; 
+	
+	
+ModulePropertySet : 
+	(Visibility 'visibility' <whitespace>)? 
+	(Modifier 'modifier' <whitespace>)? 
+	"property" <whitespace> "set"  <whitespace>
+	Identifier 'selector'
+	ParameterList 'parameters'
+	Block 'block'  
+	"end" <whitespace> ("property" | "function")
+  {{ModulePropertyGet}}; 
+  
+ModulePropertyLet : 
+	(Visibility 'visibility' <whitespace>)? 
+	(Modifier 'modifier' <whitespace>)? 
+	"property" <whitespace> "let"  <whitespace>
+	Identifier 'selector' 
+	ParameterList 'parameters'
+	 Block 'block'  
+	 "end" <whitespace> ("property" | "function") 
 {{ModulePropertyGet}}; 
 
-BehaviourDefinition:  DefineFunction | DefineSub | ModulePropertyGet | ModulePropertySet | ModulePropertyLet ;
+BehaviourDefinition:  
+  DefineFunction 
+| DefineSub 
+| ModulePropertyGet 
+| ModulePropertySet 
+| ModulePropertyLet ;
 
 ###################################################### 
 ########## Variable / And Multiple Variables
 ###################################################### 
 
-ModuleProperty : Visibility 'visibility' Variable 'variable' {{ModuleProperty}};
-ModuleConstant : (Visibility 'visibility')? ""const"" Constant 'constant' {{ModuleConstant}};
-DefineVariable : ""dim"" Variable 'variable' {{DimVariable}};
-ReDefineVariable : ""redim"" ""preserve""? Variable 'variable' {{ReDimVariable}};
-ReDefineExpression : ""redim"" ""preserve""? Expression 'variable' {{ReDimVariable}}; 
-StaticVariable : ""static"" Variable 'variable' {{StaticVariable}};
-Variable : ""WithEvents"" ? Identifier 'name' (AsType 'type') ? {{Variable}};
-Constant :  Identifier 'constant' (AsType 'type')?  ""="" Expression 'value' {{Constant}} ;
+ModuleProperty : 
+	Visibility 'visibility' <whitespace>
+	Variable 'variable' 
+	{{ModuleProperty}};
+	
+ModuleConstant : 
+	(Visibility 'visibility' <whitespace>)? 
+	"const" <whitespace> 
+	Constant 'constant'
+	{{ModuleConstant}};
 
-ModuleProperties : Visibility 'visibility' VariableList 'variables' {{ModuleMultipleProperties}};
-ModuleConstants : Visibility 'visibility'? ""const"" ConstantList 'constants' {{ModuleMultipleConstants}};
-DefineVariables : ""dim"" VariableList 'variables' {{DimMultipleVariables}};
-ReDefineVariables : ""redim""  ""preserve""?  VariableList 'variables' {{ReDimMultipleVariables}};
-StaticVariables : ""static"" VariableList 'variables' {{StaticMultipleVariables}};
-VariableList : Variable 'variable' ("",""  Variable 'variable' )+ {{VariableList}};
-ConstantList : Constant 'constant' ("",""  Constant 'constant' )+ {{ConstantList}};
+DefineVariable : 
+	"dim" <whitespace> 
+	Variable 'variable' 
+	{{DimVariable}};
 
-VariableDefinition : ModuleProperties | ModuleProperty | ModuleConstant | ModuleConstants | ConstantList | DefineVariable | ReDefineVariable | ReDefineExpression |  DefineVariables |  ReDefineVariables | StaticVariable | StaticVariables ;
+
+ReDefineVariable : 
+	"redim" <whitespace> 
+	("preserve" <whitespace>)? 
+	Variable 'variable' 
+	{{ReDimVariable}};
+	
+ReDefineExpression : 
+	"redim" <whitespace>
+	("preserve" <whitespace>)? 
+	Expression 'variable' 
+	{{ReDimVariable}};
+	
+StaticVariable : 
+	"static"  <whitespace>  
+	Variable 'variable'
+	{{StaticVariable}};
+	
+Variable : 
+	("WithEvents"  <whitespace> )? 
+	Identifier 'name'
+	(TypeSize 'size')?
+	(AsType 'type') ? 
+	{{Variable}};
+	
+Constant :  
+	Identifier 'constant'
+	(AsType 'type') ? 
+	<whitespace> "="  <whitespace> 
+	Expression 'value' 
+	{{Constant}} ;
+
+ModuleProperties : 
+	Visibility 'visibility'  <whitespace>
+	VariableList 'variables' 
+	{{ModuleMultipleProperties}};
+	
+	
+ModuleConstants : 
+	(Visibility 'visibility'  <whitespace> )? 
+	"const"  <whitespace> 
+	ConstantList 'constants' 
+	{{ModuleMultipleConstants}};
+	
+DefineVariables : 
+	"dim"  <whitespace>
+	VariableList 'variables' 
+	{{DimMultipleVariables}};
+	
+ReDefineVariables : 
+	"redim"  <whitespace> 
+	("preserve"  <whitespace>)?  
+	VariableList 'variables' 
+	{{ReDimMultipleVariables}};
+	
+StaticVariables : 
+	"static" <whitespace> 
+	VariableList 'variables' 
+	{{StaticMultipleVariables}};
+	
+VariableList : Variable 'variable' ( <whitespace>? ","  <whitespace>?  Variable 'variable' )+ {{VariableList}};
+ConstantList : Constant 'constant' ( <whitespace>? ","  <whitespace>?  Constant 'constant' )+ {{ConstantList}};
+
+VariableDefinition :
+  ModuleProperties 
+| ModuleProperty 
+| ModuleConstant 
+| ModuleConstants 
+| ConstantList 
+| DefineVariable 
+| ReDefineVariable 
+| ReDefineExpression 
+| DefineVariables 
+| ReDefineVariables 
+| StaticVariable 
+| StaticVariables ;
 
 ###################################################### 
 ########## Value Statements
 ###################################################### 
 
 
-Expression :  Operation | ValueClause  | StateAccess | ExpressionCalls | Identifier | literal | ParentheseesExpression  | Interval  ; 
+Expression :   
+  ValueClause  
+| StateAccess 
+| ExpressionCalls 
+| Identifier 
+| literal 
+| ParentheseesExpression  
+| Interval 
+| Operation ; 
 
-ParentheseesExpression : ""("" Expression 'expression' "")"" {{ParentheseesExpression}};
-Interval : Expression 'from' ""to"" Expression 'to'  {{Interval}} ; 
+ParentheseesExpression : 
+	"("  <whitespace>? 
+	Expression 'expression'  
+	<whitespace>? ")" 
+	{{ParentheseesExpression}};
+	
+Interval : 
+	Expression 'from' <whitespace> 
+	"to"  <whitespace> 
+	Expression 'to'  
+	{{Interval}} ; 
 
 
 ##########
 ### Ops
 ##########
 
-Operation : UnaryOperation | BinaryOperation ;
+Operation : 
+  UnaryOperation 
+| BinaryOperation ;
 
 ####################
 ### Unary Ops 
 ####################
 
-UnaryOperation:  NegatedOperation | PositiveOperation |  NotOperation ; 
+UnaryOperation:   
+  NegatedOperation
+| PositiveOperation 
+| NotOperation 
+; 
 
-NegatedOperation : ""-""  Expression 'value' {{NegatedOperation}} ;
-PositiveOperation : ""+"" Expression 'value' {{PositiveOperation}} ;
-NotOperation : ""not""  Expression 'value'  {{NotOperation}};
+NegatedOperation : 
+	"-"
+	(StateAccessBase 'value' | IntegerLiteral 'value' | FloatLiteral 'value')
+	{{NegatedOperation}}
+;
+	
+PositiveOperation : 
+	"+" <whitespace> 
+	(StateAccessBase 'value' | IntegerLiteral 'value' | FloatLiteral 'value')
+	{{PositiveOperation}} 
+;
+
+NotOperation : 
+	"not" <whitespace>
+	(StateAccessBase 'value' | BooleanLiteral 'value' | ParentheseesExpression 'value' | TypeOf 'value' )
+	{{NotOperation}}
+;
+
 
 ####################
 ### Binary Ops 
 ####################
 
-BinaryOperation : ComparisonOperation  
-				| ArithmeticOperation | BooleanBinaryOperation 
-				|  Equals  | ConcatenationOperation ;
+LeftSide :  
+  ValueClause  
+| StateAccessBase 
+| ExpressionCalls 
+| Identifier 
+| literal 
+| ParentheseesExpression  
+| Interval
+| UnaryOperation ;
 
-ComparisonOperator : "">"" | ""<""  |  ""<>"" | ""<="" | "">="" | ""is"" | ""like""  ;
-ComparisonOperation : Expression 'left' ComparisonOperator Expression 'right' {{ComparisonOperation}};
-ArithmeticOperator : ""*"" | ""+"" | ""-"" | ""/"" | ""^"" | ""\"" | ""Mod"";
-ArithmeticOperation : Expression 'left' ArithmeticOperator Expression 'right' {{ArithmeticOperation}};
-BooleanOperator : ""and"" | ""or"" | ""xor"" | ""eqv"";
-BooleanBinaryOperation : Expression 'left' BooleanOperator Expression 'right' {{ArithmeticOperation}};
-ConcatenationOperation : Expression 'left' ""&"" Expression 'right' {{ConcatenationOperation}}; 
 
-Equals :  (Identifier 'left' | MemberAccess 'left' | Expression 'left') ""="" 'operator' Expression  'right' {{Equals}}; 
+BinaryOperation : 
+  ComparisonOperation  
+| ArithmeticOperation 
+| BooleanBinaryOperation 
+| Equals  
+| ConcatenationOperation ;
+
+ComparisonOperator : ">" | "<"  |  "<>" | "<=" | ">=" | "is" | "like" ;
+
+ComparisonOperation : 
+		(LeftSide 'left' | ArithmeticOperation 'left') <whitespace>
+		ComparisonOperator <whitespace> 
+		(LeftSide 'right' | ArithmeticOperation 'right') 
+		{{ComparisonOperation}};
+		
+ArithmeticOperator : "*" | "+" | "-" | "/" | "^" | "\" | "Mod";
+
+ArithmeticOperation : 
+		LeftSide 'left' <whitespace>
+		ArithmeticOperator <whitespace>
+		Expression 'right' {{ArithmeticOperation}};
+
+
+BooleanOperator : "and" | "or" | "xor" | "eqv";
+
+BooleanBinaryOperation : 
+		(ComparisonOperation 'left' | Equals 'left' | LeftSide 'left'  ) <whitespace>
+		BooleanOperator   <whitespace>
+		Expression 'right' 
+		{{ArithmeticOperation}};
+
+
+ConcatenationOperation : 
+		LeftSide 'left' <whitespace>
+		"&" <whitespace>
+		Expression 'right' 
+		{{ConcatenationOperation}}; 
+
+Equals : 
+	(Identifier 'left' | MemberAccess 'left' | Expression 'left') <whitespace>
+	"=" 'operator' <whitespace>
+	Expression 'right' 
+	{{Equals}}; 
 
 
 ####################
 ### Value Clause 
 ####################
 
-ValueClause: AddressOfClause | NewClause ;
-AddressOfClause : ""AddressOf"" Identifier 'name'  {{AddressOfClause}}; 
-NewClause : ""New"" Identifier 'typeName' {{NewClause}};
+ValueClause: 
+  AddressOfClause 
+| NewClause ;
+
+AddressOfClause : 
+		"AddressOf" <whitespace>
+		Identifier 'name'  
+		{{AddressOfClause}}; 
+		
+NewClause : 
+		"New" <whitespace>
+		Type 'typeName' 
+		{{NewClause}};
+
+OpenMode :  
+  "Append" 
+| "Binary" 
+| "Input" 
+| "Output" 
+| "Random" ;
 
 
-OpenMode :  ""Append"" |  ""Binary"" |  ""Input"" |  ""Output"" |  ""Random"" ;
-OpenAccess : ""Read"" | ""Write"" | ""Read"" ""Write"" ;
-Lock :  ""Shared"" | ""Lock Read"" | ""Lock Write"" | ""Lock Read Write"";
+OpenAccess : 
+  "Read" 
+| "Write" 
+| "Read Write" ;
+
+Lock :  
+  "Shared" 
+| "Lock Read" 
+| "Lock Write" 
+| "Lock Read Write";
 
 
-FileClauses : OpenFileClause | PrintFileClause | LineInputClause ;
-OpenFileClause : ""Open"" Expression 'filepath'  ""For"" OpenMode 'mode' (OpenAccess 'access')? (Lock 'lock')? ""As"" Expression 'fileDescriptor' (""len"" ""="" Expression'length')? {{OpenClause}};
-PrintFileClause : ""Print"" ""(""? Identifier 'fileNumber' "","" (Expression 'value')?  ("";"" Expression 'value')*  "")""? {{PrintIntoFileClause}} ;
-LineInputClause : ""Line"" ""Input"" ""(""? Identifier 'fileNumber' "","" (Expression 'value')   "")""? {{LineInputClause}} ;
+FileClauses : 
+  OpenFileClause 
+| PrintFileClause 
+| LineInputClause ;
+
+OpenFileClause : 
+		"Open" <whitespace>
+		Expression 'filepath' <whitespace>
+		"For" <whitespace>
+		OpenMode 'mode' <whitespace>
+		(OpenAccess 'access' <whitespace>)? 
+		(Lock 'lock' <whitespace>)? 
+		"As" <whitespace>
+		Expression 'fileDescriptor' 
+		(<whitespace> "len" <whitespace> "=" <whitespace> Expression'length')? 
+		{{OpenClause}};
+		
+		
+PrintFileClause : 
+		"Print" <whitespace>
+		Identifier 'fileNumber' <whitespace>?
+		"," <whitespace>? 
+		(Expression 'value' <whitespace>?)? 
+		(";" <whitespace>? Expression 'value')*  
+		{{PrintIntoFileClause}};
+		
+LineInputClause : 
+		"Line" <whitespace>
+		"Input" <whitespace>
+		(Identifier 'fileNumber' | FileDescriptorLiteral  'fileNumber') <whitespace>?  
+		","  <whitespace>?
+		(Expression 'value') 
+		{{LineInputClause}};
+
 
 ###################################################### 
 ########## Control flow statements
 ###################################################### 
 
-
-ControlFlowStatement : Exits| Loops | If  | On | Resume | To | With | RaiseError | Select ; 
+ControlFlowStatement : 
+  Exits
+| Loops 
+| If  
+| On 
+| Resume 
+| To 
+| With 
+| RaiseError 
+| Select ; 
 
 ####################
 #### Loops
 ####################
 
 
-Loops : DoLoop | WhileWend | ForLoop ;
+Loops : 
+  DoLoop 
+| WhileWend 
+| ForLoop ;
 
 ####################
 ########## Do
 ####################
 
-DoLoop : InfinityLoop | WhileTrue | UntilTrue | DoWhileTrue | DoUntilTrue; 
+DoLoop : 
+  InfinityLoop 
+| WhileTrue 
+| UntilTrue 
+| DoWhileTrue 
+| DoUntilTrue; 
+
+
 InfinityLoop : 
-	""do""  
+	"do"  
 		(Block 'body')? 
-	(IntegerLiteral 'endLineNumber')? ""loop""  
-{{InfinityLoop}} ;
+	(IntegerLiteral 'endLineNumber' <whitespace>)? 
+	"loop"  
+	{{InfinityLoop}} ;
 
 WhileTrue :  
-	""do"" ""while"" Expression 'condition' 
-	 ( Block 'body')? 
-	(IntegerLiteral 'endLineNumber')? ""loop""  
-{{WhileTrue}}; 
+	"do" <whitespace>
+	"while" <whitespace>
+	Expression 'condition' 
+	( Block 'body')? 
+	(IntegerLiteral 'endLineNumber' <whitespace>)? 
+	"loop"  
+	{{WhileTrue}}; 
+	
+	
 UntilTrue : 
-	""do"" ""until"" Expression 'condition'
+	"do" <whitespace>
+	"until" <whitespace>
+	Expression 'condition'
 		Block 'body'
-	(IntegerLiteral 'endLineNumber')?""loop"" 
- {{UntilTrue}}; 
+	(IntegerLiteral 'endLineNumber' <whitespace>)?
+	"loop" 
+   {{UntilTrue}}; 
 
 DoWhileTrue :  
-	""do"" ( Block 'body')?
-	(IntegerLiteral 'endLineNumber')?  ""loop""  ""while"" Expression 'condition' 
-{{DoWhileTrue}}; 
+	"do" 
+	( Block 'body')?
+	(IntegerLiteral 'endLineNumber' <whitespace>)?  
+	"loop" <whitespace> 
+	"while" <whitespace> 
+	Expression 'condition' 
+    {{DoWhileTrue}}; 
 
 DoUntilTrue : 
-	""do"" Block 'body' 
-	(IntegerLiteral 'endLineNumber')? ""loop"" ""until"" Expression 'condition'
- {{DoUntilTrue}}; 
+	"do" 
+	 Block 'body' 
+	(IntegerLiteral 'endLineNumber' <whitespace>)? 
+	"loop" <whitespace> 
+	"until" <whitespace>
+	Expression 'condition'
+    {{DoUntilTrue}}; 
 
 
 ####################
@@ -430,59 +955,123 @@ DoUntilTrue :
 ####################
 
 WhileWend: 
-	""while"" Expression 'condition'
-		( Block 'body')?   (IntegerLiteral 'endLineNumber')? 
-	""wend""  {{WhileWend}}; 
+	"while" <whitespace> 
+	Expression 'condition'
+	( Block 'body')?   
+	(IntegerLiteral 'endLineNumber' <whitespace>)? 
+	"wend" 
+	{{WhileWend}}; 
 
 ####################
 ########## For 
 ####################
 
-ForLoop : ForEach | ForNext | ForNextOneLine | ForStepNext;
+ForLoop : 
+  ForEach 
+| ForNext 
+| ForNextOneLine 
+| ForStepNext;
 
 ForEach :  
-	""for"" ""each"" Identifier 'element' ""in"" Expression 'group' 
-		 ( Block 'body')?
-	(IntegerLiteral 'endLineNumber')? ""next"" (Identifier 'element' )? 
-{{ForEach}} ;
- 
+	"for" <whitespace> 
+	"each" <whitespace> 
+	Identifier 'element' <whitespace> 
+	"in" <whitespace> 
+	Expression 'group' <whitespace>?
+	( Block 'body')?
+	(IntegerLiteral 'endLineNumber' <whitespace>)? 
+	"next" 
+	(<whitespace> Identifier 'element' )? 
+    {{ForEach}} ;
+
 ForNext :   
-	""for"" Identifier 'counter' ""="" Expression  'initialValue'  ""to"" Expression  'limit'   
-		( Block 'body')? 
-	 (IntegerLiteral 'endLineNumber')? 	""next"" (Identifier 'element' )? 
-{{ForNext}} ;
+	"for" <whitespace> 
+	Identifier 'counter' <whitespace>
+	"=" <whitespace> 
+	Expression  'initialValue' <whitespace> 
+	"to" <whitespace> 
+	Expression  'limit'   
+	( Block 'body')? 
+	 (IntegerLiteral 'endLineNumber' <whitespace>) ? 
+	 "next" 
+	 (<whitespace> Identifier 'element')? 
+    {{ForNext}} ;
 
 ForNextOneLine :   
-	""for"" Identifier 'counter' ""="" Expression  'initialValue'  ""to"" Expression  'limit'   
+	"for" <whitespace> 
+	Identifier 'counter' <whitespace> 
+	"=" <whitespace> 
+	Expression  'initialValue' <whitespace> 
+	"to" <whitespace> 
+	Expression  'limit'
 		( OneLineBlock 'body')? 
-		""next""
-{{ForNext}} ;
+	"next"
+   {{ForNext}} ;
 
 ForStepNext:   
-	""for"" Identifier 'counter' ""="" Expression  'initialValue'  ""to"" Expression  'limit' ""step"" Expression 'step'   
+	"for" <whitespace> 
+	Identifier 'counter' <whitespace>
+	"=" <whitespace>
+	Expression  'initialValue' <whitespace> 
+	"to" <whitespace> 
+	Expression  'limit' <whitespace> 
+	"step" <whitespace> 
+	Expression 'step'   
 		( Block 'body')?  
-	(IntegerLiteral 'endLineNumber')? ""next"" (Identifier 'element' )? 
- {{ForStepNext}} ;
+	(IntegerLiteral 'endLineNumber' <whitespace>)? 
+	"next" 
+	(<whitespace> Identifier 'element' )? 
+    {{ForStepNext}} ;
 
 ####################
 ########## If
 ####################
-If : IfThenElseOneLine | IfThenElse ; 
 
-  
+If : 
+  IfThenElseOneLine 
+| IfThenEmpty
+| IfThenElse ; 
+
+IfThenEmpty : 
+	"if" <whitespace> 
+	Expression 'condition' <whitespace> 
+	("then:") <eol> 
+{{IfThenElse}};
+
+
 IfThenElseOneLine : 
-	""if"" Expression 'condition' (""then""|""then:"") OneLineBlock 'ifTrue' 
-	( (""else""|""else:"") OneLineBlock 'ifFalse' )?
+	"if" <whitespace> 
+	Expression 'condition' <whitespace> 
+	("then"|"then:") 
+	OneLineBlock 'ifTrue' 
+	(<whitespace> ("else"|"else:") OneLineBlock 'ifFalse' )?
 {{IfThenElse}};
 
 IfThenElse : 
-	""if"" Expression 'condition' ""then"" (Block 'ifTrue')?  
+	"if" <whitespace> 
+	Expression  'condition' 
+	<whitespace> 
+	"then"
+	(Block 'ifTrue')  
 	(ElseIf 'elseif')* 
 	(Else 'else')?
-    (IntegerLiteral 'endLineNumber')? ""end"" ""if""{{IfThenElse}};
-Else: (IntegerLiteral 'endLineNumber')? ""else""  (Block 'ifMatch')?  {{ElseIfBlock}}; 
-ElseIf: (IntegerLiteral 'endLineNumber')? ""elseif"" Expression 'condition' ""then"" 
-	(Block 'ifMatch')?  {{ElseIfBlock}}; 
+    (IntegerLiteral 'endLineNumber'<whitespace>)? 
+	"end" <whitespace> "if"
+	{{IfThenElse}};
+	
+Else: 
+	(IntegerLiteral 'endLineNumber' <whitespace>)? 
+	"else" 
+	(Block 'ifMatch')?  
+	{{ElseIfBlock}};
+	
+ElseIf: 
+    (IntegerLiteral 'endLineNumber' <whitespace>)? 
+	"elseif" <whitespace> 
+	Expression  'condition' <whitespace>
+	"then" 
+	(Block 'ifMatch')?  
+	{{ElseIfBlock}}; 
 
 
 
@@ -490,7 +1079,9 @@ ElseIf: (IntegerLiteral 'endLineNumber')? ""elseif"" Expression 'condition' ""th
 ###### Error 
 ####################
 
-	RaiseError : ""Error"" Expression 'errorCode'  {{RaiseError}} ;
+RaiseError : 
+  "Error" <whitespace> Expression 'errorCode'  
+  {{RaiseError}} ;
 	
 ##########################
 ###### Label / LabelSub
@@ -503,90 +1094,293 @@ ElseIf: (IntegerLiteral 'endLineNumber')? ""elseif"" Expression 'condition' ""th
 ####################
 ###### Select Case 
 ####################
+CaseCondition : 
+  ExpressionCalls
+| NegatedOperation 
+| Interval
+| Identifier 
+| MemberAccess 
+| literal;
 
-	Case :  (IntegerLiteral 'lineNumber')? ""case""   (Expression 'expression' | ""else"")? ( "","" (Expression 'expression'))* "":""?  (Block 'body' | Statement 'body' <eol>+)? {{Case}};
-	Select : ""select"" ""case"" Expression 'expression' <eol>+ (Case 'case')+ 
-	(IntegerLiteral 'endLineNumber')? ""end"" ""select"" 
+Case : 
+	(IntegerLiteral 'lineNumber' <whitespace>)? 
+	"case" <whitespace>
+	(CaseCondition 'expression' | "else")
+	("," <whitespace> (CaseCondition 'expression'))*
+	":"?
+	(Block 'body' | (OneLineBlock 'body' <eol>))?
+	{{Case}};
+	
+Select : 
+	"select" <whitespace> 
+	"case" <whitespace>
+	Expression 'expression' 
+	<eol>+ (Case 'case' <eol>+?)* 
+	(IntegerLiteral 'endLineNumber' <whitespace>)? 
+	"end" <whitespace> "select" 
 	{{Select}};
 
 ####################
 ###### Resume
 ####################
 
-	Resume : ResumeLabel | ResumeNext | ResumeEmpty ;
+Resume: 
+  ResumeLabel 
+| ResumeNext 
+| ResumeEmpty ;
 	
-	ResumeLabel : ""resume"" DestinationList 'destination' {{ResumeLabel}} ; 
-	ResumeNext : ""resume"" ""next"" {{ResumeNext}} ; 
-	ResumeEmpty : ""resume"" {{ResumeEmpty}}; 
+ResumeLabel : 
+	"resume" <whitespace> 
+	DestinationList 'destination' 
+	{{ResumeLabel}} ; 
+	
+ResumeNext : 
+	"resume" <whitespace> 
+	"next" 
+	{{ResumeNext}} ; 
+	
+ResumeEmpty : "resume" {{ResumeEmpty}}; 
 
 ####################
 ###### GoTo / GoSub 
 ####################
 
-Go: GoToStatement | GoSub ;
+Go : 
+  GoToStatement 
+| GoSub ;
 
 
-Destination : Identifier | IntegerLiteral | NegatedOperation ;
-DestinationList :  Destination 'label' ("","" Destination 'label')* {{DestinationList}};
+Destination : 
+  Identifier 
+| IntegerLiteral 
+| NegatedOperation ;
 
-GoToStatement  : ""goto"" DestinationList 'destination'   {{GoToStatement}}  ;
-GoSub  :  ""gosub""  DestinationList 'destination'  {{GoSub}} ;
+ 
+DestinationList :  
+	Destination 'label' 
+	(<whitespace>?"," <whitespace>?Destination 'label')*
+	{{DestinationList}};
+
+GoToStatement : 
+	"goto" <whitespace> 
+	DestinationList 'destination'   
+	{{GoToStatement}};
+	
+GoSub :  
+	"gosub" <whitespace> 
+	DestinationList 'destination'  
+	{{GoSub}} ;
 
 ####################
 ########## On 
 ####################
 
-On : OnErrorGoTo | OnErrorResumeNext |  OnExpressionGo  ; 
+On : 
+  OnErrorGoTo 
+| OnErrorResumeNext 
+| OnExpressionGo; 
 
-OnErrorGoTo : ""on"" ""error"" GoToStatement 'to' {{OnErrorGoTo}}  ;
-OnErrorResumeNext : ""on"" ""error"" ""resume""  ""next"" {{OnErrorResumeNext }} ;
-OnExpressionGo : ""on"" Expression 'integerExpression' Go 'to' {{OnExpressionGo}} ;
+OnErrorGoTo : 
+	"on" <whitespace>
+	"error" <whitespace>
+	GoToStatement 'to' 
+	{{OnErrorGoTo}};
+	
+OnErrorResumeNext : 
+	"on"  <whitespace>
+	"error" <whitespace>
+	"resume"  <whitespace>
+	"next"
+	{{OnErrorResumeNext}} ;
+	
+OnExpressionGo : 
+	"on" <whitespace>
+	Expression 'integerExpression' <whitespace>
+	Go 'to' 
+	{{OnExpressionGo}} ;
 
 ####################
 ########## Error
 ####################
 
-Error: ""error"" Expression 'errorCode' {{Error}} ;
+Error: 
+	"error" <whitespace>
+	Expression 'errorCode' 
+	{{Error}} ;
 
 ####################
 ########## With
 ####################
-With : ""with"" Expression 'with' Block 'block' (IntegerLiteral 'endLineNumber')?""end"" ""with"" {{With}} ;
+
+With : 
+	"with" <whitespace>
+	Expression 'with' 
+	Block 'block' 
+	(IntegerLiteral 'endLineNumber' <whitespace>)?
+	"end" <whitespace> "with" 
+	{{With}} ;
 
 ####################
 ########## Exits
 ####################
 
-Exits : ExitFunction | ExitSub | ExitProperty | ExitDo |ExitFor | Return; 
-ExitFunction : ""exit"" ""function"" {{Exits}} ; 
-ExitSub : ""exit"" ""sub"" {{Exits}} ; 
-ExitDo : ""exit"" ""do"" {{Exits}} ; 
-ExitFor : ""exit"" ""for"" {{Exits}} ; 
-ExitProperty : ""exit"" ""property"" {{Exits}} ;
-Return : ""return"" {{Return}} ;
+Exits : 
+  ExitFunction 
+| ExitSub 
+| ExitProperty 
+| ExitDo 
+| ExitFor 
+| Return; 
 
-####################
+ExitFunction : 
+	"exit" <whitespace>
+	"function" 
+	{{Exits}} ;
+	
+ExitSub : 
+	"exit" <whitespace>
+	"sub" 
+	{{Exits}} ; 
+ExitDo : 
+	"exit" <whitespace>
+	"do" 
+	{{Exits}} ; 
+	
+ExitFor : 
+	"exit" <whitespace>
+	"for" 
+	{{Exits}} ;
+	
+ExitProperty : 
+	"exit" <whitespace> 
+	"property" 
+	{{Exits}} ;
+	
+Return : 
+	"return" 
+	{{Return}} ;
+
+########################################
 ### Calls and accesses 
-####################
+########################################
 
-DictionaryAccess :   (StateAccess 'receiver' | ValueClause 'receiver'| Identifier 'receiver' | ExpressionCalls 'receiver')? ""!"" KeywordIdentifier 'member' {{DictionaryAccess}} ;
-MemberAccess : (StateAccess 'receiver' | ValueClause 'receiver'| Identifier 'receiver' | ExpressionCalls 'receiver')? "".""  KeywordIdentifier 'member' {{MemberAccess}} ;
-ImplicitParenthesesLessCall :  MemberAccess 'selector'   ArgumentList 'arguments' {{ImplicitParenthesesLessCall}} |
-							   Identifier 'selector'   ArgumentList 'arguments' {{ImplicitParenthesesLessCall}} 
-							   ;
+StateAccessBase :
+  StateAccess
+| ValueClause
+| Identifier
+| ProcedureCallOrArrayAccess; 
 
-ProcedureCallOrArrayAccess :  StateAccess 'selector' ""(""   ArgumentList 'arguments'"")"" {{ProcedureCallOrArrayAccess}} |
-							  ValueClause 'selector' ""(""   ArgumentList 'arguments'"")"" {{ProcedureCallOrArrayAccess}} |
-							  Identifier 'selector' ""(""   ArgumentList 'arguments' "")""{{ProcedureCallOrArrayAccess}} |
-							  ExpressionCalls 'receiver' ""("" ArgumentList 'arguments' "")"" {{ProcedureCallOrArrayAccess}} ;
+############################################################
+### Normal accesses.  object.value dic!key
+############################################################
 
-Argument : (ParameterPassingStrategy 'strategy')?  ""paramarray""?  (Expression 'value' | Assignment 'value') {{Argument}};
-ArgumentList : (Argument 'argument' ? ("","" | "";"" ))* Argument 'argument'? ( ("","" | "";"" )Argument 'argument' ?)* {{ArgumentList}};
-# ArgumentListAtLeastOne : Argument 'argument' ( ("","" | "";"" )Argument 'argument' ?)* {{ArgumentList}};
-StateAccess : DictionaryAccess | MemberAccess ;
-ExplicitCall : ""Call""  (Identifier 'selector' | MemberAccess 'selector' | ProcedureCallOrArrayAccess 'selector')  {{ExplicitCall}} ; 
-RaiseEvent : ""RaiseEvent""   (Identifier 'selector' | ProcedureCallOrArrayAccess 'selector' )   {{RaiseEvent}};
-TypeOf : ""TypeOf"" ""(""?  ArgumentList 'arguments' "")""? {{TypeOf}};
+DictionaryAccess : 
+	(StateAccessBase 'receiver')?
+	"!" 
+	KeywordIdentifier 'member' 
+	{{DictionaryAccess}} ;
 
-StatementCalls : ProcedureCallOrArrayAccess | ImplicitParenthesesLessCall | ExplicitCall ;
-ExpressionCalls : ProcedureCallOrArrayAccess | TypeOf ;"
+MemberAccess : 
+	(StateAccessBase 'receiver')?
+	"."  
+	KeywordIdentifier 'member' 
+	{{MemberAccess}};
+
+
+StateAccess : 
+	DictionaryAccess 
+  | MemberAccess;
+  
+  
+############################################################
+### ImplicitParenthesesLessCall.   selector arg1, arg2, , , arg
+############################################################
+
+ImplicitCallExpression : 
+  MemberAccess
+| Identifier
+;
+
+
+ImplicitParenthesesLessCall :  
+		ImplicitCallExpression 'selector'  <whitespace> 
+		ArgumentList 'arguments' 
+		{{ImplicitParenthesesLessCall}} 
+		
+|       ImplicitCallExpression 'selector'
+		{{ImplicitParenthesesLessCall}} 
+ 
+;
+
+############################################################
+### ImplicitCalls.   selector(arg1, arg2, , , arg). 
+############################################################
+ProcedureCallOrArrayExpression : 
+  StateAccess
+| ValueClause
+| Identifier
+| ProcedureCallOrArrayAccess
+;
+
+ProcedureCallOrArrayAccess :  
+		ProcedureCallOrArrayExpression 'selector'
+		"("<whitespace>?
+		  ArgumentList 'arguments'
+		 <whitespace>?")"
+		{{ProcedureCallOrArrayAccess}} 
+
+;
+
+############################################################
+### Argument and argument list. 
+### Expression, expression, assignment 
+############################################################
+
+Argument : 
+        (ParameterPassingStrategy 'strategy' <whitespace>)?  
+		("paramarray" <whitespace>)?  
+		(Expression 'value' | Assignment 'value') 
+		{{Argument}};
+		
+		
+ArgumentList : 
+		(<whitespace>? Argument 'argument' ? ("," | ";" )  <whitespace>?)* 
+		Argument 'argument'? 
+		(<whitespace>?("," | ";" ) <whitespace>? Argument 'argument' ? )*
+		{{ArgumentList}};
+
+
+ExplicitCallSelectorTypes :
+  Identifier 
+| MemberAccess  
+| ProcedureCallOrArrayAccess;
+
+
+############################################################
+### ExplicitCall.  Call selector(arg1, arg2, , , arg). 
+############################################################
+
+ExplicitCall : 
+		"Call" <whitespace>
+		 ExplicitCallSelectorTypes 'selector'  
+		{{ExplicitCall}} ;
+		
+RaiseEvent : 
+		"RaiseEvent" <whitespace>
+		(Identifier 'selector' | ProcedureCallOrArrayAccess 'selector' )
+		{{RaiseEvent}};
+
+TypeOf : 
+		"TypeOf" <whitespace>
+		Argument 'argument' <whitespace>
+		("Is" | "IsNot") <whitespace>
+		Argument 'type'  
+		{{TypeOf}};
+
+StatementCalls :  
+  ImplicitParenthesesLessCall 
+| ExplicitCall ;
+
+ExpressionCalls : 
+  ProcedureCallOrArrayAccess 
+| TypeOf ;
