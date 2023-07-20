@@ -6,6 +6,7 @@ The repository of this project includes a grammar file which the last version of
 However, please mind that the SmaCC grammar editor will charge the grammar stored in the ```VBParser definitionComment``` method. 
 
 The usage of the parser is extremely simple: 
+
 ``` VBParser parse: 'my program' ```
 
 For VBParser to work the only compulsory dependency is The SmaCCRuntime package, despite the baseline of VBParser loading the whole repository. 
@@ -76,24 +77,23 @@ This method calculates all the possible AST for a given code.
 As Microsoft Access grammar is extremely ambiguous, each modification may add exponential new possible AST, decreasing radically the performance. 
 In these tests we assert that there is no more than 33 possible outcomes, to ensure a minimal performance. 
 This number should be pushed down, but by the time been is good enough. 
-```
-parse: aString
-	| value |
-	[ value := VBParser parseAll: aString startingAt: 1 ]
-		on: Error
-		do: [ :e | 
-			
-			"(self preparse: aString) inspect."
-			
-			e pass ].
-	self assert: value size < 33
-```
-Please note that the parse method implemented in the abstract test case includes an assertion. 
+
 
 
 ### Methods
 #### VB6PerformanceCase>>parse: aString
-This Performance test case furnishes a parse helper method which ensure to measure the ammount of possible AST to produce out of a piece of code
+This Performance test case furnishes a parse helper method which ensure to measure the ammount of possible AST to produce out of a piece of code.
+	Please note that the parse method implemented in the abstract test case includes an assertion. 
+	
+
+```smalltalk
+parse: aString
+	| value |
+	[ value := VBParser parseAll: aString startingAt: 1 ]
+		on: Error
+		do: [ :e | "(self preparse: aString) inspect." e pass ].
+	self assert: value size < 33
+```
 
 
 
@@ -104,19 +104,21 @@ These tests are principally based three different sources:
    * the VBA official documentation. 
    * Microsoft Northwind, an official application for learning Microsoft Access.
    * Productive special cases.
-In order to ease the writing of tests, there is a method subWrap, which wraps the given text with the syntax of a SUB procedure. 
+In order to ease the writing of tests, there is a method subWrap:, which wraps the given text with the syntax of a SUB procedure. 
 
-```
+
+### Methods
+#### VB6TestCase>>subWrap: aString
+Wraps a given piece of code within a VBA sub procedure
+
+```smalltalk
 subWrap: aString
+		
 	^ 'public sub example
 {1}
 end sub
 ' format: {aString}
 ```
-
-### Methods
-#### VB6TestCase>>subWrap: aString
-Wraps a given piece of code within a VBA sub procedure
 
 
 
@@ -130,14 +132,51 @@ I am required link expressions and goto-tags.
 #### VBAbstractProgramNode>>parents
 Returns a recursive list of parents up to the root of the AST.
 
+```smalltalk
+parents
+	parent ifNil: [ ^ {  } ].
+	^ { parent } , parent parents
+```
+
 #### VBAbstractProgramNode>>enclosing: aClass starting: start
 Climbs the AST tree up to finding an element of the given class. It starts from the given starting element.
+
+```smalltalk
+enclosing: aClass starting: start
+	| current |
+	current := start.
+	[ current isNil ]
+		whileFalse: [ current class = aClass
+				ifTrue: [ ^ current ].
+			current := current parent ].
+	self error: 'No enclosing this node '
+```
 
 #### VBAbstractProgramNode>>enclosingAny: aClassArray
 Climbs the AST tree up to finding an element of any of the given classes. 
 
+```smalltalk
+enclosingAny: aClassArray
+	| current |
+	current := parent.
+	[ current isNil ] whileFalse: [ 
+		(aClassArray includes: current class) ifTrue: [ ^ current ].
+		current := current parent ].
+	self error: 'No enclosing this node '
+```
+
 #### VBAbstractProgramNode>>parentNonParentheses
 Climbs the AST tree up to finding an element which is not a parentheses expression
+
+```smalltalk
+parentNonParentheses
+	| current |
+	current := self parent.
+	[ current class = VBParentheseesExpressionNode ] whileTrue: [ 
+		current := current parent.
+		current ifNil: [ ^ nil ] ].
+	^ current
+```
 
 
 
