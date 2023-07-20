@@ -146,3 +146,7 @@ End If
 End Function
 '
 ]
+
+{ #category : #'see class side' }
+VBExamples >> seeClassSide [ 
+]

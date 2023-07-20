@@ -1,7 +1,7 @@
 Class {
 	#name : #VBProgramNode,
 	#superclass : #VBAbstractProgramNode,
-	#category : #'VBParser-ParsingCore'
+	#category : #'VBParser-AST-Model'
 }
 
 { #category : #generated }

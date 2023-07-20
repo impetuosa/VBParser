@@ -7,7 +7,7 @@ Class {
 		'tOToken',
 		'to'
 	],
-	#category : #'VBParser-ParsingCore'
+	#category : #'VBParser-AST-Model'
 }
 
 { #category : #generated }

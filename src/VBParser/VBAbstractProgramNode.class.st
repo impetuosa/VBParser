@@ -1,10 +1,18 @@
+"
+All the nodes of the AST must inherit from this node. 
+
+I am an abstract node that allow to do some simple tracking and search within the ASTree. 
+I am required link expressions and goto-tags. 
+
+
+"
 Class {
 	#name : #VBAbstractProgramNode,
 	#superclass : #SmaCCParseNode,
-	#category : #'VBParser-AST-Model'
+	#category : #'VBParser-ParsingCore'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #'goto management' }
 VBAbstractProgramNode >> addDestination: aDestination [
 
 	self
@@ -18,7 +26,7 @@ VBAbstractProgramNode >> addDestination: aDestination [
 	aDestination addJumpSource: self
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #'goto management' }
 VBAbstractProgramNode >> addJumpSource: aGoto [
 
 	self assert: self species = VBLabelNode.
@@ -27,7 +35,7 @@ VBAbstractProgramNode >> addJumpSource: aGoto [
 		 ifAbsentPut: [ OrderedCollection new ]) add: aGoto
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #'goto management' }
 VBAbstractProgramNode >> addLabels: labels [
 	| myLabels |
 	myLabels := self
@@ -39,7 +47,7 @@ VBAbstractProgramNode >> addLabels: labels [
 			l registerStatement: self ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #'goto management' }
 VBAbstractProgramNode >> calculateJumps [
 
 	| labels goto |
@@ -72,18 +80,18 @@ VBAbstractProgramNode >> calculateJumps [
 						labels removeLast ] ] ] ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 VBAbstractProgramNode >> destinationsAttribute [
 	^ self attributeNamed: #destinations
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #query }
 VBAbstractProgramNode >> enclosing: aClass [
 
 	^ self enclosing: aClass starting: parent
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #query }
 VBAbstractProgramNode >> enclosing: aClass starting: start [
 	| current |
 	current := start.
@@ -94,7 +102,7 @@ VBAbstractProgramNode >> enclosing: aClass starting: start [
 	self error: 'No enclosing this node '
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #query }
 VBAbstractProgramNode >> enclosingAny: aClassArray [
 	| current |
 	current := parent.
@@ -105,7 +113,7 @@ VBAbstractProgramNode >> enclosingAny: aClassArray [
 	self error: 'No enclosing this node '
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #query }
 VBAbstractProgramNode >> enclosingWith [
 
 	| inbetween |
@@ -113,7 +121,7 @@ VBAbstractProgramNode >> enclosingWith [
 	^ inbetween enclosing: VBWithNode
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #testing }
 VBAbstractProgramNode >> isAssignment [
 	" If it is explicit, is an assignment for sure "
 
@@ -154,7 +162,7 @@ VBAbstractProgramNode >> isAssignment [
 	^ true
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #testing }
 VBAbstractProgramNode >> isOptional [
 
 	self assert: (self isKindOf: VBParameterNode).
@@ -162,7 +170,7 @@ VBAbstractProgramNode >> isOptional [
 	^ self optionalToken isNotNil
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #testing }
 VBAbstractProgramNode >> isReturn [
 	self isAssignment
 		ifFalse: [ ^ false ].
@@ -173,27 +181,27 @@ VBAbstractProgramNode >> isReturn [
 		do: [ ^ false ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 VBAbstractProgramNode >> jumpsourcesAttribute [
 	^ self attributeNamed: #jumpsources
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 VBAbstractProgramNode >> labelsAttribute [
 	^ self attributeNamed: #labels
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 VBAbstractProgramNode >> lineContinuations [
 	^ self attributeNamed: #lineContinuations
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 VBAbstractProgramNode >> lineContinuations: line [ 
 	self attributeNamed: #lineContinuations put: line
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #testing }
 VBAbstractProgramNode >> managesError [
 
 	^ self jumpsourcesAttribute
@@ -202,7 +210,7 @@ VBAbstractProgramNode >> managesError [
 		  js anySatisfy: [ :s | s parent species = VBOnErrorGoToNode ] ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #query }
 VBAbstractProgramNode >> parentNonParentheses [
 	| current |
 	current := self parent.
@@ -212,14 +220,14 @@ VBAbstractProgramNode >> parentNonParentheses [
 	^ current
 ]
 
-{ #category : #'.as yet unclassified' }
+{ #category : #query }
 VBAbstractProgramNode >> parents [
 
 	parent ifNil: [ ^ {  } ].
 	^ { parent } , parent parents
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #'goto management' }
 VBAbstractProgramNode >> registerStatement: aStatement [
 
 	self assert: self species = VBLabelNode.
@@ -228,7 +236,7 @@ VBAbstractProgramNode >> registerStatement: aStatement [
 		ifAbsentPut: [ OrderedCollection new ]) add: aStatement
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 VBAbstractProgramNode >> statementsAttribute [
 	self assert: self species = VBLabelNode.
 	^ self attributeNamed: #statements
